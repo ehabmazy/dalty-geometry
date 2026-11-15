@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>مرشد الهندسة</title>
+<title>الهندسة</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
 <style>
@@ -199,6 +199,121 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 #lessons nav a{color:var(--ink);font-weight:600}
 html{scroll-behavior:smooth}
 #lessons .m{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+/* ---------- calculator pane ---------- */
+#calc{--paper:#f3f8f7;--grid:#d5e6e3;--ink:#1d3557;--red:#d62839;--teal:#0a8f8f;--amber:#d98e00;--card:#ffffff;--muted:#51627a;margin:0;font-family:Cairo,Tahoma,"Segoe UI",sans-serif;color:var(--ink);line-height:1.9;font-size:17px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #calc{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}}
+:root[data-theme="dark"] #calc{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}
+#calc *{box-sizing:border-box}
+#calc main{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+#calc h1{font-size:clamp(28px,6vw,42px);font-weight:800;margin:4px 0 8px;line-height:1.3}
+#calc h1 span{display:inline-block;border-bottom:5px solid var(--red)}
+#calc h2{font-size:22px;margin:30px 0 8px;font-weight:800}
+#calc small{color:var(--muted);font-size:15px}
+#calc .box{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:16px 18px;margin:12px 0;box-shadow:5px 5px 0 var(--ink)}
+#calc .m,#fcalc .m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:var(--math)}
+#calc .cgrid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){#calc .cgrid{grid-template-columns:minmax(0,1fr)}}
+#calc .disp,#fcalc .disp{width:100%;font:800 30px/1.4 var(--math);direction:ltr;text-align:left;padding:8px 14px;border:2px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}
+#calc .disp:focus-visible,#calc button:focus-visible,#fcalc .disp:focus-visible,#fcalc button:focus-visible,#fhandle:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#calc .keys,#fcalc .keys{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0;direction:ltr}
+#calc .keys button,#fcalc .keys button{font:700 22px/1 var(--math);min-height:52px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+#calc .keys button:active,#fcalc .keys button:active{transform:translate(2px,2px);box-shadow:none}
+#calc .keys .op,#fcalc .keys .op{color:#fff;border-color:var(--ink)}
+#calc .keys .sq,#fcalc .keys .sq{background:var(--red)}
+#calc .keys .rt,#fcalc .keys .rt{background:var(--teal)}
+#calc .keys .fn,#fcalc .keys .fn{background:var(--paper)}
+#calc .keys .ar,#fcalc .keys .ar{background:var(--ink);color:var(--paper)}
+#calc .keys .eq,#fcalc .keys .eq{background:var(--amber);color:#1d3557;grid-row:span 2;min-height:auto}
+#calc .read{font-weight:600;font-size:18px;min-height:7em}
+#calc .read .big{font-size:26px;font-weight:800;display:block;margin-bottom:4px}
+#calc .ok{color:var(--teal)}
+#calc .no{color:var(--red)}
+#calc .st{display:block;margin:2px 0}
+#calc svg{color:var(--ink);width:100%;max-width:320px;height:auto;display:block;margin:10px auto 0;background:var(--card);border:2px solid var(--ink);border-radius:6px}
+#calc .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;direction:ltr}
+#calc .chips button{font:600 15px var(--math);padding:4px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:20px;cursor:pointer}
+#calc .chips button:hover{background:var(--ink);color:var(--paper)}
+#calc .hist{list-style:none;margin:6px 0;padding:0;direction:ltr;font-family:var(--math)}
+#calc .hist li{padding:2px 0;border-bottom:1px dashed var(--grid)}
+
+/* ---------- home pane ---------- */
+body.is-home header.top{display:none}
+#home{--paper:#f3f8f7;--grid:#d5e6e3;--ink:#1d3557;--red:#d62839;--teal:#0a8f8f;--amber:#d98e00;--card:#ffffff;--muted:#51627a;font-family:Cairo,Tahoma,"Segoe UI",sans-serif;color:var(--ink);line-height:1.8;font-size:17px;max-width:1040px;margin:0 auto;padding:20px 0 40px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #home{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}}
+:root[data-theme="dark"] #home{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}
+#home *{box-sizing:border-box}
+#home .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:20px;align-items:center;background:var(--card);border:2px solid var(--ink);border-radius:8px;box-shadow:6px 6px 0 var(--ink);padding:24px}
+@media (max-width:760px){#home .hero{grid-template-columns:minmax(0,1fr);padding:18px}#home .hero svg{order:-1;max-width:200px;margin-inline:auto}}
+#home .kick{color:var(--teal);font-weight:700;font-size:14px}
+#home h1{font-size:clamp(30px,7vw,46px);font-weight:800;line-height:1.25;margin:2px 0 8px}
+#home h1 span{display:inline-block;border-bottom:5px solid var(--red)}
+#home .lead{color:var(--muted);margin:0 0 16px;max-width:56ch}
+#home .cta{display:flex;flex-wrap:wrap;gap:10px}
+#home a.btn{display:inline-block;font-weight:700;text-decoration:none;padding:8px 18px;border:2px solid var(--ink);border-radius:24px;color:var(--ink);background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+#home a.btn.main{background:var(--ink);color:var(--paper)}
+#home a.btn:active{transform:translate(2px,2px);box-shadow:none}
+#home a.btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+#home .hero svg{width:100%;height:auto;color:var(--ink)}
+#home .stat{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--card);border:2px solid var(--ink);border-radius:8px;padding:12px 18px;margin:18px 0}
+#home .stat .tr{flex:1;min-width:160px;height:10px;background:var(--grid);border-radius:99px;overflow:hidden}
+#home .stat .tr i{display:block;height:100%;width:0;background:var(--teal);transition:width .4s}
+#home h2{font-size:22px;font-weight:800;margin:28px 0 10px}
+#home .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+#home .lc{background:var(--card);border:2px solid var(--ink);border-inline-start:8px solid var(--c);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;box-shadow:4px 4px 0 var(--ink)}
+#home .lc .no{font-weight:800;color:var(--c);font-size:14px}
+#home .lc b{font-size:19px;line-height:1.4}
+#home .lc p{margin:0;color:var(--muted);font-size:15px;flex:1}
+#home .lc .act{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+#home .lc .act a{font-size:14px;font-weight:700;padding:3px 12px;border:2px solid var(--ink);border-radius:20px;color:var(--ink);text-decoration:none;background:var(--card);cursor:pointer}
+#home .lc .act a.main{background:var(--ink);color:var(--paper)}
+#home .lc .act a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+/* ---------- floating calculator ---------- */
+#fhandle,#fcalc{--paper:#f3f8f7;--grid:#d5e6e3;--ink:#1d3557;--red:#d62839;--teal:#0a8f8f;--amber:#d98e00;--card:#ffffff;--muted:#51627a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #fhandle,:root:not([data-theme="light"]) #fcalc{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}}
+:root[data-theme="dark"] #fhandle,:root[data-theme="dark"] #fcalc{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}
+#fhandle{position:fixed;left:env(safe-area-inset-left,0px);top:50%;transform:translateY(-50%);z-index:40;width:40px;height:88px;padding:0;display:grid;place-items:center;background:var(--ink);color:var(--paper);border:2px solid var(--ink);border-left:0;border-radius:0 14px 14px 0;box-shadow:3px 3px 0 rgba(0,0,0,.25);cursor:pointer;touch-action:manipulation}
+#fhandle svg{width:24px;height:24px}
+body.is-calc #fhandle{display:none}
+#fcalc{position:fixed;left:max(12px,env(safe-area-inset-left,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:45;width:min(330px,calc(100vw - 24px));background:var(--card);color:var(--ink);border:2px solid var(--ink);border-radius:12px;box-shadow:6px 6px 0 var(--ink);padding:10px;font-family:Cairo,Tahoma,"Segoe UI",sans-serif;touch-action:manipulation;animation:fcin .18s ease-out}
+@keyframes fcin{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#fcalc{animation:none}}
+#fcalc *{box-sizing:border-box}
+#fcalc .top{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+#fcalc .fout{flex:1;min-width:0;min-height:62px;display:flex;align-items:center;background:var(--paper);border:2px solid var(--ink);border-radius:8px;padding:4px 10px;direction:ltr;text-align:left;overflow-x:auto}
+#fcalc .fout .big{display:block;font:800 24px/1.3 var(--math);unicode-bidi:isolate}
+#fcalc .fout .st{display:none}
+#fcalc .fout .no{font-size:13px;line-height:1.4;direction:rtl;text-align:right;display:block}
+#fclose{flex:none;width:36px;height:36px;border:2px solid var(--ink);border-radius:50%;background:var(--card);color:var(--ink);font:700 22px/1 var(--math);cursor:pointer;padding:0}
+#fcalc .disp{font-size:22px;padding:2px 10px}
+#fcalc .keys{margin:8px 0 0;gap:6px}
+#fcalc .keys button{min-height:44px;font-size:20px}
+#fcalc .keys .eq{min-height:auto}
+
+/* ---------- lesson cards & exercise cards ---------- */
+#lessons .lcards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:4px 0 14px}
+@media (max-width:760px){#lessons .lcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#lessons .lcard{font:inherit;text-align:start;cursor:pointer;color:var(--ink);background:var(--card);border:2px solid var(--ink);border-inline-start:8px solid var(--c);border-radius:8px;padding:6px 12px;display:flex;flex-direction:column;line-height:1.45;box-shadow:3px 3px 0 var(--ink)}
+#lessons .lcard small{color:var(--c);font-weight:800;font-size:13px}
+#lessons .lcard b{font-size:16px}
+#lessons .lcard[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+#lessons .lcard[aria-selected="true"] small{color:inherit;opacity:.8}
+#lessons .lcard:focus-visible,#lessons .lb:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+#lessons header nav{display:none}
+#lessons .lnav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin:34px 0 0}
+#lessons .lb{font:inherit;font-weight:700;padding:8px 16px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:24px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+#lessons .lb.pri{background:var(--ink);color:var(--paper)}
+#lessons .lb:active{transform:translate(2px,2px);box-shadow:none}
+#practice .pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-block:16px}
+#practice .pcard{font:inherit;text-align:start;cursor:pointer;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;line-height:1.4}
+#practice .pcard b{font-family:var(--display);font-size:16px}
+#practice .pcard small{color:var(--muted);font-size:13px}
+#practice .pcard[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+#practice .pcard:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#practice .pbar{display:block;height:5px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:4px}
+#practice .pbar i{display:block;height:100%;background:var(--ok)}
+#list{scroll-margin-top:130px}
 </style>
 </head>
 <body>
@@ -207,18 +322,54 @@ html{scroll-behavior:smooth}
 <div class="wrap">
 <header class="top">
   <div class="kicker">الرياضيات · الصف الثاني الإعدادي · الوحدة 3 · الهندسة (الدرسان 3-1 و3-2 + مراجعة)</div>
-  <h1>مرشد الهندسة</h1>
+  <h1>الهندسة</h1>
   <p class="lead">شرح تفاعلي لدرسين مراجعة من العام الماضي (حالات التوازي وزوايا المثلث)، ثم درسي التطابق ونظرية فيثاغورس، ثم حلول تمارين الدرسين 3-1 و3-2 من كتاب المدرسة (ص 67 – 69 و75 – 77) وكتاب التقييمات (ص 25 – 34) خطوة بخطوة.</p>
 </header>
 <div class="bar">
-  <div class="bar-in"><div class="pills" id="panes" role="group" aria-label="أقسام الصفحة"><button class="pill" data-pane="lessons" aria-pressed="true">شرح الدروس</button><button class="pill" data-pane="practice" aria-pressed="false">التمارين والتقييمات</button></div></div>
+  <div class="bar-in"><div class="pills" id="panes" role="group" aria-label="أقسام الصفحة"><button class="pill" data-pane="home" aria-pressed="true">الرئيسية</button><button class="pill" data-pane="lessons" aria-pressed="false">شرح الدروس</button><button class="pill" data-pane="practice" aria-pressed="false">التمارين والتقييمات</button><button class="pill" data-pane="calc" aria-pressed="false">الآلة الحاسبة</button></div></div>
   <div class="bar-in" id="practiceBar" hidden>
     <div class="pills" id="pills" role="group" aria-label="تصفية التمارين"></div>
     <div class="prog"><span>تمارين محلولة <b id="pc">0</b> / <span id="pt">0</span></span><div class="prog-track"><div class="prog-fill" id="pf"></div></div></div>
   </div>
 </div>
-<section id="lessons" class="pane">
+<section id="home" class="pane">
+<div class="hero">
+<div>
+<div class="kick">الرياضيات · الصف الثاني الإعدادي · الوحدة 3</div>
+<h1><span>الهندسة</span></h1>
+<p class="lead">شرح تفاعلي للدروس مع رسوم تتحرك بيدك، ثم حلول تمارين كتاب المدرسة وكتاب التقييمات خطوة بخطوة، وآلة حاسبة للمربع والجذر.</p>
+<div class="cta"><a class="btn main" href="#l1">ابدأ من الدرس الأول</a><a class="btn" href="#practice">التمارين والتقييمات</a></div>
+</div>
+<svg viewBox="0 0 240 200" role="img" aria-label="مثلث قائم الزاوية والمربعات على أضلاعه">
+<polygon points="70,110 130,110 70,70" fill="#d62839" fill-opacity=".25" stroke="currentColor" stroke-width="3"/>
+<rect x="70" y="110" width="60" height="60" fill="#0a8f8f" fill-opacity=".25" stroke="currentColor" stroke-width="2.5"/>
+<rect x="30" y="70" width="40" height="40" fill="#d98e00" fill-opacity=".3" stroke="currentColor" stroke-width="2.5"/>
+<polygon points="130,110 70,70 105,19 165,59" fill="#1857c8" fill-opacity=".22" stroke="currentColor" stroke-width="2.5"/>
+<path d="M70,110 h10 v-10 h-10z" fill="none" stroke="currentColor" stroke-width="2"/>
+</svg>
+</div>
+<div class="stat"><span>تمارين محلولة <b id="hpc">0</b> / <b id="hpt">0</b></span><div class="tr"><i id="hpf"></i></div><a class="btn" href="#practice">تابع التمارين</a></div>
+<h2>الدروس</h2>
+<div class="grid">
+<div class="lc" style="--c:var(--red)"><span class="no">مراجعة · 1</span><b>حالات التوازي</b><p>الزوايا المتناظرة والمتبادلة والمتكاملة، ومتى يكون المستقيمان متوازيين.</p><div class="act"><a class="main" href="#l1">اشرح لي</a></div></div>
+<div class="lc" style="--c:var(--teal)"><span class="no">مراجعة · 2</span><b>زوايا المثلث</b><p>مجموع زوايا المثلث والزاوية الخارجية وخصائصها مع رسم تفاعلي.</p><div class="act"><a class="main" href="#l2">اشرح لي</a></div></div>
+<div class="lc" style="--c:var(--amber)"><span class="no">الدرس 3-1</span><b>التطابق</b><p>حالات تطابق المثلثين SSS وSAS وASA وAAS وRHS، ولماذا لا تكفي AAA.</p><div class="act"><a class="main" href="#l3">اشرح لي</a><a href="#practice" data-prac="l1">تمارينه</a></div></div>
+<div class="lc" style="--c:#1857c8"><span class="no">الدرس 3-2</span><b>نظرية فيثاغورس</b><p>النظرية وعكسها، وتصنيف المثلث بأضلاعه، وثلاثيات فيثاغورس.</p><div class="act"><a class="main" href="#l4">اشرح لي</a><a href="#practice" data-prac="l2">تمارينه</a></div></div>
+</div>
+<h2>أدوات</h2>
+<div class="grid">
+<div class="lc" style="--c:var(--red)"><span class="no">تدريب</span><b>التمارين والتقييمات</b><p>حلول مفصلة من كتاب المدرسة وكتاب التقييمات، مع تصفية حسب الدرس.</p><div class="act"><a class="main" href="#practice">افتح التمارين</a></div></div>
+<div class="lc" style="--c:var(--teal)"><span class="no">أداة</span><b>الآلة الحاسبة</b><p>الجمع والطرح والمربع والجذر التربيعي مع خطوات الحل.</p><div class="act"><a class="main" href="#calc">افتح الآلة</a></div></div>
+</div>
+</section>
+<section id="lessons" class="pane" hidden>
 <main>
+<div class="lcards" id="lcards" role="group" aria-label="الدروس">
+<button type="button" class="lcard" data-lesson="l1" style="--c:var(--red)"><small>مراجعة · 1</small><b>حالات التوازي</b></button>
+<button type="button" class="lcard" data-lesson="l2" style="--c:var(--teal)"><small>مراجعة · 2</small><b>زوايا المثلث</b></button>
+<button type="button" class="lcard" data-lesson="l3" style="--c:var(--amber)"><small>الدرس 3-1</small><b>التطابق</b></button>
+<button type="button" class="lcard" data-lesson="l4" style="--c:#1857c8"><small>الدرس 3-2</small><b>فيثاغورس</b></button>
+</div>
 <header>
 <small>الرياضيات – الهندسة – الصف الثاني الإعدادي · الدرسان الأولان مراجعة من العام الماضي</small>
 <nav style="margin:6px 0"><a href="#l1">مراجعة: حالات التوازي</a> &nbsp;|&nbsp; <a href="#l2">مراجعة: زوايا المثلث</a> &nbsp;|&nbsp; <a href="#l3">الدرس 3-1: التطابق</a> &nbsp;|&nbsp; <a href="#l4">الدرس 3-2: فيثاغورس</a></nav>
@@ -467,6 +618,7 @@ html{scroll-behavior:smooth}
 </main>
 </section>
 <section id="practice" class="pane" hidden>
+<div class="pcards" id="pcards" role="group" aria-label="مجموعات التمارين"></div>
 <details class="ref">
   <summary>تذكير: حالات تطابق المثلثين</summary>
   <div class="cases">
@@ -481,6 +633,48 @@ html{scroll-behavior:smooth}
 <div id="list"></div>
 <footer>الأشكال مرسومة للتوضيح وليست بمقياس رسم. القيم والعلامات مقروءة من أشكال الكتابين.</footer>
 </section>
+<section id="calc" class="pane" hidden>
+<main>
+<header>
+<small>أداة مساعدة · الجمع والطرح والمربع والجذر التربيعي</small>
+<h1><span>الآلة الحاسبة</span></h1>
+<p>اكتب عددًا (صحيحًا أو عشريًا)، أو عملية <b>جمع أو طرح</b> مثل <span class="m">12 + 7</span> ثم اضغط <b>=</b>. ويمكنك الضغط على <b>x²</b> لحساب المربع أو <b>√</b> لحساب الجذر التربيعي (وإن كانت العملية مكتوبة تُحسب أولًا). تعرض الآلة خطوات الحل وتتحقق إن كان العدد <b>مربعًا كاملًا</b> وتبسّط الجذر عند الإمكان.</p>
+</header>
+<div class="cgrid">
+<div class="box">
+<label for="cn" style="font-weight:700">العدد:</label>
+<input id="cn" class="disp" type="text" inputmode="none" autocomplete="off" placeholder="0" aria-describedby="cout">
+<div class="keys" id="ckeys" role="group" aria-label="لوحة الأرقام">
+<button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" class="fn" data-k="bs" aria-label="مسح رقم">⌫</button><button type="button" class="op ar" data-k="+" aria-label="جمع">+</button>
+<button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" class="fn" data-k="c" aria-label="مسح الكل">C</button><button type="button" class="op ar" data-k="-" aria-label="طرح">−</button>
+<button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button><button type="button" class="op sq" data-k="sq" aria-label="المربع">x²</button><button type="button" class="op eq" data-k="eq" aria-label="يساوي">=</button>
+<button type="button" data-k="0">0</button><button type="button" data-k=".">.</button><button type="button" class="fn" data-k="neg" aria-label="تغيير الإشارة">±</button><button type="button" class="op rt" data-k="rt" aria-label="الجذر التربيعي">√</button>
+</div>
+</div>
+<div>
+<div class="box"><div class="read" id="cout" aria-live="polite">اكتب عددًا ثم اختر <span class="m">x²</span> أو <span class="m">√</span>.</div></div>
+<svg id="cfig" viewBox="0 0 300 260" role="img" aria-label="مربع يوضح العدد" hidden></svg>
+</div>
+</div>
+<h2>جدول المربعات الكاملة</h2>
+<p>اضغط على أي مربع لتجرب جذره التربيعي.</p>
+<div class="chips" id="cchips"></div>
+<h2>آخر العمليات</h2>
+<ul class="hist" id="chist"><li>—</li></ul>
+<div class="box"><b>تذكّر:</b> مربع العدد = العدد × نفسه، والجذر التربيعي عملية عكس التربيع: <span class="m">√(a²) = a</span> عندما <span class="m">a ≥ 0</span>. لا يوجد جذر تربيعي حقيقي لعدد سالب.</div>
+</main>
+</section>
+</div>
+<button type="button" id="fhandle" aria-label="الآلة الحاسبة" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><rect x="8" y="5.5" width="8" height="4" rx=".8"/><path d="M8.5 13.5h.01M12 13.5h.01M15.5 13.5h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg></button>
+<div id="fcalc" role="dialog" aria-label="الآلة الحاسبة" hidden>
+<div class="top"><div class="fout" id="fcout" aria-live="polite"></div><button type="button" id="fclose" aria-label="إغلاق">×</button></div>
+<input id="fcn" class="disp" type="text" inputmode="none" autocomplete="off" placeholder="0" aria-label="العدد" aria-describedby="fcout">
+<div class="keys" id="fkeys" role="group" aria-label="لوحة الأرقام">
+<button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" class="fn" data-k="bs" aria-label="مسح رقم">⌫</button><button type="button" class="op ar" data-k="+" aria-label="جمع">+</button>
+<button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" class="fn" data-k="c" aria-label="مسح الكل">C</button><button type="button" class="op ar" data-k="-" aria-label="طرح">−</button>
+<button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button><button type="button" class="op sq" data-k="sq" aria-label="المربع">x²</button><button type="button" class="op eq" data-k="eq" aria-label="يساوي">=</button>
+<button type="button" data-k="0">0</button><button type="button" data-k=".">.</button><button type="button" class="fn" data-k="neg" aria-label="تغيير الإشارة">±</button><button type="button" class="op rt" data-k="rt" aria-label="الجذر التربيعي">√</button>
+</div>
 </div>
 
 <script>
@@ -1415,10 +1609,16 @@ function hlFor(q){return S[q.n].hl}
 function renderCard(n){const q=Q.find(x=>x.n===n);const el=document.getElementById('q'+n);
   el.className='card'+(S[n].parts.every(p=>p.done)?' done':'');el.innerHTML=cardHTML(q);applyFilter()}
 function renderAll(){$list.innerHTML=Q.map(q=>'<section class="card" id="q'+q.n+'" aria-label="التمرين '+q.n+'"></section>').join('');Q.forEach(q=>renderCard(q.n));updateProg()}
-function updateProg(){document.getElementById('pc').textContent=solved.size;document.getElementById('pt').textContent=Q.length;document.getElementById('pf').style.width=(solved.size/Q.length*100)+'%'}
+function updateProg(){document.getElementById('pc').textContent=solved.size;document.getElementById('pt').textContent=Q.length;document.getElementById('pf').style.width=(solved.size/Q.length*100)+'%';pcards()}
 
 const FILT=[['all','الكل'],['l1','الدرس 3-1'],['l2','الدرس 3-2'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
-function pills(){document.getElementById('pills').innerHTML=FILT.map(([k,l])=>'<button class="pill" data-f="'+k+'" aria-pressed="'+(filter===k)+'">'+l+'</button>').join('')}
+function pills(){document.getElementById('pills').innerHTML=FILT.map(([k,l])=>'<button class="pill" data-f="'+k+'" aria-pressed="'+(filter===k)+'">'+l+'</button>').join('');pcards()}
+function pcards(){const el=document.getElementById('pcards');if(!el)return;
+  const G=[['all','كل التمارين'],['l1','الدرس 3-1 · التطابق'],['l2','الدرس 3-2 · فيثاغورس'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
+  const m=(f,q)=>f==='all'?true:f==='l1'?q.les===1:f==='l2'?q.les===2:f==='book'?q.n<100:f==='assess'?q.n>=100:!solved.has(q.n);
+  el.innerHTML=G.map(([f,t])=>{const a=Q.filter(q=>m(f,q)),s=a.filter(q=>solved.has(q.n)).length;
+   const sub=f==='todo'?a.length+' متبقٍ':a.length+' تمرين · '+s+' محلول';
+   return '<button type="button" class="pcard" data-f="'+f+'" aria-pressed="'+(filter===f)+'"><b>'+t+'</b><small>'+sub+'</small>'+(f==='todo'?'':'<span class="pbar"><i style="width:'+(a.length?s/a.length*100:0)+'%"></i></span>')+'</button>'}).join('')}
 function applyFilter(){Q.forEach(q=>{const el=document.getElementById('q'+q.n);let show=true;
   if(filter==='l1')show=q.les===1;else if(filter==='l2')show=q.les===2;else if(filter==='book')show=q.n<100;else if(filter==='assess')show=q.n>=100;else if(filter==='todo')show=!solved.has(q.n);
   el.hidden=!show})}
@@ -1450,24 +1650,65 @@ pills();renderAll();
 
 /* ---------- panes ---------- */
 (function(){
-  const panes=['lessons','practice'];
+  const panes=['home','lessons','practice','calc'];
+  const known=['home','lessons','practice','assess','calc','l1','l2','l3','l4'];
+  const LES=['l1','l2','l3','l4'],LT={l1:'حالات التوازي',l2:'زوايا المثلث',l3:'التطابق',l4:'فيثاغورس'};
+  let cur='l1';
+  /* تقسيم الشرح إلى دروس منفصلة */
+  (function(){
+    const main=document.querySelector('#lessons main');if(!main)return;
+    const kids=Array.from(main.children).filter(x=>x.id!=='lcards');let g=null;const out=[];
+    kids.forEach(k=>{if(k.tagName==='HEADER'&&/^l[2-4]$/.test(k.id)||!g){g=document.createElement('div');g.className='lesson';g.dataset.l=k.id&&/^l[2-4]$/.test(k.id)?k.id:'l1';out.push(g)}g.appendChild(k)});
+    out.forEach((d,i)=>{
+      const id=d.dataset.l,pi=LES.indexOf(id),pr=LES[pi-1],nx=LES[pi+1];
+      d.insertAdjacentHTML('beforeend','<div class="lnav">'+
+        (pr?'<button type="button" class="lb" data-lesson="'+pr+'">→ '+LT[pr]+'</button>':'<span></span>')+
+        (id==='l3'?'<button type="button" class="lb pri" data-prac="l1">تمارين هذا الدرس</button>':id==='l4'?'<button type="button" class="lb pri" data-prac="l2">تمارين هذا الدرس</button>':'')+
+        (nx?'<button type="button" class="lb" data-lesson="'+nx+'">'+LT[nx]+' ←</button>':'<span></span>')+'</div>');
+      main.appendChild(d);
+    });
+  })();
+  function setLesson(id){
+    cur=id;
+    document.querySelectorAll('#lessons .lesson').forEach(d=>{d.hidden=d.dataset.l!==id});
+    document.querySelectorAll('#lcards [data-lesson]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.lesson===id)));
+  }
   function show(p){
     panes.forEach(x=>{document.getElementById(x).hidden=x!==p});
     document.getElementById('practiceBar').hidden=p!=='practice';
+    document.body.classList.toggle('is-home',p==='home');document.body.classList.toggle('is-calc',p==='calc');
+    if(p==='home'){const c=document.getElementById('pc'),t=document.getElementById('pt');if(c&&t){const a=+c.textContent||0,b=+t.textContent||0;document.getElementById('hpc').textContent=a;document.getElementById('hpt').textContent=b;document.getElementById('hpf').style.width=(b?a/b*100:0)+'%'}}
     document.querySelectorAll('[data-pane]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pane===p)));
   }
-  function route(){
-    const h=location.hash.slice(1);
+  function route(h){
+    if(typeof h!=='string')h=location.hash.slice(1);
     if(h==='practice'||h==='assess'){show('practice');window.scrollTo(0,0)}
-    else if(h==='l1'||h==='l2'||h==='l3'||h==='l4'){show('lessons');const el=document.getElementById(h);el&&el.scrollIntoView()}
-    else{show('lessons');if(h==='lessons')window.scrollTo(0,0)}
+    else if(h==='calc'){show('calc');window.scrollTo(0,0)}
+    else if(h===''||h==='home'){show('home');window.scrollTo(0,0)}
+    else if(LES.indexOf(h)>=0){show('lessons');setLesson(h);window.scrollTo(0,0)}
+    else{show('lessons');setLesson(cur);if(h==='lessons')window.scrollTo(0,0)}
+  }
+  /* التنقل مباشر (لا يعتمد على hashchange) مع تحديث الرابط إن أمكن */
+  function navigate(t){
+    try{if(location.hash!=='#'+t)history.pushState(null,'','#'+t)}
+    catch(err){try{location.hash=t}catch(e2){}}
+    route(t);
+  }
+  function goPrac(a){
+    navigate('practice');
+    const b=document.querySelector('#pills [data-f="'+a.dataset.prac+'"]');if(b)b.click();
   }
   document.addEventListener('click',e=>{
-    const b=e.target.closest('[data-pane],[data-go]');if(!b)return;
-    const t=b.dataset.pane||b.dataset.go;
-    if(location.hash==='#'+t){route()}else{location.hash=t}
+    const el=e.target.closest&&e.target.closest('[data-prac],[data-lesson],[data-pane],[data-go],a[href^="#"]');if(!el)return;
+    if(el.dataset.prac){e.preventDefault();goPrac(el);return}
+    if(el.dataset.lesson){e.preventDefault();navigate(el.dataset.lesson);return}
+    let t=el.dataset.pane||el.dataset.go;
+    if(!t){t=(el.getAttribute('href')||'').slice(1);if(known.indexOf(t)<0)return}
+    e.preventDefault();navigate(t);
   });
-  window.addEventListener('hashchange',route);
+  document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#pcards [data-f]'))setTimeout(()=>{const l=document.getElementById('list');l&&l.scrollIntoView({behavior:'smooth',block:'start'})},30)},true);
+  window.addEventListener('hashchange',()=>route());
+  window.addEventListener('popstate',()=>route());
   route();
 })();
 </script>
@@ -1525,6 +1766,159 @@ function draw2(){
 sa.oninput=sb.oninput=sc.oninput=draw2;
 document.querySelectorAll("#kinds button").forEach(function(z){z.onclick=function(){var t=z.dataset.k.split(",");sa.value=t[0];sb.value=t[1];sc.value=t[2];draw2()}});
 draw2();
+})();
+</script>
+<script>
+/* ---------- calculator: square & square root ---------- */
+function calcInit(P){
+var inp=document.getElementById(P.inp);if(!inp)return;var compact=!!P.compact;
+var out=document.getElementById(P.out),fig=P.fig?document.getElementById(P.fig):{hidden:false,innerHTML:"",appendChild:function(){}},histEl=P.hist?document.getElementById(P.hist):{innerHTML:""},H=[];
+var NS="http://www.w3.org/2000/svg";
+var EXP=/^(-?(?:\d+\.?\d*|\.\d+))([+\-])(-?(?:\d+\.?\d*|\.\d+))$/,fresh=false;
+function lastOp(v){for(var i=v.length-1;i>0;i--){var c=v.charAt(i);if((c==="+"||c==="-")&&/[\d.]/.test(v.charAt(i-1)))return i}return -1}
+function m(t){return "<span class='m'>"+t+"</span>"}
+function norm(s){return s.replace(/[\u0660-\u0669]/g,function(d){return d.charCodeAt(0)-1632}).replace(/[\u066B\u066C,\u060C]/g,".").replace(/[\u2212\u2013]/g,"-").replace(/\s/g,"")}
+function parse(str){
+ var s=norm(str===undefined?inp.value:str);
+ if(!/^-?(\d+\.?\d*|\.\d+)$/.test(s))return null;
+ var neg=s.charAt(0)==="-";if(neg)s=s.slice(1);
+ var a=s.split("."),ip=(a[0]||"0").replace(/^0+(?=\d)/,""),fp=(a[1]||"").replace(/0+$/,"");
+ return {neg:neg&&(ip!=="0"||fp!==""),ip:ip,fp:fp,len:ip.length+fp.length};
+}
+function shown(p){return p.ip+(p.fp?"."+p.fp:"")}
+function scaled(str,d){ /* ادرج الفاصلة العشرية في عدد صحيح مكبَّر */
+ if(d<=0)return str;
+ while(str.length<=d)str="0"+str;
+ var r=str.slice(0,str.length-d)+"."+str.slice(str.length-d);
+ return r.replace(/0+$/,"").replace(/\.$/,"");
+}
+function isqrt(n){
+ if(n<BigInt(2))return n;
+ var x=BigInt(Math.floor(Math.sqrt(Number(n))));
+ while(x*x>n)x-=BigInt(1);
+ while((x+BigInt(1))*(x+BigInt(1))<=n)x+=BigInt(1);
+ return x;
+}
+function trim(x,k){return String(+x.toFixed(k))}
+function draw(sideLbl,areaLbl,g,col){
+ fig.hidden=false;fig.innerHTML="";
+ function e(n,a,t){var el=document.createElementNS(NS,n);for(var k in a)el.setAttribute(k,a[k]);if(t!=null)el.textContent=t;fig.appendChild(el);return el}
+ var S=190,x0=55,y0=18;
+ e("rect",{x:x0,y:y0,width:S,height:S,fill:col,"fill-opacity":.22,stroke:"currentColor","stroke-width":3});
+ if(g>1){for(var i=1;i<g;i++){var o=i*S/g;
+  e("line",{x1:x0+o,y1:y0,x2:x0+o,y2:y0+S,stroke:"currentColor","stroke-opacity":.35,"stroke-width":1.2});
+  e("line",{x1:x0,y1:y0+o,x2:x0+S,y2:y0+o,stroke:"currentColor","stroke-opacity":.35,"stroke-width":1.2})}}
+ var st="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round";
+ e("text",{x:x0+S/2,y:y0+S/2+6,"text-anchor":"middle","font-size":20,"font-weight":800,fill:col,style:st},areaLbl);
+ e("text",{x:x0+S/2,y:y0+S+30,"text-anchor":"middle","font-size":17,"font-weight":700,fill:"currentColor",style:st},sideLbl);
+ e("text",{x:x0+S+22,y:y0+S/2+5,"text-anchor":"middle","font-size":17,"font-weight":700,fill:"currentColor",style:st},sideLbl);
+}
+function compute(x){
+ var a=parse(x[1]),b=parse(x[3]);if(!a||!b||a.len>12||b.len>12)return null;
+ var D=Math.max(a.fp.length,b.fp.length);
+ function big(p){var v=BigInt(p.ip+p.fp+"0".repeat(D-p.fp.length));return p.neg?-v:v}
+ var X=big(a),Y=big(b),r=x[2]==="+"?X+Y:X-Y,neg=r<BigInt(0);if(neg)r=-r;
+ var s=scaled(r.toString(),D);
+ return {a:a,b:b,op:x[2],res:(neg&&s!=="0"?"-":"")+s};
+}
+function sh(p){return p.neg?"(−"+shown(p)+")":shown(p)}
+function eqText(r){return sh(r.a)+" "+(r.op==="+"?"+":"−")+" "+sh(r.b)+" = "+r.res.replace("-","−")}
+function doEq(){
+ var x=EXP.exec(norm(inp.value));
+ if(!x){if(compact)return;fig.hidden=true;out.innerHTML=parse()?"اكتب عملية جمع أو طرح مثل "+m("12 + 7")+" ثم اضغط =.":"<span class='no'>اكتب عملية جمع أو طرح مثل 12+7.</span>";return}
+ var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>الحد الأقصى 12 رقمًا لكل عدد.</span>";return}
+ var t=eqText(r);
+ out.innerHTML="<span class='big m'>"+t+"</span>"+
+  (r.res.charAt(0)==="-"?"<span class='st'>الناتج سالب لأن العدد المطروح أكبر من المطروح منه.</span>":"");
+ fig.hidden=true;inp.value=r.res;fresh=true;push(t);
+}
+function push(t){H.unshift(t);if(H.length>6)H.pop();histEl.innerHTML=H.map(function(x){return "<li>"+x+"</li>"}).join("")}
+function bad(){fig.hidden=true;out.innerHTML="<span class='no'>اكتب عددًا صحيحًا أو عشريًا فقط (مثل 12 أو 2.25).</span>";return null}
+function getP(){
+ var x=EXP.exec(norm(inp.value));
+ if(x){var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>الحد الأقصى 12 رقمًا لكل عدد.</span>";return null}push(eqText(r));inp.value=r.res}
+ var p=parse();if(!p)return bad();if(p.len>12){fig.hidden=true;out.innerHTML="<span class='no'>الحد الأقصى 12 رقمًا.</span>";return null}return p}
+
+function doSquare(){
+ var p=getP();if(!p)return;
+ var N=BigInt(p.ip+p.fp),sq=scaled((N*N).toString(),2*p.fp.length),n=shown(p);
+ var base=p.neg?"(−"+n+")":n;
+ out.innerHTML="<span class='big m'>"+base+"² = "+sq+"</span>"+
+  "<span class='st'>"+m(base+"² = "+base+" × "+base+" = "+sq)+"</span>"+
+  (p.neg?"<span class='st'>مربع العدد السالب موجب دائمًا.</span>":"");
+ var g=(!p.fp&&p.ip.length<=2&&+p.ip>=2&&+p.ip<=12)?+p.ip:0;
+ draw(n,sq,g,"#d62839");
+ push(base+"² = "+sq);
+}
+function doRoot(){
+ var p=getP();if(!p)return;
+ var n=shown(p);
+ if(p.neg){fig.hidden=true;out.innerHTML="<span class='no'>لا يوجد جذر تربيعي حقيقي لعدد سالب ("+m("−"+n)+")، لأن مربع أي عدد حقيقي لا يكون سالبًا.</span>";return}
+ var fp=p.fp;if(fp.length%2)fp+="0";
+ var N=BigInt(p.ip+fp),r=isqrt(N);
+ if(r*r===N){
+  var rs=scaled(r.toString(),fp.length/2);
+  out.innerHTML="<span class='big m'>√"+n+" = "+rs+"</span>"+
+   "<span class='ok st'>"+n+" مربع كامل</span>"+
+   "<span class='st'>"+m("√"+n+" = "+rs+"  لأن  "+rs+"² = "+n)+"</span>";
+  var g=(!p.fp&&+rs>=2&&+rs<=12&&rs.indexOf(".")<0)?+rs:0;
+  draw(rs,n,g,"#0a8f8f");
+  push("√"+n+" = "+rs);
+  return;
+ }
+ var v=Number(n),ap=Math.sqrt(v),k=Math.floor(ap),html="",ap3=trim(ap,3);
+ html="<span class='big m'>√"+n+" ≈ "+ap3+"</span>"+
+  "<span class='no st'>"+n+" ليس مربعًا كاملًا</span>"+
+  "<span class='st'>"+m(k+"² = "+(k*k)+" &lt; "+n+" &lt; "+((k+1)*(k+1))+" = "+(k+1)+"²")+"</span>"+
+  "<span class='st'>إذن الجذر بين "+m(k)+" و"+m(k+1)+"، وقيمته التقريبية "+m(trim(ap,4))+".</span>";
+ if(!p.fp&&v<=1e9){
+  var f=1,rest=v;
+  for(var i=Math.floor(Math.sqrt(v));i>=2;i--){if(v%(i*i)===0){f=i;rest=v/(i*i);break}}
+  if(f>1)html+="<span class='st'>التبسيط: "+m("√"+n+" = √("+(f*f)+" × "+rest+") = "+f+"√"+rest)+"</span>";
+ }
+ out.innerHTML=html;
+ draw("√"+n,n,0,"#0a8f8f");
+ push("√"+n+" ≈ "+ap3);
+}
+function key(k){
+ if(k==="sq")return doSquare();
+ if(k==="rt")return doRoot();
+ if(k==="eq")return doEq();
+ var v=norm(inp.value),was=fresh;fresh=false;
+ if(was&&/^[0-9.]$/.test(k))v="";
+ if(k==="c"){inp.value="";out.innerHTML=compact?"":"اكتب عددًا أو عملية، ثم اختر "+m("=")+" أو "+m("x²")+" أو "+m("√")+".";fig.hidden=true;return}
+ if(k==="bs"){inp.value=v.slice(0,-1);return}
+ if(k==="neg"){var i=lastOp(v),o=v.slice(i+1);o=o.charAt(0)==="-"?o.slice(1):"-"+o;inp.value=v.slice(0,i+1)+o;return}
+ if(k==="+"||k==="-"){
+  var x=EXP.exec(v);
+  if(x){var r=compute(x);if(!r)return bad();push(eqText(r));v=r.res}
+  if(v===""){inp.value=k==="-"?"-":"";return}
+  if(v==="-")return;
+  if(/[\d.]$/.test(v)){inp.value=v+k;return}
+  if(/[\d.][+\-]$/.test(v)){inp.value=v.slice(0,-1)+k}
+  return;
+ }
+ if(k==="."){var j=lastOp(v),q=v.slice(j+1);if(q.indexOf(".")>=0)return;inp.value=v+((q===""||q==="-")?"0.":".");return}
+ inp.value=v+k;
+}
+document.getElementById(P.keys).addEventListener("click",function(e){var b=e.target.closest("[data-k]");if(b)key(b.dataset.k)});
+inp.addEventListener("input",function(){fresh=false});
+inp.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();EXP.test(norm(inp.value))?doEq():doSquare()}});
+if(P.chips){var ch=document.getElementById(P.chips),s="";
+for(var i=1;i<=20;i++)s+="<button type='button' data-sq='"+(i*i)+"'>"+i+"² = "+(i*i)+"</button>";
+ch.innerHTML=s;
+ch.addEventListener("click",function(e){var b=e.target.closest("[data-sq]");if(b){inp.value=b.dataset.sq;doRoot()}});}
+}
+calcInit({inp:"cn",out:"cout",fig:"cfig",hist:"chist",keys:"ckeys",chips:"cchips"});
+calcInit({inp:"fcn",out:"fcout",keys:"fkeys",compact:true});
+/* ---- floating handle + panel ---- */
+(function(){
+var hd=document.getElementById("fhandle"),pn=document.getElementById("fcalc");if(!hd||!pn)return;
+function openF(){pn.hidden=false;hd.hidden=true;hd.setAttribute("aria-expanded","true");document.getElementById("fcn").focus({preventScroll:true})}
+function closeF(){pn.hidden=true;hd.hidden=false;hd.setAttribute("aria-expanded","false");hd.focus({preventScroll:true})}
+hd.addEventListener("click",openF);
+document.getElementById("fclose").addEventListener("click",closeF);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!pn.hidden)closeF()});
 })();
 </script>
 </body>
