@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>مرشد الهندسة</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f3f6fa; --paper:#ffffff; --ink:#15233b; --muted:#566782; --line:#d3dce8;
+  --accent:#1857c8; --accent-soft:#e3ecfb; --hl:#e8730c; --hl-soft:#fdebd8;
+  --ok:#17794a; --ok-soft:#dff3e7; --bad:#c0392b; --bad-soft:#fbe4e1; --grid:#e3e9f2;
+  --display:'Cairo','IBM Plex Sans Arabic',system-ui,sans-serif;
+  --body:'IBM Plex Sans Arabic','Cairo',system-ui,sans-serif;
+  --math:'Georgia','Times New Roman',serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0f1726; --paper:#17223a; --ink:#e6edf8; --muted:#9aabc4; --line:#2b3a58;
+    --accent:#7aa7ff; --accent-soft:#1f3358; --hl:#ffa13d; --hl-soft:#3b2a14;
+    --ok:#54d391; --ok-soft:#14382a; --bad:#ff8a7a; --bad-soft:#3e1d1a; --grid:#1b2740; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1726; --paper:#17223a; --ink:#e6edf8; --muted:#9aabc4; --line:#2b3a58;
+  --accent:#7aa7ff; --accent-soft:#1f3358; --hl:#ffa13d; --hl-soft:#3b2a14;
+  --ok:#54d391; --ok-soft:#14382a; --bad:#ff8a7a; --bad-soft:#3e1d1a; --grid:#1b2740; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{direction:rtl}
+body{
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+  color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.7;
+  padding-block:0 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.wrap{max-width:1040px;margin-inline:auto}
+header.top{padding-block:28px 12px}
+.kicker{font-size:13px;color:var(--accent);font-weight:600;letter-spacing:.04em}
+header.top h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,38px);line-height:1.25;margin:2px 0 6px;text-wrap:balance}
+.lead{color:var(--muted);max-width:60ch;margin:0}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar-in{max-width:1040px;margin-inline:auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:4px 12px;border-radius:999px;cursor:pointer}
+.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.bar-in{row-gap:6px}
+@media (max-width:760px){.prog{order:-1;width:100%}
+.pills{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:2px}
+.pill{white-space:nowrap;flex:none}
+}
+.prog{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);min-width:170px}
+.prog-track{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden;min-width:90px}
+.prog-fill{height:100%;background:var(--ok);width:0;transition:width .4s}
+.prog b{color:var(--ink);font-variant-numeric:tabular-nums}
+#practice details.ref{margin-block:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+#practice details.ref summary{cursor:pointer;font-weight:600;font-family:var(--display)}
+#practice .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:12px}
+#practice .case{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg)}
+#practice .case b{font-family:var(--math);font-size:20px;color:var(--accent);display:block;direction:ltr;text-align:right}
+#practice .case span{font-size:14px;color:var(--muted)}
+#practice .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-block:18px;overflow:hidden}
+#practice .card[hidden]{display:none}
+#practice .chead{display:flex;gap:12px;align-items:center;padding:12px 16px;cursor:pointer;width:100%;background:none;border:0;font:inherit;color:inherit;text-align:start}
+#practice .num{flex:none;min-width:38px;height:38px;padding-inline:8px;white-space:nowrap;border-radius:19px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums}
+#practice .card.done .num{background:var(--ok)}
+#practice .ctitle{flex:1;min-width:0}
+#practice .ctitle b{font-family:var(--display);font-size:18px;display:block;line-height:1.35}
+#practice .ctitle small{color:var(--muted);font-size:13px}
+#practice .tag{font-size:12px;padding:2px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+#practice .tag.ok{background:var(--ok-soft);color:var(--ok)}
+#practice .tag.peek{background:var(--hl-soft);color:var(--hl)}
+#practice .cbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:18px;padding:4px 16px 18px;align-items:start}
+@media (max-width:760px){#practice .cbody{grid-template-columns:minmax(0,1fr)}
+#practice .figcol{order:-1}
+}
+#practice .cbody.wide{grid-template-columns:minmax(0,1fr)}
+#practice .cbody.wide .figcol{order:-1;position:static;width:100%;max-width:560px;margin-inline:auto}
+#practice .prompt{margin:0 0 10px}
+#practice .note{font-size:13px;color:var(--muted);margin:0 0 10px}
+#practice .figcol{position:sticky;top:calc(122px + env(safe-area-inset-top,0px))}
+@media (max-width:760px){#practice .figcol{position:static}
+}
+#practice .figbox{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:8px}
+#practice svg.fig{display:block;width:100%;height:auto;max-height:300px;direction:ltr}
+#practice .fig .seg{stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linecap:round}
+#practice .fig .seg.dash{stroke-dasharray:5 4;stroke:var(--muted)}
+#practice .fig .seg.hl,#practice .fig .mk.hl{stroke:var(--hl);stroke-width:3.4}
+#practice .fig .mk{stroke:var(--accent);stroke-width:1.6;fill:none;stroke-linecap:round}
+#practice .fig .tri{fill:transparent;stroke:none;transition:fill .25s}
+#practice .fig .tri.on{fill:var(--hl);fill-opacity:.16}
+#practice .fig .pt{font-family:var(--math);font-style:italic;font-size:15px;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+#practice .fig .lb{font-family:var(--body);font-size:12.5px;fill:var(--muted);text-anchor:middle;dominant-baseline:central}
+#practice .fig .al{font-family:var(--body);font-size:12px;fill:var(--accent);text-anchor:middle;dominant-baseline:central;font-weight:600}
+#practice .fig .hl-t{fill:var(--hl)}
+#practice .m{font-family:var(--math);font-size:1.06em;unicode-bidi:isolate}
+#practice .part{margin-block:12px;padding-block:10px;border-top:1px solid var(--line)}
+#practice .part:first-of-type{border-top:0;padding-top:0}
+#practice .q{font-weight:600;margin:0 0 8px}
+#practice .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+#practice .opts.wide{grid-template-columns:1fr}
+#practice .opt{font:inherit;text-align:start;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer;display:flex;gap:8px;align-items:baseline;min-height:44px}
+#practice .opt:hover:not([disabled]){border-color:var(--accent);background:var(--accent-soft)}
+#practice .opt .ltr{font-weight:700;color:var(--accent);flex:none}
+#practice .opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+#practice .opt.bad{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through;text-decoration-color:var(--bad);opacity:.85}
+#practice .opt[disabled]{cursor:default}
+#practice .opt:focus-visible,#practice .btn:focus-visible,.pill:focus-visible,#practice .chead:focus-visible,#practice input:focus-visible,#practice summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#practice .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#practice input.ans{font:inherit;font-family:var(--math);font-size:18px;width:120px;padding:7px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);direction:ltr;text-align:center}
+#practice input.ans.ok{border-color:var(--ok);background:var(--ok-soft)}
+#practice input.ans.bad{border-color:var(--bad);background:var(--bad-soft)}
+#practice .unit{color:var(--muted)}
+#practice .btn{font:inherit;font-size:15px;border:0;background:var(--accent);color:#fff;padding:8px 16px;border-radius:10px;cursor:pointer;min-height:40px}
+#practice .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+#practice .btn.sm{padding:4px 12px;min-height:34px;font-size:14px}
+#practice .btn[disabled]{opacity:.5;cursor:default}
+#practice .msg{margin:8px 0 0;font-size:15px}
+#practice .msg.ok{color:var(--ok);font-weight:600}
+#practice .msg.bad{color:var(--bad)}
+#practice .msg.hint{color:var(--muted)}
+#practice ol.proof{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+#practice .pstep{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg)}
+#practice .pstep.done{border-color:var(--ok);background:var(--ok-soft)}
+#practice .pstep .st{font-weight:500;margin-bottom:6px}
+#practice .pstep .opts{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+#practice .rsn{display:inline-block;font-size:14px;color:var(--ok);font-weight:600}
+#practice .rsn::before{content:"✓ ";}
+#practice .qed{font-weight:600;color:var(--ok);margin-top:8px}
+#practice .sol{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+#practice .sol h4{margin:0 0 8px;font-family:var(--display);font-size:16px}
+#practice .sol ol{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:s}
+#practice .sol li{counter-increment:s;padding:8px 12px 8px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);display:flex;gap:10px}
+#practice .sol li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:700;display:grid;place-items:center;margin-top:2px}
+#practice .sol li.cur{border-color:var(--hl);background:var(--hl-soft)}
+#practice .sol li.cur::before{background:var(--hl);color:#fff}
+#practice .ahmed{background:#f3efd9;color:#2b2a22;border-radius:10px;padding:10px 14px;margin:8px 0;font-family:var(--math);direction:ltr;text-align:left;line-height:2}
+#practice .ahmed b{font-family:var(--body);direction:rtl;display:block;text-align:right}
+#practice footer{color:var(--muted);font-size:13px;margin-top:28px}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+#practice .shake{animation:shake .25s}
+@media (prefers-reduced-motion:reduce){#practice .shake{animation:none}
+.prog-fill,#practice .fig .tri{transition:none}
+}
+
+[hidden]{display:none!important}
+.bar-in+.bar-in{margin-top:8px}
+.pane{margin-top:16px}
+#lessons h1[id],#lessons header[id]{scroll-margin-top:130px}
+#lessons main{padding-inline:0}
+#lessons .go{margin:18px 0}
+#lessons{--paper:#f3f8f7;--grid:#d5e6e3;--ink:#1d3557;--red:#d62839;--teal:#0a8f8f;--amber:#d98e00;--card:#ffffff;--muted:#51627a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #lessons{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}}
+:root[data-theme="dark"] #lessons{--paper:#14202b;--grid:#1f3340;--ink:#e6eef8;--red:#ff6b78;--teal:#3fc7c7;--amber:#ffc04d;--card:#1b2c3a;--muted:#a3b4c8}
+#lessons *{box-sizing:border-box}
+#lessons{margin:0;font-family:Cairo,Tahoma,"Segoe UI",sans-serif;color:var(--ink);line-height:1.9;font-size:17px}
+#lessons main{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+#lessons header{padding:26px 0 10px}
+#lessons header small{color:var(--muted);font-size:15px}
+#lessons h1{font-size:clamp(30px,7vw,48px);font-weight:800;margin:4px 0 8px;line-height:1.3}
+#lessons h1 span{display:inline-block;border-bottom:5px solid var(--red)}
+#lessons h2{font-size:24px;margin:38px 0 10px;font-weight:800}
+#lessons .box{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:16px 18px;margin:12px 0;box-shadow:5px 5px 0 var(--ink)}
+#lessons .goal li{margin:4px 0}
+#lessons ul,#lessons ol{padding-inline-start:22px;margin:6px 0}
+#lessons .terms{width:100%;border-collapse:collapse;background:var(--card)}
+#lessons .terms th,#lessons .terms td{border:1.5px solid var(--ink);padding:8px 10px;text-align:center}
+#lessons .terms th{background:var(--ink);color:var(--paper)}
+#lessons .case{border-inline-start:8px solid var(--c);}
+#lessons .case h3{margin:0 0 4px;font-size:20px;color:var(--c)}
+#lessons .case .th{font-weight:600}
+#lessons .case .if{color:var(--muted);font-size:15px}
+#lessons .c1{--c:var(--red)}
+#lessons .c2{--c:var(--teal)}
+#lessons .c3{--c:var(--amber)}
+#lessons .demo{padding:12px}
+#lessons svg{color:var(--ink);width:100%;height:auto;display:block;background:var(--card);border:2px solid var(--ink);border-radius:6px;touch-action:none}
+#lessons .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+#lessons .tabs button{font:inherit;font-weight:600;padding:6px 14px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:20px;cursor:pointer}
+#lessons .tabs button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+#lessons button:focus-visible,#lessons input:focus-visible,#lessons summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+#lessons .sl{display:grid;grid-template-columns:130px 1fr 52px;gap:8px;align-items:center;margin:4px 0}
+#lessons .sl input{width:100%;accent-color:var(--red)}
+#lessons .sl b{direction:ltr;text-align:center}
+#lessons .read{font-weight:600;font-size:18px;min-height:3.6em}
+#lessons .ok{color:var(--teal)}
+#lessons .no{color:var(--red)}
+#lessons .ex p{margin:4px 0}
+#lessons details{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:8px 14px;margin:10px 0}
+#lessons summary{cursor:pointer;font-weight:600}
+#lessons .sum li{margin:4px 0}
+#lessons .fig{max-width:360px;margin:10px auto}
+#lessons #par{background:var(--ink);color:var(--paper)}
+#lessons .prob p{margin:3px 0}
+#lessons .prob b.lv{color:var(--red)}
+#lessons nav a{color:var(--ink);font-weight:600}
+html{scroll-behavior:smooth}
+#lessons .m{direction:ltr;unicode-bidi:isolate;display:inline-block}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header class="top">
+  <div class="kicker">الرياضيات · الصف الثاني الإعدادي · الوحدة 3 · الهندسة</div>
+  <h1>مرشد الهندسة</h1>
+  <p class="lead">شرح تفاعلي لدروس حالات التوازي وزوايا المثلث والتطابق، ثم حلول تمارين الدرس 3-1 من كتاب المدرسة (ص 67 – 69) وكتاب التقييمات (ص 25 – 29) خطوة بخطوة.</p>
+</header>
+<div class="bar">
+  <div class="bar-in"><div class="pills" id="panes" role="group" aria-label="أقسام الصفحة"><button class="pill" data-pane="lessons" aria-pressed="true">شرح الدروس</button><button class="pill" data-pane="practice" aria-pressed="false">التمارين والتقييمات</button></div></div>
+  <div class="bar-in" id="practiceBar" hidden>
+    <div class="pills" id="pills" role="group" aria-label="تصفية التمارين"></div>
+    <div class="prog"><span>تمارين محلولة <b id="pc">0</b> / <span id="pt">0</span></span><div class="prog-track"><div class="prog-fill" id="pf"></div></div></div>
+  </div>
+</div>
+<section id="lessons" class="pane">
+<main>
+<header>
+<small>الرياضيات – الهندسة – الصف الثاني الإعدادي</small>
+<nav style="margin:6px 0"><a href="#l1">الدرس الأول: حالات التوازي</a> &nbsp;|&nbsp; <a href="#l2">الدرس الثاني: زوايا المثلث</a> &nbsp;|&nbsp; <a href="#l3">الدرس الثالث: التطابق</a></nav>
+<h1 id="l1"><span>حالات التوازي</span></h1>
+</header>
+
+<div class="box goal">
+<b>أهداف الدرس: في نهاية الدرس سأكون قادرًا على أن:</b>
+<ul>
+<li>أُسمّي الزوايا الناتجة من قطع مستقيم لمستقيمين (متناظرة – متبادلة – متكاملة).</li>
+<li>أذكر الحالات الثلاث التي تُثبت أن مستقيمين متوازيان.</li>
+<li>أستخدم هذه الحالات في حل مسائل وإثبات التوازي.</li>
+</ul>
+</div>
+
+<h2>أولًا: القاطع والزوايا</h2>
+<p>إذا قطع مستقيم (يسمى <b>القاطع</b>) مستقيمين آخرين، تنتج ثماني زوايا. نقسمها إلى أزواج لها أسماء:</p>
+<table class="terms">
+<tr><th>اسم الزاويتين</th><th>مكانهما</th></tr>
+<tr><td>متناظرتان</td><td>في جهة واحدة من القاطع، إحداهما داخلية والأخرى خارجية</td></tr>
+<tr><td>متبادلتان</td><td>داخليتان، وفي جهتين مختلفتين من القاطع</td></tr>
+<tr><td>متكاملتان</td><td>داخليتان، وفي جهة واحدة من القاطع (مجموع قياسيهما <span class="m">180°</span> عند التوازي)</td></tr>
+</table>
+
+<h2>ثانيًا: حالات التوازي</h2>
+<p>إذا قطع مستقيمٌ مستقيمين وتحقق <b>أحد</b> الشروط الآتية فإن المستقيمين متوازيان:</p>
+<div class="box case c1"><h3>الحالة الأولى: التناظر</h3><div class="th">إذا تساوى قياسا زاويتين متناظرتين فإن المستقيمين متوازيان.</div></div>
+<div class="box case c2"><h3>الحالة الثانية: التبادل</h3><div class="th">إذا تساوى قياسا زاويتين متبادلتين فإن المستقيمين متوازيان.</div></div>
+<div class="box case c3"><h3>الحالة الثالثة: التكامل</h3><div class="th">إذا كانت زاويتان داخليتان في جهة واحدة من القاطع متكاملتين (مجموع قياسيهما <span class="m">180°</span>) فإن المستقيمين متوازيان.</div></div>
+<p>والعكس صحيح: إذا كان المستقيمان متوازيين فإن كل زوج من الزوايا المتناظرة متساوٍ، وكل زوج من المتبادلة متساوٍ، وكل زوجين داخليين في جهة واحدة من القاطع متكاملتان، أي مجموعهما <span class="m">180°</span>.</p>
+
+<h2>جرّب بنفسك</h2>
+<p>اختر نوع الزاويتين، ثم حرّك المنزلقين. عندما يصبح الميل الثاني صفرًا يتوازى المستقيمان.</p>
+<div class="demo">
+<svg id="fig" viewBox="0 0 600 340" role="img" aria-label="مستقيمان يقطعهما قاطع"></svg>
+<div class="tabs" id="tabs">
+<button data-k="1" aria-pressed="true">متناظرتان</button>
+<button data-k="2" aria-pressed="false">متبادلتان</button>
+<button data-k="3" aria-pressed="false">متكاملتان</button>
+</div>
+<div class="sl"><label for="th">ميل القاطع</label><input id="th" type="range" min="40" max="140" value="65"><b id="thv"></b></div>
+<div class="sl"><label for="dd">ميل المستقيم الثاني</label><input id="dd" type="range" min="-25" max="25" value="12"><b id="ddv"></b></div>
+<div class="tabs"><button id="par" type="button">اجعل المستقيمين متوازيين</button></div>
+<div class="read" id="read" aria-live="polite"></div>
+</div>
+
+<h2>أمثلة محلولة</h2>
+<div class="box ex">
+<p><b>مثال 1:</b> قطع المستقيمُ <span class="m">XY</span> المستقيمين <span class="m">AB</span> و<span class="m">CD</span>، وكانت زاويتان متبادلتان قياس كل منهما <span class="m">65°</span>. هل <span class="m">AB ∥ CD</span>؟</p>
+<p>نعم؛ لأن الزاويتين المتبادلتين متساويتان، فيكون <span class="m">AB ∥ CD</span>.</p>
+</div>
+<div class="box ex">
+<p><b>مثال 2:</b> زاويتان داخليتان في جهة واحدة من القاطع قياسهما <span class="m">110°</span> و<span class="m">70°</span>. هل المستقيمان متوازيان؟</p>
+<p><span class="m">110° + 70° = 180°</span> إذن متكاملتان، فالمستقيمان متوازيان.</p>
+</div>
+<div class="box ex">
+<p><b>مثال 3:</b> زاويتان متناظرتان قياسهما <span class="m">75°</span> و<span class="m">80°</span>. هل المستقيمان متوازيان؟</p>
+<p>لا؛ لأن الزاويتين المتناظرتين غير متساويتين.</p>
+</div>
+
+<h2>اختبر نفسك</h2>
+<details><summary>1) زاويتان داخليتان في جهة واحدة من القاطع، قياس إحداهما <span class="m">105°</span>. كم يجب أن يكون قياس الأخرى ليتوازى المستقيمان؟</summary><p>يجب أن يكون المجموع <span class="m">180°</span>، إذن: <span class="m">180° − 105° = 75°</span>.</p></details>
+<details><summary>2) زاويتان متناظرتان قياسهما <span class="m">(2س + 10)°</span> و<span class="m">70°</span>. أوجد س إذا كان المستقيمان متوازيين.</summary><p>المتناظرتان متساويتان: <span class="m">2س + 10 = 70</span> ومنها <span class="m">2س = 60</span> إذن <span class="m">س = 30</span>.</p></details>
+<details><summary>3) قياسا زاويتين متبادلتين <span class="m">48°</span> و<span class="m">52°</span>. هل المستقيمان متوازيان؟</summary><p>لا؛ لأن <span class="m">48° ≠ 52°</span>.</p></details>
+
+<h2>تدريب على البرهان</h2>
+<p>في التمارين من 1 إلى 4: القاطع <span class="m">XY</span> يقطع <span class="m">AB</span> في <span class="m">M</span> ويقطع <span class="m">CD</span> في <span class="m">N</span> (النقطتان <span class="m">A</span> و<span class="m">C</span> في جهة واحدة من القاطع). الرسم تقريبي، فاعتمد على المعطيات المكتوبة. اكتب: المعطيات ← المطلوب ← البرهان، وعلّل كل خطوة.</p>
+<div class="box prob"><p><b>تمرين 1</b> <b class="lv">(سهل)</b></p><p><b>المعطيات:</b> ق(∠XMA) = 65° ، ق(∠MNC) = 65°</p><p><b>المطلوب:</b> أثبت أن <span class="m">AB ∥ CD</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="الشكل: الزاويتان XMA و MNC">
+<g stroke="currentColor" stroke-width="2.5" fill="none"><line x1="30" y1="70" x2="370" y2="70"/><line x1="30" y1="150" x2="370" y2="150"/><line x1="250" y1="10" x2="150" y2="210" stroke-dasharray="7 4"/></g>
+<path d="M220.0,70.0 L232.5,45.0 A28,28 0 0 0 192.0,70.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="194.8" y="34.2" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">65°</text><path d="M180.0,150.0 L192.5,125.0 A28,28 0 0 0 152.0,150.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="154.8" y="114.2" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">65°</text>
+<g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="12" y="66">A</text><text x="378" y="66">B</text><text x="12" y="146">C</text><text x="378" y="146">D</text><text x="256" y="16">X</text><text x="134" y="222">Y</text><text x="226" y="62">M</text><text x="186" y="168">N</text></g>
+<circle cx="220" cy="70" r="3.5" fill="currentColor"/><circle cx="180" cy="150" r="3.5" fill="currentColor"/></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> الزاويتان ∠XMA و∠MNC في جهة واحدة من القاطع، إحداهما خارجية والأخرى داخلية.</p><p><b>البرهان:</b> ∵ ∠XMA و∠MNC متناظرتان ، ق(∠XMA) = ق(∠MNC) = 65° ∴ <span class="m">AB ∥ CD</span> (لتساوي زاويتين متناظرتين).</p></details></div>
+<div class="box prob"><p><b>تمرين 2</b> <b class="lv">(سهل)</b></p><p><b>المعطيات:</b> ق(∠AMN) = 112° ، ق(∠MNC) = 68°</p><p><b>المطلوب:</b> أثبت أن <span class="m">AB ∥ CD</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="الشكل: الزاويتان AMN و MNC">
+<g stroke="currentColor" stroke-width="2.5" fill="none"><line x1="30" y1="70" x2="370" y2="70"/><line x1="30" y1="150" x2="370" y2="150"/><line x1="250" y1="10" x2="150" y2="210" stroke-dasharray="7 4"/></g>
+<path d="M220.0,70.0 L192.0,70.0 A28,28 0 0 0 207.5,95.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="179.2" y="100.2" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">112°</text><path d="M180.0,150.0 L192.5,125.0 A28,28 0 0 0 152.0,150.0 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="154.8" y="114.2" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">68°</text>
+<g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="12" y="66">A</text><text x="378" y="66">B</text><text x="12" y="146">C</text><text x="378" y="146">D</text><text x="256" y="16">X</text><text x="134" y="222">Y</text><text x="226" y="62">M</text><text x="186" y="168">N</text></g>
+<circle cx="220" cy="70" r="3.5" fill="currentColor"/><circle cx="180" cy="150" r="3.5" fill="currentColor"/></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> ∠AMN و∠MNC داخليتان في جهة واحدة من القاطع. احسب مجموعهما.</p><p><b>البرهان:</b> ∵ ∠AMN و∠MNC داخليتان في جهة واحدة من القاطع ، ق(∠AMN) + ق(∠MNC) = 112° + 68° = 180° ∴ <span class="m">AB ∥ CD</span> (لأن الزاويتين متكاملتان).</p></details></div>
+<div class="box prob"><p><b>تمرين 3</b> <b class="lv">(متوسط)</b></p><p><b>المعطيات:</b> ق(∠AMN) = (2س + 10)° ، ق(∠MND) = (س + 40)°</p><p><b>المطلوب:</b> أوجد قيمة س التي تجعل <span class="m">AB ∥ CD</span> ، ثم أثبت التوازي.</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="الشكل: الزاويتان AMN و MND">
+<g stroke="currentColor" stroke-width="2.5" fill="none"><line x1="30" y1="70" x2="370" y2="70"/><line x1="30" y1="150" x2="370" y2="150"/><line x1="250" y1="10" x2="150" y2="210" stroke-dasharray="7 4"/></g>
+<path d="M220.0,70.0 L192.0,70.0 A28,28 0 0 0 207.5,95.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="172.4" y="104.4" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">2س+10</text><path d="M180.0,150.0 L208.0,150.0 A28,28 0 0 0 192.5,125.0 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="227.6" y="125.6" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">س+40</text>
+<g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="12" y="66">A</text><text x="378" y="66">B</text><text x="12" y="146">C</text><text x="378" y="146">D</text><text x="256" y="16">X</text><text x="134" y="222">Y</text><text x="226" y="62">M</text><text x="186" y="168">N</text></g>
+<circle cx="220" cy="70" r="3.5" fill="currentColor"/><circle cx="180" cy="150" r="3.5" fill="currentColor"/></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> ∠AMN و∠MND متبادلتان، فيجب أن تتساويا.</p><p><b>البرهان:</b> ∵ ∠AMN و∠MND متبادلتان ، ولكي يتوازى المستقيمان: 2س + 10 = س + 40 ∴ س = 30. إذن ق(∠AMN) = ق(∠MND) = 70° ∴ <span class="m">AB ∥ CD</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 4</b> <b class="lv">(متوسط)</b></p><p><b>المعطيات:</b> ق(∠XMB) = ق(∠CNY)</p><p><b>المطلوب:</b> أثبت أن <span class="m">AB ∥ CD</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="الشكل: الزاويتان XMB و CNY">
+<g stroke="currentColor" stroke-width="2.5" fill="none"><line x1="30" y1="70" x2="370" y2="70"/><line x1="30" y1="150" x2="370" y2="150"/><line x1="250" y1="10" x2="150" y2="210" stroke-dasharray="7 4"/></g>
+<path d="M220.0,70.0 L248.0,70.0 A28,28 0 0 0 232.5,45.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="260.8" y="49.8" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">α</text><path d="M180.0,150.0 L152.0,150.0 A28,28 0 0 0 167.5,175.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="139.2" y="180.2" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">α</text>
+<g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="12" y="66">A</text><text x="378" y="66">B</text><text x="12" y="146">C</text><text x="378" y="146">D</text><text x="256" y="16">X</text><text x="134" y="222">Y</text><text x="226" y="62">M</text><text x="186" y="168">N</text></g>
+<circle cx="220" cy="70" r="3.5" fill="currentColor"/><circle cx="180" cy="150" r="3.5" fill="currentColor"/></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> استخدم تقابل الرأس: ∠XMB تقابل ∠AMN بالرأس، و∠CNY تقابل ∠MND بالرأس.</p><p><b>البرهان:</b> ∵ ∠XMB = ∠AMN (متقابلتان بالرأس) ، ∠CNY = ∠MND (متقابلتان بالرأس) ، ق(∠XMB) = ق(∠CNY) ∴ ق(∠AMN) = ق(∠MND). وهما متبادلتان ∴ <span class="m">AB ∥ CD</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 5</b> <b class="lv">(متوسط)</b></p><p><b>المعطيات:</b> الشكل الرباعي <span class="m">ABCD</span> فيه ق(∠A) = 100° ، ق(∠D) = 80°</p><p><b>المطلوب:</b> أثبت أن <span class="m">AB ∥ DC</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="الشكل الرباعي ABCD"><polygon points="100,30 340,30 320,178 74,178" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M100.0,30.0 L94.8,59.5 A30,30 0 0 0 130.0,30.0 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="133.4" y="74.8" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">100°</text><path d="M74.0,178.0 L104.0,178.0 A30,30 0 0 0 79.2,148.5 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="113.8" y="149.6" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">80°</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="84" y="22">A</text><text x="344" y="22">B</text><text x="324" y="196">C</text><text x="56" y="198">D</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> اعتبر <span class="m">AD</span> قاطعًا للمستقيمين <span class="m">AB</span> و<span class="m">DC</span>، وحدّد نوع الزاويتين ∠A و∠D.</p><p><b>البرهان:</b> ∵ <span class="m">AD</span> قاطع للمستقيمين <span class="m">AB</span> و<span class="m">DC</span> ، ∠A و∠D داخليتان في جهة واحدة من القاطع ، ق(∠A) + ق(∠D) = 100° + 80° = 180° ∴ <span class="m">AB ∥ DC</span> (لأن الزاويتين متكاملتان).</p></details></div>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul>
+<li>متناظرتان متساويتان ⇐ توازٍ.</li>
+<li>متبادلتان متساويتان ⇐ توازٍ.</li>
+<li>داخليتان في جهة واحدة ومتكاملتان (مجموعهما <span class="m">180°</span>) ⇐ توازٍ.</li>
+</ul></div>
+<hr style="border:0;border-top:3px solid var(--ink);margin:50px 0 10px">
+<header id="l2"><small>الدرس الثاني</small><h1><span>زوايا المثلث والزاوية الخارجية</span></h1></header>
+<div class="box goal"><b>أهداف الدرس:</b><ul><li>أستنتج أن قياس الزاوية المستقيمة <span class="m">180°</span>.</li><li>أبرهن أن مجموع قياسات زوايا المثلث <span class="m">180°</span>.</li><li>أتعرّف الزاوية الخارجية للمثلث وأحسب قياسها وأستخدم خاصيتها.</li></ul></div>
+<h2>أولًا: الزاوية المستقيمة</h2>
+<p>الزاوية المستقيمة ضلعاها شعاعان متضادان، وقياسها <span class="m">180°</span>. فإذا وقعت النقطة <span class="m">C</span> على المستقيم <span class="m">BD</span> وخرج منها الشعاع <span class="m">CA</span>، كانت الزاويتان <span class="m">∠ACB</span> و<span class="m">∠ACD</span> متجاورتين ومجموعهما <span class="m">180°</span> (متكاملتان).</p>
+<h2>ثانيًا: مجموع قياسات زوايا المثلث</h2>
+<div class="box case c1"><h3>النظرية</h3><div class="th">مجموع قياسات الزوايا الداخلية لأي مثلث = <span class="m">180°</span>.</div></div>
+<p><b>المعطى:</b> المثلث <span class="m">ABC</span>. &nbsp; <b>المطلوب:</b> ق(∠A) + ق(∠B) + ق(∠C) = <span class="m">180°</span>.</p>
+<p><b>العمل:</b> نرسم من <span class="m">A</span> المستقيم <span class="m">DE ∥ BC</span>.</p>
+<svg class="fig" viewBox="0 0 400 225" role="img" aria-label="مستقيم DE يمر بالنقطة A ويوازي BC"><polygon points="80,160 320,160 220,40" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="30" y1="40" x2="370" y2="40" stroke="currentColor" stroke-width="2.5"/><path d="M120,40 l-6,-5 m6,5 l-6,5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M200,160 l-6,-5 m6,5 l-6,5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M80.0,160.0 L106.0,160.0 A26,26 0 0 0 99.7,143.1 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="121.3" y="149.7" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">x</text><path d="M220.0,40.0 L194.0,40.0 A26,26 0 0 0 200.3,56.9 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="178.7" y="60.3" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">x</text><path d="M320.0,160.0 L303.4,140.0 A26,26 0 0 0 294.0,160.0 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="280.2" y="146.3" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">y</text><path d="M220.0,40.0 L236.6,60.0 A26,26 0 0 0 246.0,40.0 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="259.8" y="63.7" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">y</text><path d="M220.0,40.0 L201.8,55.6 A24,24 0 0 0 235.4,58.4 Z" fill="#d98e00" fill-opacity=".35" stroke="#d98e00" stroke-width="2"/><text x="216.3" y="88.8" text-anchor="middle" font-size="14" font-weight="800" fill="#d98e00" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">z</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="214" y="30">A</text><text x="62" y="178">B</text><text x="322" y="178">C</text><text x="22" y="32">D</text><text x="366" y="32">E</text></g></svg>
+<p><b>البرهان:</b> ∵ <span class="m">DE ∥ BC</span> و<span class="m">AB</span> قاطع ∴ ق(∠DAB) = ق(∠B) (متبادلتان) &nbsp;(x)<br>∵ <span class="m">DE ∥ BC</span> و<span class="m">AC</span> قاطع ∴ ق(∠EAC) = ق(∠C) (متبادلتان) &nbsp;(y)<br>∵ ∠DAB و∠BAC و∠CAE تكوّن زاوية مستقيمة عند <span class="m">A</span> ∴ مجموعها <span class="m">180°</span><br>∴ ق(∠B) + ق(∠BAC) + ق(∠C) = <span class="m">180°</span> وهو المطلوب.</p>
+<h2>ثالثًا: الزاوية الخارجية للمثلث</h2>
+<p>إذا مددنا أحد أضلاع المثلث على استقامته، تنتج <b>زاوية خارجية</b>. زاويتها المجاورة داخلية، والزاويتان الداخليتان الأخريان تسميان <b>البعيدتين</b> عنها.</p>
+<div class="box case c3"><h3>النظرية</h3><div class="th">قياس الزاوية الخارجية للمثلث = مجموع قياسي الزاويتين الداخليتين البعيدتين عنها.</div></div>
+<p>عند كل رأس يمكن مدّ أي من الضلعين، فتنتج <b>زاويتان خارجيتان متساويتان</b> (متقابلتان بالرأس)، وللمثلث كله <b>ست زوايا خارجية</b>. وفي كل حالة: الخارجية أكبر من كلٍّ من الزاويتين البعيدتين عنها.</p>
+<h2>جرّب بنفسك</h2>
+<p>غيّر زاويتي المثلث، ولاحظ أن مجموع الزوايا الثلاث ثابت. ثم اختر رأسًا لترى زاويته الخارجية، واضغط «الزاوية الخارجية الأخرى» لترى امتداد الضلع الآخر، أو اعرض الزوايا الست معًا.</p>
+<div class="demo"><svg id="tri" viewBox="0 0 600 290" role="img" aria-label="مثلث تفاعلي"></svg>
+<div class="sl"><label for="tb">الزاوية B</label><input id="tb" type="range" min="30" max="100" value="55"><b id="tbv"></b></div>
+<div class="sl"><label for="tc">الزاوية C</label><input id="tc" type="range" min="30" max="100" value="65"><b id="tcv"></b></div>
+<div class="tabs" id="exts" role="group" aria-label="الزاوية الخارجية عند"><b>الزوايا الخارجية:</b><button type="button" data-e="none" aria-pressed="true">بدون</button><button type="button" data-e="0" aria-pressed="false">عند A</button><button type="button" data-e="1" aria-pressed="false">عند B</button><button type="button" data-e="2" aria-pressed="false">عند C</button><button type="button" data-e="all" aria-pressed="false">الزوايا الست</button></div>
+<div class="tabs"><button id="side" type="button" disabled>الزاوية الخارجية الأخرى عند الرأس نفسه</button><button id="eq" type="button">مثلث متساوي الأضلاع</button></div>
+<div class="read" id="tread" aria-live="polite"></div></div>
+<h2>أمثلة محلولة</h2>
+<div class="box ex"><p><b>مثال 1:</b> في المثلث <span class="m">ABC</span>: ق(∠A) = <span class="m">50°</span>، ق(∠B) = <span class="m">60°</span>. أوجد ق(∠C).<br>ق(∠C) = 180° − (50° + 60°) = <span class="m">70°</span>.</p></div>
+<div class="box ex"><p><b>مثال 2:</b> في المثلث <span class="m">ABC</span> مُدّ <span class="m">BC</span> إلى <span class="m">D</span>. إذا كان ق(∠A) = <span class="m">45°</span> وق(∠B) = <span class="m">65°</span> فأوجد ق(∠ACD).<br>الزاوية الخارجية = مجموع البعيدتين = 45° + 65° = <span class="m">110°</span>.</p></div>
+<div class="box ex"><p><b>مثال 3:</b> مثلث متساوي الساقين رأسه <span class="m">A</span> وق(∠A) = <span class="m">40°</span>. أوجد زاويتي القاعدة.<br>مجموعهما 180° − 40° = 140°، وهما متساويتان، فكل منهما <span class="m">70°</span>.</p></div>
+<div class="box ex"><p><b>مثال 4:</b> قياسات زوايا مثلث <span class="m">2س° ، 3س° ، 4س°</span>. أوجد س وقياسات الزوايا.<br>2س + 3س + 4س = 180 ⇐ 9س = 180 ⇐ <span class="m">س = 20</span>، والزوايا <span class="m">40° ، 60° ، 80°</span>.</p></div>
+<h2>اختبر نفسك</h2>
+<details><summary>1) زاويتان في مثلث قياسهما <span class="m">35°</span> و<span class="m">75°</span>. ما قياس الثالثة؟</summary><p>180° − (35° + 75°) = <span class="m">70°</span>.</p></details>
+<details><summary>2) قياس زاوية خارجية للمثلث <span class="m">125°</span> وقياس إحدى البعيدتين عنها <span class="m">60°</span>. ما قياس البعيدة الأخرى؟</summary><p>125° − 60° = <span class="m">65°</span>.</p></details>
+<details><summary>3) النقطة <span class="m">C</span> على المستقيم <span class="m">BD</span> وق(∠ACB) = <span class="m">125°</span>. أوجد ق(∠ACD).</summary><p>الزاويتان متجاورتان على مستقيم: 180° − 125° = <span class="m">55°</span>.</p></details>
+<h2>تدريب على البرهان</h2>
+<p>في التمارين 1 و2 و5: <span class="m">D</span> نقطة على امتداد <span class="m">BC</span> من جهة <span class="m">C</span>. الرسم تقريبي، فاعتمد على المعطيات. اكتب: المعطيات ← المطلوب ← البرهان.</p>
+<div class="box prob"><p><b>تمرين 1</b> <b class="lv">(سهل)</b></p><p><b>المعطيات:</b> ق(∠A) = 70° ، ق(∠B) = 50°</p><p><b>المطلوب:</b> أثبت أن ق(∠ACD) = 120°</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="المثلث ABC والنقطة D على امتداد BC"><polygon points="168.5,42.0 50.2,183.0 249.9,183.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="249.9" y1="183.0" x2="349.8" y2="183.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><path d="M249.9,183.0 L275.9,183.0 A26,26 0 0 0 236.9,160.5 Z" fill="#d98e00" fill-opacity=".35" stroke="#d98e00" stroke-width="2"/><text x="271.9" y="149.9" text-anchor="middle" font-size="14" font-weight="800" fill="#d98e00" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">؟</text><path d="M50.2,183.0 L76.2,183.0 A26,26 0 0 0 66.9,163.1 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="90.1" y="169.4" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">50°</text><path d="M168.5,42.0 L151.8,61.9 A26,26 0 0 0 181.5,64.5 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="164.7" y="90.8" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">70°</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="164" y="32">A</text><text x="32" y="199">B</text><text x="246" y="201">C</text><text x="354" y="199">D</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> ∠ACD زاوية خارجية للمثلث ABC.</p><p><b>البرهان:</b> ∵ ∠ACD زاوية خارجية للمثلث ABC ∴ ق(∠ACD) = ق(∠A) + ق(∠B) = 70° + 50° = 120°.</p></details></div>
+<div class="box prob"><p><b>تمرين 2</b> <b class="lv">(سهل)</b></p><p><b>المعطيات:</b> ق(∠A) = ق(∠B) ، ق(∠ACD) = 110°</p><p><b>المطلوب:</b> أوجد ق(∠A) وق(∠ACB)</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="المثلث ABC"><polygon points="186.2,42.0 87.5,183.0 237.5,183.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="237.5" y1="183.0" x2="312.5" y2="183.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><path d="M237.5,183.0 L263.5,183.0 A26,26 0 0 0 228.6,158.6 Z" fill="#d98e00" fill-opacity=".35" stroke="#d98e00" stroke-width="2"/><text x="262.7" y="152.0" text-anchor="middle" font-size="14" font-weight="800" fill="#d98e00" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">110°</text><path d="M87.5,183.0 L113.5,183.0 A26,26 0 0 0 102.4,161.7 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="126.5" y="167.7" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">α</text><path d="M186.2,42.0 L171.3,63.3 A26,26 0 0 0 195.1,66.4 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="180.4" y="90.6" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">α</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="181" y="32">A</text><text x="69" y="199">B</text><text x="234" y="201">C</text><text x="317" y="199">D</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> الخارجية تساوي مجموع البعيدتين، والزاويتان متساويتان.</p><p><b>البرهان:</b> ∵ ∠ACD خارجية ∴ ق(∠A) + ق(∠B) = 110° ، ق(∠A) = ق(∠B) ∴ ق(∠A) = 55°. ∵ ∠ACB و∠ACD متجاورتان على مستقيم ∴ ق(∠ACB) = 180° − 110° = 70°.</p></details></div>
+<div class="box prob"><p><b>تمرين 3</b> <b class="lv">(متوسط)</b></p><p><b>المعطيات:</b> في المثلث ABC: D ∈ AB ، E ∈ AC ، DE ∥ BC ، ق(∠A) = 50° ، ق(∠ADE) = 65°</p><p><b>المطلوب:</b> أثبت أن ق(∠C) = 65°</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="المثلث ABC"><polygon points="200.0,42.0 134.3,183.0 265.7,183.0" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M134.3,183.0 L160.3,183.0 A26,26 0 0 0 145.2,159.4 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="171.4" y="164.4" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px"></text><path d="M200.0,42.0 L191.5,60.1 A20,20 0 0 0 208.5,60.1 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="200.0" y="81.0" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">50°</text><path d="M265.7,183.0 L254.8,159.4 A26,26 0 0 0 239.7,183.0 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="228.6" y="164.4" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">؟</text><line x1="167.1" y1="112.5" x2="232.9" y2="112.5" stroke="currentColor" stroke-width="2.5"/><path d="M167.1,112.5 L189.1,112.5 A22,22 0 0 0 176.4,92.6 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="200.9" y="96.0" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">65°</text><path d="M203,112 l-6,-5 m6,5 l-6,5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M203,183 l-6,-5 m6,5 l-6,5" fill="none" stroke="currentColor" stroke-width="2"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="195" y="32">A</text><text x="116" y="199">B</text><text x="262" y="201">C</text><text x="147" y="116">D</text><text x="239" y="116">E</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> احسب ق(∠AED) من المثلث ADE، ثم استخدم التوازي.</p><p><b>البرهان:</b> ∵ في △ADE: ق(∠AED) = 180° − (50° + 65°) = 65°. ∵ DE ∥ BC و AC قاطع ∴ ق(∠C) = ق(∠AED) = 65° (متناظرتان).</p></details></div>
+<div class="box prob"><p><b>تمرين 4</b> <b class="lv">(سهل)</b></p><p><b>المعطيات:</b> المثلث ABC قائم الزاوية في B</p><p><b>المطلوب:</b> أثبت أن ق(∠A) + ق(∠C) = 90°</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="مثلث ABC قائم الزاوية في B"><polygon points="80,185 300,185 80,40" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M80,165 h20 v20" fill="none" stroke="currentColor" stroke-width="2"/><path d="M80.0,40.0 L80.0,66.0 A26,26 0 0 0 101.7,54.3 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="102.8" y="87.3" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">س</text><path d="M300.0,185.0 L278.3,170.7 A26,26 0 0 0 274.0,185.0 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="246.4" y="173.9" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">ص</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="66" y="34">A</text><text x="62" y="200">B</text><text x="302" y="202">C</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> استخدم مجموع زوايا المثلث.</p><p><b>البرهان:</b> ∵ مجموع زوايا المثلث 180° ∴ ق(∠A) + ق(∠B) + ق(∠C) = 180° ، ق(∠B) = 90° ∴ ق(∠A) + ق(∠C) = 180° − 90° = 90°.</p></details></div>
+<div class="box prob"><p><b>تمرين 5</b> <b class="lv">(تحدٍّ)</b></p><p><b>المعطيات:</b> المثلث ABC ، D على امتداد BC</p><p><b>المطلوب:</b> أثبت أن ق(∠ACD) = ق(∠A) + ق(∠B) (نظرية الزاوية الخارجية)</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="المثلث ABC"><polygon points="168.5,42.0 50.2,183.0 249.9,183.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="249.9" y1="183.0" x2="349.8" y2="183.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><path d="M249.9,183.0 L275.9,183.0 A26,26 0 0 0 236.9,160.5 Z" fill="#d98e00" fill-opacity=".35" stroke="#d98e00" stroke-width="2"/><text x="271.9" y="149.9" text-anchor="middle" font-size="14" font-weight="800" fill="#d98e00" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">؟</text><path d="M50.2,183.0 L76.2,183.0 A26,26 0 0 0 66.9,163.1 Z" fill="#d62839" fill-opacity=".35" stroke="#d62839" stroke-width="2"/><text x="90.1" y="169.4" text-anchor="middle" font-size="14" font-weight="800" fill="#d62839" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">β</text><path d="M168.5,42.0 L151.8,61.9 A26,26 0 0 0 181.5,64.5 Z" fill="#0a8f8f" fill-opacity=".35" stroke="#0a8f8f" stroke-width="2"/><text x="164.7" y="90.8" text-anchor="middle" font-size="14" font-weight="800" fill="#0a8f8f" style="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px">α</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="164" y="32">A</text><text x="32" y="199">B</text><text x="246" y="201">C</text><text x="354" y="199">D</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> استخدم الزاوية المستقيمة عند C ثم مجموع زوايا المثلث.</p><p><b>البرهان:</b> ∵ ∠ACB و∠ACD متجاورتان على المستقيم BD ∴ ق(∠ACB) + ق(∠ACD) = 180° (١). ∵ ق(∠A) + ق(∠B) + ق(∠ACB) = 180° (٢). من (١) و(٢): ق(∠ACD) = ق(∠A) + ق(∠B).</p></details></div>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul><li>الزاوية المستقيمة قياسها <span class="m">180°</span>، والمتجاورتان على مستقيم متكاملتان.</li><li>مجموع قياسات زوايا المثلث = <span class="m">180°</span>.</li><li>الزاوية الخارجية = مجموع البعيدتين، وهي أكبر من كلٍّ منهما. وعند كل رأس زاويتان خارجيتان متساويتان (للمثلث ست زوايا خارجية).</li></ul></div>
+<hr style="border:0;border-top:3px solid var(--ink);margin:50px 0 10px">
+<header id="l3"><small>الدرس الثالث (3-1)</small><h1><span>التطابق</span></h1></header>
+<div class="box goal"><b>أهداف الدرس:</b><ul><li>أتعرّف تطابق القطع المستقيمة والزوايا والمضلعات وشروط تطابق مضلعين.</li><li>أتعرّف حالات تطابق مثلثين: SSS وSAS وASA وAAS وRHS.</li><li>أثبت تطابق مثلثين وأستخدم التطابق في إيجاد أطوال وقياسات زوايا.</li></ul></div>
+<p><b>المفردات:</b> التطابق (Congruence) ، الوتر (Hypotenuse) ، المثلث القائم الزاوية ، زاوية محصورة (Included angle) ، ضلع واصل بين رأسين (Included side).</p>
+<div class="tabs go"><button type="button" data-go="practice">انتقل إلى تمارين الدرس ←</button></div>
+<h2>أولًا: مفهوم التطابق</h2>
+<ul><li><b>تطابق قطعتين مستقيمتين:</b> تتطابقان إذا تساويتا في الطول. فإذا كان <span class="m">AB = CD</span> فإن <span class="m">AB ≅ CD</span>.</li><li><b>تطابق زاويتين:</b> تتطابقان إذا تساويتا في القياس. فإذا كان <span class="m">m(∠A) = m(∠B)</span> فإن <span class="m">∠A ≅ ∠B</span>.</li><li>الرمز <span class="m">≅</span> يعبّر عن تطابق شكلين هندسيين.</li></ul>
+<h2>ثانيًا: تطابق مضلعين</h2>
+<p>يتطابق المضلعان إذا تحقق الشرطان معًا:</p>
+<ol><li>أضلاعهما المتناظرة متساوية في الطول.</li><li>زواياهما المتناظرة متساوية في القياس.</li></ol>
+<p>ويجب كتابة المضلعين المتطابقين <b>بنفس ترتيب الرؤوس المتناظرة</b>. فمثلًا <span class="m">Δ ABC ≅ Δ DEF</span> تعني أن A ↔ D و B ↔ E و C ↔ F.</p>
+<p>والانعكاس والانتقال والدوران تحويلات هندسية تعطي صورة مطابقة للشكل؛ لأنها تحافظ على أطوال الأضلاع وقياسات الزوايا والتوازي.</p>
+<h2>ثالثًا: حالات تطابق مثلثين</h2>
+<p>للمثلث 6 عناصر (3 أضلاع و3 زوايا)، ولإثبات تطابق مثلثين لا نشترط تطابق كل العناصر، بل يكفي <b>ثلاثة عناصر بينها ضلع واحد على الأقل</b>. نستخدم S للضلع، وA للزاوية، وR للزاوية القائمة، وH لوتر المثلث القائم.</p>
+<div class="box case c1"><h3>الحالة الأولى: ثلاثة أضلاع (SSS)</h3><div class="th">يتطابق المثلثان إذا تطابق كل ضلع في أحدهما مع نظيره في الآخر.</div><p class="if"><span class="m">AB ≅ DE , BC ≅ EF , AC ≅ DF ⇐ Δ ABC ≅ Δ DEF</span></p></div>
+<div class="box case c2"><h3>الحالة الثانية: ضلعان وزاوية محصورة (SAS)</h3><div class="th">يتطابق المثلثان إذا تطابق ضلعان والزاوية المحصورة بينهما في أحدهما مع نظائرها في الآخر.</div><p class="if"><span class="m">AB ≅ DE , ∠B ≅ ∠E , BC ≅ EF ⇐ Δ ABC ≅ Δ DEF</span></p></div>
+<div class="box case c3"><h3>الحالة الثالثة: زاويتان والضلع المرسوم بين رأسيهما (ASA)</h3><div class="th">يتطابق المثلثان إذا تطابقت زاويتان والضلع المرسوم بين رأسيهما في أحدهما مع نظائرها في الآخر.</div><p class="if"><span class="m">∠A ≅ ∠D , AC ≅ DF , ∠C ≅ ∠F ⇐ Δ ABC ≅ Δ DEF</span></p></div>
+<div class="box case c1"><h3>الحالة الرابعة: زاويتان وضلع غير واصل بين رأسيهما (AAS)</h3><div class="th">يتطابق المثلثان إذا تطابقت زاويتان وضلع غير واصل بين رأسيهما في أحدهما مع نظائرها في الآخر.</div><p class="if"><span class="m">∠B ≅ ∠E , ∠C ≅ ∠F , AB ≅ DE ⇐ Δ ABC ≅ Δ DEF</span></p></div>
+<div class="box case c2"><h3>الحالة الخامسة: وتر وأحد ضلعي القائمة (RHS)</h3><div class="th">يتطابق المثلثان القائما الزاوية إذا تطابق وتر وأحد ضلعي القائمة في أحدهما مع نظيريهما في الآخر.</div><p class="if"><span class="m">m(∠B) = m(∠E) = 90° , AC ≅ DF , AB ≅ DE ⇐ Δ ABC ≅ Δ DEF</span></p></div>
+<p><b>تفكير ناقد:</b> هل يتطابق المثلثان إذا تطابقت الزوايا الثلاث (AAA)؟ لا؛ فقد يكونان بالشكل نفسه ومختلفين في الحجم. وكذلك لا يكفي تطابق ضلعين وزاوية <b>غير محصورة</b> بينهما.</p>
+<h2>جرّب بنفسك</h2>
+<p>اختر الحالة لترى العناصر المتساوية معلَّمة بالرموز نفسها في المثلثين، ثم حرّك المنزلق (أو اضغط «طابِق») لتنقل المثلث الثاني فوق الأول. جرّب AAA لترى أن الزوايا المتساوية وحدها لا تكفي.</p>
+<div class="demo"><svg id="cg" viewBox="0 0 680 320" role="img" aria-label="مثلثان لاختبار التطابق"></svg>
+<div class="tabs" id="cases" role="group" aria-label="الحالة"><b>الحالة:</b><button type="button" data-c="sss" aria-pressed="false">SSS</button><button type="button" data-c="sas" aria-pressed="true">SAS</button><button type="button" data-c="asa" aria-pressed="false">ASA</button><button type="button" data-c="aas" aria-pressed="false">AAS</button><button type="button" data-c="rhs" aria-pressed="false">RHS</button><button type="button" data-c="aaa" aria-pressed="false">AAA</button></div>
+<div class="sl"><label for="ct">حرّك المثلث الثاني</label><input id="ct" type="range" min="0" max="100" value="0"><b id="ctv"></b></div>
+<div class="tabs"><button id="cgo" type="button">طابِق المثلثين</button></div>
+<div class="read" id="cread" aria-live="polite"></div></div>
+<h2>رابعًا: كتابة برهان التطابق</h2>
+<ol><li>اكتب المعطيات والمطلوب.</li><li>اكتب: «∵ المثلثين ... فيهما:» ثم اذكر كل زوج من العناصر المتناظرة مع سببه بين قوسين: (معطى) أو (ضلع مشترك) أو (بالتقابل بالرأس) أو (زاويتان متبادلتان) أو (إثباتًا).</li><li>اذكر الحالة: «∴ Δ ... ≅ Δ ...» ثم اكتب الحالة المستخدمة.</li><li>استنتج المطلوب: «ومن التطابق ينتج أن ...».</li></ol>
+<h2>أمثلة محلولة</h2>
+<div class="box ex"><p><b>مثال 1 (SAS):</b> <span class="m">AC</span> و<span class="m">BD</span> تتقاطعان في <span class="m">M</span> ومنتصف كل منهما <span class="m">M</span>. أثبت أن <span class="m">AB = CD</span>.<br><b>البرهان:</b> ∵ المثلثين <span class="m">MAB , MCD</span> فيهما: <span class="m">MA ≅ MC</span> (معطى) ، <span class="m">MB ≅ MD</span> (معطى) ، <span class="m">m(∠AMB) = m(∠CMD)</span> (بالتقابل بالرأس) ∴ <span class="m">Δ MAB ≅ Δ MCD</span> (SAS) ومن التطابق ينتج أن <span class="m">AB = CD</span>.</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="AC وBD تنصف كل منهما الأخرى في M"><line x1="110.0" y1="40.0" x2="290.0" y2="180.0" stroke="currentColor" stroke-width="2.5"/><line x1="300.0" y1="45.0" x2="100.0" y2="175.0" stroke="currentColor" stroke-width="2.5"/><line x1="110.0" y1="40.0" x2="300.0" y2="45.0" stroke="currentColor" stroke-width="2.5"/><line x1="290.0" y1="180.0" x2="100.0" y2="175.0" stroke="currentColor" stroke-width="2.5"/><line x1="158.7" y1="70.3" x2="151.3" y2="79.7" stroke="#d62839" stroke-width="2.5"/><line x1="248.7" y1="140.3" x2="241.3" y2="149.7" stroke="#d62839" stroke-width="2.5"/><line x1="256.2" y1="80.6" x2="249.7" y2="70.6" stroke="#d62839" stroke-width="2.5"/><line x1="250.3" y1="84.4" x2="243.8" y2="74.4" stroke="#d62839" stroke-width="2.5"/><line x1="156.2" y1="145.6" x2="149.7" y2="135.6" stroke="#d62839" stroke-width="2.5"/><line x1="150.3" y1="149.4" x2="143.8" y2="139.4" stroke="#d62839" stroke-width="2.5"/><path d="M184.2,97.7 A20,20 0 0 1 216.8,99.1" fill="none" stroke="#0a8f8f" stroke-width="2"/><path d="M215.8,122.3 A20,20 0 0 1 183.2,120.9" fill="none" stroke="#0a8f8f" stroke-width="2"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="98" y="36">A</text><text x="304" y="42">B</text><text x="294" y="196">C</text><text x="82" y="186">D</text><text x="206" y="104">M</text></g></svg></div>
+<div class="box ex"><p><b>مثال 2 (SAS):</b> في <span class="m">Δ ABC</span>: <span class="m">AB ≅ AC</span> و<span class="m">AD</span> ينصف <span class="m">∠BAC</span> ويقطع <span class="m">BC</span> في <span class="m">D</span>. أثبت أن <span class="m">m(∠B) = m(∠C)</span>.<br><b>البرهان:</b> ∵ المثلثين <span class="m">ABD , ACD</span> فيهما: <span class="m">AB ≅ AC</span> (معطى) ، <span class="m">∠BAD ≅ ∠CAD</span> (معطى) ، <span class="m">AD ≅ AD</span> (ضلع مشترك) ∴ <span class="m">Δ ABD ≅ Δ ACD</span> (SAS) ومن التطابق ينتج أن <span class="m">m(∠B) = m(∠C)</span>.</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="AB = AC وAD ينصف زاوية A"><polygon points="200.0,30.0 90.0,190.0 310.0,190.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="200.0" y1="30.0" x2="200.0" y2="190.0" stroke="currentColor" stroke-width="2.5"/><line x1="149.9" y1="113.4" x2="140.1" y2="106.6" stroke="#d62839" stroke-width="2.5"/><line x1="259.9" y1="106.6" x2="250.1" y2="113.4" stroke="#d62839" stroke-width="2.5"/><path d="M183.0,54.7 A30,30 0 0 0 200.0,60.0" fill="none" stroke="#0a8f8f" stroke-width="2"/><path d="M200.0,60.0 A30,30 0 0 0 217.0,54.7" fill="none" stroke="#0a8f8f" stroke-width="2"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="194" y="22">A</text><text x="72" y="206">B</text><text x="312" y="206">C</text><text x="194" y="208">D</text></g></svg></div>
+<div class="box ex"><p><b>مثال 3 (SSS):</b> في الشكل <span class="m">ABCD</span>: <span class="m">AB ≅ CD</span> و<span class="m">AD ≅ BC</span>. أثبت أن <span class="m">m(∠A) = m(∠C)</span>.<br><b>البرهان:</b> نرسم <span class="m">BD</span>. ∵ المثلثين <span class="m">ABD , CDB</span> فيهما: <span class="m">AB ≅ CD</span> (معطى) ، <span class="m">AD ≅ CB</span> (معطى) ، <span class="m">BD ≅ DB</span> (ضلع مشترك) ∴ <span class="m">Δ ABD ≅ Δ CDB</span> (SSS) ومن التطابق ينتج أن <span class="m">m(∠A) = m(∠C)</span>.</p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="ABCD فيه AB = CD وAD = BC"><polygon points="60.0,40.0 300.0,40.0 340.0,180.0 100.0,180.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="300.0" y1="40.0" x2="100.0" y2="180.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><line x1="180.0" y1="34.0" x2="180.0" y2="46.0" stroke="#d62839" stroke-width="2.5"/><line x1="220.0" y1="174.0" x2="220.0" y2="186.0" stroke="#d62839" stroke-width="2.5"/><line x1="84.8" y1="105.0" x2="73.3" y2="108.3" stroke="#d62839" stroke-width="2.5"/><line x1="86.7" y1="111.7" x2="75.2" y2="115.0" stroke="#d62839" stroke-width="2.5"/><line x1="324.8" y1="105.0" x2="313.3" y2="108.3" stroke="#d62839" stroke-width="2.5"/><line x1="326.7" y1="111.7" x2="315.2" y2="115.0" stroke="#d62839" stroke-width="2.5"/><line x1="209.2" y1="110.9" x2="202.3" y2="101.1" stroke="#d98e00" stroke-width="2.5"/><line x1="203.4" y1="114.9" x2="196.6" y2="105.1" stroke="#d98e00" stroke-width="2.5"/><line x1="197.7" y1="118.9" x2="190.8" y2="109.1" stroke="#d98e00" stroke-width="2.5"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="44" y="36">A</text><text x="304" y="34">B</text><text x="346" y="196">C</text><text x="80" y="198">D</text></g></svg></div>
+<h2>اختبر نفسك</h2>
+<details><summary>1) في <span class="m">Δ ABC</span> و<span class="m">Δ DEF</span>: <span class="m">AB ≅ DE</span> ، <span class="m">BC ≅ EF</span> ، <span class="m">∠B ≅ ∠E</span>. ما حالة التطابق؟</summary><p>SAS: الزاوية <span class="m">B</span> محصورة بين الضلعين <span class="m">AB , BC</span>، ونظيرتها <span class="m">E</span> بين <span class="m">DE , EF</span>.</p></details>
+<details><summary>2) <span class="m">∠A ≅ ∠D</span> ، <span class="m">∠B ≅ ∠E</span> ، <span class="m">BC ≅ EF</span>. ما الحالة التي تثبت التطابق؟</summary><p>AAS: زاويتان وضلع غير واصل بين رأسيهما؛ فالضلع <span class="m">BC</span> ليس بين رأسي الزاويتين <span class="m">A , B</span>.</p></details>
+<details><summary>3) مثلثان زوايا كل منهما 50° و60° و70°. هل يلزم أن يتطابقا؟</summary><p>لا. تطابق الزوايا الثلاث (AAA) لا يكفي؛ فقد يختلف حجماهما.</p></details>
+<h2>تدريب على البرهان</h2>
+<p>اكتب المعطيات والمطلوب والبرهان بصيغة الكتاب، وعلّل كل خطوة. الرسوم تقريبية، فاعتمد على المعطيات المكتوبة.</p>
+<div class="box prob"><p><b>تمرين 1</b> <b class="lv">(سهل (SAS))</b></p><p><b>المعطيات:</b> <span class="m">AB</span> و<span class="m">CD</span> يتقاطعان في <span class="m">M</span> ، <span class="m">M</span> منتصف <span class="m">AB</span> ومنتصف <span class="m">CD</span></p><p><b>المطلوب:</b> أثبت أن <span class="m">AC = BD</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="AB وCD يتقاطعان في M"><line x1="110.0" y1="40.0" x2="290.0" y2="180.0" stroke="currentColor" stroke-width="2.5"/><line x1="300.0" y1="45.0" x2="100.0" y2="175.0" stroke="currentColor" stroke-width="2.5"/><line x1="110.0" y1="40.0" x2="300.0" y2="45.0" stroke="currentColor" stroke-width="2.5"/><line x1="290.0" y1="180.0" x2="100.0" y2="175.0" stroke="currentColor" stroke-width="2.5"/><line x1="158.7" y1="70.3" x2="151.3" y2="79.7" stroke="#d62839" stroke-width="2.5"/><line x1="248.7" y1="140.3" x2="241.3" y2="149.7" stroke="#d62839" stroke-width="2.5"/><line x1="256.2" y1="80.6" x2="249.7" y2="70.6" stroke="#d62839" stroke-width="2.5"/><line x1="250.3" y1="84.4" x2="243.8" y2="74.4" stroke="#d62839" stroke-width="2.5"/><line x1="156.2" y1="145.6" x2="149.7" y2="135.6" stroke="#d62839" stroke-width="2.5"/><line x1="150.3" y1="149.4" x2="143.8" y2="139.4" stroke="#d62839" stroke-width="2.5"/><path d="M184.2,97.7 A20,20 0 0 1 216.8,99.1" fill="none" stroke="#0a8f8f" stroke-width="2"/><path d="M215.8,122.3 A20,20 0 0 1 183.2,120.9" fill="none" stroke="#0a8f8f" stroke-width="2"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="98" y="36">A</text><text x="304" y="42">C</text><text x="294" y="196">B</text><text x="82" y="186">D</text><text x="206" y="104">M</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> قارن <span class="m">Δ MAC</span> و<span class="m">Δ MBD</span> واستخدم التقابل بالرأس.</p><p><b>البرهان:</b> ∵ المثلثين <span class="m">MAC , MBD</span> فيهما: <span class="m">MA ≅ MB</span> ، <span class="m">MC ≅ MD</span> (معطى) ، <span class="m">m(∠AMC) = m(∠BMD)</span> (بالتقابل بالرأس) ∴ <span class="m">Δ MAC ≅ Δ MBD</span> (SAS) ومن التطابق ينتج أن <span class="m">AC = BD</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 2</b> <b class="lv">(متوسط (ASA))</b></p><p><b>المعطيات:</b> <span class="m">AB ∥ CD</span> ، <span class="m">AD ∩ BC = {M}</span> ، <span class="m">M</span> منتصف <span class="m">AD</span></p><p><b>المطلوب:</b> أثبت أن <span class="m">Δ MAB ≅ Δ MDC</span> ثم استنتج أن <span class="m">AB = CD</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="AB يوازي CD"><line x1="80.0" y1="50.0" x2="320.0" y2="50.0" stroke="currentColor" stroke-width="2.5"/><line x1="80.0" y1="170.0" x2="320.0" y2="170.0" stroke="currentColor" stroke-width="2.5"/><line x1="80.0" y1="50.0" x2="320.0" y2="170.0" stroke="currentColor" stroke-width="2.5"/><line x1="320.0" y1="50.0" x2="80.0" y2="170.0" stroke="currentColor" stroke-width="2.5"/><path d="M190,50 l-6,-5 m6,5 l-6,5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M190,170 l-6,-5 m6,5 l-6,5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="142.7" y1="74.6" x2="137.3" y2="85.4" stroke="#d62839" stroke-width="2.5"/><line x1="262.7" y1="134.6" x2="257.3" y2="145.4" stroke="#d62839" stroke-width="2.5"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="64" y="46">A</text><text x="326" y="46">B</text><text x="64" y="188">C</text><text x="326" y="188">D</text><text x="206" y="104">M</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> ∠MAB و∠MDC في وضع تبادل لأن AB ∥ CD، و∠AMB و∠DMC متقابلتان بالرأس.</p><p><b>البرهان:</b> ∵ المثلثين <span class="m">MAB , MDC</span> فيهما: <span class="m">∠MAB ≅ ∠MDC</span> (متبادلتان، <span class="m">AB ∥ CD</span>) ، <span class="m">MA ≅ MD</span> (معطى) ، <span class="m">∠AMB ≅ ∠DMC</span> (بالتقابل بالرأس) ∴ <span class="m">Δ MAB ≅ Δ MDC</span> (ASA) ومن التطابق ينتج أن <span class="m">AB = CD</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 3</b> <b class="lv">(سهل (RHS))</b></p><p><b>المعطيات:</b> المثلثان <span class="m">ABC</span> و<span class="m">DEF</span> قائما الزاوية في <span class="m">B</span> و<span class="m">E</span> ، <span class="m">AC ≅ DF</span> ، <span class="m">BC ≅ EF</span></p><p><b>المطلوب:</b> أثبت أن <span class="m">Δ ABC ≅ Δ DEF</span> ثم استنتج أن <span class="m">m(∠A) = m(∠D)</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="قائما الزاوية في B وE"><polygon points="40.0,70.0 40.0,190.0 180.0,190.0" fill="none" stroke="currentColor" stroke-width="2.5"/><polygon points="230.0,70.0 230.0,190.0 370.0,190.0" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M40.0,180.0 l10.0,0.0 l-0.0,10.0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M230.0,180.0 l10.0,0.0 l-0.0,10.0" fill="none" stroke="currentColor" stroke-width="2"/><line x1="113.9" y1="125.4" x2="106.1" y2="134.6" stroke="#d62839" stroke-width="2.5"/><line x1="303.9" y1="125.4" x2="296.1" y2="134.6" stroke="#d62839" stroke-width="2.5"/><line x1="106.5" y1="184.0" x2="106.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><line x1="113.5" y1="184.0" x2="113.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><line x1="296.5" y1="184.0" x2="296.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><line x1="303.5" y1="184.0" x2="303.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="26" y="64">A</text><text x="24" y="208">B</text><text x="184" y="208">C</text><text x="216" y="64">D</text><text x="214" y="208">E</text><text x="374" y="208">F</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> ما الحالة التي تناسب مثلثين قائمي الزاوية؟</p><p><b>البرهان:</b> ∵ المثلثين <span class="m">ABC , DEF</span> فيهما: <span class="m">m(∠B) = m(∠E) = 90°</span> ، <span class="m">AC ≅ DF</span> (وتران) ، <span class="m">BC ≅ EF</span> ∴ <span class="m">Δ ABC ≅ Δ DEF</span> (RHS) ومن التطابق ينتج أن <span class="m">m(∠A) = m(∠D)</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 4</b> <b class="lv">(متوسط (SSS))</b></p><p><b>المعطيات:</b> في <span class="m">Δ ABC</span>: <span class="m">AB ≅ AC</span> ، <span class="m">D</span> منتصف <span class="m">BC</span></p><p><b>المطلوب:</b> أثبت أن <span class="m">m(∠B) = m(∠C)</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="AB = AC وD منتصف BC"><polygon points="200.0,30.0 90.0,190.0 310.0,190.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="200.0" y1="30.0" x2="200.0" y2="190.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><line x1="149.9" y1="113.4" x2="140.1" y2="106.6" stroke="#d62839" stroke-width="2.5"/><line x1="259.9" y1="106.6" x2="250.1" y2="113.4" stroke="#d62839" stroke-width="2.5"/><line x1="141.5" y1="184.0" x2="141.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><line x1="148.5" y1="184.0" x2="148.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><line x1="251.5" y1="184.0" x2="251.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><line x1="258.5" y1="184.0" x2="258.5" y2="196.0" stroke="#d62839" stroke-width="2.5"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="194" y="22">A</text><text x="72" y="206">B</text><text x="312" y="206">C</text><text x="194" y="208">D</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> قارن <span class="m">Δ ABD</span> و<span class="m">Δ ACD</span> بثلاثة أضلاع، ولا تنسَ الضلع المشترك <span class="m">AD</span>.</p><p><b>البرهان:</b> ∵ المثلثين <span class="m">ABD , ACD</span> فيهما: <span class="m">AB ≅ AC</span> (معطى) ، <span class="m">BD ≅ DC</span> (لأن <span class="m">D</span> منتصف <span class="m">BC</span>) ، <span class="m">AD ≅ AD</span> (ضلع مشترك) ∴ <span class="m">Δ ABD ≅ Δ ACD</span> (SSS) ومن التطابق ينتج أن <span class="m">m(∠B) = m(∠C)</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 5</b> <b class="lv">(متوسط (AAS))</b></p><p><b>المعطيات:</b> في <span class="m">Δ ABC</span> و<span class="m">Δ DEF</span>: <span class="m">∠A ≅ ∠D</span> ، <span class="m">∠B ≅ ∠E</span> ، <span class="m">BC ≅ EF</span></p><p><b>المطلوب:</b> أثبت أن <span class="m">Δ ABC ≅ Δ DEF</span> ثم استنتج أن <span class="m">AC = DF</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="مثلثان ABC وDEF"><polygon points="30.0,170.0 150.0,170.0 110.0,60.0" fill="none" stroke="currentColor" stroke-width="2.5"/><polygon points="240.0,170.0 360.0,170.0 320.0,60.0" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M52.0,170.0 A22,22 0 0 0 42.9,152.2" fill="none" stroke="#d62839" stroke-width="2"/><path d="M262.0,170.0 A22,22 0 0 0 252.9,152.2" fill="none" stroke="#d62839" stroke-width="2"/><path d="M142.5,149.3 A22,22 0 0 0 128.0,170.0" fill="none" stroke="#0a8f8f" stroke-width="2"/><path d="M140.8,144.6 A27,27 0 0 0 123.0,170.0" fill="none" stroke="#0a8f8f" stroke-width="2"/><path d="M352.5,149.3 A22,22 0 0 0 338.0,170.0" fill="none" stroke="#0a8f8f" stroke-width="2"/><path d="M350.8,144.6 A27,27 0 0 0 333.0,170.0" fill="none" stroke="#0a8f8f" stroke-width="2"/><line x1="124.4" y1="117.1" x2="135.6" y2="112.9" stroke="#d98e00" stroke-width="2.5"/><line x1="334.4" y1="117.1" x2="345.6" y2="112.9" stroke="#d98e00" stroke-width="2.5"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="16" y="176">A</text><text x="150" y="188">B</text><text x="104" y="52">C</text><text x="226" y="176">D</text><text x="360" y="188">E</text><text x="314" y="52">F</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> الضلع BC غير واصل بين رأسي الزاويتين A وB.</p><p><b>البرهان:</b> ∵ المثلثين <span class="m">ABC , DEF</span> فيهما: <span class="m">∠A ≅ ∠D</span> ، <span class="m">∠B ≅ ∠E</span> ، <span class="m">BC ≅ EF</span> (ضلع غير واصل بين رأسي الزاويتين) ∴ <span class="m">Δ ABC ≅ Δ DEF</span> (AAS) ومن التطابق ينتج أن <span class="m">AC = DF</span>.</p></details></div>
+<div class="box prob"><p><b>تمرين 6</b> <b class="lv">(متوسط (تطابق مضلعين))</b></p><p><b>المعطيات:</b> <span class="m">Δ ABC ≅ Δ DEF</span> ، <span class="m">AB = (2س+1)</span> سم ، <span class="m">DE = (3س−4)</span> سم ، <span class="m">BC = 7</span> سم</p><p><b>المطلوب:</b> أوجد قيمة س وطول <span class="m">EF</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="مثلثان متطابقان ABC وDEF"><polygon points="30.0,170.0 150.0,170.0 110.0,60.0" fill="none" stroke="currentColor" stroke-width="2.5"/><polygon points="240.0,170.0 360.0,170.0 320.0,60.0" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="90" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#d62839" style="direction:rtl">2س+1</text><text x="300" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#d62839" style="direction:rtl">3س−4</text><text x="145" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#0a8f8f" style="direction:rtl">7 سم</text><text x="355" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#0a8f8f" style="direction:rtl">EF = ؟</text><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="16" y="176">A</text><text x="150" y="188">B</text><text x="104" y="52">C</text><text x="226" y="176">D</text><text x="360" y="188">E</text><text x="314" y="52">F</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> في التطابق Δ ABC ≅ Δ DEF: الضلع AB يناظر DE، والضلع BC يناظر EF (ترتيب الرؤوس).</p><p><b>البرهان:</b> ∵ <span class="m">Δ ABC ≅ Δ DEF</span> ∴ <span class="m">AB = DE</span> ⇐ 2س + 1 = 3س − 4 ⇐ <span class="m">س = 5</span> (فيكون <span class="m">AB = DE = 11</span> سم). وكذلك <span class="m">EF = BC = 7</span> سم.</p></details></div>
+<div class="box prob"><p><b>تمرين 7</b> <b class="lv">(تحدٍّ)</b></p><p><b>المعطيات:</b> <span class="m">ABCD</span> مستطيل ، <span class="m">AC</span> و<span class="m">BD</span> قطراه</p><p><b>المطلوب:</b> أثبت أن <span class="m">AC = BD</span></p><svg class="fig" viewBox="0 0 400 225" role="img" aria-label="المستطيل ABCD"><polygon points="60.0,50.0 340.0,50.0 340.0,170.0 60.0,170.0" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="60.0" y1="50.0" x2="340.0" y2="170.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><line x1="340.0" y1="50.0" x2="60.0" y2="170.0" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 4"/><path d="M328.0,50.0 l0.0,12.0 l12.0,-0.0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M340.0,158.0 l-12.0,0.0 l-0.0,12.0" fill="none" stroke="currentColor" stroke-width="2"/><line x1="200.0" y1="44.0" x2="200.0" y2="56.0" stroke="#d62839" stroke-width="2.5"/><line x1="200.0" y1="164.0" x2="200.0" y2="176.0" stroke="#d62839" stroke-width="2.5"/><g fill="currentColor" font-size="16" font-weight="700" style="direction:ltr"><text x="44" y="46">A</text><text x="344" y="46">B</text><text x="344" y="190">C</text><text x="44" y="190">D</text></g></svg>
+<details><summary>تلميح وحل نموذجي</summary><p><b>تلميح:</b> قارن <span class="m">Δ ABC</span> و<span class="m">Δ DCB</span>؛ والضلع BC مشترك.</p><p><b>البرهان:</b> ∵ المثلثين <span class="m">ABC , DCB</span> فيهما: <span class="m">AB ≅ DC</span> (ضلعان متقابلان في المستطيل) ، <span class="m">m(∠ABC) = m(∠DCB) = 90°</span> ، <span class="m">BC ≅ CB</span> (ضلع مشترك) ∴ <span class="m">Δ ABC ≅ Δ DCB</span> (SAS) ومن التطابق ينتج أن <span class="m">AC = DB</span>.</p></details></div>
+<div class="tabs go"><button type="button" data-go="practice">تدرّب الآن على تمارين الكتابين ←</button></div>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul><li>يتطابق المضلعان إذا تساوت أضلاعهما المتناظرة وزواياهما المتناظرة، مع كتابة الرؤوس بالترتيب المتناظر.</li><li>حالات تطابق مثلثين: SSS ، SAS ، ASA ، AAS ، RHS (للمثلثين القائمين).</li><li>AAA لا تكفي لإثبات التطابق.</li><li>بعد إثبات التطابق نكتب: «ومن التطابق ينتج أن ...» ونستنتج العناصر المتناظرة المتساوية.</li></ul></div>
+</main>
+</section>
+<section id="practice" class="pane" hidden>
+<details class="ref">
+  <summary>تذكير: حالات تطابق المثلثين</summary>
+  <div class="cases">
+    <div class="case"><b>SSS</b><span>ثلاثة أضلاع متناظرة متساوية</span></div>
+    <div class="case"><b>SAS</b><span>ضلعان والزاوية المحصورة بينهما</span></div>
+    <div class="case"><b>ASA</b><span>زاويتان والضلع المرسوم بين رأسيهما</span></div>
+    <div class="case"><b>AAS</b><span>زاويتان وضلع غير واصل بين رأسيهما</span></div>
+    <div class="case"><b>RHS</b><span>وتر وضلع قائمة في مثلثين قائمي الزاوية</span></div>
+  </div>
+</details>
+
+<div id="list"></div>
+<footer>الأشكال مرسومة للتوضيح وليست بمقياس رسم. القيم والعلامات مقروءة من أشكال الكتابين.</footer>
+</section>
+</div>
+
+<script>
+(function(){
+
+(function(){
+var NS="http://www.w3.org/2000/svg",svg=document.getElementById("fig"),kind=1;
+var P={x:300,y:100},Q={x:300,y:250};
+var col={1:"#d62839",2:"#0a8f8f",3:"#d98e00"};
+var rad=function(a){return a*Math.PI/180};
+function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e}
+function pt(c,r,a){return [c.x+r*Math.cos(rad(a)),c.y-r*Math.sin(rad(a))]}
+function ray(c,a,L,s){var p=pt(c,L,a);var q=pt(c,L,a+180);el("line",{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:s.c,"stroke-width":s.w})}
+function wedge(c,a1,a2,r,color){var p1=pt(c,r,a1),p2=pt(c,r,a2);
+el("path",{d:"M"+c.x+","+c.y+" L"+p1[0]+","+p1[1]+" A"+r+","+r+" 0 0 0 "+p2[0]+","+p2[1]+" Z",fill:color,"fill-opacity":.35,stroke:color,"stroke-width":2});
+var m=pt(c,r+22,(a1+a2)/2);return m}
+function draw(){
+var th=+document.getElementById("th").value,d=+document.getElementById("dd").value;
+document.getElementById("thv").textContent=th+"°";document.getElementById("ddv").textContent=d+"°";
+svg.innerHTML="";
+// intersection X of transversal (through P, angle th) with line2 (through Q, angle d)
+var c1=Math.cos(rad(th)),s1=-Math.sin(rad(th)),c2=Math.cos(rad(d)),s2=-Math.sin(rad(d));
+var det=c1*(-s2)-(-c2)*s1;var t=((Q.x-P.x)*(-s2)-(-c2)*(Q.y-P.y))/det;
+var X={x:P.x+t*c1,y:P.y+t*s1};
+// lines
+el("line",{x1:20,y1:P.y,x2:580,y2:P.y,stroke:"currentColor","stroke-width":3});
+var a=pt(Q,300,d),b=pt(Q,300,d+180);
+el("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:"currentColor","stroke-width":3});
+// transversal (long)
+var tl1=pt(P,230,th),tl2=pt(P,230,th+180);
+el("line",{x1:tl1[0],y1:tl1[1],x2:tl2[0],y2:tl2[1],stroke:"#7a8aa3","stroke-width":3,"stroke-dasharray":"8 5"});
+// parallel marks
+if(Math.abs(d)<1){[30,0].forEach(function(o){el("path",{d:"M"+(60+o)+","+(P.y-8)+"l10,8l-10,8",fill:"none",stroke:"currentColor","stroke-width":2});el("path",{d:"M"+(60+o)+","+(Q.y-8)+"l10,8l-10,8",fill:"none",stroke:"currentColor","stroke-width":2});});}
+var A1,A2,n1,n2,txt;var color=col[kind];
+var up=th-d; // upper-right angle at X
+if(kind==1){ // corresponding: upper-right at P and at X
+A1=th;A2=up;var m1=wedge(P,0,th,36,color),m2=wedge(X,d,th,36,color);n1=m1;n2=m2}
+else if(kind==2){ // alternate: lower-left at P, upper-right at X
+A1=th;A2=up;var m1=wedge(P,180,th+180,36,color),m2=wedge(X,d,th,36,color);n1=m1;n2=m2}
+else{ // co-interior: lower-right at P, upper-right at X
+A1=180-th;A2=up;var m1=wedge(P,th+180,360,36,color),m2=wedge(X,d,th,36,color);n1=m1;n2=m2}
+el("text",{x:n1[0],y:n1[1]+5,"text-anchor":"middle","font-size":16,"font-weight":800,fill:color,style:"direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round"},(Math.round(A1*10)/10)+"°");
+el("text",{x:n2[0],y:n2[1]+5,"text-anchor":"middle","font-size":16,"font-weight":800,fill:color,style:"direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round"},(Math.round(A2*10)/10)+"°");
+[[P,"A"],[X,"B"]].forEach(function(z){el("circle",{cx:z[0].x,cy:z[0].y,r:4,fill:"currentColor"})});
+var r=document.getElementById("read"),par=Math.abs(d)<0.5,line1,line2;
+var v1=Math.round(A1*10)/10,v2=Math.round(A2*10)/10;
+if(kind==3){line1="الزاوية الأولى (على المستقيم العلوي) = "+v1+"° ، الزاوية الثانية (على المستقيم السفلي) = "+v2+"° ، المجموع = "+Math.round((v1+v2)*10)/10+"°";
+line2=par?"المجموع = 180° ⇐ المستقيمان متوازيان":"المجموع ≠ 180° ⇐ المستقيمان غير متوازيين"}
+else{line1="الزاوية الأولى (على المستقيم العلوي) = "+v1+"° ، الزاوية الثانية (على المستقيم السفلي) = "+v2+"°";
+line2=par?"الزاويتان متساويتان ⇐ المستقيمان متوازيان":"الزاويتان غير متساويتين ⇐ المستقيمان غير متوازيين"}
+r.innerHTML="<span class='m'>"+line1.replace(/"/g,"")+"</span><br><span class='"+(par?"ok":"no")+"'>"+line2+"</span>";
+}
+document.getElementById("th").oninput=draw;document.getElementById("dd").oninput=draw;
+document.querySelectorAll("#tabs button").forEach(function(b){b.onclick=function(){kind=+b.dataset.k;
+document.querySelectorAll("#tabs button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});draw()}});
+document.getElementById("par").onclick=function(){document.getElementById("dd").value=0;draw()};
+draw();
+})();
+
+(function(){
+var NS="http://www.w3.org/2000/svg",svg=document.getElementById("tri"),sel="none",dir=0,NM=["A","B","C"];
+var rad=function(a){return a*Math.PI/180},norm=function(a){return (a%360+360)%360};
+function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e}
+function pt(c,r,a){return [c[0]+r*Math.cos(rad(a)),c[1]-r*Math.sin(rad(a))]}
+function ang(p,q){return Math.atan2(p[1]-q[1],q[0]-p[0])*180/Math.PI}
+var ST="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round";
+function wedge(c,a1,a2,col,txt){var r=30,p1=pt(c,r,a1),p2=pt(c,r,a2),m=pt(c,r+22,(a1+a2)/2);
+el("path",{d:"M"+c[0]+","+c[1]+" L"+p1[0]+","+p1[1]+" A"+r+","+r+" 0 0 0 "+p2[0]+","+p2[1]+" Z",fill:col,"fill-opacity":.35,stroke:col,"stroke-width":2});
+el("text",{x:m[0],y:m[1]+5,"text-anchor":"middle","font-size":15,"font-weight":800,fill:col,style:ST},txt+"°")}
+function between(c,u,v,col,txt){var d=norm(v-u);if(d<=180)wedge(c,u,u+d,col,txt);else wedge(c,v,v+360-d,col,txt)}
+function oth(i,d){return (i+1+d)%3}
+var COL=["#d98e00","#b5179e"];
+function draw(){
+var Bd=+document.getElementById("tb").value,Cd=+document.getElementById("tc").value,Ad=180-Bd-Cd,I=[Ad,Bd,Cd];
+document.getElementById("tbv").textContent=Bd+"°";document.getElementById("tcv").textContent=Cd+"°";
+svg.innerHTML="";
+var L=300,AB=L*Math.sin(rad(Cd))/Math.sin(rad(Ad)),LEN=0.42*L;
+var V=[[AB*Math.cos(rad(Bd)),AB*Math.sin(rad(Bd))],[0,0],[L,0]];
+var E=[];for(var i=0;i<3;i++){E[i]=[];for(var d=0;d<2;d++){var j=oth(i,d),dx=V[i][0]-V[j][0],dy=V[i][1]-V[j][1],n=Math.sqrt(dx*dx+dy*dy);E[i][d]=[V[i][0]+LEN*dx/n,V[i][1]+LEN*dy/n]}}
+var all=V.slice();E.forEach(function(x){all=all.concat(x)});
+var xs=all.map(function(q){return q[0]}),ys=all.map(function(q){return q[1]});
+var minx=Math.min.apply(null,xs),maxx=Math.max.apply(null,xs),miny=Math.min.apply(null,ys),maxy=Math.max.apply(null,ys);
+var s=Math.min(540/(maxx-minx),250/(maxy-miny)),ox=(600-(maxx-minx)*s)/2,oy=(290-(maxy-miny)*s)/2;
+function f(q){return [ox+(q[0]-minx)*s,290-oy-(q[1]-miny)*s]}
+var S=V.map(f),SE=E.map(function(x){return x.map(f)});
+el("polygon",{points:S[0]+" "+S[1]+" "+S[2],fill:"none",stroke:"currentColor","stroke-width":3});
+var shown=[];if(sel==="all"){for(var a=0;a<3;a++)for(var b=0;b<2;b++)shown.push([a,b])}else if(sel!=="none")shown.push([+sel,dir]);
+shown.forEach(function(z){var i=z[0],d=z[1];el("line",{x1:S[i][0],y1:S[i][1],x2:SE[i][d][0],y2:SE[i][d][1],stroke:"currentColor","stroke-width":2.5,"stroke-dasharray":"7 5"})});
+wedge(S[1],0,Bd,"#d62839",Bd);wedge(S[2],180-Cd,180,"#0a8f8f",Cd);wedge(S[0],Bd+180,360-Cd,"#6c5ce7",Ad);
+shown.forEach(function(z){var i=z[0],d=z[1],e=ang(S[i],SE[i][d]),k=ang(S[i],S[oth(i,1-d)]);between(S[i],e,k,sel==="all"?COL[d]:COL[0],180-I[i])});
+[[0,-6,-14],[1,-20,18],[2,-4,20]].forEach(function(z){el("text",{x:S[z[0]][0]+z[1],y:S[z[0]][1]+z[2],"font-size":18,"font-weight":700,fill:"currentColor",style:ST},NM[z[0]])});
+var m=function(t){return "<span class='m'>"+t+"</span>"};
+var r=m("∠A = "+Ad+"° ، ∠B = "+Bd+"° ، ∠C = "+Cd+"°")+"<br><span class='ok'>المجموع "+m(Ad+"+"+Bd+"+"+Cd+" = 180°")+"</span>";
+if(sel==="all"){for(var q=0;q<3;q++){var j=oth(q,0),k=oth(q,1);r+="<br>عند "+NM[q]+": زاويتان خارجيتان متساويتان، كل منهما "+m((180-I[q])+"° = "+I[j]+"° + "+I[k]+"°")}}
+else if(sel!=="none"){var i2=+sel,j2=oth(i2,dir),k2=oth(i2,1-dir);r+="<br>مددنا الضلع "+m(NM[j2]+NM[i2])+" من جهة "+NM[i2]+": الخارجية عند "+NM[i2]+" = "+m((180-I[i2])+"° = "+I[j2]+"° + "+I[k2]+"°")+" (مجموع البعيدتين "+NM[j2]+" و"+NM[k2]+")"}
+document.getElementById("tread").innerHTML=r}
+var tb=document.getElementById("tb"),tc=document.getElementById("tc"),sb=document.getElementById("side");
+tb.oninput=function(){if(+tb.value+ +tc.value>150)tc.value=150-tb.value;draw()};
+tc.oninput=function(){if(+tb.value+ +tc.value>150)tb.value=150-tc.value;draw()};
+document.querySelectorAll("#exts button").forEach(function(bt){bt.onclick=function(){sel=bt.dataset.e;dir=0;
+document.querySelectorAll("#exts button").forEach(function(x){x.setAttribute("aria-pressed",x===bt)});sb.disabled=(sel==="none"||sel==="all");draw()}});
+sb.onclick=function(){dir=1-dir;draw()};
+document.getElementById("eq").onclick=function(){tb.value=60;tc.value=60;draw()};
+draw();
+})();
+
+(function(){
+var NS="http://www.w3.org/2000/svg",svg=document.getElementById("cg"),cs="sas";
+var C0="#d62839",C1="#0a8f8f",C2="#d98e00";
+var rad=function(a){return a*Math.PI/180};
+function el(par,n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;par.appendChild(e);return e}
+function shape(){return cs==="rhs"?[[40,210],[200,210],[200,80]]:[[40,210],[200,210],[150,80]]}
+function tick(g,p,q,k,col){var m=[(p[0]+q[0])/2,(p[1]+q[1])/2],dx=q[0]-p[0],dy=q[1]-p[1],n=Math.sqrt(dx*dx+dy*dy),u=[dx/n,dy/n],v=[-u[1],u[0]];
+for(var i=0;i<k;i++){var o=(i-(k-1)/2)*7,c=[m[0]+u[0]*o,m[1]+u[1]*o];el(g,"line",{x1:c[0]-v[0]*7,y1:c[1]-v[1]*7,x2:c[0]+v[0]*7,y2:c[1]+v[1]*7,stroke:col,"stroke-width":3})}}
+function arc(g,v,p,q,k,col){var a1=Math.atan2(p[1]-v[1],p[0]-v[0]),a2=Math.atan2(q[1]-v[1],q[0]-v[0]),d=(a2-a1+3*Math.PI)%(2*Math.PI)-Math.PI,sw=d>0?1:0;
+for(var i=0;i<k;i++){var r=24+i*6;el(g,"path",{d:"M"+(v[0]+r*Math.cos(a1))+","+(v[1]+r*Math.sin(a1))+" A"+r+","+r+" 0 0 "+sw+" "+(v[0]+r*Math.cos(a2))+","+(v[1]+r*Math.sin(a2)),fill:"none",stroke:col,"stroke-width":2.5})}}
+function rt(g,v,p,q){var r=14,a=[p[0]-v[0],p[1]-v[1]],b=[q[0]-v[0],q[1]-v[1]],na=Math.hypot(a[0],a[1]),nb=Math.hypot(b[0],b[1]);a=[a[0]/na*r,a[1]/na*r];b=[b[0]/nb*r,b[1]/nb*r];
+el(g,"path",{d:"M"+(v[0]+a[0])+","+(v[1]+a[1])+" l"+b[0]+","+b[1]+" l"+(-a[0])+","+(-a[1]),fill:"none",stroke:"currentColor","stroke-width":2.5})}
+function marks(g,P){var A=P[0],B=P[1],C=P[2];
+if(cs==="sss"){tick(g,A,B,1,C0);tick(g,B,C,2,C1);tick(g,A,C,3,C2)}
+else if(cs==="sas"){tick(g,A,B,1,C0);tick(g,A,C,2,C1);arc(g,A,B,C,1,C2)}
+else if(cs==="asa"){arc(g,A,B,C,1,C0);arc(g,C,A,B,2,C1);tick(g,A,C,3,C2)}
+else if(cs==="aas"){arc(g,B,A,C,1,C0);arc(g,C,A,B,2,C1);tick(g,A,B,3,C2)}
+else if(cs==="rhs"){rt(g,B,A,C);tick(g,A,C,1,C0);tick(g,B,C,2,C1)}
+else{arc(g,A,B,C,1,C0);arc(g,B,A,C,2,C1);arc(g,C,A,B,3,C2)}}
+var NMS=["A","B","C"],NM2=["D","E","F"];
+function draw(){
+var t=+document.getElementById("ct").value/100,P=shape(),k=cs==="aaa"?1.3:1;
+document.getElementById("ctv").textContent=Math.round(t*100)+"%";
+svg.innerHTML="";
+var G=[(P[0][0]+P[1][0]+P[2][0])/3,(P[0][1]+P[1][1]+P[2][1])/3],rot=-35*(1-t),tx=340*(1-t);
+function T(p){var qx=(p[0]-G[0])*k,qy=(p[1]-G[1])*k,c=Math.cos(rad(rot)),s=Math.sin(rad(rot));return [G[0]+qx*c-qy*s+tx,G[1]+qx*s+qy*c]}
+var g1=el(svg,"g",{});
+el(g1,"polygon",{points:P.join(" "),fill:"none",stroke:"currentColor","stroke-width":3});marks(g1,P);
+var g2=el(svg,"g",{transform:"translate("+tx+",0) rotate("+rot+","+G[0]+","+G[1]+") translate("+G[0]+","+G[1]+") scale("+k+") translate("+(-G[0])+","+(-G[1])+")"});
+el(g2,"polygon",{points:P.join(" "),fill:"#0a8f8f","fill-opacity":.18,stroke:"#0a8f8f","stroke-width":3});marks(g2,P);
+var ST="direction:ltr;paint-order:stroke;stroke:var(--card);stroke-width:4px";
+function lab(pts,names,ctr){pts.forEach(function(q,i){var dx=q[0]-ctr[0],dy=q[1]-ctr[1],n=Math.hypot(dx,dy);el(svg,"text",{x:q[0]+dx/n*16-5,y:q[1]+dy/n*16+6,"font-size":18,"font-weight":700,fill:"currentColor",style:ST},names[i])})}
+lab(P,NMS,G);var Q=P.map(T);lab(Q,NM2,T(G));
+var tx2={sss:"SSS (ثلاثة أضلاع): AB ≅ DE ، BC ≅ EF ، AC ≅ DF ⇐ Δ ABC ≅ Δ DEF",sas:"SAS (ضلعان وزاوية محصورة): AB ≅ DE ، AC ≅ DF ، ∠A ≅ ∠D ⇐ Δ ABC ≅ Δ DEF",asa:"ASA (زاويتان والضلع بين رأسيهما): ∠A ≅ ∠D ، ∠C ≅ ∠F ، AC ≅ DF ⇐ Δ ABC ≅ Δ DEF",aas:"AAS (زاويتان وضلع غير واصل بين رأسيهما): ∠B ≅ ∠E ، ∠C ≅ ∠F ، AB ≅ DE ⇐ Δ ABC ≅ Δ DEF",rhs:"RHS (وتر وضلع قائمة): m(∠B) = m(∠E) = 90° ، AC ≅ DF (الوتر) ، BC ≅ EF ⇐ Δ ABC ≅ Δ DEF",aaa:"AAA: ∠A ≅ ∠D ، ∠B ≅ ∠E ، ∠C ≅ ∠F لكن المثلث الثاني أكبر ⇐ لا يتطابقان"}[cs];
+var r="<span class='m'>"+tx2+"</span><br>";
+if(cs==="aaa")r+=t>=1?"<span class='no'>لا ينطبقان: الزوايا المتساوية وحدها لا تكفي (AAA).</span>":"حرّك المنزلق لتحاول وضع الثاني فوق الأول.";
+else r+=t>=1?"<span class='ok'>انطبق المثلثان تمامًا، فتتساوى باقي العناصر المتناظرة.</span>":"حرّك المنزلق لتنقل المثلث الثاني فوق الأول.";
+document.getElementById("cread").innerHTML=r}
+document.querySelectorAll("#cases button").forEach(function(bt){bt.onclick=function(){cs=bt.dataset.c;document.querySelectorAll("#cases button").forEach(function(x){x.setAttribute("aria-pressed",x===bt)});draw()}});
+document.getElementById("ct").oninput=draw;
+document.getElementById("cgo").onclick=function(){var inp=document.getElementById("ct"),a=+inp.value,t0=null;function st(ts){if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/700);inp.value=a+(100-a)*p;draw();if(p<1)requestAnimationFrame(st)}requestAnimationFrame(st)};
+draw();
+})();
+
+})();
+</script>
+<script>
+
+"use strict";
+/* ---------- helpers ---------- */
+const CASES={SSS:'SSS · ثلاثة أضلاع',SAS:'SAS · ضلعان وزاوية محصورة',ASA:'ASA · زاويتان والضلع بينهما',AAS:'AAS · زاويتان وضلع غير واصل',RHS:'RHS · وتر وضلع قائمة'};
+const POOL=['معطى','ضلع مشترك','بالتقابل بالرأس','زاويتان متبادلتان بين مستقيمين متوازيين','زاويتان متناظرتان بين مستقيمين متوازيين','مجموع زوايا المثلث = 180°','من تطابق المثلثين'];
+const LET=['أ','ب','جـ','د'];
+const AR=/[\u0600-\u06FF]/;
+const M=s=>String(s).replace(/\{\{(.+?)\}\}/g,(_,t)=>{const i=t.search(AR);const lat=i<0?t:t.slice(0,i).trimEnd();const tail=i<0?'':' '+t.slice(i);return '<bdi class="m" dir="ltr">'+lat+'</bdi>'+tail});
+const LRI=t=>{const i=t.search(AR);return i<0?t:'\u2066'+t.slice(0,i).trimEnd()+'\u2069 '+t.slice(i)};
+const U=(a,b)=>{const d=Math.hypot(b[0]-a[0],b[1]-a[1])||1;return[(b[0]-a[0])/d,(b[1]-a[1])/d]};
+const f1=n=>(Math.round(n*10)/10);
+
+/* ---------- figure renderer ---------- */
+function fig(f,hl){
+  hl=hl||[]; const H=new Set(hl); const P=f.P; const keys=Object.keys(P);
+  const on=(a,b)=>H.has(a+b)||H.has(b+a);
+  const hide=new Set(f.hide||[]);
+  const cg=[keys.reduce((s,k)=>s+P[k][0],0)/keys.length,keys.reduce((s,k)=>s+P[k][1],0)/keys.length];
+  const polys=(f.F||[]).map(([ids,id])=>({ids:ids.split(''),id}));
+  const cen=ids=>[ids.reduce((s,k)=>s+P[k][0],0)/ids.length,ids.reduce((s,k)=>s+P[k][1],0)/ids.length];
+  const centerFor=(a,b)=>{const p=polys.find(p=>p.ids.includes(a)&&p.ids.includes(b));return p?cen(p.ids):cg};
+  const xs=keys.map(k=>P[k][0]),ys=keys.map(k=>P[k][1]);
+  (f.T||[]).forEach(t=>{xs.push(t[0]);ys.push(t[1])});
+  const x0=Math.min(...xs)-30,x1=Math.max(...xs)+30,y0=Math.min(...ys)-26,y1=Math.max(...ys)+28;
+  let o='';
+  polys.forEach(p=>{o+='<polygon class="tri'+(H.has(p.id)?' on':'')+'" points="'+p.ids.map(k=>P[k].join(',')).join(' ')+'"/>'});
+  const segs=f.S||[];
+  segs.forEach(([a,b,op])=>{op=op||{};const A=P[a],B=P[b];const h=on(a,b);
+    if(!op.nodraw||h)o+='<line class="seg'+(op.axis?' dash':'')+(h?' hl':'')+'" x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'"/>';
+    const mid=[(A[0]+B[0])/2,(A[1]+B[1])/2],d=U(A,B),n=[-d[1],d[0]];
+    const mk=h?' hl':'';
+    if(op.t){for(let k=0;k<op.t;k++){const off=(k-(op.t-1)/2)*5;const c=[mid[0]+d[0]*off,mid[1]+d[1]*off];
+      o+='<line class="mk'+mk+'" x1="'+f1(c[0]-n[0]*5)+'" y1="'+f1(c[1]-n[1]*5)+'" x2="'+f1(c[0]+n[0]*5)+'" y2="'+f1(c[1]+n[1]*5)+'"/>'}}
+    if(op.arr){for(let k=0;k<op.arr;k++){const off=(k-(op.arr-1)/2)*7;const tip=[mid[0]+d[0]*(off+4),mid[1]+d[1]*(off+4)];
+      const w1=[tip[0]-d[0]*6+n[0]*4.5,tip[1]-d[1]*6+n[1]*4.5],w2=[tip[0]-d[0]*6-n[0]*4.5,tip[1]-d[1]*6-n[1]*4.5];
+      o+='<polyline class="mk'+mk+'" points="'+f1(w1[0])+','+f1(w1[1])+' '+f1(tip[0])+','+f1(tip[1])+' '+f1(w2[0])+','+f1(w2[1])+'"/>'}}
+    if(op.l){let sg=op.ls;if(!sg){const c=centerFor(a,b);sg=(n[0]*(mid[0]-c[0])+n[1]*(mid[1]-c[1]))>=0?1:-1}
+      const off=op.off||15;o+='<text class="lb'+(h?' hl-t':'')+'" x="'+f1(mid[0]+n[0]*sg*off)+'" y="'+f1(mid[1]+n[1]*sg*off)+'">'+LRI(op.l)+'</text>'}
+  });
+  (f.A||[]).forEach(an=>{const v=P[an.v],a=P[an.a],b=P[an.b];const va=U(v,a),vb=U(v,b);const h=H.has(an.id);const mk=h?' hl':'';
+    if(an.type==='r'){const s=10;const p1=[v[0]+va[0]*s,v[1]+va[1]*s],p2=[p1[0]+vb[0]*s,p1[1]+vb[1]*s],p3=[v[0]+vb[0]*s,v[1]+vb[1]*s];
+      o+='<polyline class="mk'+mk+'" points="'+[p1,p2,p3].map(p=>f1(p[0])+','+f1(p[1])).join(' ')+'"/>';return}
+    const n=an.n||1,r0=an.r||20,cr=va[0]*vb[1]-va[1]*vb[0],sw=cr>0?1:0;
+    for(let k=0;k<n;k++){const r=r0+k*4.5;
+      o+='<path class="mk'+mk+'" d="M'+f1(v[0]+va[0]*r)+' '+f1(v[1]+va[1]*r)+' A'+r+' '+r+' 0 0 '+sw+' '+f1(v[0]+vb[0]*r)+' '+f1(v[1]+vb[1]*r)+'"/>'}
+    if(an.l){let bs=[va[0]+vb[0],va[1]+vb[1]];const bl=Math.hypot(bs[0],bs[1])||1;bs=[bs[0]/bl,bs[1]/bl];const r=r0+n*4.5+11+(an.lo||0);
+      o+='<text class="al'+(h?' hl-t':'')+'" x="'+f1(v[0]+bs[0]*r)+'" y="'+f1(v[1]+bs[1]*r)+'">'+an.l+'</text>'}
+  });
+  if(!f.nolabels){keys.forEach(k=>{if(hide.has(k))return;const p=P[k];let dx,dy;
+    if(p.length>2){dx=p[2];dy=p[3]}else{const u=U(cg,p);dx=u[0]*13;dy=u[1]*13}
+    o+='<text class="pt" x="'+f1(p[0]+dx)+'" y="'+f1(p[1]+dy)+'">'+k+'</text>'})}
+  (f.T||[]).forEach(t=>{o+='<text class="'+(t[3]||'lb')+'" x="'+t[0]+'" y="'+t[1]+'">'+t[2]+'</text>'});
+  return '<svg class="fig" viewBox="'+f1(x0)+' '+f1(y0)+' '+f1(x1-x0)+' '+f1(y1-y0)+'" role="img" aria-label="شكل التمرين">'+o+'</svg>';
+}
+
+/* ---------- figures (coordinates are schematic) ---------- */
+const F={};
+F[1]={P:{A:[10,110],B:[130,110],C:[60,35],D:[180,110],E:[300,110],F:[230,35]},
+ S:[['A','B',{l:'4 سم'}],['B','C',{l:'3 سم'}],['C','A'],['D','E',{l:'4 سم'}],['E','F',{l:'3 سم'}],['F','D']],
+ A:[{v:'B',a:'A',b:'C',l:'40°',id:'aB',r:20},{v:'E',a:'D',b:'F',l:'40°',id:'aE',r:20}],F:[['ABC','tABC'],['DEF','tDEF']]};
+F[2]={P:{D:[30,20],C:[190,25],B:[200,130],A:[40,130]},
+ S:[['D','C',{l:'5 سم'}],['C','B',{l:'4 سم'}],['B','A',{l:'5 سم'}],['A','D',{l:'4 سم'}],['A','C']],F:[['ABC','tABC'],['CDA','tCDA']]};
+F[3]={P:{C:[110,15],D:[25,90],B:[195,90],A:[110,165]},
+ S:[['D','C',{l:'6 سم',t:1}],['C','B'],['B','A'],['A','D',{l:'6 سم',t:1}],['D','B']],
+ A:[{v:'C',a:'D',b:'B',type:'r',id:'rC'},{v:'A',a:'D',b:'B',type:'r',id:'rA'}],F:[['DCB','tDCB'],['DAB','tDAB']]};
+F[4]={P:{A:[100,10],C:[100,95],D:[20,130],B:[180,130]},
+ S:[['A','D'],['A','B'],['A','C'],['C','D'],['C','B']],
+ A:[{v:'A',a:'D',b:'C',n:2,id:'a1',r:22},{v:'A',a:'C',b:'B',n:2,id:'a2',r:22},{v:'D',a:'A',b:'C',n:1,id:'a3',r:20},{v:'B',a:'A',b:'C',n:1,id:'a4',r:20}],
+ F:[['ACD','tACD'],['ACB','tACB']]};
+F[5]={P:{A:[195,150],B:[254,150],C:[254,12],D:[150,72],E:[105,150],F:[46,150],G:[46,12],ya:[150,-4],yb:[150,172],xa:[20,164],xb:[290,164]},hide:['ya','yb','xa','xb'],
+ S:[['D','C'],['C','B'],['B','A'],['A','D'],['D','G'],['G','F'],['F','E'],['E','D'],['ya','yb',{axis:1}],['xa','xb',{axis:1}]],
+ A:[{v:'G',a:'D',b:'F',l:'60°',id:'aG',r:18},{v:'C',a:'D',b:'B',n:1,id:'aC',r:18},{v:'A',a:'B',b:'D',l:'120°',id:'aA',r:20},{v:'D',a:'A',b:'C',l:'k°',id:'aD',r:16},
+    {v:'B',a:'C',b:'A',type:'r',id:'rB'},{v:'F',a:'G',b:'E',type:'r',id:'rF'}],
+ T:[[160,6,'y','pt'],[298,168,'x','pt']]};
+/* (أ) sits on the right, as in the book */
+F[6]={P:{u1:[360,10],u2:[445,10],u3:[385,100],v1:[250,100],v2:[335,100],v3:[270,10],w1:[130,100],w2:[215,100],w3:[170,15],z1:[10,100],z2:[95,100],z3:[85,10]},nolabels:true,
+ S:[['u1','u3',{t:1}],['u2','u3',{t:2}],['u1','u2'],['v1','v3',{t:1}],['v2','v3',{t:2}],['v1','v2'],['w1','w3'],['w2','w3',{t:1}],['w1','w2',{t:2}],['z1','z3',{t:2}],['z2','z3',{t:1}],['z1','z2']],
+ A:[{v:'u3',a:'u1',b:'u2',n:1,id:'x1',r:16},{v:'v3',a:'v1',b:'v2',n:1,id:'x2',r:16},{v:'w1',a:'w2',b:'w3',n:1,id:'x3',r:16},{v:'z3',a:'z1',b:'z2',n:1,id:'x4',r:16}],
+ T:[[400,124,'(أ)','al'],[292,124,'(ب)','al'],[172,124,'(جـ)','al'],[52,124,'(د)','al']]};
+F[7]={P:{X:[20,130],Z:[130,130],W:[290,100],Y:[120,25]},
+ S:[['X','Y',{l:'(4x+6) سم'}],['Y','W',{l:'(5x−1) سم'}],['X','Z',{l:'(5x−5) سم',t:1}],['Z','W',{l:'(3x+9) سم',t:1}],['Y','Z']],
+ A:[{v:'Z',a:'X',b:'Y',n:1,id:'a1',r:18},{v:'Z',a:'Y',b:'W',n:1,id:'a2',r:18}],F:[['XYZ','tXYZ'],['WYZ','tWYZ']]};
+F[8]={P:{A:[60,15],B:[10,125],C:[110,125],D:[225,15],E:[175,125],F:[275,125]},
+ S:[['A','B',{l:'12 سم',t:1}],['A','C',{l:'10 سم',t:2}],['B','C',{l:'(5x−2) سم'}],['D','E',{l:'12 سم',t:1}],['D','F',{l:'5x سم',t:2}],['E','F']],
+ A:[{v:'A',a:'B',b:'C',n:1,id:'aA',r:20},{v:'D',a:'E',b:'F',n:1,id:'aD',r:20}],F:[['ABC','tABC'],['DEF','tDEF']]};
+F[9]={P:{B:[10,110],A:[70,60],C:[150,110],D:[277,51],E:[244,122]},
+ S:[['B','A',{t:2}],['A','C'],['B','C',{l:'5x سم'}],['C','D',{l:'25 سم'}],['D','E',{t:2}],['E','C']],
+ A:[{v:'B',a:'A',b:'C',n:1,id:'aB',r:20},{v:'D',a:'C',b:'E',n:1,id:'aD',r:20},{v:'C',a:'A',b:'B',n:2,id:'aC1',r:18},{v:'C',a:'D',b:'E',n:2,id:'aC2',r:18}],
+ F:[['ABC','tABC'],['EDC','tEDC']]};
+F[10]={P:{D:[20,10],A:[20,130],B:[107,43],C:[140,130]},
+ S:[['D','A',{t:1}],['A','C',{t:1}],['D','B',{t:2}],['B','C',{t:2}],['A','B']],
+ A:[{v:'B',a:'D',b:'A',l:'66°',id:'aB',r:18},{v:'C',a:'A',b:'B',l:'x°',id:'aC',r:22},{v:'D',a:'A',b:'B',n:1,id:'aD',r:22},{v:'A',a:'D',b:'C',type:'r',id:'rA'}],
+ F:[['ADB','tADB'],['ACB','tACB']]};
+F[11]={P:{P:[10,10],Q:[100,10],R:[100,150],S:[100,70],T:[225,70]},
+ S:[['P','Q',{l:'(x−4) سم'}],['P','R',{l:'10 سم'}],['Q','R'],['S','R',{nodraw:1,l:'(y+5) سم',ls:-1}],['R','T',{l:'10 سم'}],['S','T']],
+ A:[{v:'Q',a:'P',b:'R',type:'r',id:'rQ'},{v:'S',a:'R',b:'T',type:'r',id:'rS'},{v:'R',a:'P',b:'T',type:'r',id:'rR'}],
+ F:[['PQR','tPQR'],['RST','tRST']]};
+F[12]={P:{A:[20,110],B:[130,110],C:[130,30],D:[20,70],E:[190,110],F:[300,110],G:[300,30],H:[190,70]},
+ S:[['A','B',{l:'13 سم'}],['B','C',{l:'(x−1) سم'}],['C','D'],['D','A'],['E','F',{l:'(y+1) سم'}],['F','G',{l:'8 سم'}],['G','H'],['H','E']],
+ A:[{v:'A',a:'D',b:'B',type:'r',id:'r1'},{v:'B',a:'A',b:'C',type:'r',id:'r2'},{v:'E',a:'H',b:'F',type:'r',id:'r3'},{v:'F',a:'E',b:'G',type:'r',id:'r4'}],
+ F:[['ABCD','tABCD'],['EFGH','tEFGH']]};
+F[13]={P:{A:[30,15],B:[30,95],D:[150,92],C:[150,172]},
+ S:[['A','D',{t:1,arr:1}],['B','C',{t:1,arr:1}],['A','B'],['D','C'],['B','D']],
+ A:[{v:'D',a:'A',b:'B',n:2,id:'aD',r:18},{v:'B',a:'C',b:'D',n:2,id:'aB',r:18}],F:[['ABD','tABD'],['CDB','tCDB']]};
+F[14]={P:{A:[80,90],B:[70,210],C:[203,193],D:[172,167],E:[235,49]},
+ S:[['A','B',{l:'3 سم'}],['B','C'],['A','C'],['A','E',{l:'4 سم'}],['E','D'],['A','D',{nodraw:1,l:'3 سم',ls:1}],['D','C',{nodraw:1,l:'1 سم',ls:-1}]],
+ A:[{v:'A',a:'B',b:'C',n:1,id:'a1',r:26},{v:'A',a:'C',b:'E',n:1,id:'a2',r:26}],F:[['ABC','tABC'],['ADE','tADE']]};
+F[15]={P:{B:[10,140],E:[80,140],C:[198,140],F:[270,140],A:[127,15],D:[200,5]},
+ S:[['B','F'],['B','A',{arr:1}],['E','D',{arr:1}],['C','A',{arr:2}],['F','D',{arr:2}],['B','E',{nodraw:1,t:1}],['C','F',{nodraw:1,t:1}]],
+ A:[{v:'B',a:'A',b:'F',n:1,id:'aB',r:22},{v:'E',a:'D',b:'F',n:1,id:'aE',r:22},{v:'C',a:'A',b:'B',n:2,id:'aC',r:20},{v:'F',a:'D',b:'E',n:2,id:'aF',r:20}],
+ F:[['ABC','tABC'],['DEF','tDEF']]};
+F[16]={P:{A:[45,10],D:[250,10],B:[0,135],C:[205,135],F:[86,92],E:[164,53]},
+ S:[['A','B',{t:2}],['C','D',{t:2}],['A','F',{t:1}],['C','E',{t:1}],['A','D'],['B','C'],['B','D'],['B','F',{nodraw:1}],['D','E',{nodraw:1}],['B','E',{nodraw:1}],['D','F',{nodraw:1}]],
+ A:[{v:'F',a:'A',b:'D',type:'r',id:'rF'},{v:'E',a:'C',b:'D',type:'r',id:'rE'},{v:'B',a:'A',b:'D',n:1,id:'aB',r:24},{v:'D',a:'C',b:'B',n:1,id:'aD',r:24}],
+ F:[['ABF','tABF'],['CDE','tCDE']]};
+F[17]={P:{C:[0,160],B:[80,160],D:[230,160],A:[80,10],E:[80,80],F:[51,65]},
+ S:[['A','B'],['A','C'],['C','B',{l:'8 سم',ls:1}],['B','D'],['D','F'],['A','E',{nodraw:1,l:'7 سم',ls:-1}],['E','B',{nodraw:1,l:'8 سم',ls:-1}]],
+ A:[{v:'B',a:'A',b:'D',type:'r',id:'rB'},{v:'F',a:'A',b:'E',type:'r',id:'rF'},{v:'E',a:'B',b:'D',n:1,id:'aE1',r:16},{v:'E',a:'A',b:'F',n:1,id:'aE2',r:16}],
+ F:[['ABC','tABC'],['DBE','tDBE']]};
+F[18]={P:{A:[88,8],B:[43,178],C:[133,178],E:[66,91],D:[118,121]},
+ S:[['A','B'],['B','C',{t:2}],['C','A'],['B','D'],['E','D'],['B','E',{nodraw:1,t:2}]],
+ A:[{v:'A',a:'B',b:'C',l:'30°',id:'aA',r:24},{v:'E',a:'B',b:'D',l:'78°',id:'aE',r:14,lo:-2},{v:'B',a:'A',b:'D',l:'x°',id:'aB1',r:24,n:1},{v:'B',a:'D',b:'C',l:'x°',id:'aB2',r:32,n:1}],
+ F:[['BCD','tBCD'],['BED','tBED']]};
+F[19]={P:{A:[10,150],B:[130,150],C:[130,30],D:[10,30],E:[220,150],F:[10,120]},
+ S:[['A','B'],['B','E'],['B','C',{l:'12 سم'}],['C','D'],['D','A'],['C','E'],['C','F'],['A','F',{nodraw:1,l:'3 سم',ls:1}],['D','F',{nodraw:1}]],
+ A:[{v:'C',a:'F',b:'E',type:'r',id:'rC'},{v:'B',a:'C',b:'E',type:'r',id:'rB'},{v:'D',a:'C',b:'F',type:'r',id:'rD'},{v:'C',a:'D',b:'F',n:1,id:'aDCF',r:20},{v:'C',a:'B',b:'E',n:1,id:'aBCE',r:20}],
+ F:[['CBE','tCBE'],['CDF','tCDF']]};
+F[20]={P:{A:[20,15],E:[70,15],D:[220,15],B:[20,165],F:[70,165],C:[220,165],K:[70,65],G:[70,115],L:[220,65],H:[220,115]},
+ S:[['A','E',{l:'50 م',off:26}],['E','D'],['D','L'],['L','H'],['H','C'],['C','F'],['F','B'],['B','A'],['E','K'],['K','G'],['G','F'],['K','L'],['G','H']],
+ F:[['AEFB','t0'],['EKLD','t1'],['KGHL','t2'],['GFCH','t3']]};
+F[21]={P:{A:[220,15],B:[220,95],C:[130,95],D:[40,95],E:[40,175]},
+ S:[['A','B',{l:'؟'}],['B','C',{l:'500 م',t:1}],['C','D',{l:'500 م',t:1}],['D','E',{l:'600 م'}],['A','C'],['C','E']],
+ A:[{v:'B',a:'A',b:'C',type:'r',id:'rB'},{v:'D',a:'E',b:'C',type:'r',id:'rD'},{v:'C',a:'A',b:'B',n:1,id:'aC1',r:16},{v:'C',a:'E',b:'D',n:1,id:'aC2',r:16}],
+ F:[['ABC','tABC'],['EDC','tEDC']]};
+F[22]={P:{A:[100,10],B:[10,170],C:[190,170],D:[100,170],F:[82,42],E:[118,42]},
+ S:[['A','F'],['F','B',{t:1}],['A','E'],['E','C',{t:1}],['B','D',{t:2}],['D','C',{t:3}],['F','D',{t:3}],['E','D',{t:2}]],
+ A:[{v:'A',a:'F',b:'E',l:'80°',id:'aA',r:14,lo:3},{v:'D',a:'F',b:'E',l:'x°',id:'aD',r:26}],
+ F:[['BFD','tBFD'],['ECD','tECD']]};
+
+/* ---------- question builders ---------- */
+const mcq=(q,opts,ans,o)=>Object.assign({k:'mcq',q,opts,ans},o||{});
+const num=(q,ans,o)=>Object.assign({k:'num',q,ans},o||{});
+const caseQ=(key,hint)=>mcq('ما الحالة المستخدمة في إثبات تطابق المثلثين؟',Object.values(CASES),Object.keys(CASES).indexOf(key),{hint});
+const proof=(steps,q)=>({k:'proof',q,steps});
+const st=(s,r,hl,c)=>({s,r,hl:hl||[],c:!!c});
+
+const Q=[];
+const add=(n,sec,title,prompt,parts,sol,note)=>Q.push({n,sec,title,prompt,parts,sol:sol||[],note});
+const S1='أولًا · قياس المفاهيم',S2='ثانيًا · تطبيق المفاهيم',S3='ثالثًا · التحليل وتكامل المواد',S4='تفكير إبداعي';
+
+add(1,S1,'ما الحالة المستخدمة؟','في المثلثين {{ABC}} و{{DEF}} المرسومين: ما الحالة المستخدمة في إثبات تطابقهما؟',
+ [caseQ('SAS','انظر إلى الزاوية 40°: بين أي ضلعين تقع؟')],
+ [{t:'الضلعان {{AB = DE = 4 سم}}',hl:['AB','DE']},{t:'الضلعان {{BC = EF = 3 سم}}',hl:['BC','EF']},{t:'الزاوية {{∠B = ∠E = 40°}} وهي محصورة بين هذين الضلعين',hl:['aB','aE']},{t:'ضلعان والزاوية المحصورة بينهما ⇐ حالة <b>SAS</b>',hl:['tABC','tDEF']}]);
+
+add(2,S1,'ما الحالة المستخدمة؟','في الشكل {{ABCD}}: ما الحالة التي تثبت تطابق المثلثين {{ABC}} و{{CDA}}؟',
+ [caseQ('SSS','عدّ الأضلاع المتساوية. هل توجد زوايا معطاة؟')],
+ [{t:'{{AB = CD = 5 سم}}',hl:['AB','CD']},{t:'{{BC = DA = 4 سم}}',hl:['BC','DA']},{t:'{{AC}} ضلع مشترك بين المثلثين',hl:['AC']},{t:'ثلاثة أضلاع متناظرة متساوية ⇐ حالة <b>SSS</b>',hl:['tABC','tCDA']}]);
+
+add(3,S1,'ما الحالة المستخدمة؟','في الشكل: ما الحالة التي تثبت تطابق المثلثين {{DCB}} و{{DAB}}؟',
+ [caseQ('RHS','ابحث عن زاويتين قائمتين وعن الوتر.')],
+ [{t:'{{∠C = ∠A = 90°}} فالمثلثان قائما الزاوية',hl:['rC','rA']},{t:'{{DB}} هو الوتر في المثلثين وهو ضلع مشترك',hl:['DB']},{t:'{{DC = DA = 6 سم}} ضلع قائمة في كل مثلث',hl:['DC','DA']},{t:'وتر وضلع قائمة ⇐ حالة <b>RHS</b>',hl:['tDCB','tDAB']}]);
+
+add(4,S1,'ما الحالة المستخدمة؟','في الشكل: ما الحالة التي تثبت تطابق المثلثين {{ACD}} و{{ACB}}؟',
+ [caseQ('AAS','الضلع المشترك {{AC}}: هل هو بين رأسي الزاويتين المتساويتين؟')],
+ [{t:'{{∠DAC = ∠BAC}} (العلامة المزدوجة)',hl:['a1','a2']},{t:'{{∠D = ∠B}} (العلامة المفردة)',hl:['a3','a4']},{t:'{{AC}} ضلع مشترك، وهو ليس واصلًا بين رأسي الزاويتين المتساويتين في كل مثلث',hl:['AC']},{t:'زاويتان وضلع غير واصل ⇐ حالة <b>AAS</b>',hl:['tACD','tACB']}]);
+
+add(5,S1,'قيمة k بالانعكاس','المضلع {{EFGD}} صورة المضلع {{ABCD}} بالانعكاس في محور {{y}}. ما قيمة {{k}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['90','60','120','70'],0,{letters:1,hint:'الانعكاس يحافظ على قياسات الزوايا. أوجد زوايا {{ABCD}} ثم استخدم مجموع زوايا الشكل الرباعي.'})],
+ [{t:'الانعكاس يحافظ على القياسات، فـ {{∠C = ∠G = 60°}}',hl:['aC','aG']},{t:'في {{ABCD}}: {{∠B = 90°}} و{{∠A = 120°}}',hl:['rB','aA']},{t:'{{k = ∠ADC = 360° − (90° + 120° + 60°) = 90°}}',hl:['aD']}]);
+
+add(6,S1,'أي مثلث لا يطابق الباقي؟','أي من المثلثات التالية لا يطابق المثلثات الأخرى؟',
+ [mcq('اختر الإجابة الصحيحة:',['(أ)','(ب)','(جـ)','(د)'],2,{hint:'في أي مثلث لا تقع الزاوية المعلّمة بين الضلعين المعلّمين؟'})],
+ [{t:'في (أ) و(ب) و(د): ضلع بعلامة واحدة وضلع بعلامتين، والزاوية المعلّمة بينهما ⇒ كلها <b>SAS</b> ومتطابقة',hl:['x1','x2','x4']},{t:'في (جـ): الزاوية المعلّمة بين الضلع ذي العلامتين وضلع غير معلّم، وليست محصورة بين الضلعين المعلّمين',hl:['x3']},{t:'لا يمكن إثبات تطابق (جـ) مع الباقي، فهو الإجابة',hl:['x3']}]);
+
+add(7,S1,'اكتشف الخطأ','قام أحمد باستخدام تطابق المثلثين لإيجاد قيمة {{x}}. اكتشف الخطأ في حله ثم صوّبه.',
+ [mcq('ما الخطأ في حل أحمد؟',['ساوى بين {{XY}} و{{ZW}} وهما غير متناظرين','أخطأ في عملية الطرح فقط','المثلثان غير متطابقين أصلًا','استخدم حالة ASA خطأً'],0,{hint:'قارن موضع الضلعين {{XY}} و{{ZW}} في المثلثين {{XYZ}} و{{WYZ}}.'}),
+  num('قيمة x الصحيحة =',7,{hint:'الضلع المناظر لـ {{XY}} هو {{YW}}.'})],
+ [{t:'{{XZ = ZW}} و{{∠XZY = ∠WZY}} و{{YZ}} مشترك ⇒ {{ΔXYZ ≅ ΔWYZ}} بحالة <b>SAS</b>',hl:['XZ','ZW','a1','a2','YZ']},{t:'المناظر لـ {{XY}} هو {{WY}} وليس {{ZW}}، فتكون {{XY = YW}}',hl:['XY','YW']},{t:'{{4x + 6 = 5x − 1}} ⇒ {{x = 7}}',hl:['XY','YW']},{t:'تحقق: {{XZ = 5(7)−5 = 30 = 3(7)+9 = ZW}} ✓',hl:['XZ','ZW']}],
+ 'الحل الخاطئ لأحمد:');
+
+add(8,S2,'طول EF','في الشكل: ما طول {{EF}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['6 سم','8 سم','10 سم','12 سم'],1,{letters:1,hint:'المثلثان متطابقان بـ SAS. أوجد x من الضلعين المعلّمين بعلامتين.'})],
+ [{t:'{{AB = DE}} و{{∠A = ∠D}} و{{AC}} و{{DF}} بعلامتين ⇒ {{ΔABC ≅ ΔDEF}} (SAS)',hl:['AB','DE','aA','aD','tABC','tDEF']},{t:'{{AC = DF}} ⇒ {{10 = 5x}} ⇒ {{x = 2}}',hl:['AC','DF']},{t:'{{EF = BC = 5x − 2 = 5(2) − 2 = 8 سم}}',hl:['BC','EF']}]);
+
+add(9,S2,'قيمة x','في الشكل: ما قيمة {{x}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['5','10','20','25'],0,{letters:1,hint:'اربط المثلثين {{ABC}} و{{EDC}}، ثم ابحث عن الضلع المناظر لـ {{BC}}.'})],
+ [{t:'{{∠B = ∠D}} و{{∠ACB = ∠DCE}} و{{AB = ED}} ⇒ {{ΔABC ≅ ΔEDC}} (AAS)',hl:['aB','aD','aC1','aC2','AB','DE','tABC','tEDC']},{t:'الضلع {{BC}} يقابل الزاوية {{A}}، ويناظره في المثلث الآخر {{DC}}',hl:['BC','CD']},{t:'{{5x = 25}} ⇒ {{x = 5}}',hl:['BC','CD']}]);
+
+add(10,S2,'قيمة x','في الشكل: ما قيمة {{x}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['66','45','34','69'],3,{letters:1,hint:'أثبت تطابق {{ADB}} و{{ACB}}. زاوية {{DAC}} قائمة و{{AB}} ينصفها.'})],
+ [{t:'{{AD = AC}} و{{DB = CB}} و{{AB}} مشترك ⇒ {{ΔADB ≅ ΔACB}} (SSS)',hl:['DA','AC','DB','BC','AB','tADB','tACB']},{t:'{{∠DAB = ∠CAB = 90° ÷ 2 = 45°}}',hl:['rA']},{t:'في {{ΔADB}}: {{∠ADB = 180° − (45° + 66°) = 69°}}',hl:['aD','aB']},{t:'من التطابق {{x = ∠ACB = ∠ADB = 69}}',hl:['aC','aD']}],
+ 'سُمّيت بعض النقاط في الشكل للشرح.');
+
+add(11,S2,'قيمة x − y','في الشكل: ما قيمة {{x − y}}؟ (سمّينا النقاط {{P, Q, R, S, T}} للتوضيح)',
+ [mcq('اختر الإجابة الصحيحة:',['9','6','5','1'],0,{letters:1,hint:'أثبت تطابق المثلثين القائمين {{PQR}} و{{RST}} ثم قارن الضلعين المناظرين.'})],
+ [{t:'{{∠PRT = 90°}} ⇒ {{∠QRP + ∠SRT = 90°}}',hl:['rR']},{t:'في {{ΔPQR}}: {{∠QPR + ∠QRP = 90°}} ⇒ {{∠QPR = ∠SRT}}',hl:['rQ','tPQR']},{t:'{{∠Q = ∠S = 90°}} و{{∠QPR = ∠SRT}} و{{PR = RT = 10}} ⇒ {{ΔPQR ≅ ΔRST}} (AAS)',hl:['rQ','rS','PR','RT','tPQR','tRST']},{t:'{{PQ = RS}} ⇒ {{x − 4 = y + 5}} ⇒ {{x − y = 9}}',hl:['PQ','SR']}]);
+
+add(12,S2,'قيمة x + y','المضلع {{EFGH}} صورة {{ABCD}} بانتقال ما. ما قيمة {{x + y}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['9','12','21','22'],2,{letters:1,hint:'الانتقال يحافظ على أطوال الأضلاع. ما الضلع المناظر لكل ضلع معلوم؟'})],
+ [{t:'{{AB = EF}} ⇒ {{13 = y + 1}} ⇒ {{y = 12}}',hl:['AB','EF']},{t:'{{BC = FG}} ⇒ {{x − 1 = 8}} ⇒ {{x = 9}}',hl:['BC','FG']},{t:'{{x + y = 9 + 12 = 21}}',hl:['tABCD','tEFGH']}]);
+
+add(13,S2,'برهان: ABD ≅ CDB','{{AD ≅ CB}} و{{AD ∥ BC}}. برهن أن {{ΔABD ≅ ΔCDB}}.',
+ [proof([
+  st('{{AD ≅ CB}}','معطى',['AD','BC']),
+  st('{{∠ADB ≅ ∠CBD}}  ({{AD ∥ BC}} و{{BD}} قاطع)','زاويتان متبادلتان بين مستقيمين متوازيين',['aD','aB']),
+  st('{{BD ≅ BD}}','ضلع مشترك',['BD']),
+  st('{{ΔABD ≅ ΔCDB}}','SAS',['tABD','tCDB'],1)])]);
+
+add(14,S2,'برهان: ABC ≅ ADE','برهن أن {{ΔABC ≅ ΔADE}}.',
+ [proof([
+  st('{{AB = AD = 3 سم}}','معطى',['AB','AD']),
+  st('{{AC = AD + DC = 3 + 1 = 4 سم = AE}}','D تقع على AC وطولا AD وDC معطيان',['AC','AE']),
+  st('{{∠BAC ≅ ∠DAE}}  (علامتا الزاويتين)','معطى',['a1','a2']),
+  st('{{ΔABC ≅ ΔADE}}','SAS',['tABC','tADE'],1)])],[],
+ 'اعتمدنا أن النقطة D تقع على AC وأن الزاويتين المعلّمتين متساويتان كما في الشكل.');
+
+add(15,S2,'برهان: ABC ≅ DEF','{{BA ∥ ED}} ، {{CA ∥ FD}} ، {{BE ≅ FC}}. برهن أن {{ΔABC ≅ ΔDEF}}.',
+ [proof([
+  st('{{BC ≅ EF}}  (أضفنا {{EC}} إلى طرفي {{BE = CF}})','بإضافة EC إلى طرفي BE = CF',['BE','CF']),
+  st('{{∠B ≅ ∠DEF}}  ({{BA ∥ ED}} و{{BF}} قاطع)','زاويتان متناظرتان بين مستقيمين متوازيين',['aB','aE']),
+  st('{{∠ACB ≅ ∠DFE}}  ({{CA ∥ FD}} و{{BF}} قاطع)','زاويتان متناظرتان بين مستقيمين متوازيين',['aC','aF']),
+  st('{{ΔABC ≅ ΔDEF}}','ASA',['tABC','tDEF'],1)])]);
+
+add(16,S2,'برهان: AB ∥ CD و DF = BE','برهن أن: (1) {{AB ∥ CD}} (2) {{DF = BE}}',
+ [proof([
+  st('{{∠AFB = ∠CED = 90°}}  ({{AF ⊥ BD}} و{{CE ⊥ BD}})','معطى',['rF','rE']),
+  st('{{AB ≅ CD}} (وتران)','معطى',['AB','CD']),
+  st('{{AF ≅ CE}}','معطى',['AF','CE']),
+  st('{{ΔABF ≅ ΔCDE}}','RHS',['tABF','tCDE'],1),
+  st('{{∠ABD ≅ ∠CDB}}','من تطابق المثلثين',['aB','aD']),
+  st('{{AB ∥ CD}}  (متبادلتان متساويتان)','تساوي زاويتين متبادلتين يعني التوازي',['AB','CD']),
+  st('{{BF ≅ DE}}','من تطابق المثلثين',['BF','DE']),
+  st('{{BE = BF + FE = DE + FE = DF}}','بإضافة FE إلى طرفي BF = DE',['BE','DF'])],'اختر المبرر الصحيح لكل خطوة:')]);
+
+add(17,S2,'طول BD','في الشكل: أوجد طول {{BD}}.',
+ [num('طول BD =',15,{unit:'سم',hint:'أثبت تطابق {{ΔABC}} و{{ΔDBE}} باستخدام الزاويتين المتقابلتين بالرأس عند {{E}}.'})],
+ [{t:'{{∠BED = ∠AEF}} (بالتقابل بالرأس)',hl:['aE1','aE2']},{t:'{{∠A + ∠AEF = 90°}} في {{ΔAEF}} و{{∠D + ∠BED = 90°}} في {{ΔEBD}} ⇒ {{∠A = ∠D}}',hl:['rF','rB']},{t:'{{∠ABC = ∠DBE = 90°}} و{{∠A = ∠D}} و{{BC = BE = 8 سم}} ⇒ {{ΔABC ≅ ΔDBE}} (AAS)',hl:['rB','BC','BE','tABC','tDBE']},{t:'{{BD = AB = AE + EB = 7 + 8 = 15 سم}}',hl:['AB','BD']}],
+ 'قرأنا من الشكل: AE = 7 سم و EB = 8 سم و CB = 8 سم، والمستقيم DF عمودي على AC.');
+
+add(18,S2,'برهان وإيجاد x','(1) أثبت أن {{ΔBCD ≅ ΔBED}} (2) أوجد قيمة {{x}}.',
+ [proof([
+  st('{{BC ≅ BE}}','معطى',['BC','BE']),
+  st('{{∠EBD ≅ ∠CBD}}  (كل منهما {{x°}})','معطى',['aB1','aB2']),
+  st('{{BD ≅ BD}}','ضلع مشترك',['BD']),
+  st('{{ΔBCD ≅ ΔBED}}','SAS',['tBCD','tBED'],1)]),
+  num('قيمة x =',36,{unit:'درجة',hint:'من التطابق: {{∠C = ∠BED = 78°}}. ثم مجموع زوايا {{ΔABC}}.'})],
+ [{t:'من التطابق {{∠BCD = ∠BED = 78°}} أي {{∠C = 78°}}',hl:['aE']},{t:'في {{ΔABC}}: {{∠ABC = 180° − (30° + 78°) = 72°}}',hl:['aA']},{t:'{{∠ABC = 2x}} ⇒ {{2x = 72°}} ⇒ {{x = 36}}',hl:['aB1','aB2']}]);
+
+add(19,S2,'مربع ABCD','{{ABCD}} مربع طول ضلعه 12 سم، {{CF ⊥ CE}} ، {{AF = 3 سم}}. (1) أثبت أن {{ΔCBE ≅ ΔCDF}} (2) أوجد طول {{BE}}.',
+ [proof([
+  st('{{CB = CD}}','معطى',['BC','CD']),
+  st('{{∠CBE = ∠D = 90°}}','معطى',['rB','rD']),
+  st('{{∠BCE = ∠DCF}}  ({{∠FCE = ∠DCB = 90°}} وطرحنا {{∠FCB}})','كل منهما تتمم ∠FCB إلى 90°',['aBCE','aDCF']),
+  st('{{ΔCBE ≅ ΔCDF}}','ASA',['tCBE','tCDF'],1)]),
+  num('طول BE =',9,{unit:'سم',hint:'{{BE = DF}} من التطابق، و{{DF = AD − AF}}.'})],
+ [{t:'من التطابق {{BE = DF}}',hl:['BE','DF']},{t:'{{DF = AD − AF = 12 − 3 = 9 سم}}',hl:['DA']},{t:'{{BE = 9 سم}}',hl:['BE']}]);
+
+add(20,S3,'استزراع سمكي','قطعة أرض على شكل مستطيل {{ABCD}} قُسّمت إلى أحواض مستطيلة متطابقة (4 أحواض). فما محيط قطعة الأرض؟ ({{AE = 50 م}})',
+ [num('محيط قطعة الأرض =',700,{unit:'م',hint:'الأحواض متطابقة، فبُعدا الحوض الأيسر {{50}} و{{AB}} يساويان بُعدي الحوض الأيمن {{ED}} و{{AB ÷ 3}}.'})],
+ [{t:'الحوض الأيسر بُعداه {{50 م}} و{{AB}}، وكل حوض أيمن بُعداه {{ED}} و{{AB ÷ 3}}',hl:['AE','tL']},{t:'التطابق يعني {{AB ÷ 3 = 50}} ⇒ {{AB = 150 م}} و{{ED = AB = 150 م}}',hl:['t1','t2','t3']},{t:'{{AD = 50 + 150 = 200 م}}',hl:['AE','ED']},{t:'المحيط = {{2 × (200 + 150) = 700 م}}',hl:['t0','t1','t2','t3']}]);
+
+add(21,S3,'هندسة: عرض النهر','لإيجاد المسافة {{AB}} حُدّدت النقاط {{A, C, E}} على استقامة واحدة، و{{DC = CB = 500 م}} و{{DE = 600 م}}. ما المسافة من {{A}} إلى {{B}}؟',
+ [num('المسافة AB =',600,{unit:'م',hint:'أثبت تطابق {{ΔABC}} و{{ΔEDC}} بالتقابل بالرأس عند {{C}}.'})],
+ [{t:'{{∠ABC = ∠EDC = 90°}}',hl:['rB','rD']},{t:'{{BC = DC = 500 م}}',hl:['BC','CD']},{t:'{{∠ACB = ∠ECD}} (بالتقابل بالرأس)',hl:['aC1','aC2']},{t:'{{ΔABC ≅ ΔEDC}} (ASA) ⇒ {{AB = DE = 600 م}}',hl:['tABC','tEDC','AB','DE']}]);
+
+add(22,S4,'تفكير إبداعي','(1) أثبت أن {{ΔBFD ≅ ΔECD}} (2) أوجد قيمة {{x}}.',
+ [proof([
+  st('{{BF ≅ CE}}  (علامة واحدة)','معطى',['BF','CE']),
+  st('{{FD ≅ CD}}  (ثلاث علامات)','معطى',['FD','CD']),
+  st('{{BD ≅ ED}}  (علامتان)','معطى',['BD','DE']),
+  st('{{ΔBFD ≅ ΔECD}}','SSS',['tBFD','tECD'],1)]),
+  num('قيمة x =',20,{unit:'درجة',hint:'من التطابق {{∠FBD = ∠CED}} و{{∠BFD = ∠ECD}}. ثم مجموع زوايا الشكل الرباعي {{AFDE}}.'})],
+ [{t:'من التطابق {{∠B = ∠CED}} و{{∠C = ∠BFD}}، وفي {{ΔABC}}: {{∠B + ∠C = 180° − 80° = 100°}}',hl:['aA']},{t:'{{∠AFD = 180° − ∠C}} و{{∠AED = 180° − ∠B}}',hl:['tBFD','tECD']},{t:'في الرباعي {{AFDE}}: {{80° + (180° − C) + (180° − B) + x = 360°}}',hl:['aA','aD']},{t:'{{x = B + C − 80° = 100° − 80° = 20}}',hl:['aD']}],
+ 'علامات التساوي مقروءة من الشكل: BF = CE ، FD = CD ، BD = ED.');
+
+/* ===== كتاب التقييمات: الدرس 1 (التطابق) ===== */
+const RA=(a,b,c)=>({v:a,a:b,b:c,type:'r'});
+F[101]={P:{T0:[-14,0],T1:[194,0],B0:[0,82],B1:[60,82],B2:[120,82],B3:[180,82],A1:[30,0],A2:[90,0],A3:[150,0]},nolabels:true,
+ S:[['T0','T1',{axis:1}],['B0','B3'],['B0','A1'],['A1','B1'],['B1','A2'],['A2','B2'],['B2','A3'],['A3','B3']],
+ A:[{v:'B1',a:'A1',b:'A2',l:'x°',id:'ax',r:16},{v:'A3',a:'B2',b:'B3',l:'40°',id:'a40',r:16},{v:'B3',a:'A3',b:'B2',l:'70°',id:'a70',r:18,lo:-3}]};
+F[102]={P:{D:[0,0],C:[0,70],G:[70,35],A:[140,0],B:[140,70]},
+ S:[['D','G',{t:1}],['C','G',{t:1}],['A','G',{t:1}],['B','G',{t:1}],['D','C'],['A','B']],
+ A:[{v:'G',a:'D',b:'C',n:1,id:'a1',r:16},{v:'G',a:'A',b:'B',n:1,id:'a2',r:16}],F:[['DGC','tDGC'],['AGB','tAGB']]};
+F[103]={P:{D:[40,0],A:[160,0],C:[0,70],B:[120,70]},
+ S:[['D','A',{t:1}],['D','C',{t:1}],['C','B',{t:1}],['A','B',{t:1}],['D','B']],F:[['ABD','tABD'],['CDB','tCDB']]};
+F[104]={P:{A:[100,0],C:[20,60],D:[175,55],B:[100,150]},
+ S:[['A','C',{t:2,l:'7 سم'}],['A','D',{t:2}],['A','B'],['B','C'],['B','D',{l:'11 سم'}],['C','D',{nodraw:1}]],
+ A:[{v:'A',a:'C',b:'B',n:1,id:'a1',r:22},{v:'A',a:'B',b:'D',n:1,id:'a2',r:22}],F:[['ABC','tABC'],['ABD','tABD']]};
+F[105]={P:{B:[0,60],A:[76,0],D:[110,60],C:[76,120]},
+ S:[['A','B'],['B','C'],['C','D'],['A','D'],['B','D']],
+ A:[{v:'B',a:'A',b:'D',n:1,id:'a1',r:22},{v:'B',a:'D',b:'C',n:1,id:'a2',r:22},{v:'A',a:'B',b:'D',n:1,id:'aA',r:16},{v:'C',a:'B',b:'D',n:1,id:'aC',r:16}],
+ F:[['ABD','tABD'],['CBD','tCBD']]};
+F[106]={P:{N:[110,0],M:[0,50],L:[150,50],G:[110,100]},
+ S:[['M','N',{t:2,l:'Y سم'}],['M','G',{t:2,l:'8 سم'}],['N','L',{t:1}],['G','L',{t:1}],['M','L']],
+ A:[{v:'N',a:'M',b:'L',l:'100°',id:'aN',r:16},{v:'G',a:'M',b:'L',l:'X°',id:'aG',r:16}],F:[['MNL','tMNL'],['MGL','tMGL']]};
+F[107]={P:{D:[40,0],A:[170,0],C:[0,100],B:[40,100]},
+ S:[['D','A',{l:'6 سم'}],['A','B',{t:1}],['C','D',{t:1}],['C','B'],['D','B']],
+ A:[{v:'D',a:'A',b:'B',type:'r',id:'rD'},{v:'B',a:'C',b:'D',type:'r',id:'rB'}],F:[['ADB','tADB'],['CBD','tCBD']]};
+const polyfig=(c,top1,slant1,top2,slant2)=>{
+  if(c!=='C')return {P:{L:[0,0],O:[90,0],N:[90,60],M:[0,30],A:[150,0],D:[240,0],C:[240,60],B:[150,30]},
+   S:[['L','O',{l:top1}],['O','N'],['N','M',{l:slant1}],['M','L'],['A','D',{l:top2}],['D','C'],['C','B',{l:slant2}],['B','A']],
+   A:[RA('L','O','M'),RA('O','L','N'),RA('A','D','B'),RA('D','A','C')].map((a,i)=>Object.assign(a,{id:'r'+i})),F:[['LMNO','tL'],['ABCD','tA']]};
+  return {P:{L:[30,0],O:[90,0],N:[90,60],M:[0,60],A:[190,0],D:[250,0],C:[250,60],B:[160,60]},
+   S:[['L','O'],['O','N'],['N','M',{l:'8 سم'}],['M','L',{l:'2x سم'}],['A','D'],['D','C'],['C','B',{l:'(y+5) سم'}],['B','A',{l:'12 سم'}]],
+   A:[RA('O','L','N'),RA('N','O','M'),RA('D','A','C'),RA('C','D','B')].map((a,i)=>Object.assign(a,{id:'r'+i})),F:[['LMNO','tL'],['ABCD','tA']]};
+};
+F[108]=polyfig('A','2x سم','8 سم','6 سم','(y+1) سم');
+F[113]=polyfig('B','(x+3) سم','10 سم','6 سم','5y سم');
+F[118]=polyfig('C');
+const twoTri=(l)=>({P:{D:[132,0],E:[154,72],F:[0,72],A:[340,0],B:[362,72],C:[207,72]},
+ S:[['F','D',{t:2,l:l[0]}],['D','E',{t:1,l:l[1]}],['F','E',{l:l[2]}],['C','A',{t:2,l:l[3]}],['A','B',{t:1,l:l[4]}],['C','B',{l:l[5]}]],
+ A:[{v:'D',a:'F',b:'E',n:1,id:'aD',r:20},{v:'A',a:'C',b:'B',n:1,id:'aA',r:20}],F:[['DEF','tDEF'],['ABC','tABC']]});
+F[109]=twoTri(['12 سم','9 سم','(2x+1) سم','12 سم','3x سم','؟']);
+F[114]=twoTri(['9 سم','8 سم','(2x−2) سم','9 سم','2x سم','؟']);
+/* in 114 the left triangle is DEF with DE = 8 and the right is ABC with AB = 2x */
+F[114]={P:{A:[130,0],B:[145,72],C:[0,72],D:[320,0],E:[335,72],F:[190,72]},
+ S:[['C','A',{t:2,l:'9 سم'}],['A','B',{t:1,l:'2x سم'}],['C','B',{l:'؟'}],['F','D',{t:2,l:'9 سم'}],['D','E',{t:1,l:'8 سم'}],['F','E',{l:'(2x−2) سم'}]],
+ A:[{v:'A',a:'C',b:'B',n:1,id:'aA',r:20},{v:'D',a:'F',b:'E',n:1,id:'aD',r:20}],F:[['ABC','tABC'],['DEF','tDEF']]};
+F[119]=twoTri(['9 سم','7 سم','؟','3x سم','7 سم','(3x−3) سم']);
+F[110]=F[13];
+const mid=(a)=>a;
+F[111]={P:{D:[20,0],A:[230,0],B:[0,110],C:[210,110],H:[115,55]},
+ S:[['D','A'],['B','C'],['A','H',{t:1}],['H','B',{t:1}],['D','H',{t:2}],['H','C',{t:2}],['D','C',{nodraw:1}],['A','B',{nodraw:1}]],
+ A:[{v:'H',a:'A',b:'D',n:1,id:'a1',r:18},{v:'H',a:'B',b:'C',n:1,id:'a2',r:18},{v:'A',a:'D',b:'H',n:1,id:'a3',r:20},{v:'B',a:'C',b:'H',n:1,id:'a4',r:20}],
+ F:[['AHD','tAHD'],['BHC','tBHC']]};
+F[116]={P:{B:[0,0],D:[135,22],C:[0,98],A:[135,120],H:[67,60]},
+ S:[['B','C'],['D','A'],['B','H',{t:2}],['H','A',{t:2}],['C','H',{t:1}],['H','D',{t:1}],['B','A',{nodraw:1}],['C','D',{nodraw:1}]],
+ A:[{v:'H',a:'A',b:'D',n:1,id:'a1',r:18},{v:'H',a:'B',b:'C',n:1,id:'a2',r:18},{v:'A',a:'D',b:'H',n:1,id:'a3',r:20},{v:'B',a:'C',b:'H',n:1,id:'a4',r:20}],
+ F:[['AHD','tAHD'],['BHC','tBHC']]};
+F[121]={P:{D:[0,0],A:[190,0],C:[8,80],B:[200,80],G:[99,40]},
+ S:[['D','G',{t:2}],['G','B',{t:2}],['A','G',{t:1}],['G','C',{t:1}],['D','C'],['A','B'],['A','C',{nodraw:1}],['B','D',{nodraw:1}]],
+ A:[{v:'G',a:'A',b:'B',n:1,id:'a1',r:18},{v:'G',a:'C',b:'D',n:1,id:'a2',r:18},{v:'A',a:'B',b:'G',n:1,id:'a3',r:22},{v:'C',a:'D',b:'G',n:1,id:'a4',r:22}],
+ F:[['AGB','tAGB'],['CGD','tCGD']]};
+const hfig=(bc,ba,ad,ah)=>({P:{B:[0,0],C:[92,0],D:[92,69],H:[260,69],A:[92,157]},
+ S:[['B','C',{l:bc}],['B','A',{l:ba}],['C','A'],['A','D',{nodraw:1,l:ad,ls:1,off:18}],['D','H'],['A','H',{l:ah}]],
+ A:[{v:'C',a:'B',b:'A',type:'r',id:'rC'},{v:'D',a:'A',b:'H',type:'r',id:'rD'}],F:[['ABC','tABC'],['HAD','tHAD']]});
+F[112]=hfig('(2y−3) سم','15 سم','9 سم','3x سم');
+F[117]=hfig('(3y−6) سم','25 سم','15 سم','5x سم');
+F[122]=hfig('5y سم','26 سم','10 سم','(2x−4) سم');
+F[115]={P:{B:[0,61],C:[122,61],E:[246,61],A:[77,0],D:[201,0]},
+ S:[['B','C',{t:2}],['C','E',{t:2}],['B','A',{arr:1}],['C','D',{arr:1}],['C','A',{arr:2}],['E','D',{arr:2}]],
+ A:[{v:'B',a:'A',b:'C',n:1,id:'aB',r:22},{v:'C',a:'D',b:'E',n:1,id:'aC1',r:22},{v:'C',a:'A',b:'B',n:2,id:'aC2',r:16},{v:'E',a:'D',b:'C',n:2,id:'aE',r:22}],
+ F:[['ABC','tABC'],['DCE','tDCE']]};
+F[120]={P:{B:[0,95],F:[60,95],C:[199,95],E:[259,95],A:[124,0],D:[185,0]},
+ S:[['B','F',{t:1}],['F','C'],['C','E',{t:1}],['B','A',{arr:1}],['F','D',{arr:1}],['C','A',{arr:2}],['E','D',{arr:2}]],
+ A:[{v:'B',a:'A',b:'F',n:1,id:'aB',r:22},{v:'F',a:'D',b:'E',n:1,id:'aF',r:22},{v:'C',a:'A',b:'B',n:2,id:'aC',r:18},{v:'E',a:'D',b:'F',n:2,id:'aE',r:22}],
+ F:[['ABC','tABC'],['DFE','tDFE']]};
+
+const SE='كتاب التقييمات';
+const addL=(n,lab,sec,title,prompt,parts,sol,note)=>{add(n,sec,title,prompt,parts,sol,note);Q[Q.length-1].lab=lab;};
+const TRI=(a,b)=>['t'+a,'t'+b];
+
+addL(101,'نشاط',SE+' · الأداء الصفي','زينة رمضان','قصّ جلال زينة من أوراق على شكل مثلثات متطابقة ليزين بها بيته. هل يمكنك تحديد قيمة {{x}} في الشكل؟',
+ [num('قيمة x =',40,{unit:'درجة',hint:'المثلثات متطابقة، فزوايا المثلث الأول هي نفسها زوايا الثاني. استخدم أن الزوايا على خط مستقيم مجموعها 180°.'})],
+ [{t:'المثلثات متطابقة، فزاوية الرأس {{40°}} وزاويتا القاعدة {{70°}} في كل مثلث',hl:['a40','a70']},{t:'عند نقطة التقاء مثلثين متجاورين على المستقيم: {{70° + x + 70° = 180°}}',hl:['ax','a70']},{t:'{{x = 180° − 140° = 40}}',hl:['ax']}],
+ 'قرأنا الشكل: المثلثات متجاورة على مستقيم واحد وتشترك في رؤوس القاعدة.');
+
+addL(102,'واجب 1',SE+' · الأداء المنزلي','ما الحالة؟ (شكل 1)','اذكر حالة التطابق التي تُستخدم في إثبات تطابق المثلثين {{DGC}} و{{BGA}} في الشكل (1).',
+ [caseQ('SAS','انظر إلى الزاوية عند G وإلى علامات الأضلاع حولها.')],
+ [{t:'علامات التساوي على الأضلاع المتصلة بالنقطة {{G}}: ضلعان في كل مثلث متساويان',hl:['DG','CG','AG','BG']},{t:'{{∠DGC = ∠AGB}} بالتقابل بالرأس، وهي محصورة بين الضلعين',hl:['a1','a2']},{t:'ضلعان والزاوية المحصورة بينهما ⇐ حالة <b>SAS</b>',hl:['tDGC','tAGB']}]);
+
+addL(103,'واجب 1',SE+' · الأداء المنزلي','ما الحالة؟ (شكل 2)','اذكر حالة التطابق التي تُستخدم في إثبات تطابق المثلثين {{ABD}} و{{CDB}} في الشكل (2).',
+ [caseQ('SSS','عدّ الأضلاع المتساوية، ولاحظ الضلع المشترك.')],
+ [{t:'{{DA = BC}} (علامتا التساوي)',hl:['DA','CB']},{t:'{{DC = AB}} (علامتا التساوي)',hl:['DC','AB']},{t:'{{DB}} ضلع مشترك',hl:['DB']},{t:'ثلاثة أضلاع متناظرة متساوية ⇐ حالة <b>SSS</b>',hl:['tABD','tCDB']}]);
+
+addL(104,'واجب 2',SE+' · الأداء المنزلي','برهان ومحيط','في الشكل المقابل: (1) أثبت أن {{ΔABC ≅ ΔABD}} (2) أوجد محيط المضلع {{ADBC}}.',
+ [proof([
+  st('{{AC ≅ AD}}','معطى',['AC','AD']),
+  st('{{∠CAB ≅ ∠DAB}}','معطى',['a1','a2']),
+  st('{{AB ≅ AB}}','ضلع مشترك',['AB']),
+  st('{{ΔABC ≅ ΔABD}}','SAS',['tABC','tABD'],1)]),
+  num('محيط المضلع ADBC =',36,{unit:'سم',hint:'المحيط = {{AD + DB + BC + CA}}. استخدم التطابق لإيجاد {{BC}}.'})],
+ [{t:'من التطابق {{BC = BD = 11 سم}}',hl:['BC','BD']},{t:'{{AD = AC = 7 سم}}',hl:['AC','AD']},{t:'المحيط {{= 7 + 11 + 11 + 7 = 36}} سم',hl:['AC','AD','BD','BC']}]);
+
+addL(105,'واجب 3',SE+' · الأداء المنزلي','برهان: ABD ≅ CBD','{{BD}} ينصف {{∠ABC}} و{{∠A ≅ ∠C}}. أثبت أن {{ΔABD ≅ ΔCBD}}.',
+ [proof([
+  st('{{∠ABD ≅ ∠CBD}}  ({{BD}} ينصف {{∠ABC}})','معطى',['a1','a2']),
+  st('{{∠A ≅ ∠C}}','معطى',['aA','aC']),
+  st('{{BD ≅ BD}}','ضلع مشترك',['BD']),
+  st('{{ΔABD ≅ ΔCBD}}','AAS',['tABD','tCBD'],1)])]);
+
+addL(106,'واجب 4',SE+' · الأداء المنزلي','قيمة X و Y بالبرهان','{{MN = MG}} و{{NL = GL}}. أوجد مع البرهان قيمة كل من {{X}} و{{Y}}.',
+ [proof([
+  st('{{MN ≅ MG}}','معطى',['MN','MG']),
+  st('{{NL ≅ GL}}','معطى',['NL','GL']),
+  st('{{ML ≅ ML}}','ضلع مشترك',['ML']),
+  st('{{ΔMNL ≅ ΔMGL}}','SSS',['tMNL','tMGL'],1)]),
+  num('قيمة X =',100,{unit:'درجة',hint:'الزاويتان المناظرتان في المثلثين المتطابقين متساويتان.'}),
+  num('قيمة Y =',8,{unit:'سم',hint:'الضلعان {{MN}} و{{MG}} متساويان.'})],
+ [{t:'من التطابق {{∠G = ∠N}}، أي {{X = 100}}',hl:['aN','aG']},{t:'{{MN = MG}} أي {{Y = 8}} سم',hl:['MN','MG']}]);
+
+addL(107,'واجب 5',SE+' · الأداء المنزلي','برهان وطول CB','{{m(∠ADB) = m(∠CBD) = 90°}} و{{AB = CD}}. (1) أثبت أن {{ΔADB ≅ ΔCBD}} (2) أوجد طول {{CB}}.',
+ [proof([
+  st('{{m(∠ADB) = m(∠CBD) = 90°}}','معطى',['rD','rB']),
+  st('{{AB ≅ CD}}  (وتران)','معطى',['AB','CD']),
+  st('{{DB ≅ DB}}','ضلع مشترك',['DB']),
+  st('{{ΔADB ≅ ΔCBD}}','RHS',['tADB','tCBD'],1)]),
+  num('طول CB =',6,{unit:'سم',hint:'{{CB}} يناظر {{AD}} في المثلثين المتطابقين.'})],
+ [{t:'من التطابق {{CB = AD}}',hl:['CB','DA']},{t:'{{CB = 6 سم}}',hl:['DA']}]);
+
+/* ---- اختبار أسبوعي (أ) ---- */
+const WA=SE+' · اختبار أسبوعي (أ)',WB=SE+' · اختبار أسبوعي (ب)',WC=SE+' · اختبار أسبوعي (جـ)';
+addL(108,'أ · أولًا',WA,'قيمة x + y','إذا كان المضلع {{ABCD ≅ LMNO}}، فما قيمة {{x + y}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['14','9','10','23'],2,{letters:1,hint:'رتّب الرؤوس المتناظرة: {{A↔L}} ، {{B↔M}} ، {{C↔N}} ، {{D↔O}}.'})],
+ [{t:'{{AD}} يناظر {{LO}}: {{6 = 2x}} ⇒ {{x = 3}}',hl:['AD','LO']},{t:'{{BC}} يناظر {{MN}}: {{y + 1 = 8}} ⇒ {{y = 7}}',hl:['BC','MN']},{t:'{{x + y = 3 + 7 = 10}}',hl:['tL','tA']}]);
+addL(109,'أ · ثانيًا 1',WA,'طول CB','في الشكل المقابل: ما طول {{CB}}؟',
+ [num('طول CB =',7,{unit:'سم',hint:'اكتب المثلثين بترتيب الرؤوس المتناظرة: {{ΔDEF ≅ ΔABC}}.'})],
+ [{t:'{{DF = AC = 12}} و{{∠D = ∠A}} و{{DE = AB}} ⇒ {{ΔDEF ≅ ΔABC}} (SAS)',hl:['DF','CA','aD','aA','DE','AB','tDEF','tABC']},{t:'{{DE = AB}} ⇒ {{9 = 3x}} ⇒ {{x = 3}}',hl:['DE','AB']},{t:'{{CB = FE = 2x + 1 = 2(3) + 1 = 7 سم}}',hl:['CB','FE']}]);
+addL(110,'أ · ثانيًا 2',WA,'برهان: ABD ≅ CDB','{{AD = CB}} و{{AD ∥ BC}}. أثبت أن {{ΔABD ≅ ΔCDB}}.',
+ [proof([
+  st('{{AD ≅ CB}}','معطى',['AD','BC']),
+  st('{{∠ADB ≅ ∠CBD}}  ({{AD ∥ BC}} و{{BD}} قاطع)','زاويتان متبادلتان بين مستقيمين متوازيين',['aD','aB']),
+  st('{{BD ≅ BD}}','ضلع مشترك',['BD']),
+  st('{{ΔABD ≅ ΔCDB}}','SAS',['tABD','tCBD'.replace('tCBD','tCDB')],1)])]);
+addL(111,'أ · ثانيًا 3',WA,'برهان بالمنتصف','{{H}} منتصف كل من {{AB}} و{{CD}}. أثبت أن: (1) {{ΔAHD ≅ ΔBHC}} (2) {{AD ∥ BC}}.',
+ [proof([
+  st('{{AH ≅ BH}}  ({{H}} منتصف {{AB}})','معطى',['AH','HB']),
+  st('{{DH ≅ CH}}  ({{H}} منتصف {{CD}})','معطى',['DH','HC']),
+  st('{{∠AHD ≅ ∠BHC}}','بالتقابل بالرأس',['a1','a2']),
+  st('{{ΔAHD ≅ ΔBHC}}','SAS',['tAHD','tBHC'],1),
+  st('{{∠A ≅ ∠B}}','من تطابق المثلثين',['a3','a4']),
+  st('{{AD ∥ BC}}  (متبادلتان متساويتان)','تساوي زاويتين متبادلتين يعني التوازي',['AD','BC'])])]);
+addL(112,'أ · ثانيًا 4',WA,'قيمة x + y','إذا كان {{ΔABC ≅ ΔHAD}} فأوجد قيمة {{x + y}}.',
+ [num('x + y =',11,{hint:'الرؤوس المتناظرة: {{A↔H}} ، {{B↔A}} ، {{C↔D}}. اكتب الأضلاع المتناظرة.'})],
+ [{t:'{{AB}} يناظر {{HA}}: {{15 = 3x}} ⇒ {{x = 5}}',hl:['AB','AH']},{t:'{{BC}} يناظر {{AD}}: {{2y − 3 = 9}} ⇒ {{y = 6}}',hl:['BC','AD']},{t:'{{x + y = 5 + 6 = 11}}',hl:['tABC','tHAD']}]);
+
+/* ---- اختبار أسبوعي (ب) ---- */
+addL(113,'ب · أولًا',WB,'قيمة x + y','إذا كان المضلع {{ABCD ≅ LMNO}}، فما قيمة {{x + y}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['5','19','16','6'],0,{letters:1,hint:'{{AD}} يناظر {{LO}} و{{BC}} يناظر {{MN}}.'})],
+ [{t:'{{AD = LO}}: {{6 = x + 3}} ⇒ {{x = 3}}',hl:['AD','LO']},{t:'{{BC = MN}}: {{5y = 10}} ⇒ {{y = 2}}',hl:['BC','MN']},{t:'{{x + y = 3 + 2 = 5}}',hl:['tL','tA']}]);
+addL(114,'ب · ثانيًا 1',WB,'طول CB','في الشكل المقابل: ما طول {{CB}}؟',
+ [num('طول CB =',6,{unit:'سم',hint:'{{ΔABC ≅ ΔDEF}} بالحالة SAS. أوجد x من {{AB}} و{{DE}}.'})],
+ [{t:'{{CA = FD = 9}} و{{∠A = ∠D}} و{{AB = DE}} ⇒ {{ΔABC ≅ ΔDEF}} (SAS)',hl:['CA','FD','aA','aD','AB','DE','tABC','tDEF']},{t:'{{AB = DE}} ⇒ {{2x = 8}} ⇒ {{x = 4}}',hl:['AB','DE']},{t:'{{CB = FE = 2x − 2 = 2(4) − 2 = 6 سم}}',hl:['CB','FE']}]);
+addL(115,'ب · ثانيًا 2',WB,'برهان: ABC ≅ DCE','{{AC ∥ DE}} ، {{AB ∥ DC}} ، {{BC = CE}}. أثبت أن {{ΔABC ≅ ΔDCE}}.',
+ [proof([
+  st('{{BC ≅ CE}}','معطى',['BC','CE']),
+  st('{{∠B ≅ ∠DCE}}  ({{AB ∥ DC}} و{{BE}} قاطع)','زاويتان متناظرتان بين مستقيمين متوازيين',['aB','aC1']),
+  st('{{∠ACB ≅ ∠E}}  ({{AC ∥ DE}} و{{BE}} قاطع)','زاويتان متناظرتان بين مستقيمين متوازيين',['aC2','aE']),
+  st('{{ΔABC ≅ ΔDCE}}','ASA',['tABC','tDCE'],1)])]);
+addL(116,'ب · ثانيًا 3',WB,'برهان بالمنتصف','{{H}} منتصف كل من {{AB}} و{{CD}}. أثبت أن: (1) {{ΔAHD ≅ ΔBHC}} (2) {{AD ∥ BC}}.',
+ [proof([
+  st('{{AH ≅ BH}}  ({{H}} منتصف {{AB}})','معطى',['BH','HA']),
+  st('{{DH ≅ CH}}  ({{H}} منتصف {{CD}})','معطى',['CH','HD']),
+  st('{{∠AHD ≅ ∠BHC}}','بالتقابل بالرأس',['a1','a2']),
+  st('{{ΔAHD ≅ ΔBHC}}','SAS',['tAHD','tBHC'],1),
+  st('{{∠DAH ≅ ∠CBH}}','من تطابق المثلثين',['a3','a4']),
+  st('{{AD ∥ BC}}  (متبادلتان متساويتان)','تساوي زاويتين متبادلتين يعني التوازي',['AD','BC'])])]);
+addL(117,'ب · ثانيًا 4',WB,'قيمة x + y','إذا كان {{ΔABC ≅ ΔHAD}} فأوجد قيمة {{x + y}}.',
+ [num('x + y =',12,{hint:'{{AB}} يناظر {{HA}} و{{BC}} يناظر {{AD}}.'})],
+ [{t:'{{AB = HA}}: {{25 = 5x}} ⇒ {{x = 5}}',hl:['AB','AH']},{t:'{{BC = AD}}: {{3y − 6 = 15}} ⇒ {{y = 7}}',hl:['BC','AD']},{t:'{{x + y = 5 + 7 = 12}}',hl:['tABC','tHAD']}]);
+
+/* ---- اختبار أسبوعي (جـ) ---- */
+addL(118,'جـ · أولًا',WC,'قيمة x + y','إذا كان المضلع {{ABCD ≅ LMNO}}، فما قيمة {{x + y}}؟',
+ [mcq('اختر الإجابة الصحيحة:',['10','9','20','24'],1,{letters:1,hint:'{{AB}} يناظر {{LM}} و{{BC}} يناظر {{MN}}.'})],
+ [{t:'{{AB = LM}}: {{12 = 2x}} ⇒ {{x = 6}}',hl:['AB','LM']},{t:'{{BC = MN}}: {{y + 5 = 8}} ⇒ {{y = 3}}',hl:['BC','MN']},{t:'{{x + y = 6 + 3 = 9}}',hl:['tL','tA']}]);
+addL(119,'جـ · ثانيًا 1',WC,'طول FE','في الشكل المقابل: ما طول {{FE}}؟',
+ [num('طول FE =',6,{unit:'سم',hint:'{{ΔDEF ≅ ΔABC}} بالحالة SAS. أوجد x من {{DF}} و{{AC}}.'})],
+ [{t:'{{DF = AC}} و{{∠D = ∠A}} و{{DE = AB = 7}} ⇒ {{ΔDEF ≅ ΔABC}} (SAS)',hl:['FD','CA','aD','aA','DE','AB','tDEF','tABC']},{t:'{{DF = AC}} ⇒ {{9 = 3x}} ⇒ {{x = 3}}',hl:['FD','CA']},{t:'{{FE = CB = 3x − 3 = 3(3) − 3 = 6 سم}}',hl:['FE','CB']}]);
+addL(120,'جـ · ثانيًا 2',WC,'برهان: ABC ≅ DFE','{{AC ∥ DE}} ، {{BA ∥ FD}} ، {{BF = EC}}. أثبت أن {{ΔABC ≅ ΔDFE}}.',
+ [proof([
+  st('{{BC ≅ FE}}  (أضفنا {{FC}} إلى طرفي {{BF = CE}})','بإضافة FC إلى طرفي BF = CE',['BF','CE']),
+  st('{{∠B ≅ ∠DFE}}  ({{BA ∥ FD}} و{{BE}} قاطع)','زاويتان متناظرتان بين مستقيمين متوازيين',['aB','aF']),
+  st('{{∠ACB ≅ ∠E}}  ({{AC ∥ DE}} و{{BE}} قاطع)','زاويتان متناظرتان بين مستقيمين متوازيين',['aC','aE']),
+  st('{{ΔABC ≅ ΔDFE}}','ASA',['tABC','tDFE'],1)])]);
+addL(121,'جـ · ثانيًا 3',WC,'برهان بالمنتصف','{{G}} منتصف كل من {{AC}} و{{BD}}. أثبت أن: (1) {{ΔAGB ≅ ΔCGD}} (2) {{AB ∥ DC}}.',
+ [proof([
+  st('{{AG ≅ CG}}  ({{G}} منتصف {{AC}})','معطى',['AG','GC']),
+  st('{{BG ≅ DG}}  ({{G}} منتصف {{BD}})','معطى',['BG','GD']),
+  st('{{∠AGB ≅ ∠CGD}}','بالتقابل بالرأس',['a1','a2']),
+  st('{{ΔAGB ≅ ΔCGD}}','SAS',['tAGB','tCGD'],1),
+  st('{{∠BAG ≅ ∠DCG}}','من تطابق المثلثين',['a3','a4']),
+  st('{{AB ∥ DC}}  (متبادلتان متساويتان)','تساوي زاويتين متبادلتين يعني التوازي',['AB','DC'])])]);
+addL(122,'جـ · ثانيًا 4',WC,'قيمة x + y','إذا كان {{ΔABC ≅ ΔHAD}} فأوجد قيمة {{x + y}}.',
+ [num('x + y =',17,{hint:'{{AB}} يناظر {{HA}} و{{BC}} يناظر {{AD}}.'})],
+ [{t:'{{AB = HA}}: {{26 = 2x − 4}} ⇒ {{x = 15}}',hl:['AB','AH']},{t:'{{BC = AD}}: {{5y = 10}} ⇒ {{y = 2}}',hl:['BC','AD']},{t:'{{x + y = 15 + 2 = 17}}',hl:['tABC','tHAD']}]);
+
+/* ---------- state ---------- */
+const KEY='congruence-guide-v1';
+const S={};
+let solved=new Set();
+try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(v))v.forEach(n=>solved.add(n))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify([...solved]))}catch(e){}};
+
+function mkOpts(correct,pool,seed){const w=[];let k=seed;while(w.length<3){const c=pool[k%pool.length];k++;if(c!==correct&&!w.includes(c))w.push(c)}
+  const pos=seed%4;const o=w.slice();o.splice(pos,0,correct);return{o,ans:pos}}
+
+Q.forEach(q=>{
+  S[q.n]={open:q.n===1,hl:[],sol:0,revealed:false,parts:q.parts.map(p=>{
+    if(p.k==='proof'){p.steps.forEach((s,i)=>{const pool=s.c?Object.values(CASES):POOL;const correct=s.c?CASES[s.r]:s.r;const r=mkOpts(correct,pool,i*2+q.n);s.opts=r.o;s.ans=r.ans});}
+    return{done:false,bad:{},tries:0,sel:null,val:'',msg:'',i:0}})};
+  if(solved.has(q.n)){S[q.n].parts.forEach((p,i)=>{p.done=true;const d=q.parts[i];if(d.k==='proof')p.i=d.steps.length;if(d.k==='mcq')p.sel=d.ans;if(d.k==='num')p.val=String(d.ans)});S[q.n].open=false}
+});
+
+/* ---------- rendering ---------- */
+const $list=document.getElementById('list');
+let filter='all';
+
+function partHTML(q,pi){
+  const d=q.parts[pi],s=S[q.n].parts[pi],id=q.n+'.'+pi;let h='<div class="part">';
+  if(d.q)h+='<p class="q">'+M(d.q)+'</p>';
+  if(d.k==='mcq'){
+    h+='<div class="opts'+(d.opts.some(o=>o.length>22)?' wide':'')+'">';
+    d.opts.forEach((o,i)=>{const bad=s.bad[i],ok=s.done&&i===d.ans;
+      h+='<button class="opt'+(ok?' ok':'')+(bad?' bad':'')+'" data-a="pick" data-id="'+id+'" data-i="'+i+'"'+((s.done||bad)?' disabled':'')+'>'+(d.letters?'<span class="ltr">'+LET[i]+')</span>':'')+'<span>'+M(o)+'</span></button>'});
+    h+='</div>';
+    if(s.done)h+='<p class="msg ok">'+(S[q.n].revealed&&!solved.has(q.n)?'تم عرض الإجابة':'إجابة صحيحة')+'</p>';
+    else if(s.tries)h+='<p class="msg bad">إجابة غير صحيحة، حاول مرة أخرى.</p>';
+    if(!s.done&&s.tries&&d.hint)h+='<p class="msg hint">تلميح: '+M(d.hint)+'</p>';
+  }
+  if(d.k==='num'){
+    h+='<div class="row"><input class="ans'+(s.done?' ok':s.tries&&s.msg==='bad'?' bad':'')+'" id="in'+id.replace('.','_')+'" inputmode="decimal" autocomplete="off" aria-label="الإجابة" value="'+(s.done?d.ans:s.val)+'"'+(s.done?' disabled':'')+'><span class="unit">'+(d.unit||'')+'</span>'
+      +'<button class="btn" data-a="chk" data-id="'+id+'"'+(s.done?' disabled':'')+'>تحقق</button></div>';
+    if(s.done)h+='<p class="msg ok">'+(S[q.n].revealed&&!solved.has(q.n)?'تم عرض الإجابة':'إجابة صحيحة')+'</p>';
+    else if(s.msg==='bad')h+='<p class="msg bad">ليست الإجابة الصحيحة، راجع المعطيات وحاول مرة أخرى.</p>';
+    else if(s.msg==='nan')h+='<p class="msg hint">اكتب رقمًا.</p>';
+    if(!s.done&&s.tries>=1&&d.hint)h+='<p class="msg hint">تلميح: '+M(d.hint)+'</p>';
+  }
+  if(d.k==='proof'){
+    h+='<ol class="proof">';
+    d.steps.forEach((t,i)=>{ if(i>s.i)return; const dn=i<s.i;
+      h+='<li class="pstep'+(dn?' done':'')+'"><div class="st">'+(i+1)+'. '+M(t.s)+'</div>';
+      if(dn)h+='<span class="rsn">'+M(t.c?CASES[t.r]:t.r)+'</span>';
+      else{h+='<div class="opts">';t.opts.forEach((o,k)=>{const b=(s.bad[i]||[]).includes(k);
+        h+='<button class="opt'+(b?' bad':'')+'" data-a="rsn" data-id="'+id+'" data-i="'+i+'" data-k="'+k+'"'+(b?' disabled':'')+'>'+M(o)+'</button>'});
+        h+='</div><p class="msg hint">'+(t.c?'ما الحالة التي تثبت التطابق؟':'ما المبرر؟')+'</p>'}
+      h+='</li>'});
+    h+='</ol>';
+    if(s.done)h+='<p class="qed">وهو المطلوب إثباته ∎</p>';
+  }
+  return h+'</div>';
+}
+
+function cardHTML(q){
+  const st=S[q.n],done=st.parts.every(p=>p.done);
+  const tag=solved.has(q.n)?'<span class="tag ok">حُلّ</span>':done?'<span class="tag peek">عُرض الحل</span>':'';
+  let h='<button class="chead" data-a="toggle" data-n="'+q.n+'" aria-expanded="'+st.open+'"><span class="num">'+q.n+'</span><span class="ctitle"><b>'+q.title+'</b><small>'+q.sec+'</small></span>'+tag+'</button>';
+  if(!st.open)return h;
+  h+='<div class="cbody'+([1,6,8,12,108,109,113,114,118,119].includes(q.n)?' wide':'')+'"><div class="main"><p class="prompt">'+M(q.prompt)+'</p>';
+  if(q.n===7)h+='<div class="ahmed"><b>حل أحمد</b>4x + 6 = 3x + 9<br>x + 6 = 9<br>x = 3</div>';
+  q.parts.forEach((p,i)=>{if(i===0||st.parts.slice(0,i).every(x=>x.done))h+=partHTML(q,i)});
+  if(q.note&&q.n!==7)h+='<p class="note">'+M(q.note)+'</p>';
+  const allDone=st.parts.every(p=>p.done);
+  if(q.sol.length){
+    h+='<div class="sol">';
+    if(st.sol===0&&!allDone){h+='<div class="row"><button class="btn ghost sm" data-a="solnext" data-n="'+q.n+'">أرني الحل خطوة بخطوة</button></div>'}
+    else{
+      h+='<h4>الحل</h4><ol>';
+      q.sol.forEach((s,i)=>{if(i<Math.max(st.sol,allDone?q.sol.length:0))h+='<li class="'+(i===st.sol-1&&st.sol<q.sol.length&&!allDone?'cur':'')+'"><span>'+M(s.t)+'</span></li>'});
+      h+='</ol>';
+      if(st.sol<q.sol.length&&!allDone)h+='<div class="row" style="margin-top:8px"><button class="btn sm" data-a="solnext" data-n="'+q.n+'">الخطوة التالية</button></div>';
+    }
+    h+='</div>';
+  }
+  if(!allDone)h+='<div class="row" style="margin-top:12px"><button class="btn ghost sm" data-a="reveal" data-n="'+q.n+'">اعرض الإجابة كاملة</button></div>';
+  h+='</div><div class="figcol"><div class="figbox">'+fig(F[q.n],hlFor(q))+'</div></div></div>';
+  return h;
+}
+function hlFor(q){return S[q.n].hl}
+
+function renderCard(n){const q=Q.find(x=>x.n===n);const el=document.getElementById('q'+n);
+  el.className='card'+(S[n].parts.every(p=>p.done)?' done':'');el.innerHTML=cardHTML(q);applyFilter()}
+function renderAll(){$list.innerHTML=Q.map(q=>'<section class="card" id="q'+q.n+'" aria-label="التمرين '+q.n+'"></section>').join('');Q.forEach(q=>renderCard(q.n));updateProg()}
+function updateProg(){document.getElementById('pc').textContent=solved.size;document.getElementById('pt').textContent=Q.length;document.getElementById('pf').style.width=(solved.size/Q.length*100)+'%'}
+
+const FILT=[['all','الكل'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
+function pills(){document.getElementById('pills').innerHTML=FILT.map(([k,l])=>'<button class="pill" data-f="'+k+'" aria-pressed="'+(filter===k)+'">'+l+'</button>').join('')}
+function applyFilter(){Q.forEach(q=>{const el=document.getElementById('q'+q.n);let show=true;
+  if(filter==='book')show=q.n<100;else if(filter==='assess')show=q.n>=100;else if(filter==='todo')show=!solved.has(q.n);
+  el.hidden=!show})}
+
+function finish(q){const st=S[q.n];if(st.parts.every(p=>p.done)){if(!st.revealed){solved.add(q.n);save()}st.hl=[];updateProg()}}
+const norm=s=>String(s).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g,'.').replace(/\s/g,'');
+
+document.addEventListener('click',e=>{
+  const f=e.target.closest('[data-f]');if(f){filter=f.dataset.f;pills();applyFilter();return}
+  const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+  if(a==='toggle'){const n=+b.dataset.n;S[n].open=!S[n].open;renderCard(n);return}
+  if(a==='solnext'){const n=+b.dataset.n,q=Q.find(x=>x.n===n),st=S[n];st.sol=Math.min(q.sol.length,st.sol+1);st.hl=q.sol[st.sol-1].hl||[];renderCard(n);return}
+  if(a==='reveal'){const n=+b.dataset.n,q=Q.find(x=>x.n===n),st=S[n];st.revealed=true;
+    st.parts.forEach((p,i)=>{p.done=true;const d=q.parts[i];if(d.k==='proof')p.i=d.steps.length;if(d.k==='mcq')p.sel=d.ans;if(d.k==='num')p.val=String(d.ans)});
+    st.sol=q.sol.length;st.hl=[];renderCard(n);return}
+  const [n,pi]=(b.dataset.id||'0.0').split('.').map(Number);const q=Q.find(x=>x.n===n);if(!q)return;const st=S[n],p=st.parts[pi],d=q.parts[pi];
+  if(a==='pick'){const i=+b.dataset.i;if(i===d.ans){p.done=true;p.sel=i;st.hl=q.sol.length?q.sol[q.sol.length-1].hl:[];finish(q)}else{p.tries++;p.bad[i]=true}renderCard(n);
+    if(i!==d.ans){const c=document.getElementById('q'+n).querySelector('.opts');c&&c.classList.add('shake')}return}
+  if(a==='chk'){const inp=document.getElementById('in'+b.dataset.id.replace('.','_'));const v=parseFloat(norm(inp.value));p.val=inp.value;
+    if(isNaN(v)){p.msg='nan'}else if(Math.abs(v-d.ans)<1e-6){p.done=true;p.msg='ok';st.hl=[];finish(q)}else{p.tries++;p.msg='bad'}
+    renderCard(n);return}
+  if(a==='rsn'){const i=+b.dataset.i,k=+b.dataset.k,step=d.steps[i];
+    if(k===step.ans){p.i=i+1;st.hl=step.hl;if(p.i===d.steps.length){p.done=true;finish(q)}}else{p.tries++;(p.bad[i]=p.bad[i]||[]).push(k)}
+    renderCard(n);return}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('input.ans')){const b=e.target.parentElement.querySelector('[data-a="chk"]');b&&b.click()}});
+
+pills();renderAll();
+
+/* ---------- panes ---------- */
+(function(){
+  const panes=['lessons','practice'];
+  function show(p){
+    panes.forEach(x=>{document.getElementById(x).hidden=x!==p});
+    document.getElementById('practiceBar').hidden=p!=='practice';
+    document.querySelectorAll('[data-pane]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pane===p)));
+  }
+  function route(){
+    const h=location.hash.slice(1);
+    if(h==='practice'||h==='assess'){show('practice');window.scrollTo(0,0)}
+    else if(h==='l1'||h==='l2'||h==='l3'){show('lessons');const el=document.getElementById(h);el&&el.scrollIntoView()}
+    else{show('lessons');if(h==='lessons')window.scrollTo(0,0)}
+  }
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-pane],[data-go]');if(!b)return;
+    const t=b.dataset.pane||b.dataset.go;
+    if(location.hash==='#'+t){route()}else{location.hash=t}
+  });
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+
+</body>
+</html>
