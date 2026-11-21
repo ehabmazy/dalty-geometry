@@ -321,9 +321,9 @@ body.is-calc #fhandle{display:none}
 
 <div class="wrap">
 <header class="top">
-  <div class="kicker">الرياضيات · الصف الثاني الإعدادي · الوحدة 3 · الهندسة (الدرسان 3-1 و3-2 + مراجعة)</div>
+  <div class="kicker">الرياضيات · الصف الثاني الإعدادي · الوحدة 3 · الهندسة (الدروس 3-1 إلى 3-6 + مراجعة)</div>
   <h1>الهندسة</h1>
-  <p class="lead">شرح تفاعلي لدرسين مراجعة من العام الماضي (حالات التوازي وزوايا المثلث)، ثم درسي التطابق ونظرية فيثاغورس، ثم حلول تمارين الدرسين 3-1 و3-2 من كتاب المدرسة (ص 67 – 69 و75 – 77) وكتاب التقييمات (ص 25 – 34) خطوة بخطوة.</p>
+  <p class="lead">شرح تفاعلي لدرسين مراجعة من العام الماضي (حالات التوازي وزوايا المثلث)، ثم دروس التطابق ونظرية فيثاغورس وتطبيقات التوازي ومتوسطات المثلث والمثلث المتساوي الساقين وزوايا المضلعات، ثم حلول تمارين الدروس 3-1 إلى 3-6 من كتاب المدرسة (ص 67 – 69 و75 – 77 و81 – 82 و87 – 88 و94 – 96 و101 – 102) وكتاب التقييمات (ص 25 – 49) خطوة بخطوة.</p>
 </header>
 <div class="bar">
   <div class="bar-in"><div class="pills" id="panes" role="group" aria-label="أقسام الصفحة"><button class="pill" data-pane="home" aria-pressed="true">الرئيسية</button><button class="pill" data-pane="lessons" aria-pressed="false">شرح الدروس</button><button class="pill" data-pane="practice" aria-pressed="false">التمارين والتقييمات</button><button class="pill" data-pane="calc" aria-pressed="false">الآلة الحاسبة</button></div></div>
@@ -355,6 +355,10 @@ body.is-calc #fhandle{display:none}
 <div class="lc" style="--c:var(--teal)"><span class="no">مراجعة · 2</span><b>زوايا المثلث</b><p>مجموع زوايا المثلث والزاوية الخارجية وخصائصها مع رسم تفاعلي.</p><div class="act"><a class="main" href="#l2">اشرح لي</a></div></div>
 <div class="lc" style="--c:var(--amber)"><span class="no">الدرس 3-1</span><b>التطابق</b><p>حالات تطابق المثلثين SSS وSAS وASA وAAS وRHS، ولماذا لا تكفي AAA.</p><div class="act"><a class="main" href="#l3">اشرح لي</a><a href="#practice" data-prac="l1">تمارينه</a></div></div>
 <div class="lc" style="--c:#1857c8"><span class="no">الدرس 3-2</span><b>نظرية فيثاغورس</b><p>النظرية وعكسها، وتصنيف المثلث بأضلاعه، وثلاثيات فيثاغورس.</p><div class="act"><a class="main" href="#l4">اشرح لي</a><a href="#practice" data-prac="l2">تمارينه</a></div></div>
+<div class="lc" style="--c:#7b3fe4"><span class="no">الدرس 3-3</span><b>تطبيقات التوازي</b><p>القطعة المتوسطة في المثلث، وتساوي الأجزاء بين المستقيمات المتوازية.</p><div class="act"><a class="main" href="#l5">اشرح لي</a><a href="#practice" data-prac="l3">تمارينه</a></div></div>
+<div class="lc" style="--c:#c2410c"><span class="no">الدرس 3-4</span><b>متوسطات المثلث</b><p>نقطة تقاطع المتوسطات، ونسبة 2 : 1، ومتوسط المثلث القائم.</p><div class="act"><a class="main" href="#l6">اشرح لي</a><a href="#practice" data-prac="l4">تمارينه</a></div></div>
+<div class="lc" style="--c:#0f766e"><span class="no">الدرس 3-5</span><b>المثلث المتساوي الساقين</b><p>زاويتا القاعدة، والمثلث المتساوي الأضلاع، ومحور التماثل، والمثلث 30-60.</p><div class="act"><a class="main" href="#l7">اشرح لي</a><a href="#practice" data-prac="l5">تمارينه</a></div></div>
+<div class="lc" style="--c:#9d174d"><span class="no">الدرس 3-6</span><b>زوايا المضلعات</b><p>مجموع الزوايا الداخلة والخارجة، والمضلع المنتظم، وعدد الأقطار.</p><div class="act"><a class="main" href="#l8">اشرح لي</a><a href="#practice" data-prac="l6">تمارينه</a></div></div>
 </div>
 <h2>أدوات</h2>
 <div class="grid">
@@ -369,10 +373,14 @@ body.is-calc #fhandle{display:none}
 <button type="button" class="lcard" data-lesson="l2" style="--c:var(--teal)"><small>مراجعة · 2</small><b>زوايا المثلث</b></button>
 <button type="button" class="lcard" data-lesson="l3" style="--c:var(--amber)"><small>الدرس 3-1</small><b>التطابق</b></button>
 <button type="button" class="lcard" data-lesson="l4" style="--c:#1857c8"><small>الدرس 3-2</small><b>فيثاغورس</b></button>
+<button type="button" class="lcard" data-lesson="l5" style="--c:#7b3fe4"><small>الدرس 3-3</small><b>تطبيقات التوازي</b></button>
+<button type="button" class="lcard" data-lesson="l6" style="--c:#c2410c"><small>الدرس 3-4</small><b>متوسطات المثلث</b></button>
+<button type="button" class="lcard" data-lesson="l7" style="--c:#0f766e"><small>الدرس 3-5</small><b>المثلث المتساوي الساقين</b></button>
+<button type="button" class="lcard" data-lesson="l8" style="--c:#9d174d"><small>الدرس 3-6</small><b>زوايا المضلعات</b></button>
 </div>
 <header>
 <small>الرياضيات – الهندسة – الصف الثاني الإعدادي · الدرسان الأولان مراجعة من العام الماضي</small>
-<nav style="margin:6px 0"><a href="#l1">مراجعة: حالات التوازي</a> &nbsp;|&nbsp; <a href="#l2">مراجعة: زوايا المثلث</a> &nbsp;|&nbsp; <a href="#l3">الدرس 3-1: التطابق</a> &nbsp;|&nbsp; <a href="#l4">الدرس 3-2: فيثاغورس</a></nav>
+<nav style="margin:6px 0"><a href="#l1">مراجعة: حالات التوازي</a> &nbsp;|&nbsp; <a href="#l2">مراجعة: زوايا المثلث</a> &nbsp;|&nbsp; <a href="#l3">الدرس 3-1: التطابق</a> &nbsp;|&nbsp; <a href="#l4">الدرس 3-2: فيثاغورس</a> &nbsp;|&nbsp; <a href="#l5">الدرس 3-3: تطبيقات التوازي</a> &nbsp;|&nbsp; <a href="#l6">الدرس 3-4: متوسطات المثلث</a> &nbsp;|&nbsp; <a href="#l7">الدرس 3-5: المثلث المتساوي الساقين</a> &nbsp;|&nbsp; <a href="#l8">الدرس 3-6: زوايا المضلعات</a></nav>
 <h1 id="l1"><span>حالات التوازي</span></h1>
 </header>
 
@@ -615,6 +623,155 @@ body.is-calc #fhandle{display:none}
 <p class="note">حلول تمارين هذا الدرس من كتاب المدرسة (ص 75 – 77) وكتاب التقييمات (ص 30 – 34) في قسم <a href="#practice">التمارين والتقييمات</a> (اختر «الدرس 3-2»).</p>
 <h2>ملخص الدرس</h2>
 <div class="box sum"><ul><li>في المثلث القائم الزاوية: <span class="m">c² = a² + b²</span> (الوتر هو أكبر الأضلاع).</li><li>عكس النظرية: إذا تحققت العلاقة كان المثلث قائم الزاوية.</li><li>إذا كان <span class="m">c² &lt; a² + b²</span> فحاد، وإذا كان <span class="m">c² &gt; a² + b²</span> فمنفرج (<span class="m">c</span> أكبر الأضلاع).</li><li>ثلاثيات فيثاغورس: 3-4-5 و5-12-13 و8-15-17 و7-24-25 ومضاعفاتها.</li></ul></div>
+<header id="l5"><small>الدرس الثالث من الوحدة الثالثة (3-3)</small><h1><span>تطبيقات التوازي</span></h1></header>
+<div class="box goal"><b>أهداف الدرس:</b><ul><li>أتعرّف العلاقة بين أطوال أجزاء القواطع المحصورة بين مستقيمات متوازية.</li><li>أستخدم الشعاع المرسوم من منتصف ضلع في مثلث موازيًا لضلع آخر.</li><li>أتعرّف القطعة المتوسطة في المثلث والعلاقة بينها وبين الضلع المقابل لها.</li><li>أستخدم التوازي في حل مسائل هندسية.</li></ul></div>
+<p><b>المفردات:</b> التوازي (Parallelism) ، نقطة المنتصف (Midpoint) ، القطعة المتوسطة (Midsegment).</p>
+<div class="box"><b>استعد:</b> يخطط مهندس طرق لإنشاء طريق جديد يربط بين مدرسة تقع في منتصف الطريق الرئيسي <span class="m">AB</span> ومستشفى في منتصف الطريق <span class="m">AC</span>، موازيًا للطريق <span class="m">BC</span>. ما طول الطريق الجديد بدلالة <span class="m">BC</span>؟ (ستعرف الجواب في نظرية 3-3.)<br><b>فكر وناقش:</b> سلم له ساقان، والعارضة الأفقية عند منتصف الساقين طولها 0.75 م. هل تستطيع تحديد المسافة بين طرفي السلم على الأرض؟</div>
+<h2>أولًا: القواطع والمستقيمات المتوازية</h2>
+<div class="box case c1"><h3>نظرية 3-1</h3><div class="th">إذا قطع مستقيم عدة مستقيمات متوازية، وكانت أجزاء القاطع المحصورة بين هذه المستقيمات متساوية في الطول، فإن الأجزاء المحصورة بينها لأي قاطع آخر تكون متساوية في الطول.</div></div>
+<h2>جرّب بنفسك: القاطعان والمستقيمات المتوازية</h2>
+<p>غيّر عدد المستقيمات المتوازية وميلها وميل القاطع الثاني، ولاحظ أن الأجزاء على القاطع الثاني تبقى متساوية دائمًا.</p>
+<div class="demo"><svg id="tpF" viewBox="0 0 600 300" role="img" aria-label="مستقيمات متوازية وقاطعان"></svg>
+<div class="sl"><label for="tk">عدد المستقيمات</label><input id="tk" type="range" min="3" max="6" value="4"><b id="tkv"></b></div>
+<div class="sl"><label for="ta">ميل المستقيمات</label><input id="ta" type="range" min="-25" max="25" value="10"><b id="tav"></b></div>
+<div class="sl"><label for="tb2">ميل القاطع الثاني</label><input id="tb2" type="range" min="-30" max="30" value="12"><b id="tb2v"></b></div>
+<div class="read" id="tpr" aria-live="polite"></div></div>
+<div class="box case c2"><h3>نظرية 3-2</h3><div class="th">الشعاع المرسوم من منتصف ضلع في مثلث موازيًا لأحد الضلعين الآخرين ينصف الضلع الثالث.</div><p class="if">إذا كان <span class="m">D</span> منتصف <span class="m">AB</span> و<span class="m">DE ∥ BC</span> فإن <span class="m">E</span> منتصف <span class="m">AC</span> أي <span class="m">AE = EC</span>.</p></div>
+<h2>ثانيًا: القطعة المتوسطة في المثلث</h2>
+<p><b>القطعة المتوسطة</b> في المثلث هي القطعة المستقيمة المرسومة بين منتصفي ضلعين فيه. ولكل مثلث ثلاث قطع متوسطة. فإذا كانت <span class="m">D , E , F</span> منتصفات الأضلاع <span class="m">AB , AC , BC</span> فإن <span class="m">DE , DF , EF</span> هي القطع المتوسطة في المثلث <span class="m">ABC</span>.</p>
+<div class="box case c3"><h3>نظرية 3-3 (نظرية القطعة المتوسطة)</h3><div class="th">القطعة المستقيمة المرسومة بين منتصفي أي ضلعين في مثلث توازي الضلع الثالث، وطولها يساوي نصف طول هذا الضلع.</div><p class="if">إذا كانت <span class="m">DE</span> قطعة متوسطة في <span class="m">Δ ABC</span> فإن <span class="m">DE ∥ BC</span> و<span class="m">DE = ½ BC</span>.</p></div>
+<div class="box"><b>فكرة البرهان:</b> نمدّ <span class="m">DE</span> على استقامته إلى <span class="m">K</span> بحيث <span class="m">EK = DE</span>. المثلثان <span class="m">AED</span> و<span class="m">CEK</span> متطابقان (SAS) فيكون <span class="m">CK = AD = DB</span> و<span class="m">CK ∥ AB</span>، فالشكل <span class="m">DBCK</span> متوازي أضلاع، ومنه <span class="m">DK ∥ BC</span> و<span class="m">DK = BC</span>، أي <span class="m">DE = ½ BC</span>.</div>
+<h2>جرّب بنفسك: القطعة المتوسطة</h2>
+<p>غيّر طول القاعدة وموضع الرأس، ثم اعرض القطع المتوسطة الثلاث لترى أن محيط المثلث الناتج نصف محيط المثلث الأصلي.</p>
+<div class="demo"><svg id="msF" viewBox="0 0 600 300" role="img" aria-label="مثلث وقطعه المتوسطة"></svg>
+<div class="sl"><label for="mb">طول القاعدة BC</label><input id="mb" type="range" min="6" max="20" value="14"><b id="mbv"></b></div>
+<div class="sl"><label for="mx">موضع الرأس A</label><input id="mx" type="range" min="-6" max="6" value="2"><b id="mxv"></b></div>
+<div class="tabs"><button id="mall" type="button" aria-pressed="false">اعرض القطع المتوسطة الثلاث</button></div>
+<div class="read" id="msr" aria-live="polite"></div></div>
+<h2>أمثلة محلولة</h2>
+<div class="box ex"><p><b>مثال 1:</b> ثلاثة مستقيمات متوازية قطعها قاطعان، وعلى القاطع الأول <span class="m">AB = BC</span>. إذا كان طولا الجزأين على القاطع الثاني <span class="m">(3x + 1)</span> سم و<span class="m">(2x + 5)</span> سم، فأوجد <span class="m">x</span>.<br>الجزآن متساويان (نظرية 3-1): <span class="m">3x + 1 = 2x + 5</span> ⇒ <span class="m">x = 4</span>، وطول كل جزء <span class="m">13</span> سم.</p></div>
+<div class="box ex"><p><b>مثال 2:</b> <span class="m">D</span> و<span class="m">E</span> منتصفا <span class="m">AB</span> و<span class="m">AC</span> في المثلث <span class="m">ABC</span>، و<span class="m">BC = 18</span> سم. أوجد <span class="m">DE</span>.<br><span class="m">DE = ½ × 18 = 9</span> سم، و<span class="m">DE ∥ BC</span>.</p></div>
+<div class="box ex"><p><b>مثال 3:</b> أطوال أضلاع مثلث <span class="m">10 ، 14 ، 16</span> سم. ما محيط المثلث الذي رؤوسه منتصفات أضلاعه؟<br>أضلاعه نصف الأضلاع: <span class="m">5 + 7 + 8 = 20</span> سم (نصف المحيط الأصلي <span class="m">40</span>).</p></div>
+<div class="box ex"><p><b>مثال 4:</b> في المثلث <span class="m">ABC</span>: <span class="m">AB = 14 , AC = 10 , BC = 18</span> سم، و<span class="m">D , E</span> منتصفا <span class="m">AB , AC</span>. أوجد محيط المثلث <span class="m">ADE</span>.<br><span class="m">AD = 7 , AE = 5 , DE = 9</span> ⇒ المحيط <span class="m">21</span> سم.</p></div>
+<h2>اختبر نفسك</h2>
+<details><summary>1) القطعة المتوسطة في مثلث طولها 6.5 سم. ما طول الضلع المقابل لها؟</summary><p><span class="m">2 × 6.5 = 13</span> سم.</p></details>
+<details><summary>2) في المثلث <span class="m">ABC</span>: <span class="m">D</span> منتصف <span class="m">AB</span> و<span class="m">DE ∥ BC</span> يقطع <span class="m">AC</span> في <span class="m">E</span>. إذا كان <span class="m">AC = 12</span> فما <span class="m">AE</span>؟</summary><p>بنظرية 3-2: <span class="m">E</span> منتصف <span class="m">AC</span> ⇒ <span class="m">AE = 6</span> سم.</p></details>
+<details><summary>3) سلم عارضته الأفقية بين منتصفي ساقيه طولها 0.75 م. ما المسافة بين طرفيه على الأرض؟</summary><p>العارضة قطعة متوسطة: <span class="m">المسافة = 2 × 0.75 = 1.5</span> م.</p></details>
+<p class="note">حلول تمارين هذا الدرس من كتاب المدرسة (ص 81 – 82) وكتاب التقييمات (ص 35 – 36) في قسم <a href="#practice">التمارين والتقييمات</a> (اختر «الدرس 3-3»).</p>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul><li>إذا تساوت أجزاء قاطع بين مستقيمات متوازية تساوت أجزاء أي قاطع آخر.</li><li>الشعاع من منتصف ضلع موازيًا لضلع آخر ينصف الضلع الثالث.</li><li>القطعة المتوسطة توازي الضلع الثالث وتساوي نصفه، ومحيط مثلث القطع المتوسطة نصف محيط المثلث.</li></ul></div>
+<header id="l6"><small>الدرس الرابع من الوحدة الثالثة (3-4)</small><h1><span>متوسطات المثلث</span></h1></header>
+<div class="box goal"><b>أهداف الدرس:</b><ul><li>أتعرّف مفهوم متوسط المثلث ونقطة تلاقي متوسطات المثلث.</li><li>أستخدم نسبة 2 : 1 التي تقسم بها نقطة التلاقي كل متوسط.</li><li>أتعرّف العلاقة بين طول المتوسط الخارج من رأس القائمة وطول الوتر في المثلث القائم.</li><li>أستخدم المتوسطات في حل مسائل حياتية.</li></ul></div>
+<p><b>المفردات:</b> متوسط المثلث (Median) ، نقطة تقاطع متوسطات المثلث (Centroid) ، نقطة الاتزان (Equilibrium point).</p>
+<div class="box"><b>استعد:</b> طائرة بدون طيار لها ثلاثة أذرع تنتهي بمحركات متطابقة، فأين يكون مركزها الهندسي؟<br><b>فكر وناقش:</b> سطح طاولة زجاجي على شكل مثلث يحتاج إلى دعامة واحدة تحفظ توازنه. أين نضع الدعامة؟ (ستعرف الجواب: عند نقطة تلاقي المتوسطات.)</div>
+<h2>أولًا: متوسط المثلث</h2>
+<p><b>متوسط المثلث</b> هو قطعة مستقيمة تصل بين أحد رؤوسه ومنتصف الضلع المقابل له. ولكل مثلث ثلاثة متوسطات: <span class="m">AD , BE , CF</span> حيث <span class="m">D , E , F</span> منتصفات <span class="m">BC , CA , AB</span> على الترتيب.</p>
+<p><b>الفرق عن القطعة المتوسطة:</b> القطعة المتوسطة تصل بين منتصفي ضلعين، أما المتوسط فيصل بين رأس ومنتصف الضلع المقابل.</p>
+<div class="box case c1"><h3>نظرية 4-1</h3><div class="th">متوسطات المثلث الثلاثة تتقاطع في نقطة واحدة.</div><p class="if">تسمى نقطة التقاطع <span class="m">G</span> <b>المركز الهندسي</b> للمثلث أو <b>نقطة الاتزان</b>.</p></div>
+<div class="box case c2"><h3>نظرية 4-2</h3><div class="th">نقطة تقاطع متوسطات المثلث تقسم كل متوسط بنسبة 2 : 1 من جهة الرأس.</div><p class="if"><span class="m">AG = ⅔ AD</span> ، <span class="m">GD = ⅓ AD</span> ، <span class="m">AG = 2 GD</span>. ونتيجة: النقطة التي تقسم متوسطًا بنسبة 2 : 1 من جهة الرأس هي نقطة تلاقي المتوسطات.</p></div>
+<h2>جرّب بنفسك: المتوسطات والنسبة 2 : 1</h2>
+<p>غيّر قاعدة المثلث وموضع الرأس وارتفاعه، ولاحظ أن النسبة بين الجزأين ثابتة دائمًا على المتوسطات الثلاثة.</p>
+<div class="demo"><svg id="mdF" viewBox="0 0 600 300" role="img" aria-label="متوسطات مثلث ونقطة تلاقيها"></svg>
+<div class="sl"><label for="dgb">القاعدة BC</label><input id="dgb" type="range" min="8" max="22" value="16"><b id="dgbv"></b></div>
+<div class="sl"><label for="dgx">موضع الرأس A</label><input id="dgx" type="range" min="-8" max="8" value="3"><b id="dgxv"></b></div>
+<div class="sl"><label for="dgh">ارتفاع المثلث</label><input id="dgh" type="range" min="5" max="12" value="9"><b id="dghv"></b></div>
+<div class="read" id="dgr" aria-live="polite"></div></div>
+<h2>ثانيًا: متوسط المثلث القائم الزاوية</h2>
+<div class="box case c3"><h3>نظرية 4-3</h3><div class="th">طول المتوسط الخارج من رأس القائمة في المثلث القائم الزاوية يساوي نصف طول الوتر.</div><p class="if">إذا كان <span class="m">m(∠A) = 90°</span> و<span class="m">AD</span> متوسطًا فإن <span class="m">AD = ½ BC</span> أي <span class="m">AD = BD = DC</span>.</p></div>
+<div class="box"><b>فكرة البرهان:</b> أكمل رسم المستطيل <span class="m">ABEC</span>: قطراه متساويان وينصف كل منهما الآخر، فمنتصف <span class="m">BC</span> هو نفسه منتصف <span class="m">AE</span>، وبذلك <span class="m">AD = ½ AE = ½ BC</span>.</div>
+<div class="box case c1"><h3>عكس نظرية 4-3</h3><div class="th">إذا كان طول متوسط المثلث الخارج من رأس يساوي نصف طول الضلع المقابل لهذا الرأس، فإن زاوية هذا الرأس قائمة.</div><p class="if">إذا كان <span class="m">AD = BD = CD = ½ BC</span> فإن <span class="m">m(∠BAC) = 90°</span>.</p></div>
+<h2>جرّب بنفسك: عكس النظرية</h2>
+<p>النقطة <span class="m">A</span> تتحرك حول منتصف <span class="m">BC</span>. غيّر بعدها عنه: عندما يساوي المتوسط <span class="m">AD</span> نصف <span class="m">BC</span> تصبح الزاوية <span class="m">A</span> قائمة.</p>
+<div class="demo"><svg id="rtF" viewBox="0 0 600 260" role="img" aria-label="متوسط المثلث القائم وعكسه"></svg>
+<div class="sl"><label for="rk">بُعد A عن D</label><input id="rk" type="range" min="50" max="150" value="100"><b id="rkv"></b></div>
+<div class="sl"><label for="rt">اتجاه A</label><input id="rt" type="range" min="25" max="155" value="115"><b id="rtv"></b></div>
+<div class="read" id="rtr" aria-live="polite"></div></div>
+<h2>أمثلة محلولة</h2>
+<div class="box ex"><p><b>مثال 1:</b> <span class="m">G</span> نقطة تلاقي متوسطات المثلث <span class="m">ABC</span>، و<span class="m">AG = 14</span> سم و<span class="m">BE = 27</span> سم. أوجد <span class="m">AD</span> و<span class="m">BG</span>.<br><span class="m">AD = 3/2 × 14 = 21</span> سم. <span class="m">BG = 2/3 × 27 = 18</span> سم.</p></div>
+<div class="box ex"><p><b>مثال 2:</b> المثلث <span class="m">ABC</span> قائم الزاوية في <span class="m">A</span> و<span class="m">BC = 26</span> سم و<span class="m">AD</span> متوسط. أوجد <span class="m">AD</span>.<br>المتوسط من رأس القائمة: <span class="m">AD = ½ × 26 = 13</span> سم.</p></div>
+<div class="box ex"><p><b>مثال 3:</b> مثلث قائم الزاوية فيه طول المتوسط من رأس القائمة <span class="m">(x + 7)</span> سم وطول الوتر <span class="m">(3x − 2)</span> سم. أوجد <span class="m">x</span>.<br><span class="m">x + 7 = ½ (3x − 2)</span> ⇒ <span class="m">2x + 14 = 3x − 2</span> ⇒ <span class="m">x = 16</span> ، والمتوسط <span class="m">23</span> سم.</p></div>
+<div class="box ex"><p><b>مثال 4 (عكس النظرية):</b> <span class="m">D</span> منتصف <span class="m">BC</span> و<span class="m">AD = 10</span> سم و<span class="m">BC = 20</span> سم. ماذا تستنتج عن الزاوية <span class="m">A</span>؟<br><span class="m">AD = ½ BC</span> ⇒ <span class="m">m(∠BAC) = 90°</span> (عكس نظرية 4-3).</p></div>
+<h2>اختبر نفسك</h2>
+<details><summary>1) <span class="m">G</span> نقطة تلاقي متوسطات مثلث و<span class="m">GD = 5</span> سم. أوجد <span class="m">AG</span> و<span class="m">AD</span>.</summary><p><span class="m">AG = 2 GD = 10</span> سم و<span class="m">AD = 3 GD = 15</span> سم.</p></details>
+<details><summary>2) مثلث قائم الزاوية فيه المتوسط من رأس القائمة 7.5 سم. ما طول وتره؟</summary><p>الوتر ضعف المتوسط: <span class="m">2 × 7.5 = 15</span> سم.</p></details>
+<details><summary>3) طول متوسط في مثلث 9 سم. أين تقع نقطة تلاقي المتوسطات على هذا المتوسط؟</summary><p>على بعد <span class="m">⅔ × 9 = 6</span> سم من الرأس و<span class="m">3</span> سم من منتصف الضلع.</p></details>
+<p class="note">حلول تمارين هذا الدرس من كتاب المدرسة (ص 87 – 88) وكتاب التقييمات (ص 39 – 43) في قسم <a href="#practice">التمارين والتقييمات</a> (اختر «الدرس 3-4»).</p>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul><li>متوسط المثلث يصل رأسًا بمنتصف الضلع المقابل، وللمثلث ثلاثة متوسطات تتقاطع في نقطة واحدة هي المركز الهندسي.</li><li>نقطة التلاقي تقسم كل متوسط بنسبة 2 : 1 من جهة الرأس.</li><li>في المثلث القائم: المتوسط من رأس القائمة = نصف الوتر، وعكسه صحيح.</li></ul></div>
+<header id="l7"><small>الدرس الخامس من الوحدة الثالثة (3-5)</small><h1><span>المثلث المتساوي الساقين</span></h1></header>
+<div class="box goal"><b>أهداف الدرس:</b><ul><li>أتعرّف خواص المثلث المتساوي الساقين وعكسها.</li><li>أتعرّف خواص المثلث المتساوي الأضلاع.</li><li>أتعرّف محور تماثل القطعة المستقيمة ومحور تماثل المثلث المتساوي الساقين.</li><li>أتعرّف المثلث 30°–60°–90° وخاصيته.</li></ul></div>
+<p><b>المفردات:</b> المثلث المتساوي الساقين (Isosceles triangle) ، المثلث المتساوي الأضلاع (Equilateral triangle) ، محور التماثل (Axis of symmetry) ، زاوية الرأس ، القاعدة ، زاويتا القاعدة.</p>
+<div class="box"><b>استعد:</b> سقف بيت على شكل مثلث ساقاه متساويان طولًا. إذا علمت قياس الزاوية عند القمة فهل تستطيع حساب الزاويتين عند الحائطين؟</div>
+<h2>أولًا: المثلث المتساوي الساقين</h2>
+<p>المثلث المتساوي الساقين هو مثلث فيه ضلعان متطابقان يسميان <b>الساقين</b>، والضلع الثالث <b>القاعدة</b>، والزاوية بين الساقين <b>زاوية الرأس</b>، والزاويتان على القاعدة <b>زاويتا القاعدة</b>.</p>
+<div class="box case c1"><h3>نظرية المثلث المتساوي الساقين</h3><div class="th">زاويتا القاعدة في المثلث المتساوي الساقين متطابقتان.</div><p class="if">إذا كان <span class="m">AB = AC</span> فإن <span class="m">∠B ≅ ∠C</span>.</p></div>
+<div class="box case c2"><h3>عكس النظرية</h3><div class="th">إذا تطابقت زاويتان في مثلث فإن الضلعين المقابلين لهما متطابقان، والمثلث متساوي الساقين.</div><p class="if">إذا كان <span class="m">∠B ≅ ∠C</span> فإن <span class="m">AB = AC</span>.</p></div>
+<div class="box"><b>فكرة البرهان:</b> نرسم منصف زاوية الرأس <span class="m">AD</span> فيتكوّن المثلثان <span class="m">ABD</span> و<span class="m">ACD</span> المتطابقان (SAS)، ومنه <span class="m">∠B = ∠C</span>.</div>
+<h2>جرّب بنفسك: المثلث المتساوي الساقين</h2>
+<p>غيّر زاوية الرأس وطول الساقين، ولاحظ أن زاويتي القاعدة متساويتان دائمًا وأن ارتفاع الرأس ينصف القاعدة.</p>
+<div class="demo"><svg id="isF" viewBox="0 0 600 300" role="img" aria-label="مثلث متساوي الساقين"></svg>
+<div class="sl"><label for="ia">زاوية الرأس A</label><input id="ia" type="range" min="20" max="140" value="50"><b id="iav"></b></div>
+<div class="sl"><label for="il">طول الساق</label><input id="il" type="range" min="6" max="14" value="10"><b id="ilv"></b></div>
+<div class="read" id="ir" aria-live="polite"></div></div>
+<h2>ثانيًا: المثلث المتساوي الأضلاع</h2>
+<div class="box case c3"><h3>المثلث المتساوي الأضلاع</h3><div class="th">أضلاعه الثلاثة متطابقة، وزواياه الثلاث متطابقة، قياس كل منها <span class="m">60°</span>. والعكس: المثلث الذي زواياه الثلاث متطابقة أضلاعه متساوية.</div></div>
+<h2>ثالثًا: محور تماثل القطعة المستقيمة</h2>
+<p><b>محور تماثل القطعة المستقيمة</b> هو المستقيم العمودي عليها من منتصفها.</p>
+<div class="box case c1"><h3>نتيجتان</h3><div class="th">أي نقطة على محور تماثل قطعة تبعد بُعدين متساويين عن طرفيها، وأي نقطة تبعد بُعدين متساويين عن طرفي قطعة تقع على محور تماثلها.</div><p class="if">إذا كان <span class="m">l</span> محور تماثل <span class="m">AB</span> و<span class="m">D ∈ l</span> فإن <span class="m">DA = DB</span>.</p></div>
+<h2>رابعًا: محور تماثل المثلث المتساوي الساقين</h2>
+<ul><li>المثلث المتساوي الساقين له محور تماثل واحد: المستقيم المار برأسه والعمودي على قاعدته.</li><li>المثلث المتساوي الأضلاع له ثلاثة محاور تماثل.</li><li>المثلث المختلف الأضلاع ليس له محور تماثل.</li></ul>
+<div class="box case c2"><h3>نتائج</h3><div class="th">في المثلث المتساوي الساقين: منصف زاوية الرأس هو نفسه متوسط وارتفاع، فهو ينصف القاعدة ويعامدها. وكذلك المتوسط من الرأس ينصف زاوية الرأس ويعامد القاعدة، والعمود من الرأس على القاعدة ينصفها وينصف زاوية الرأس.</div><p class="if">إذا كان <span class="m">AB = AC</span> فإن كل خط من الثلاثة (المنصف والمتوسط والارتفاع من <span class="m">A</span>) هو <span class="m">AD</span> نفسه.</p></div>
+<h2>خامسًا: المثلث 30° – 60° – 90°</h2>
+<div class="box case c3"><h3>خاصية المثلث الثلاثيني الستيني</h3><div class="th">في المثلث القائم الذي إحدى زاويتيه الحادتين <span class="m">30°</span> يكون طول الضلع المقابل للزاوية <span class="m">30°</span> نصف طول الوتر.</div><p class="if">إذا كان <span class="m">m(∠A) = 30°</span> والزاوية <span class="m">B</span> قائمة فإن <span class="m">BC = ½ AC</span>. ومحور تماثل المثلث المتساوي الأضلاع يقسمه إلى مثلثين من هذا النوع.</p></div>
+<h2>جرّب بنفسك: المثلث 30°–60°–90°</h2>
+<p>غيّر طول الوتر، ولاحظ أن الضلع المقابل لـ 30° يساوي نصفه، وأن المثلث نصف مثلث متساوي الأضلاع.</p>
+<div class="demo"><svg id="trF" viewBox="0 0 600 300" role="img" aria-label="المثلث 30-60-90"></svg>
+<div class="sl"><label for="tq">طول الوتر</label><input id="tq" type="range" min="4" max="20" value="12"><b id="tqv"></b></div>
+<div class="read" id="trr" aria-live="polite"></div></div>
+<h2>أمثلة محلولة</h2>
+<div class="box ex"><p><b>مثال 1:</b> مثلث متساوي الساقين قياس زاوية رأسه <span class="m">50°</span>. أوجد زاويتي القاعدة.<br><span class="m">(180° − 50°) ÷ 2 = 65°</span> لكل منهما.</p></div>
+<div class="box ex"><p><b>مثال 2:</b> مثلث متساوي الساقين قياس إحدى زاويتي قاعدته <span class="m">70°</span>. أوجد زاوية الرأس.<br><span class="m">180° − 2 × 70° = 40°</span>.</p></div>
+<div class="box ex"><p><b>مثال 3:</b> مثلث متساوي الساقين طولا ضلعين فيه <span class="m">5 سم</span> و<span class="m">11 سم</span>. أوجد محيطه.<br>لا يصلح أن يكون الساقان 5 و5 والقاعدة 11 لأن <span class="m">5 + 5 < 11</span>. فالساقان 11 و11 والقاعدة 5: المحيط <span class="m">27</span> سم.</p></div>
+<div class="box ex"><p><b>مثال 4:</b> <span class="m">AB = AC</span> و<span class="m">AD ⟂ BC</span> و<span class="m">BD = (2x + 1)</span> سم و<span class="m">DC = 9</span> سم. أوجد <span class="m">x</span>.<br>الارتفاع من الرأس ينصف القاعدة: <span class="m">2x + 1 = 9</span> ⇒ <span class="m">x = 4</span>.</p></div>
+<div class="box ex"><p><b>مثال 5:</b> مثلث قائم الزاوية فيه إحدى الزاويتين الحادتين <span class="m">30°</span> وطول الوتر <span class="m">18 سم</span>. أوجد طول الضلع المقابل للزاوية 30°.<br><span class="m">½ × 18 = 9</span> سم.</p></div>
+<h2>اختبر نفسك</h2>
+<details><summary>1) في المثلث <span class="m">ABC</span>: <span class="m">AB = AC</span> و<span class="m">m(∠B) = 54°</span>. أوجد <span class="m">m(∠A)</span>.</summary><p><span class="m">m(∠C) = 54°</span> ⇒ <span class="m">m(∠A) = 180° − 108° = 72°</span>.</p></details>
+<details><summary>2) مثلث زواياه <span class="m">50° ، 50° ، 80°</span>. ما نوعه بالنسبة لأضلاعه؟</summary><p>زاويتان متطابقتان ⇒ ضلعان متطابقان ⇒ <b>متساوي الساقين</b>.</p></details>
+<details><summary>3) في مثلث ثلاثيني ستيني طول الضلع المقابل لـ 30° يساوي 7 سم. ما طول الوتر؟</summary><p><span class="m">2 × 7 = 14</span> سم.</p></details>
+<p class="note">حلول تمارين هذا الدرس من كتاب المدرسة (ص 94 – 96) وكتاب التقييمات (ص 44 – 49) في قسم <a href="#practice">التمارين والتقييمات</a> (اختر «الدرس 3-5»).</p>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul><li>زاويتا القاعدة في المثلث المتساوي الساقين متطابقتان وعكسها صحيح.</li><li>المثلث المتساوي الأضلاع زواياه 60° لكل منها.</li><li>المنصف والمتوسط والارتفاع من الرأس في المتساوي الساقين منطبقة ومحور تماثل.</li><li>في المثلث 30°–60°–90°: الضلع المقابل لـ 30° = نصف الوتر.</li></ul></div>
+<header id="l8"><small>الدرس السادس من الوحدة الثالثة (3-6)</small><h1><span>الزوايا الداخلة والخارجة للمضلعات</span></h1></header>
+<div class="box goal"><b>أهداف الدرس:</b><ul><li>أتعرّف المضلع المحدب والمضلع المنتظم وأقطار المضلع.</li><li>أحسب مجموع قياسات الزوايا الداخلة والزوايا الخارجة لمضلع.</li><li>أحسب قياس الزاوية الداخلة والخارجة لمضلع منتظم.</li><li>أحسب عدد أقطار مضلع.</li></ul></div>
+<p><b>المفردات:</b> مضلع (Polygon) ، مضلع محدب (Convex) ، مضلع منتظم (Regular) ، قطر (Diagonal) ، زاوية داخلة (Interior angle) ، زاوية خارجة (Exterior angle).</p>
+<div class="box"><b>استعد:</b> السجاد الهندسي والعملات القديمة تحوي مضلعات منتظمة (مثمن، مسدس...). كيف نعرف قياس زاوية الزخرفة من عدد أضلاعها فقط؟</div>
+<h2>أولًا: المضلع وأقطاره</h2>
+<p>المضلع المحدب مضلع تقع جميع رؤوسه في جهة واحدة من أي ضلع فيه، أما <b>المضلع المنتظم</b> فأضلاعه كلها متساوية وزواياه كلها متساوية. و<b>القطر</b> قطعة مستقيمة تصل بين رأسين غير متجاورين.</p>
+<div class="box case c1"><h3>عدد أقطار مضلع عدد أضلاعه n</h3><div class="th">من كل رأس نرسم <span class="m">n − 3</span> قطرًا، وكل قطر يُحسب مرتين، فعدد الأقطار:</div><p class="if"><span class="m">n(n − 3) ÷ 2</span>. مثلًا: سباعي: <span class="m">7 × 4 ÷ 2 = 14</span> قطرًا.</p></div>
+<h2>ثانيًا: مجموع الزوايا الداخلة</h2>
+<p>نقسّم المضلع بأقطار من رأس واحد إلى <span class="m">n − 2</span> مثلثًا، ومجموع زوايا كل مثلث <span class="m">180°</span>.</p>
+<div class="box case c2"><h3>مجموع قياسات الزوايا الداخلة</h3><div class="th"><span class="m">(n − 2) × 180°</span>. وفي المضلع المنتظم قياس كل زاوية داخلة <span class="m">(n − 2) × 180° ÷ n</span>.</div></div>
+<h2>ثالثًا: الزوايا الخارجة</h2>
+<div class="box case c3"><h3>مجموع قياسات الزوايا الخارجة</h3><div class="th">مجموع قياسات الزوايا الخارجة لأي مضلع محدب (زاوية عند كل رأس) يساوي <span class="m">360°</span> مهما كان عدد أضلاعه. وفي المضلع المنتظم قياس كل زاوية خارجة <span class="m">360° ÷ n</span>.</div><p class="if">وعند كل رأس: زاوية داخلة + زاوية خارجة = <span class="m">180°</span>.</p></div>
+<h2>جرّب بنفسك: مضلع منتظم</h2>
+<p>غيّر عدد الأضلاع، ثم اضغط «المثلثات والأقطار» أو «الزوايا الخارجة» لترى العلاقات.</p>
+<div class="demo"><svg id="pgF" viewBox="0 0 600 320" role="img" aria-label="مضلع منتظم"></svg>
+<div class="tabs" id="pgm" role="group" aria-label="الوضع"><button type="button" data-m="tri" aria-pressed="true">المثلثات والأقطار</button><button type="button" data-m="ext" aria-pressed="false">الزوايا الخارجة</button></div>
+<div class="sl"><label for="pn">عدد الأضلاع n</label><input id="pn" type="range" min="3" max="12" value="6"><b id="pnv"></b></div>
+<div class="read" id="pgr" aria-live="polite"></div></div>
+<h2>أمثلة محلولة</h2>
+<div class="box ex"><p><b>مثال 1:</b> أوجد مجموع قياسات الزوايا الداخلة لمضلع ذي 12 ضلعًا.<br><span class="m">(12 − 2) × 180° = 1800°</span>.</p></div>
+<div class="box ex"><p><b>مثال 2:</b> مضلع محدب مجموع قياسات زواياه الداخلة <span class="m">1620°</span>. أوجد عدد أضلاعه.<br><span class="m">(n − 2) × 180 = 1620</span> ⇒ <span class="m">n − 2 = 9</span> ⇒ <span class="m">n = 11</span>.</p></div>
+<div class="box ex"><p><b>مثال 3:</b> مضلع منتظم قياس زاويته الداخلة <span class="m">150°</span>. أوجد عدد أضلاعه وعدد أقطاره.<br>الخارجة <span class="m">180° − 150° = 30°</span> ⇒ <span class="m">n = 360 ÷ 30 = 12</span>، والأقطار <span class="m">12 × 9 ÷ 2 = 54</span>.</p></div>
+<div class="box ex"><p><b>مثال 4:</b> مضلع محدب عدد أقطاره <span class="m">27</span>. أوجد عدد أضلاعه.<br><span class="m">n(n − 3) ÷ 2 = 27</span> ⇒ <span class="m">n² − 3n − 54 = 0</span> ⇒ <span class="m">(n − 9)(n + 6) = 0</span> ⇒ <span class="m">n = 9</span>.</p></div>
+<div class="box ex"><p><b>مثال 5:</b> خمس زوايا داخلة لمضلع سداسي قياساتها <span class="m">100° ، 110° ، 120° ، 130° ، 140°</span>. أوجد السادسة.<br>المجموع <span class="m">720°</span>: <span class="m">720° − 600° = 120°</span>.</p></div>
+<h2>اختبر نفسك</h2>
+<details><summary>1) ما مجموع قياسات الزوايا الداخلة لمثمن محدب؟ وما قياس كل زاوية فيه إن كان منتظمًا؟</summary><p><span class="m">(8 − 2) × 180° = 1080°</span> ، وكل زاوية <span class="m">1080° ÷ 8 = 135°</span>.</p></details>
+<details><summary>2) مضلع منتظم قياس زاويته الخارجة 40°. كم ضلعًا له؟</summary><p><span class="m">360° ÷ 40° = 9</span> أضلاع.</p></details>
+<details><summary>3) كم قطرًا في مسدس؟</summary><p><span class="m">6 × 3 ÷ 2 = 9</span> أقطار.</p></details>
+<p class="note">حلول تمارين هذا الدرس من كتاب المدرسة (ص 101 – 102) وكتاب التقييمات (ص 46 – 49) في قسم <a href="#practice">التمارين والتقييمات</a> (اختر «الدرس 3-6»).</p>
+<h2>ملخص الدرس</h2>
+<div class="box sum"><ul><li>عدد الأقطار <span class="m">n(n−3)/2</span>، ومجموع الداخلة <span class="m">(n−2)·180°</span>.</li><li>مجموع الزوايا الخارجة 360° دائمًا.</li><li>في المنتظم: الداخلة <span class="m">(n−2)·180°/n</span> والخارجة <span class="m">360°/n</span>، ومجموعهما 180°.</li></ul></div>
 </main>
 </section>
 <section id="practice" class="pane" hidden>
@@ -1521,6 +1678,603 @@ addP(222,'جـ · ثانيًا 4',WC2,'برهان: m(∠C) = 90°','أثبت أ�
   stp('{{DC² + CB² = BD²}}','من الخطوتين السابقتين',['DB']),
   stp('{{m(∠C) = 90°}}','عكس نظرية فيثاغورس',['tDCB'])])],[],
  {P:{D:[0,25],A:[35,0],B:[145,150],C:[0,150]},S:[['D','A',{l:'3 سم'}],['A','B',{l:'11 سم'}],['C','B',{l:'9 سم'}],['D','C',{l:'7 سم'}],['D','B']],A:[RAi('rA','A','D','B')],F:[['DCB','tDCB'],['DAB','tDAB']]});
+
+/* ===== الدرس 3-3: تطبيقات التوازي ===== */
+const PP3=['نظرية 3-1','نظرية 3-2','نظرية القطعة المتوسطة','معطى','نظرية فيثاغورس','من الخطوتين السابقتين','ضلعان متقابلان متوازيان ومتساويان'];
+const stq=(s,r,hl,c)=>Object.assign(st(s,r,hl,c),{pool:PP3});
+const C1='الدرس 3-3 · أولًا · قياس المفاهيم',C2='الدرس 3-3 · ثانيًا · تطبيق المفاهيم',C3='الدرس 3-3 · ثالثًا · التحليل وتكامل المواد',C4='الدرس 3-3 · تفكير إبداعي';
+const addC=(n,dn,sec,title,prompt,parts,sol,fg,note)=>{add(n,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.dn=dn;q.les=3;F[n]=fg};
+const addD=(n,lab,sec,title,prompt,parts,sol,fg,note)=>{addL(n,lab,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.les=3;F[n]=fg};
+const TA={A:[100,0],B:[0,130],C:[200,130]};
+/* ---- كتاب المدرسة: تقييم الدرس 3-3 ---- */
+addC(61,'1',C1,'أجزاء القاطع','في الشكل: ثلاثة مستقيمات متوازية يقطعها قاطعان، وعلى القاطع الثاني {{AB = BC}}. إذا كان {{DF = 15}} سم فما طول {{EF}}؟',
+ [mq('اختر الإجابة الصحيحة:',['10 سم','7.5 سم','5 سم','2.5 سم'],1,'أجزاء القاطع الأول متساوية أيضًا.')],
+ [{t:'المستقيمات الثلاثة متوازية و{{AB = BC}}',hl:['AB','BC']},{t:'إذن أجزاء القاطع الآخر متساوية (نظرية 3-1): {{DE = EF}}',hl:['DE','EF']},{t:'{{EF = DF ÷ 2 = 15 ÷ 2 = 7.5}} سم',hl:['EF']}],
+ {P:{D:[30,0],A:[130,0],E:[50,40],B:[150,40],F:[70,80],C:[170,80]},S:[['D','A',{arr:1}],['E','B',{arr:1}],['F','C',{arr:1}],['D','E'],['E','F'],['A','B',{t:1}],['B','C',{t:1}]],T:[[24,98,'DF = 15 سم']]});
+addC(62,'2',C1,'طول AE','في الشكل: {{AF = FK = KB}} و{{FD ∥ KE ∥ BC}}. إذا كان {{AC = 12}} سم فما طول {{AE}}؟',
+ [mq('اختر الإجابة الصحيحة:',['3 سم','4 سم','6 سم','8 سم'],3,'قسّمت المستقيمات المتوازية {{AB}} إلى ثلاثة أجزاء متساوية.')],
+ [{t:'{{AF = FK = KB}} والمستقيمات متوازية ⇒ {{AD = DE = EC}} (نظرية 3-1)',hl:['AF','FK','KB','AD','DE','EC']},{t:'كل جزء {{= 12 ÷ 3 = 4}} سم',hl:['AD','DE','EC']},{t:'{{AE = AD + DE = 4 + 4 = 8}} سم',hl:['AE']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],F:[67,50],K:[33,100],D:[133,50],E:[167,100]},S:[['A','F',{t:1}],['F','K',{t:1}],['K','B',{t:1}],['A','D'],['D','E'],['E','C'],['F','D',{arr:1}],['K','E',{arr:1}],['B','C',{arr:1}],['A','E',{nodraw:1}]],T:[[200,60,'AC = 12 سم']]});
+addC(63,'3',C1,'طول AB','في الشكل: {{E}} منتصف {{AB}} و{{D}} منتصف {{AC}}. إذا كان {{EB = 10}} سم فما طول {{AB}}؟',
+ [mq('اختر الإجابة الصحيحة:',['20 سم','10 سم','7.5 سم','5 سم'],0,'{{E}} منتصف {{AB}}.')],
+ [{t:'{{E}} منتصف {{AB}} إذن {{AB = 2 × EB}}',hl:['AE','EB']},{t:'{{AB = 2 × 10 = 20}} سم',hl:['AB']}],
+ {P:TA,S:[['A','E',{t:1}],['E','B',{t:1,l:'10 سم'}],['A','D',{t:2}],['D','C',{t:2}],['E','D',{arr:1}],['B','C',{arr:1}]]});
+Object.assign(F[63].P,{E:[50,65],D:[150,65]});F[63].A=[];F[63].S=F[63].S.map(x=>x);
+addC(64,'4',C1,'قيمة x','في الشكل: {{E}} و{{D}} منتصفا {{AB}} و{{AC}}، و{{BC = 8}} سم. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['16','8','4','2'],2,'{{ED}} قطعة متوسطة.')],
+ [{t:'{{ED}} قطعة متوسطة في {{ΔABC}}',hl:['ED']},{t:'{{x = ED = ½ BC = ½ × 8 = 4}} سم',hl:['ED','BC']}],
+ {P:{A:[100,0],B:[0,130],C:[200,130],E:[50,65],D:[150,65]},S:[['A','E',{t:1}],['E','B',{t:1}],['A','D',{t:2}],['D','C',{t:2}],['E','D',{arr:1,l:'x سم'}],['B','C',{arr:1,l:'8 سم'}]]});
+addC(65,'5',C1,'قيمة x','في الشكل: {{D}} منتصف {{AB}} و{{E}} منتصف {{BC}} و{{DE = 4.5}} سم. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['9','4.5','13.5','2.25'],0,'{{DE}} قطعة متوسطة توازي {{AC}}.')],
+ [{t:'{{D}} منتصف {{AB}} و{{E}} منتصف {{BC}} ⇒ {{DE}} قطعة متوسطة',hl:['DE']},{t:'{{x = AC = 2 × DE = 2 × 4.5 = 9}} سم',hl:['AC','DE']}],
+ {P:{A:[130,0],B:[0,130],C:[200,130],D:[65,65],E:[100,130]},S:[['A','D',{t:2}],['D','B',{t:2}],['B','E',{t:1}],['E','C',{t:1}],['A','C',{l:'x سم'}],['D','E',{l:'4.5 سم'}]]});
+addC(66,'6',C1,'محيط DEF','في الشكل: {{D , E , F}} منتصفات {{AB , AC , BC}}. إذا كان محيط {{ΔABC}} يساوي 18 سم فما محيط {{ΔDEF}}؟',
+ [mq('اختر الإجابة الصحيحة:',['6 سم','12 سم','36 سم','9 سم'],3,'كل ضلع في {{DEF}} نصف الضلع المقابل له.')],
+ [{t:'{{DE , EF , DF}} قطع متوسطة، طول كل منها نصف الضلع المقابل',hl:['DE','EF','DF']},{t:'محيط {{ΔDEF = ½ × محيط ΔABC}}',hl:['tDEF']},{t:'{{= ½ × 18 = 9}} سم',hl:['tDEF']}],
+ {P:{A:[100,0],B:[0,130],C:[200,130],D:[50,65],E:[150,65],F:[100,130]},S:[['A','D',{t:1}],['D','B',{t:1}],['A','E',{t:2}],['E','C',{t:2}],['B','F',{t:3}],['F','C',{t:3}],['D','E'],['E','F'],['F','D']],F:[['ABC','tABC'],['DEF','tDEF']]});
+addC(67,'7 (1)',C2,'قيمة x و y (1)','في الشكل: {{U , V , W}} منتصفات {{RS , ST , RT}}. أوجد قيمة {{x}} و{{y}}.',
+ [num('x =',3,{unit:'سم',hint:'{{UW}} قطعة متوسطة موازية لـ {{ST}}.'}),num('y =',42,{unit:'°',hint:'{{UWTV}} متوازي أضلاع.'})],
+ [{t:'{{U , W}} منتصفا {{RS , RT}} ⇒ {{UW = ½ ST = ½ × 6 = 3}} سم',hl:['UW','ST']},{t:'{{UW ∥ VT}} و{{UV ∥ WT}} (قطعتان متوسطتان) ⇒ {{UWTV}} متوازي أضلاع',hl:['UW','UV']},{t:'الزاويتان المتقابلتان متساويتان: {{y = m(∠WUV) = 42°}}',hl:['aU','aT']}],
+ {P:{R:[0,45],S:[140,0],T:[170,150],U:[70,22],V:[155,75],W:[85,97]},S:[['R','U',{t:1}],['U','S',{t:1}],['S','V',{t:2}],['V','T',{t:2}],['R','W',{t:3}],['W','T',{t:3}],['U','W',{l:'x سم'}],['U','V'],['S','T',{nodraw:1,l:'6 سم'}]],A:[{v:'U',a:'W',b:'V',l:'42°',id:'aU',r:18},{v:'T',a:'W',b:'V',l:'y°',id:'aT',r:18}],F:[['UWTV','tUWTV']]});
+addC(68,'7 (2)',C2,'قيمة x و y (2)','في الشكل: {{AS = SF = FD = DB}} والمستقيمات {{SW , FG , DE}} توازي {{AC}} و{{AC = 16}} سم. أوجد قيمة {{x}} و{{y}}.',
+ [num('x =',4,{unit:'سم',hint:'{{D}} على بعد ربع {{AB}} من {{B}}.'}),num('y =',8,{unit:'سم',hint:'{{F}} منتصف {{AB}}.'})],
+ [{t:'{{DE ∥ AC}} و{{BD = ¼ BA}} ⇒ {{DE = ¼ AC = ¼ × 16 = 4}} سم',hl:['DE','AC']},{t:'{{F}} منتصف {{AB}} و{{FG ∥ AC}} ⇒ {{G}} منتصف {{BC}}',hl:['FG']},{t:'{{FG = ½ AC = ½ × 16 = 8}} سم',hl:['FG','AC']}],
+ {P:{A:[0,150],B:[200,150],C:[30,0],S:[50,150],F:[100,150],D:[150,150],W:[72,38],G:[115,75],E:[158,112]},S:[['A','C',{l:'16 سم'}],['A','S',{t:1}],['S','F',{t:1}],['F','D',{t:1}],['D','B',{t:1}],['B','E',{t:2}],['E','G',{t:2}],['G','W',{t:2}],['W','C',{t:2}],['S','W',{arr:1}],['F','G',{arr:1,l:'y سم'}],['D','E',{arr:1,l:'x سم'}]]});
+addC(69,'7 (3)',C2,'قيمة x و y (3)','في الشكل: {{E}} منتصف {{AC}} و{{ED ∥ AB}} و{{AB = 20}} سم و{{BC = 10}} سم و{{EC = 5√3}} سم و{{m(∠B) = 60°}}. أوجد قيمة {{x}} و{{y}}.',
+ [num('x =',10,{unit:'سم',hint:'{{E}} منتصف {{AC}} و{{ED ∥ AB}} فـ {{D}} منتصف {{BC}}.'}),num('y =',30,{unit:'°',hint:'أثبت أن المثلث {{ABC}} قائم في {{C}}.'})],
+ [{t:'{{E}} منتصف {{AC}} و{{ED ∥ AB}} ⇒ {{D}} منتصف {{BC}}، و{{x = ED = ½ AB = 10}} سم',hl:['ED','AB']},{t:'{{AC = 2 × EC = 10√3}}، فـ {{AC² + BC² = 300 + 100 = 400 = AB²}}',hl:['AC','BC','AB']},{t:'المثلث {{ABC}} قائم في {{C}} ووتره {{AB = 2 BC}} ⇒ {{m(∠A) = 30°}}',hl:['tABC']},{t:'{{y = m(∠CED) = m(∠A) = 30°}} (متناظرتان، {{ED ∥ AB}})',hl:['aE']}],
+ {P:{A:[0,100],B:[200,100],C:[150,13],E:[75,57],D:[175,57]},S:[['A','B',{arr:1,l:'20 سم'}],['B','D'],['D','C',{l:'',t:2}],['A','E',{t:1}],['E','C',{t:1,l:'5√3 سم'}],['E','D',{arr:1,l:'x سم'}]],A:[{v:'E',a:'D',b:'C',l:'y°',id:'aE',r:18},{v:'B',a:'A',b:'C',l:'60°',id:'aB',r:20}],F:[['ABC','tABC']]});
+addC(70,'8',C2,'برهان: BD = 2EG','{{E}} منتصف {{AB}} و{{FG ∥ CD}} و{{EF ∥ BC}}. برهن أن {{BD = 2 EG}}.',
+ [proof([
+  stq('في {{ΔABC}}: {{E}} منتصف {{AB}} و{{EF ∥ BC}} ⇒ {{F}} منتصف {{AC}}','نظرية 3-2',['AE','EF']),
+  stq('في {{ΔACD}}: {{F}} منتصف {{AC}} و{{FG ∥ CD}} ⇒ {{G}} منتصف {{AD}}','نظرية 3-2',['AF','FG']),
+  stq('في {{ΔABD}}: {{E , G}} منتصفا {{AB , AD}} ⇒ {{EG ∥ BD}} و{{EG = ½ BD}}','نظرية القطعة المتوسطة',['EG','BD']),
+  stq('{{BD = 2 EG}}','من الخطوتين السابقتين',['BD'])])],[],
+ {P:{A:[115,0],B:[0,130],C:[110,150],D:[230,125],E:[57,65],F:[112,75],G:[172,62]},S:[['A','E',{t:1}],['E','B',{t:1}],['A','F'],['F','C'],['A','G'],['G','D'],['B','C',{arr:1}],['C','D',{arr:2}],['E','F',{arr:1}],['F','G',{arr:2}],['E','G',{nodraw:1}],['B','D',{nodraw:1}]],F:[['ABD','tABD']]});
+addC(71,'9',C2,'طول KE','{{FD ∥ GE}} و{{GK = 8}} سم و{{AG = GF = FB}}. أوجد طول {{KE}}.',
+ [num('KE =',24,{unit:'سم',hint:'ابدأ من المثلث {{AFD}} ثم المثلث {{BGE}}.'})],
+ [{t:'في {{ΔAFD}}: {{G}} منتصف {{AF}} و{{GK ∥ FD}} ⇒ {{GK = ½ FD}} ⇒ {{FD = 16}} سم',hl:['AG','GK','FD']},{t:'في {{ΔBGE}}: {{F}} منتصف {{BG}} و{{FD ∥ GE}} ⇒ {{FD = ½ GE}} ⇒ {{GE = 32}} سم',hl:['GF','FB','GE']},{t:'{{KE = GE − GK = 32 − 8 = 24}} سم',hl:['KE']}],
+ {P:{A:[120,0],B:[0,180],C:[260,180],G:[80,60],F:[40,120],D:[88,180],E:[176,180],K:[104,90]},S:[['A','G',{t:1}],['G','F',{t:1}],['F','B',{t:1}],['B','D'],['D','E'],['E','C'],['A','C'],['A','K'],['K','D'],['G','K',{l:'8 سم'}],['K','E'],['F','D',{arr:1}],['G','E',{nodraw:1}]]});
+addC(72,'10',C2,'طول BK','{{ΔABC}} فيه {{E , D}} منتصفا {{AB , AC}}، و{{K , G}} منتصفا {{FE , FD}}. أوجد مع البرهان طول {{BK}}.',
+ [num('BK =',4,{unit:'سم',hint:'{{KG}} قطعة متوسطة في {{ΔFED}}.'})],
+ [{t:'في {{ΔFED}}: {{K , G}} منتصفا {{FE , FD}} ⇒ {{KG = ½ ED}} ⇒ {{ED = 6}} سم',hl:['KG','ED']},{t:'في {{ΔABC}}: {{E , D}} منتصفا {{AB , AC}} ⇒ {{BC = 2 ED = 12}} سم',hl:['ED','BC']},{t:'{{BK = BC − KG − GC = 12 − 3 − 5 = 4}} سم',hl:['BK']}],
+ {P:{A:[100,0],B:[0,130],C:[200,130],E:[50,65],D:[150,65],K:[74,130],G:[126,130],F:[100,195]},S:[['A','E',{t:1}],['E','B',{t:1}],['A','D',{t:2}],['D','C',{t:2}],['E','D'],['B','K'],['K','G',{l:'3 سم'}],['G','C',{l:'5 سم'}],['E','K',{t:3}],['K','F',{t:3}],['D','G',{t:4}],['G','F',{t:4}],['B','C',{nodraw:1}]],F:[['FED','tFED']]},
+ 'قرأنا العلامات في الشكل: K منتصف FE وG منتصف FD.');
+addC(73,'11',C2,'مساحة المثلث BEF','{{ABCD}} شكل رباعي فيه {{AD = 9}} سم و{{DC = 12}} سم و{{m(∠D) = 90°}} و{{m(∠CAB) = 90°}}، و{{E , F}} منتصفا {{AB , BC}} و{{AE = 4}} سم. أوجد مساحة {{ΔBEF}}.',
+ [num('المساحة =',15,{unit:'سم²',hint:'أوجد {{AC}} بفيثاغورس ثم {{EF}} من القطعة المتوسطة.'})],
+ [{t:'في {{ΔADC}}: {{AC = √(9² + 12²) = 15}} سم',hl:['AD','DC','AC']},{t:'{{E , F}} منتصفا {{AB , BC}} ⇒ {{EF ∥ AC}} و{{EF = ½ AC = 7.5}} سم',hl:['EF','AC']},{t:'{{m(∠BEF) = m(∠BAC) = 90°}} (متناظرتان) و{{BE = AE = 4}}',hl:['BE','EF']},{t:'المساحة {{= ½ × BE × EF = ½ × 4 × 7.5 = 15}} سم²',hl:['tBEF']}],
+ {P:{A:[65,0],D:[200,0],C:[200,180],B:[-31,72],E:[17,36],F:[84,126]},S:[['A','D',{l:'9 سم'}],['D','C',{l:'12 سم'}],['C','B'],['B','E',{t:1}],['E','A',{t:1,l:'4 سم'}],['B','F',{t:2}],['F','C',{t:2}],['E','F'],['A','C',{axis:1}]],A:[RAi('rD','D','A','C'),RAi('rA','A','C','B')],F:[['BEF','tBEF']]});
+addC(74,'12',C2,'برهان: AC = 3AG','{{ABCD}} متوازي أضلاع و{{E , F}} منتصفا {{BC , AD}}. أثبت أن {{AC = 3 AG}}.',
+ [proof([
+  stq('{{BE = ½ BC = ½ AD = FD}} و{{BE ∥ FD}} ⇒ {{BEDF}} متوازي أضلاع ⇒ {{BF ∥ ED}}','ضلعان متقابلان متوازيان ومتساويان',['BE','FD','BF','ED']),
+  stq('في {{ΔAHD}}: {{F}} منتصف {{AD}} و{{FG ∥ DH}} ⇒ {{G}} منتصف {{AH}} ⇒ {{AG = GH}}','نظرية 3-2',['AG','GH']),
+  stq('في {{ΔCGB}}: {{E}} منتصف {{BC}} و{{EH ∥ BG}} ⇒ {{H}} منتصف {{GC}} ⇒ {{GH = HC}}','نظرية 3-2',['GH','HC']),
+  stq('{{AG = GH = HC}} ⇒ {{AC = 3 AG}}','من الخطوتين السابقتين',['AC'])])],[],
+ {P:{A:[40,0],F:[140,0],D:[240,0],B:[0,120],E:[100,120],C:[200,120],G:[93,40],H:[147,80]},S:[['A','F',{t:1}],['F','D',{t:1}],['D','C'],['C','E',{t:2}],['E','B',{t:2}],['B','A'],['B','G'],['G','F'],['E','H'],['H','D'],['A','G'],['G','H'],['H','C']]});
+addC(75,'13',C3,'برهان: KLST متوازي أضلاع','{{ABCD}} شكل رباعي و{{K , L , S , T}} منتصفات {{AB , BC , CD , DA}}. أثبت أن {{KLST}} متوازي أضلاع.',
+ [proof([
+  stq('في {{ΔABC}}: {{K , L}} منتصفا {{AB , BC}} ⇒ {{KL ∥ AC}} و{{KL = ½ AC}}','نظرية القطعة المتوسطة',['KL','AC']),
+  stq('في {{ΔADC}}: {{T , S}} منتصفا {{AD , CD}} ⇒ {{TS ∥ AC}} و{{TS = ½ AC}}','نظرية القطعة المتوسطة',['TS','AC']),
+  stq('{{KL ∥ TS}} و{{KL = TS}}','من الخطوتين السابقتين',['KL','TS']),
+  stq('{{KLST}} متوازي أضلاع','ضلعان متقابلان متوازيان ومتساويان',['tKLST'])])],[],
+ {P:{A:[0,160],B:[230,90],C:[170,0],D:[20,10],K:[115,125],L:[200,45],S:[95,5],T:[10,85]},S:[['A','K',{t:1}],['K','B',{t:1}],['B','L',{t:2}],['L','C',{t:2}],['C','S',{t:3}],['S','D',{t:3}],['D','T',{t:4}],['T','A',{t:4}],['K','L'],['L','S'],['S','T'],['T','K'],['A','C',{nodraw:1}]],F:[['KLST','tKLST']]});
+addC(76,'14',C3,'أرفف المكتبة','مكتبة خشبية على شكل مثلث متساوي الأضلاع طول ضلعه 3 م، بداخلها ثلاثة أرفف زجاجية موازية للقاعدة عند منتصفات الأضلاع كما بالشكل. ما طول كل رف؟',
+ [num('الرف الأول (الأسفل) =',150,{unit:'سم'}),num('الرف الثاني =',75,{unit:'سم'}),num('الرف الثالث (الأعلى) =',37.5,{unit:'سم'})],
+ [{t:'الرف الأول يصل بين منتصفي ضلعين ⇒ {{= ½ × 300 = 150}} سم',hl:['P1Q1']},{t:'الرف الثاني قطعة متوسطة في المثلث الأعلى (ضلعه 150) ⇒ {{= ½ × 150 = 75}} سم',hl:['P2Q2']},{t:'الرف الثالث قطعة متوسطة في المثلث الأعلى (ضلعه 75) ⇒ {{= ½ × 75 = 37.5}} سم',hl:['P3Q3']}],
+ {P:{A:[100,0],B:[0,170],C:[200,170],P1:[50,85],Q1:[150,85],P2:[75,42],Q2:[125,42],P3:[87,21],Q3:[113,21]},nolabels:1,S:[['A','P3',{t:1,l:'37.5 سم'}],['P3','P2',{t:1,l:'37.5 سم'}],['P2','P1',{l:'75 سم'}],['P1','B',{l:'150 سم'}],['A','Q3'],['Q3','Q2'],['Q2','Q1'],['Q1','C'],['B','C'],['P1','Q1',{arr:1}],['P2','Q2',{arr:1}],['P3','Q3',{arr:1}]]});
+addC(77,'15',C3,'تصميم أرجوحة','عند تصميم أرجوحة طول العارضة الأفقية الواصلة بين منتصفي الساقين {{x}} قدم حيث {{3 ≤ x ≤ 4}}. أوجد أقل بُعد بين طرفي الساقين على الأرض.',
+ [num('أقل بُعد =',6,{unit:'قدم',hint:'العارضة قطعة متوسطة في المثلث الذي ساقاه ضلعان.'})],
+ [{t:'العارضة قطعة متوسطة بين منتصفي الساقين، فهي توازي القاعدة وتساوي نصفها',hl:['MN','LR']},{t:'البعد بين طرفي الساقين {{= 2x}}',hl:['LR']},{t:'أقل بُعد عند أصغر {{x = 3}}: {{2 × 3 = 6}} قدم',hl:['LR']}],
+ {P:{T:[100,0],L:[0,150],R:[200,150],M:[50,75],N:[150,75]},S:[['T','M',{t:1}],['M','L',{t:1}],['T','N',{t:2}],['N','R',{t:2}],['M','N',{arr:1,l:'x قدم'}],['L','R',{arr:1}]]});
+addC(78,'16',C4,'نمط المثلثات','شكل (1) مثلث محيطه 8 سم. يلوَّن المثلث الناتج من القطع المتوسطة الثلاث (شكل 2)، ثم يكرَّر ذلك على المثلثات غير الملونة (شكل 3) ثم شكل (4). أوجد مجموع محيطات المثلثات الملونة في شكل (3) وفي شكل (4).',
+ [num('شكل (3) =',10,{unit:'سم',hint:'في شكل 2: محيط الملون 4 سم، وفي كل خطوة يصير المحيط نصفًا.'}),num('شكل (4) =',19,{unit:'سم'})],
+ [{t:'شكل (2): مثلث ملون محيطه {{½ × 8 = 4}} سم',hl:['tDEF']},{t:'شكل (3): ثلاثة مثلثات جديدة محيط كل منها {{½ × 4 = 2}}، فالمجموع {{4 + 3 × 2 = 10}} سم',hl:['tDEF']},{t:'شكل (4): تسعة مثلثات جديدة محيط كل منها {{1}}، فالمجموع {{4 + 6 + 9 × 1 = 19}} سم',hl:['tDEF']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],D:[50,75],E:[150,75],F:[100,150]},nolabels:1,S:[['A','B'],['B','C'],['C','A'],['D','E'],['E','F'],['F','D']],F:[['DEF','tDEF']]});
+/* ---- كتاب التقييمات: الدرس 3-3 ---- */
+const SC='كتاب التقييمات · الدرس 3-3 · ';
+addD(301,'نشاط 1',SC+'الأداء الصفي','عالم المثلثات','ارسم مثلثات مختلفة الأضلاع، وارسم القطعة المتوسطة بين منتصفي ضلعين وقِس طولها. ما العلاقة بين طولها وطول الضلع الثالث؟',
+ [mcq('العلاقة:',['تساوي نصفه وتوازيه','تساويه وتوازيه','تساوي ضعفه','لا علاقة بينهما'],0,{hint:'قِس بالمسطرة في أكثر من مثلث.'})],
+ [{t:'القطعة المتوسطة {{DE}} توازي الضلع الثالث {{BC}}',hl:['DE','BC']},{t:'{{DE = ½ BC}} في كل مثلث (نظرية 3-3)',hl:['DE']}],
+ {P:{A:[100,0],B:[0,130],C:[200,130],D:[50,65],E:[150,65]},S:[['A','D'],['D','B'],['A','E'],['E','C'],['D','E',{arr:1}],['B','C',{arr:1}]]});
+addD(302,'نشاط 2',SC+'الأداء الصفي','المكتبة الخشبية','صمم خالد مكتبة خشبية ثم أراد إضافة أرفف: كل رف {{AB}} و{{CD}} يصل بين منتصفي ضلعي مثلث قاعدته 60 سم و80 سم على الترتيب. أوجد طول الرفين.',
+ [num('AB =',30,{unit:'سم',hint:'الرف قطعة متوسطة طولها نصف القاعدة.'}),num('CD =',40,{unit:'سم'})],
+ [{t:'الرف يصل بين منتصفي ضلعين فهو قطعة متوسطة توازي القاعدة',hl:['AB','CD']},{t:'{{AB = ½ × 60 = 30}} سم',hl:['AB']},{t:'{{CD = ½ × 80 = 40}} سم',hl:['CD']}],
+ {P:{A:[0,0],B:[60,0],C:[100,0],D:[180,0],a:[30,-50],c:[140,-50],a2:[30,40],c2:[140,40]},nolabels:1,S:[['A','B',{l:'AB'}],['C','D',{l:'CD'}]],T:[[30,22,'AB = ؟'],[140,22,'CD = ؟'],[30,-62,'القاعدة 60'],[140,-62,'القاعدة 80']]},
+ 'قرأنا الشكل: العدد 60 لرف AB والعدد 80 لرف CD، وكل رف قطعة متوسطة.');
+addD(303,'واجب 1',SC+'الأداء المنزلي','قيمة x','في الشكل: ثلاثة مستقيمات متوازية {{ℓ₁ , ℓ₂ , ℓ₃}} وقاطعان، وعلى القاطع الأول {{CB = BA}}. أوجد قيمة {{x}}.',
+ [num('x =',4,{hint:'أجزاء القاطع الثاني متساوية أيضًا.'})],
+ [{t:'{{CB = BA}} والمستقيمات متوازية ⇒ أجزاء القاطع الآخر متساوية (نظرية 3-1)',hl:['CB','BA']},{t:'{{3x − 1 = 11}} ⇒ {{3x = 12}}',hl:['PQ','QR']},{t:'{{x = 4}}',hl:['PQ']}],
+ {P:{C:[60,0],B:[40,50],A:[20,100],P:[130,0],Q:[150,50],R:[170,100]},S:[['C','B',{t:1}],['B','A',{t:1}],['P','Q',{l:'(3x − 1) سم'}],['Q','R',{l:'11 سم'}],['C','P',{arr:1}],['B','Q',{arr:1}],['A','R',{arr:1}]]});
+addD(304,'واجب 2',SC+'الأداء المنزلي','محيط المثلث LMN','أضلاع المثلث {{LMN}} هي القطع المتوسطة في المثلث {{ABC}} القائم في {{B}}، و{{AC = 10}} سم و{{BC = 6}} سم. أوجد مع البرهان محيط {{ΔLMN}}.',
+ [num('المحيط =',12,{unit:'سم',hint:'أوجد {{AB}} أولًا ثم استخدم نصف الأضلاع.'})],
+ [{t:'في {{ΔABC}}: {{AB = √(10² − 6²) = 8}} سم',hl:['AC','BC','AB']},{t:'القطع المتوسطة: {{LM = ½ BC = 3}} ، {{MN = ½ AB = 4}} ، {{LN = ½ AC = 5}}',hl:['LM','MN','LN']},{t:'محيط {{ΔLMN = 3 + 4 + 5 = 12}} سم',hl:['tLMN']}],
+ {P:{A:[0,0],B:[0,80],C:[60,80],L:[0,40],M:[30,40],N:[30,80]},S:[['A','L',{t:1}],['L','B',{t:1}],['A','M',{t:2}],['M','C',{t:2,l:'10 سم'}],['B','N',{t:3}],['N','C',{t:3,l:'6 سم'}],['L','M'],['M','N'],['N','L']],A:[RAi('rB','B','A','C')],F:[['LMN','tLMN'],['ABC','tABC']]});
+addD(305,'واجب 3',SC+'الأداء المنزلي','طول HG','{{D}} منتصف {{AB}} و{{E}} منتصف {{AC}} و{{G}} منتصف {{DF}}. أوجد مع البرهان طول {{HG}} بدلالة {{BC}}.',
+ [mcq('HG =',['{{¼ BC}}','{{½ BC}}','{{⅓ BC}}','{{⅛ BC}}'],0,{hint:'{{DE}} قطعة متوسطة في {{ΔABC}} و{{GH}} قطعة متوسطة في {{ΔFDE}}.'})],
+ [{t:'{{D , E}} منتصفا {{AB , AC}} ⇒ {{DE ∥ BC}} و{{DE = ½ BC}}',hl:['DE','BC']},{t:'في {{ΔFDE}}: {{G}} منتصف {{DF}} و{{GH ∥ DE}} ⇒ {{H}} منتصف {{EF}}، و{{GH = ½ DE}}',hl:['GH','DE']},{t:'{{HG = ½ × ½ BC = ¼ BC}}',hl:['GH','BC']}],
+ {P:{A:[100,0],B:[0,130],C:[200,130],D:[50,65],E:[150,65],G:[75,130],H:[125,130],F:[100,195]},S:[['A','D',{t:1}],['D','B',{t:1}],['A','E',{t:2}],['E','C',{t:2}],['D','E'],['B','G'],['G','H'],['H','C'],['D','G',{t:3}],['G','F',{t:3}],['E','H',{t:4}],['H','F',{t:4}]],F:[['FDE','tFDE']]},
+ 'لم يُكتب طول BC في الشكل، فالجواب بدلالته. وقرأنا العلامات: G منتصف DF.');
+addD(306,'واجب 4',SC+'الأداء المنزلي','طول GF','{{m(∠B) = 90°}} و{{AB = BC = 16}} سم و{{GB = 2}} سم و{{F}} منتصف {{AC}} و{{DF ∥ BC}}. أوجد مع البرهان طول {{GF}}.',
+ [num('GF =',10,{unit:'سم',hint:'{{D}} منتصف {{AB}} و{{DF ⟂ AB}}.'})],
+ [{t:'{{F}} منتصف {{AC}} و{{DF ∥ BC}} ⇒ {{D}} منتصف {{AB}}، فـ {{DB = 8}} و{{DF = ½ BC = 8}}',hl:['AD','DB','DF']},{t:'{{DG = DB − GB = 8 − 2 = 6}} سم',hl:['DG','GB']},{t:'{{DF ∥ BC}} و{{AB ⟂ BC}} ⇒ {{DF ⟂ DG}}، فـ {{GF² = 6² + 8² = 100}}',hl:['DG','DF','GF']},{t:'{{GF = 10}} سم',hl:['GF']}],
+ {P:{A:[0,0],D:[0,80],G:[0,140],B:[0,160],C:[160,160],F:[80,80]},S:[['A','D'],['D','G'],['G','B',{l:'2 سم'}],['B','C',{l:'16 سم'}],['A','F',{t:1}],['F','C',{t:1}],['D','F',{arr:1}],['G','F']],A:[RAi('rB','B','A','C')]},
+ 'D نقطة على AB تنتج من رسم DF.');
+
+F[63].S.push(['A','B',{nodraw:1}]);
+F[69].S.push(['A','C',{nodraw:1}],['B','C',{nodraw:1}]);
+F[74].S.push(['B','F',{nodraw:1}],['E','D',{nodraw:1}],['A','C',{nodraw:1}]);
+F[304].S.push(['A','C',{nodraw:1}],['B','C',{nodraw:1}],['A','B',{nodraw:1}]);
+F[305].S.push(['B','C',{nodraw:1}]);
+F[306].S.push(['D','B',{nodraw:1}]);
+
+/* ===== الدرس 3-4: متوسطات المثلث ===== */
+const PP4=['نظرية 4-1','نظرية 4-2','نظرية 4-3','عكس نظرية 4-3','نظرية القطعة المتوسطة','معطى','من الخطوتين السابقتين'];
+const sts=(s,r,hl,c)=>Object.assign(st(s,r,hl,c),{pool:PP4});
+const E1='الدرس 3-4 · أولًا · قياس المفاهيم',E2='الدرس 3-4 · ثانيًا · تطبيق المفاهيم',E3='الدرس 3-4 · ثالثًا · التحليل وتكامل المواد',E4='الدرس 3-4 · تفكير إبداعي';
+const addE=(n,dn,sec,title,prompt,parts,sol,fg,note)=>{add(n,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.dn=dn;q.les=4;F[n]=fg};
+const addF=(n,lab,sec,title,prompt,parts,sol,fg,note)=>{addL(n,lab,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.les=4;F[n]=fg};
+/* مثلث ومتوسطاته: m=[منتصف BC , منتصف CA , منتصف AB] */
+const medFig=(m,lb,ex)=>{const P={A:[100,0],B:[0,150],C:[200,150],G:[100,100]};P[m[0]]=[100,150];P[m[1]]=[150,75];P[m[2]]=[50,75];
+ const S=[['A',m[2],{t:1}],[m[2],'B',{t:1}],['A',m[1],{t:2}],[m[1],'C',{t:2}],['B',m[0],{t:3}],[m[0],'C',{t:3}],['A',m[0]],['B',m[1]],['C',m[2]]];
+ [['A','G'],['G',m[0]],['B','G'],['G',m[1]],['C','G'],['G',m[2]]].forEach(x=>{const f=(lb||[]).find(y=>y[0]+y[1]===x[0]+x[1]||y[0]+y[1]===x[1]+x[0]);S.push([x[0],x[1],Object.assign({nodraw:1},f?{l:f[2]}:{})])});
+ return {P,S:S.concat(ex||[])}};
+/* مثلث قائم في B ومتوسطه BD */
+const RTM=(lb,ex)=>({P:{A:[0,0],B:[0,100],C:[160,100],D:[80,50],G:[53,67]},S:[['A','D',{t:1}],['D','C',{t:1}],['A','B',{l:lb&&lb[0]}],['B','C',{l:lb&&lb[1]}],['B','D'],['B','G',{nodraw:1,l:lb&&lb[2]}],['G','D',{nodraw:1,l:lb&&lb[3]}]].concat(ex||[]),A:[RAi('rB','B','A','C')]});
+/* ---- كتاب المدرسة: تقييم الدرس 3-4 ---- */
+addE(81,'1',E1,'أي العبارات صحيحة؟','{{G}} نقطة تلاقي متوسطات المثلث {{ABC}}، و{{GE = 3}} سم و{{GD = 4}} سم. أي مما يلي صحيح؟',
+ [mq('اختر الإجابة الصحيحة:',['{{AG = 6}} سم','{{CG = 8}} سم','{{CE = 9}} سم','{{AG = 12}} سم'],2,'النقطة {{G}} تقسم كل متوسط بنسبة 2 : 1 من جهة الرأس.')],
+ [{t:'{{CG = 2 GE = 2 × 3 = 6}} (وليس 8)',hl:['CG','GE']},{t:'{{AG = 2 GD = 2 × 4 = 8}} (وليس 6 أو 12)',hl:['AG','GD']},{t:'{{CE = 3 GE = 3 × 3 = 9}} سم، فالصحيح (جـ)',hl:['CE']}],
+ medFig(['D','F','E'],[['G','E','3 سم'],['G','D','4 سم']]));
+addE(82,'2',E1,'طول BC','{{AD}} متوسط في المثلث {{ABC}}. ما طول {{BC}}؟',
+ [mq('اختر الإجابة الصحيحة:',['3 سم','6 سم','14 سم','28 سم'],3,'المتوسط ينصف الضلع المقابل، فـ {{BD = DC}}.')],
+ [{t:'{{AD}} متوسط ⇒ {{BD = DC}}: {{3x + 8 = 7x}}',hl:['BD','DC']},{t:'{{4x = 8}} ⇒ {{x = 2}}، فـ {{DC = 14}}',hl:['DC']},{t:'{{BC = 2 × 14 = 28}} سم',hl:['BC']}],
+ {P:{A:[100,0],B:[0,130],C:[200,130],D:[110,130]},S:[['A','B'],['A','C'],['B','D',{l:'(3x + 8) سم'}],['D','C',{l:'7x سم'}],['A','D']]});
+addE(83,'3',E1,'طول AC','{{G}} نقطة تلاقي متوسطات المثلث {{ABC}} القائم في {{B}}، و{{GD = 2}} سم. ما طول {{AC}}؟',
+ [mq('اختر الإجابة الصحيحة:',['8 سم','12 سم','18 سم','24 سم'],1,'{{BD}} متوسط من رأس القائمة.')],
+ [{t:'{{G}} تقسم {{BD}} بنسبة 2 : 1: {{BD = 3 GD = 6}} سم',hl:['BG','GD']},{t:'{{BD}} متوسط من رأس القائمة ⇒ {{BD = ½ AC}}',hl:['BD','rB']},{t:'{{AC = 2 × 6 = 12}} سم',hl:['AC']}],
+ RTM([null,null,null,'2 سم']));
+addE(84,'4',E1,'محيط GEF','{{AE , CF}} متوسطان في المثلث {{ABC}} ويتقاطعان في {{G}}، و{{CG = 12}} سم و{{AE = 15}} سم و{{AC = 20}} سم. ما محيط {{ΔGEF}}؟',
+ [mq('اختر الإجابة الصحيحة:',['18 سم','21 سم','24 سم','27 سم'],1,'{{EF}} قطعة متوسطة موازية لـ {{AC}}.')],
+ [{t:'{{GE = ⅓ AE = 5}} سم',hl:['GE']},{t:'{{CG = ⅔ CF}} ⇒ {{CF = 18}} ⇒ {{GF = ⅓ CF = 6}} سم',hl:['CG','GF']},{t:'{{E , F}} منتصفا {{BC , AB}} ⇒ {{EF = ½ AC = 10}} سم',hl:['EF','AC']},{t:'المحيط {{= 5 + 6 + 10 = 21}} سم',hl:['GE','GF','EF']}],
+ medFig(['E','D','F'],[['G','E',''],['C','G','12 سم']],[['E','F']]));
+addE(85,'5',E1,'طول GD','{{G}} نقطة تلاقي متوسطات المثلث {{ABC}} و{{EF ∥ BC}} يمر بـ {{G}}، و{{K}} نقطة تلاقي متوسطات {{ΔAEF}} و{{KG = 4}} سم. ما طول {{GD}}؟',
+ [mq('اختر الإجابة الصحيحة:',['2 سم','4 سم','6 سم','8 سم'],2,'منتصف {{EF}} يقع على {{AD}} وعلى نفس بُعد {{G}} من {{A}}.')],
+ [{t:'{{EF ∥ BC}} و{{G}} على {{EF}} ⇒ منتصف {{EF}} هو {{M}} حيث {{AM = AG}}',hl:['EF','AG']},{t:'{{K}} نقطة تلاقي متوسطات {{ΔAEF}}: {{AK = ⅔ AM = ⅔ AG}} ⇒ {{KG = ⅓ AG = 4}} ⇒ {{AG = 12}}',hl:['AK','KG']},{t:'{{GD = ½ AG = 6}} سم',hl:['GD']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],D:[100,150],E:[33,100],F:[167,100],G:[100,100],K:[100,67]},S:[['A','B'],['A','C'],['B','C'],['A','K'],['K','G',{l:'4 سم'}],['G','D'],['E','G',{arr:1}],['G','F',{arr:1}],['B','D',{arr:1}]]});
+addE(86,'6',E1,'اكتشف الخطأ','في الشكل {{D}} نقطة تلاقي المتوسطات و{{AE = 48}} سم. حلّ باسم: {{DE = ⅔ AE = 32}}. وحلّ سامح: {{DE = ⅓ AE = 16}}. أيهما اتبع الطريقة الصحيحة؟',
+ [mcq('الطريقة الصحيحة لـ:',['باسم','سامح','كلتاهما','لا أحد منهما'],1,{hint:'أي الجزأين أقصر: {{AD}} أم {{DE}}؟'})],
+ [{t:'{{D}} تقسم {{AE}} بنسبة 2 : 1 من جهة الرأس {{A}}: {{AD = 2 DE}}',hl:['AD','DE']},{t:'إذن {{DE = ⅓ AE = ⅓ × 48 = 16}} سم، وسامح صحيح؛ أما باسم فأخذ ⅔ وهو طول {{AD}}',hl:['AE']}],
+ {P:{A:[0,0],B:[10,100],C:[190,100],E:[100,100],D:[67,67]},S:[['A','B'],['A','C'],['B','E',{t:1}],['E','C',{t:1}],['A','D'],['D','E',{l:'DE'}]]});
+addE(87,'7',E2,'برهان: BH = EF','{{ABC}} مثلث قائم الزاوية في {{B}} و{{BH}} متوسط فيه، و{{F , E}} منتصفا {{CD , AD}}. أثبت أن {{BH = EF}}.',
+ [proof([
+  sts('{{BH}} متوسط من رأس القائمة {{B}} في {{ΔABC}} ⇒ {{BH = ½ AC}}','نظرية 4-3',['BH','AC','rB']),
+  sts('{{E , F}} منتصفا {{AD , CD}} في {{ΔADC}} ⇒ {{EF = ½ AC}}','نظرية القطعة المتوسطة',['EF','AC']),
+  sts('{{BH = EF}}','من الخطوتين السابقتين',['BH','EF'])])],[],
+ {P:{A:[0,40],B:[0,150],C:[110,150],D:[130,0],E:[65,20],F:[120,75],H:[55,95]},S:[['A','B'],['B','C'],['A','E',{t:1}],['E','D',{t:1}],['D','F',{t:2}],['F','C',{t:2}],['A','H',{t:3}],['H','C',{t:3}],['B','H'],['E','F'],['A','C',{nodraw:1}]],A:[RAi('rB','B','A','C')]});
+addE(88,'8',E2,'برهان: محيط EFD','{{ABC}} مثلث فيه {{AD ⟂ BC}} و{{E , F}} منتصفا {{AB , AC}}. أثبت أن محيط {{ΔEFD}} = ½ محيط {{ΔABC}}.',
+ [proof([
+  sts('{{DE}} متوسط من رأس القائمة في {{ΔABD}} القائم في {{D}} ⇒ {{DE = ½ AB}}','نظرية 4-3',['DE','AB','rD']),
+  sts('{{DF}} متوسط من رأس القائمة في {{ΔACD}} القائم في {{D}} ⇒ {{DF = ½ AC}}','نظرية 4-3',['DF','AC']),
+  sts('{{EF}} قطعة متوسطة في {{ΔABC}} ⇒ {{EF = ½ BC}}','نظرية القطعة المتوسطة',['EF','BC']),
+  sts('محيط {{EFD = ½ (AB + AC + BC)}} = ½ محيط {{ABC}}','من الخطوتين السابقتين',['tEFD'])])],[],
+ {P:{A:[100,0],B:[0,130],C:[200,130],D:[100,130],E:[50,65],F:[150,65]},S:[['A','E',{t:1}],['E','B',{t:1}],['A','F',{t:2}],['F','C',{t:2}],['B','C'],['A','D'],['D','E'],['D','F'],['E','F'],['A','B',{nodraw:1}]],A:[RAi('rD','D','A','C')],F:[['EFD','tEFD']]});
+addE(89,'9',E2,'طول AD','{{E}} منتصف {{AC}} و{{D}} منتصف {{BC}} و{{AD ⟂ BE}} و{{CE = 15}} سم و{{BG = 18}} سم. أوجد بالبرهان طول {{AD}}.',
+ [num('AD =',18,{unit:'سم',hint:'{{G}} نقطة تلاقي المتوسطات. المثلث {{AGE}} قائم في {{G}}.'})],
+ [{t:'{{AD , BE}} متوسطان ⇒ {{G}} نقطة التلاقي، و{{GE = ½ BG = 9}} سم',hl:['BG','GE']},{t:'{{E}} منتصف {{AC}} ⇒ {{AE = CE = 15}} سم',hl:['AE','CE']},{t:'في {{ΔAGE}} القائم في {{G}}: {{AG = √(15² − 9²) = 12}} سم',hl:['AG','AE','GE']},{t:'{{AG = ⅔ AD}} ⇒ {{AD = 12 × 3/2 = 18}} سم',hl:['AD']}],
+ {P:{A:[60,0],B:[0,130],C:[220,130],D:[110,130],E:[140,65],G:[93,87]},S:[['A','B'],['A','E',{t:1}],['E','C',{t:1,l:'15 سم'}],['B','D',{t:2}],['D','C',{t:2}],['A','G',{nodraw:1}],['A','D'],['B','G',{l:'18 سم'}],['G','E'],['G','D',{nodraw:1}]],A:[RAi('rG','G','E','D')]});
+addE(90,'10',E2,'مساحة ABD','{{G}} نقطة تلاقي متوسطات {{ABC}} و{{AE = 5}} سم و{{CG = 10}} سم و{{GD = 4}} سم و{{GF = 3}} سم. أوجد بالبرهان مساحة {{ΔABD}}.',
+ [num('المساحة =',36,{unit:'سم²',hint:'أوجد {{AG}} و{{BG}} و{{AB}} ثم تأكد أن المثلث {{ABG}} قائم.'})],
+ [{t:'{{E}} منتصف {{AB}} ⇒ {{AB = 2 AE = 10}} سم',hl:['AB']},{t:'{{AG = 2 GD = 8}} سم و{{BG = 2 GF = 6}} سم',hl:['AG','BG']},{t:'{{AG² + BG² = 64 + 36 = 100 = AB²}} ⇒ {{AD ⟂ BG}} (عكس فيثاغورس)',hl:['AG','BG','AB']},{t:'{{AD = 3 GD = 12}} ⇒ المساحة {{= ½ × AD × BG = ½ × 12 × 6 = 36}} سم²',hl:['AD','tABD']}],
+ {P:{A:[0,0],B:[0,120],C:[200,120],D:[100,120],E:[0,60],F:[100,60],G:[67,80]},S:[['A','E',{t:1,l:'5 سم'}],['E','B',{t:1}],['A','F',{t:2}],['F','C',{t:2}],['B','D',{t:3}],['D','C',{t:3}],['A','D'],['B','F'],['C','E'],['G','F',{l:'3 سم'}],['G','D',{l:'4 سم'}],['C','G',{l:'10 سم'}]],F:[['ABD','tABD']]},
+ 'قرأنا الشكل: E منتصف AB وD منتصف BC وF منتصف AC.');
+addE(91,'11',E2,'طول FB','{{AD , CF}} متوسطان في المثلث {{ABC}}، و{{BD = (2x − 5)}} سم و{{DC = x}} سم و{{AF = (x − 1)}} سم. أوجد طول {{FB}}.',
+ [num('FB =',4,{unit:'سم',hint:'{{AD}} ينصف {{BC}} و{{CF}} ينصف {{AB}}.'})],
+ [{t:'{{AD}} متوسط ⇒ {{BD = DC}}: {{2x − 5 = x}} ⇒ {{x = 5}}',hl:['BD','DC']},{t:'{{CF}} متوسط ⇒ {{FB = AF = x − 1}}',hl:['AF','FB']},{t:'{{FB = 5 − 1 = 4}} سم',hl:['FB']}],
+ {P:{A:[100,0],B:[0,110],C:[200,110],D:[90,110],F:[50,55]},S:[['A','F',{l:'(x − 1) سم'}],['F','B',{t:1}],['B','D',{l:'(2x − 5) سم'}],['D','C',{l:'x سم'}],['A','D'],['C','F'],['A','C']]});
+addE(92,'12',E2,'طول BE','{{G}} نقطة تلاقي متوسطات {{ABC}} و{{DC = DG}} و{{GF = 4}} سم. أوجد بالبرهان طول {{BE}}.',
+ [num('BE =',18,{unit:'سم',hint:'{{F}} نقطة تلاقي متوسطات المثلث {{AGC}}.'})],
+ [{t:'{{D}} منتصف {{GC}} و{{E}} منتصف {{AC}} ⇒ {{AD , GE}} متوسطان في {{ΔAGC}} يتقاطعان في {{F}}',hl:['GD','DC','AE','AF']},{t:'{{F}} نقطة تلاقي المتوسطات ⇒ {{GF = ⅔ GE}} ⇒ {{GE = 6}} سم',hl:['GF','GE']},{t:'{{G}} نقطة تلاقي متوسطات {{ABC}} ⇒ {{BG = 2 GE = 12}}',hl:['BG']},{t:'{{BE = BG + GE = 12 + 6 = 18}} سم',hl:['BE']}],
+ {P:{A:[190,0],B:[0,150],C:[230,150],G:[130,100],F:[177,82],E:[210,75],D:[180,125]},S:[['A','B'],['B','C'],['A','C'],['B','G',{nodraw:1}],['B','E'],['G','F',{nodraw:1,l:'4 سم'}],['A','D'],['G','D',{t:1}],['D','C',{t:1}],['G','E',{nodraw:1}],['G','C'],['A','F',{nodraw:1}]]});
+addE(93,'13',E3,'مسارات الحديقة','حديقة مثلثة فيها ثلاثة مسارات هي متوسطات المثلث تتقاطع في {{G}}. (1) إذا كان {{DC = 81}} م فأوجد {{DG}} و{{CG}}. (2) إذا كان {{GF = 25}} م فأوجد {{GA}} و{{AF}}.',
+ [num('DG =',27,{unit:'م'}),num('CG =',54,{unit:'م'}),num('GA =',50,{unit:'م'}),num('AF =',75,{unit:'م'})],
+ [{t:'(1): {{DG = ⅓ DC = 27}} م و{{CG = ⅔ DC = 54}} م',hl:['DG','CG','CD']},{t:'(2): {{GA = 2 GF = 50}} م و{{AF = 3 GF = 75}} م',hl:['GA','GF','AF']}],
+ medFig(['F','E','D'],[['D','G',''],['G','F','25 م']].map(x=>x),[]));
+addE(94,'14',E4,'فترة طول BC','في الشكل: {{BE = 15}} سم و{{CD = 9}} سم متوسطان في المثلث {{ABC}} يتقاطعان في {{G}}. أوجد الفترة التي ينتمي إليها {{BC}}.',
+ [mcq('{{BC}} تنتمي إلى:',['{{]4 , 16[}}','{{[4 , 16]}}','{{]0 , 24[}}','{{]6 , 15[}}'],0,{hint:'في المثلث {{BGC}} أي ضلع أقل من مجموع الضلعين الآخرين وأكبر من الفرق بينهما.'})],
+ [{t:'{{BG = ⅔ × 15 = 10}} و{{CG = ⅔ × 9 = 6}}',hl:['BG','CG']},{t:'في المثلث {{BGC}}: {{10 − 6 < BC < 10 + 6}}',hl:['BC']},{t:'{{BC ∈ ]4 , 16[}}',hl:['BC']}],
+ medFig(['F','E','D'],[['B','G','10 سم'],['C','G','6 سم']]));
+/* ---- كتاب التقييمات: الدرس 3-4 ---- */
+const SD='كتاب التقييمات · الدرس 3-4 · ';
+addF(401,'نشاط 1',SD+'الأداء الصفي','جسر أسوان المعلق','ارسم مثلثات مختلفة ووصّل كل رأس بمنتصف الضلع المقابل. ماذا تلاحظ على المتوسطات الثلاثة، وما نسبة تقسيم النقطة لكل متوسط؟',
+ [mcq('الملاحظة الصحيحة:',['تتقاطع في نقطة واحدة وتقسم كل منها بنسبة 2 : 1 من جهة الرأس','تتقاطع في ثلاث نقاط مختلفة','تتقاطع في نقطة واحدة وتقسم كل منها إلى نصفين','متوازية دائمًا'],0,{hint:'قِس {{AG}} و{{GD}} بالمسطرة.'})],
+ [{t:'المتوسطات {{AD , BE , CF}} تتقاطع في نقطة واحدة {{G}} (نظرية 4-1)',hl:['AD','BE','CF']},{t:'{{AG = 2 GD}} و{{BG = 2 GE}} و{{CG = 2 GF}} (نظرية 4-2)',hl:['AG','BG','CG']}],
+ medFig(['D','E','F'],[]));
+addF(402,'نشاط 2',SD+'الأداء الصفي','معبد السرابيوم','ارسم مثلثات قائمة الزاوية، وارسم المتوسط من رأس القائمة إلى الوتر. ما العلاقة بين طول المتوسط وطول الوتر؟',
+ [mcq('العلاقة:',['المتوسط يساوي نصف الوتر','المتوسط يساوي الوتر','المتوسط يساوي ثلث الوتر','لا علاقة'],0,{hint:'جرّب مثلثًا أضلاعه 6 و8 و10.'})],
+ [{t:'في كل مثلث قائم الزاوية: متوسط رأس القائمة {{BD}}',hl:['BD','rB']},{t:'{{BD = ½ AC}} (نظرية 4-3)',hl:['AC']}],RTM());
+addF(403,'واجب 1',SD+'الأداء المنزلي','أطوال GC و GA و BF','{{G}} نقطة تلاقي متوسطات {{ΔABC}} و{{GB = 12}} سم و{{GE = 10}} سم و{{GD = 8}} سم. أوجد {{GC}} و{{GA}} و{{BF}}.',
+ [num('GC =',20,{unit:'سم'}),num('GA =',16,{unit:'سم'}),num('BF =',18,{unit:'سم'})],
+ [{t:'{{GC = 2 GE = 2 × 10 = 20}} سم',hl:['CG','GE']},{t:'{{GA = 2 GD = 2 × 8 = 16}} سم',hl:['AG','GD']},{t:'{{BF = 3 × ½ GB = 3 × 6 = 18}} سم (لأن {{GF = ½ GB = 6}})',hl:['BF','BG']}],
+ medFig(['D','F','E'],[['G','E','10 سم'],['G','D','8 سم'],['B','G','12 سم']]));
+addF(404,'واجب 2',SD+'الأداء المنزلي','BD و EF','{{BD}} متوسط في {{ΔABC}} القائم في {{B}}، و{{E}} منتصف {{GC}} و{{F}} منتصف {{GA}} و{{AC = 16}} سم. أوجد {{BD}} و{{EF}}.',
+ [num('BD =',8,{unit:'سم'}),num('EF =',8,{unit:'سم'})],
+ [{t:'{{BD}} متوسط من رأس القائمة ⇒ {{BD = ½ AC = 8}} سم',hl:['BD','AC']},{t:'في {{ΔGAC}}: {{E , F}} منتصفا {{GC , GA}} ⇒ {{EF = ½ AC = 8}} سم',hl:['EF','AC']}],
+ {P:{A:[0,0],B:[0,100],C:[160,100],D:[80,50],G:[110,-40],F:[55,-20],E:[135,30]},S:[['A','B'],['B','C'],['A','D',{t:1}],['D','C',{t:1}],['B','D'],['G','F',{t:2}],['F','A',{t:2}],['G','E',{t:3}],['E','C',{t:3}],['E','F'],['A','C',{nodraw:1,l:'16 سم'}]],A:[RAi('rB','B','A','C')]});
+addF(405,'واجب 3',SD+'الأداء المنزلي','طول AF','{{ΔABC}} قائم في {{A}} و{{AF}} متوسط، و{{BF = (3x + 12)}} سم و{{FC = (4x + 7)}} سم. أوجد {{AF}}.',
+ [num('AF =',27,{unit:'سم',hint:'{{F}} منتصف {{BC}}.'})],
+ [{t:'{{F}} منتصف {{BC}} ⇒ {{3x + 12 = 4x + 7}} ⇒ {{x = 5}}',hl:['BF','FC']},{t:'{{BC = 27 + 27 = 54}} سم',hl:['BC']},{t:'{{AF = ½ BC = 27}} سم (متوسط من رأس القائمة)',hl:['AF','rA']}],
+ {P:{B:[0,100],C:[160,100],A:[40,31],F:[80,100]},S:[['A','B'],['A','C'],['B','F',{l:'(3x + 12) سم'}],['F','C',{l:'(4x + 7) سم'}],['A','F']],A:[RAi('rA','A','B','C')]});
+addF(406,'واجب 4',SD+'الأداء المنزلي','طول BD','{{ΔABC}} قائم في {{B}} و{{BD}} متوسط، و{{AB = 6}} سم و{{BC = 8}} سم. أوجد {{BD}}.',
+ [num('BD =',5,{unit:'سم'})],
+ [{t:'{{AC² = 6² + 8² = 100}} ⇒ {{AC = 10}} سم',hl:['AB','BC','AC']},{t:'{{BD = ½ AC = 5}} سم',hl:['BD']}],RTM(['6 سم','8 سم']));
+addF(407,'واجب 5',SD+'الأداء المنزلي','برهان وإيجاد المساحة','{{BD}} متوسط في {{ΔABC}} و{{AB = 12}} سم و{{AC = 13}} سم و{{BD = 6.5}} سم. أثبت أن {{ΔABC}} قائم الزاوية ثم أوجد مساحته.',
+ [proof([
+  sts('{{BD = 6.5}} و{{½ AC = ½ × 13 = 6.5}} ⇒ {{BD = ½ AC}}','معطى',['BD','AC']),
+  sts('طول المتوسط يساوي نصف الضلع المقابل ⇒ {{m(∠B) = 90°}}','عكس نظرية 4-3',['tABC'])]),
+  num('المساحة =',30,{unit:'سم²',hint:'{{BC = √(13² − 12²)}}.'})],
+ [{t:'{{BC = √(13² − 12²) = 5}} سم',hl:['AB','BC','AC']},{t:'المساحة {{= ½ × AB × BC = ½ × 12 × 5 = 30}} سم²',hl:['AB','BC']}],
+ {P:{A:[0,0],B:[0,96],C:[40,96],D:[20,48]},S:[['A','B',{l:'12 سم'}],['B','C'],['A','D',{t:1}],['D','C',{t:1}],['B','D',{l:'6.5 سم'}],['A','C',{nodraw:1,l:'13 سم'}]],F:[['ABC','tABC']]});
+/* ---- الاختبارات الأسبوعية (أ) (ب) (جـ) ---- */
+[{g:'أ',x:'WA',ad:15,ans:'AG',mo:['5','10','12','9'],ai:1,bg:6,gc:10,bc:12,pb:14,bc3:10,ang:'∠C = 60°',p3:15,ac:10,ab:6,bc4:8,ar:24,ac1:18,gf:3,ge:5,ef:6,mid:'AG'},
+ {g:'ب',x:'WB',ad:15,ans:'GD',mo:['5','9','10','12'],ai:0,bg:4,gc:20,bc:24,pb:28,bc3:14,ang:'∠B = 30°',p3:21,ac:20,ab:12,bc4:16,ar:96,ac1:12,gf:6,ge:10,ef:12,mid:'GD',gb:12},
+ {g:'جـ',x:'WC',ad:30,ans:'GD',mo:['5','10','15','20'],ai:1,bg:8,gc:30,bc:36,pb:42,bc3:12,ang:'∠ADC = 120°',p3:18,ac:5,ab:3,bc4:4,ar:6,ac1:24,gf:9,ge:15,ef:18,mid:'GD',gb:18}
+].forEach((o,i)=>{
+ const base=408+i*5,SG=SD+'اختبار أسبوعي ('+o.g+')',L=o.g+' · ';
+ addF(base,L+'أولًا',SG,'طول '+(o.mid==='AG'?'AG':'GD'),'{{AD}} متوسط في {{ΔABC}} و{{G}} نقطة تلاقي المتوسطات و{{AD = '+o.ad+'}} سم. ما طول {{'+o.mid+'}}؟',
+  [mq('اختر الإجابة الصحيحة:',o.mo.map(v=>v+' سم'),o.ai,'تقسم {{G}} المتوسط بنسبة 2 : 1 من جهة الرأس.')],
+  [{t:'{{AG = ⅔ AD}} و{{GD = ⅓ AD}}',hl:['AG','GD']},{t:'{{'+o.mid+' = '+(o.mid==='AG'?'⅔':'⅓')+' × '+o.ad+' = '+o.mo[o.ai]+'}} سم',hl:[o.mid]}],
+  medFig(['D','E','F'],[['A','G',''],['G','D','']]));
+ addF(base+1,L+'ثانيًا 1',SG,'طول AC','{{BD}} متوسط في المثلث {{ABC}} القائم في {{B}} و{{G}} نقطة تلاقي المتوسطات و{{BG = '+o.bg+'}} سم. أوجد {{AC}}.',
+  [num('AC =',o.ac1,{unit:'سم',hint:'{{BD = 3/2 BG}} ثم نصف الوتر.'})],
+  [{t:'{{BD = 3/2 BG = 3/2 × '+o.bg+' = '+(1.5*o.bg)+'}} سم',hl:['BG','GD']},{t:'{{BD = ½ AC}} ⇒ {{AC = 2 × '+(1.5*o.bg)+' = '+o.ac1+'}} سم',hl:['BD','AC']}],
+  RTM([null,null,o.bg+' سم',null]));
+ addF(base+2,L+'ثانيًا 2',SG,'محيط EFG','{{E , F}} منتصفا {{AB , AC}} و{{CG = '+o.gc+'}} سم و{{BC = '+o.bc+'}} سم و{{GB = '+(o.gb||o.bg)+'}} سم. أوجد محيط {{ΔEFG}}.',
+  [num('المحيط =',o.pb,{unit:'سم',hint:'{{GF = ½ GB}} و{{GE = ½ GC}} و{{EF = ½ BC}}.'})],
+  [{t:'{{GF = ½ GB = '+((o.gb||o.bg)/2)+'}} و{{GE = ½ GC = '+(o.gc/2)+'}} سم',hl:['GF','GE']},{t:'{{EF}} قطعة متوسطة ⇒ {{EF = ½ BC = '+(o.bc/2)+'}} سم',hl:['EF','BC']},{t:'المحيط {{= '+((o.gb||o.bg)/2)+' + '+(o.gc/2)+' + '+(o.bc/2)+' = '+o.pb+'}} سم',hl:['GF','GE','EF']}],
+  medFig(['D','F','E'],[['B','G',(o.gb||o.bg)+' سم'],['C','G',o.gc+' سم']],[['E','F'],['B','C',{l:o.bc+' سم'}]].map(x=>x)));
+ addF(base+3,L+'ثانيًا 3',SG,'محيط ADC','{{AD}} متوسط في {{ΔABC}} القائم في {{A}}، و{{BC = '+o.bc3+'}} سم، و{{AC = DC}} ('+o.ang.replace('∠','الزاوية ')+'). أوجد محيط {{ΔADC}}.',
+  [num('المحيط =',o.p3,{unit:'سم'})],
+  [{t:'{{AD = ½ BC = '+(o.bc3/2)+'}} (متوسط من رأس القائمة)، و{{DC = '+(o.bc3/2)+'}}',hl:['AD','DC']},{t:'{{AC = DC = '+(o.bc3/2)+'}}',hl:['AC']},{t:'المحيط {{= 3 × '+(o.bc3/2)+' = '+o.p3+'}} سم',hl:['tADC']}],
+  {P:{B:[0,100],C:[160,100],A:[40,31],D:[80,100]},S:[['A','B'],['A','C',{t:2}],['B','D',{t:1}],['D','C',{t:1,l:''}],['A','D'],['B','C',{nodraw:1,l:o.bc3+' سم'}]],A:[RAi('rA','A','B','C'),{v:'C',a:'B',b:'A',l:o.ang.replace(/^∠/,'').replace(/ = /,'').replace(/^[A-Z]/,'')?o.ang.split(' = ')[1]:'',id:'aC',r:22}],F:[['ADC','tADC']]});
+ addF(base+4,L+'ثانيًا 4',SG,'برهان وإيجاد المساحة','{{BD}} متوسط في {{ΔABC}} و{{AC = '+o.ac+'}} سم و{{AB = '+o.ab+'}} سم و{{AD = BD}}. أثبت أن {{ΔABC}} قائم الزاوية ثم أوجد مساحته.',
+  [proof([
+   sts('{{AD = BD}} و{{AD = ½ AC = '+(o.ac/2)+'}} ⇒ {{BD = ½ AC}}','معطى',['AD','BD','AC']),
+   sts('المتوسط يساوي نصف الضلع المقابل ⇒ {{m(∠B) = 90°}}','عكس نظرية 4-3',['tABC'])]),
+   num('المساحة =',o.ar,{unit:'سم²',hint:'{{BC = √(AC² − AB²)}}.'})],
+  [{t:'{{BC = √('+o.ac+'² − '+o.ab+'²) = '+o.bc4+'}} سم',hl:['AB','BC','AC']},{t:'المساحة {{= ½ × '+o.ab+' × '+o.bc4+' = '+o.ar+'}} سم²',hl:['AB','BC']}],
+  {P:{A:[0,0],B:[0,96],C:[128,96],D:[64,48]},S:[['A','B',{l:o.ab+' سم'}],['B','C'],['A','D',{t:1}],['D','C'],['B','D',{t:1}],['A','C',{nodraw:1,l:o.ac+' سم'}]],F:[['ABC','tABC']]});
+});
+
+F[82].S.push(['B','C',{nodraw:1}]);F[83].S.push(['A','C',{nodraw:1}]);F[84].S.push(['A','C',{nodraw:1}]);
+F[85].S.push(['E','F',{nodraw:1}],['A','G',{nodraw:1}]);F[86].S.push(['A','E',{nodraw:1}]);F[88].S.push(['A','C',{nodraw:1}]);
+F[90].S.push(['A','B',{nodraw:1}],['A','G',{nodraw:1}],['B','G',{nodraw:1}]);F[92].S.push(['A','E',{nodraw:1}]);F[94].S.push(['B','C',{nodraw:1}]);
+F[402].S.push(['A','C',{nodraw:1}]);F[405].S.push(['B','C',{nodraw:1}]);F[406].S.push(['A','C',{nodraw:1}]);
+[409,414,419].forEach(n=>F[n].S.push(['A','C',{nodraw:1}]));
+
+
+/* ===== الدرس 3-5: المثلث المتساوي الساقين ===== */
+const PP5=['نظرية المثلث المتساوي الساقين','عكس نظرية المثلث المتساوي الساقين','زاويتان داخليتان في جهة واحدة (متكاملتان)','زاويتان متبادلتان','زاويتان متناظرتان','مجموع زوايا المثلث = 180°','الزاوية الخارجة = مجموع الداخلتين البعيدتين','زاويتان متجاورتان على مستقيم (متكاملتان)','معطى','الطرح من زاويتين متساويتين'];
+const stg=(s,r,hl,c)=>Object.assign(st(s,r,hl,c),{pool:PP5});
+const G1='الدرس 3-5 · أولًا · قياس المفاهيم',G2='الدرس 3-5 · ثانيًا · تطبيق المفاهيم',G3='الدرس 3-5 · ثالثًا · التحليل وتكامل المواد',G4='الدرس 3-5 · تفكير إبداعي';
+const addG=(n,dn,sec,title,prompt,parts,sol,fg,note)=>{add(n,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.dn=dn;q.les=5;q.bk=true;F[n]=fg};
+const addH=(n,lab,sec,title,prompt,parts,sol,fg,note)=>{addL(n,lab,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.les=5;F[n]=fg};
+const AN=(v,a,b,l,id,r)=>({v,a,b,l,id,r:r||20});
+const ISO3={A:[100,0],B:[0,150],C:[200,150]};
+/* ---- كتاب المدرسة: تقييم الدرس 3-5 ---- */
+addG(501,'1',G1,'قيمة x (1)','في الشكل: {{BA = BC}} و{{m(∠B) = 42°}}. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['42','21','69','84'],2,'زاويتا القاعدة في المثلث المتساوي الساقين متساويتان.')],
+ [{t:'{{BA = BC}} ⇒ {{m(∠A) = m(∠C) = x}} (زاويتا القاعدة)',hl:['BA','BC']},{t:'{{2x + 42 = 180}} ⇒ {{2x = 138}}',hl:['aB']},{t:'{{x = 69}}',hl:['aC']}],
+ {P:{B:[100,0],A:[0,150],C:[200,150]},S:[['B','A',{t:1}],['B','C',{t:1}],['A','C']],A:[AN('B','A','C','42°','aB',26),AN('C','B','A','x°','aC')]});
+addG(502,'2',G1,'قيمة x (2)','في الشكل: {{RS = ST}} و{{m(∠T) = 52°}} و{{m(∠S) = (2x)°}}. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['26','52','76','38'],3,'زاويتا القاعدة عند {{R}} و{{T}}.')],
+ [{t:'{{RS = ST}} ⇒ الرأس {{S}}، وزاويتا القاعدة {{m(∠R) = m(∠T) = 52°}}',hl:['RS','ST']},{t:'{{2x = 180 − 2 × 52 = 76}}',hl:['aS']},{t:'{{x = 38}}',hl:['aS']}],
+ {P:{R:[100,0],S:[0,150],T:[200,150]},S:[['R','S',{t:2}],['S','T',{t:2}],['R','T']],A:[AN('S','R','T','(2x)°','aS',26),AN('T','S','R','52°','aT')]});
+addG(503,'3',G1,'طول PN','في الشكل: {{m(∠P) = m(∠N)}} و{{MN = 3}} سم و{{MP = (n + 1)}} سم و{{PN = 2n}} سم. ما طول {{PN}}؟',
+ [mq('اختر الإجابة الصحيحة:',['8 سم','3 سم','6 سم','4 سم'],3,'الضلعان المقابلان للزاويتين المتساويتين متساويان.')],
+ [{t:'{{m(∠P) = m(∠N)}} ⇒ {{MN = MP}} (عكس النظرية)',hl:['aP','aN']},{t:'{{3 = n + 1}} ⇒ {{n = 2}}',hl:['MN','MP']},{t:'{{PN = 2n = 4}} سم',hl:['PN']}],
+ {P:{P:[40,0],M:[0,150],N:[200,150]},S:[['M','N',{l:'3 سم'}],['M','P',{l:'(n + 1) سم'}],['P','N',{l:'(2n) سم'}]],A:[AN('P','M','N','','aP',18),AN('N','M','P','','aN',18)]});
+addG(504,'4',G1,'قيمة x (3)','{{ΔABC}} متساوي الأضلاع و{{m(∠B) = (3x)°}}. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['10','20','30','60'],1,'كل زاوية في المثلث المتساوي الأضلاع 60°.')],
+ [{t:'المثلث متساوي الأضلاع ⇒ كل زاوية {{= 60°}}',hl:['AB','BC','AC']},{t:'{{3x = 60}} ⇒ {{x = 20}}',hl:['aB']}],
+ {P:{C:[100,0],A:[0,150],B:[200,150]},S:[['C','A',{t:1}],['C','B',{t:1}],['A','B',{t:1}]],A:[AN('B','A','C','(3x)°','aB')]});
+addG(505,'5',G1,'الضلع الثالث','طولا ضلعين في مثلث متساوي الساقين 3 سم و7 سم. ما طول الضلع الثالث؟',
+ [mq('اختر الإجابة الصحيحة:',['3 سم','4 سم','7 سم','10 سم'],2,'مجموع أي ضلعين أكبر من الضلع الثالث.')],
+ [{t:'لو كان الساقان 3 و3 لكانت القاعدة 7، لكن {{3 + 3 = 6 < 7}} غير ممكن (مجموع أي ضلعين أكبر من الثالث)',hl:[]},{t:'إذن الساقان 7 و7 والقاعدة 3، فالضلع الثالث {{= 7}} سم',hl:['AB','BC','CA']}],GEN);
+addG(506,'6',G1,'قيمة n','في الشكل: {{m(∠B) = 90°}} و{{m(∠A) = 30°}} و{{AC = 12}} سم و{{BC = 2n}} سم. ما قيمة {{n}}؟',
+ [mq('اختر الإجابة الصحيحة:',['3','6','9','12'],0,'الضلع المقابل لـ 30° نصف الوتر.')],
+ [{t:'مثلث 30°–60°–90°: {{BC = ½ AC = 6}} سم',hl:['BC','AC']},{t:'{{2n = 6}} ⇒ {{n = 3}}',hl:['BC']}],
+ {P:{A:[0,100],B:[156,100],C:[156,10]},S:[['A','B'],['B','C',{l:'(2n) سم'}],['A','C',{l:'12 سم'}]],A:[RAi('rB','B','A','C'),AN('A','B','C','30°','aA')]});
+addG(507,'7',G1,'قياس ∠C','في الشكل: {{BA = BC}} و{{BD ⟂ AC}} و{{m(∠ABD) = (2x − 23)°}} و{{m(∠DBC) = x°}}. ما قياس {{∠C}}؟',
+ [mq('اختر الإجابة الصحيحة:',['23°','46°','67°','60°'],2,'في المثلث المتساوي الساقين الارتفاع من الرأس ينصف زاوية الرأس.')],
+ [{t:'{{BD ⟂ AC}} و{{BA = BC}} ⇒ {{BD}} ينصف {{∠B}}: {{2x − 23 = x}} ⇒ {{x = 23}}',hl:['rD','a1','a2']},{t:'{{m(∠B) = 2x = 46°}}',hl:['a1','a2']},{t:'{{m(∠C) = (180° − 46°) ÷ 2 = 67°}}',hl:['BC','AC']}],
+ {P:{B:[100,0],A:[0,150],C:[200,150],D:[100,150]},S:[['B','A',{t:1}],['B','C',{t:1}],['A','C'],['B','D']],A:[AN('B','A','D','(2x − 23)°','a1',34),AN('B','D','C','x°','a2',34),RAi('rD','D','B','C')]});
+addG(508,'8',G1,'قيمة x (4)','في الشكل: {{M}} منتصف {{RS}} و{{TM ⟂ RS}} و{{RT = 2x}} سم و{{ST = (x + 3)}} سم. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['10','7','5','3'],3,'{{TM}} محور تماثل {{RS}}.')],
+ [{t:'{{TM}} عمودي على {{RS}} من منتصفها ⇒ محور تماثل {{RS}} ⇒ {{TR = TS}}',hl:['rM','MT']},{t:'{{2x = x + 3}} ⇒ {{x = 3}}',hl:['RT','ST']}],
+ {P:{R:[0,0],S:[0,150],T:[220,150],M:[0,75]},S:[['R','M',{t:1}],['M','S',{t:1}],['S','T',{l:'(x + 3) سم'}],['R','T',{l:'2x سم'}],['M','T']],A:[RAi('rM','M','S','T')]});
+addG(509,'9',G2,'قيمة x (5)','{{AB ∥ CD}} و{{EC = ED}} و{{m(∠BAE) = 35°}} و{{E ∈ AC}}. أوجد قيمة {{x}}.',
+ [num('x =',110,{unit:'°',hint:'{{m(∠ACD) = m(∠BAC)}} (متبادلتان).'})],
+ [{t:'{{AB ∥ CD}} والقاطع {{AC}} ⇒ {{m(∠C) = m(∠BAC) = 35°}} (متبادلتان)',hl:['AB','CD','aA']},{t:'{{EC = ED}} ⇒ {{m(∠D) = m(∠C) = 35°}}',hl:['EC','ED']},{t:'{{x = 180° − (35° + 35°) = 110°}}',hl:['aE']}],
+ {P:{B:[0,0],A:[200,0],C:[0,100],D:[200,100],E:[80,60]},S:[['B','A',{arr:1}],['A','E'],['E','C',{t:2}],['E','D',{t:2}],['C','D',{arr:1}],['A','C',{nodraw:1}]],A:[AN('A','B','E','35°','aA',24),AN('E','C','D','x°','aE',24)]});
+addG(510,'10',G2,'قيمة x (6)','في الشكل: {{AC = AB}} و{{DC = DB}} و{{m(∠D) = 90°}} و{{m(∠A) = 50°}}. أوجد قيمة {{x}}.',
+ [num('x =',20,{unit:'°',hint:'أوجد {{m(∠ABC)}} ثم {{m(∠DBC)}}.'})],
+ [{t:'{{AC = AB}} ⇒ {{m(∠ABC) = (180° − 50°) ÷ 2 = 65°}}',hl:['AC','AB']},{t:'{{DC = DB}} و{{m(∠D) = 90°}} ⇒ {{m(∠DBC) = 45°}}',hl:['rD','DC','DB']},{t:'{{x = 65° − 45° = 20°}}',hl:['aB']}],
+ {P:{A:[0,75],C:[190,0],B:[190,150],D:[120,75]},S:[['A','C',{t:1}],['A','B',{t:1}],['C','D',{t:2}],['D','B',{t:2}],['C','B']],A:[AN('A','B','C','50°','aA',26),RAi('rD','D','C','B'),AN('B','A','D','x°','aB',24)]});
+addG(511,'11',G2,'قيمة x (7)','في الشكل: {{AD = BD = BC}} و{{m(∠DBC) = 40°}}. أوجد قيمة {{x}}.',
+ [num('x =',35,{unit:'°',hint:'{{∠BDC}} خارجة عن المثلث {{ABD}}.'})],
+ [{t:'{{AD = BD}} ⇒ {{m(∠ABD) = m(∠A) = x°}}',hl:['AD','BD']},{t:'{{∠BDC}} خارجة عن {{ΔABD}} ⇒ {{m(∠BDC) = 2x°}}',hl:['DC']},{t:'{{BD = BC}} ⇒ {{m(∠C) = m(∠BDC) = 2x°}}',hl:['BD','BC']},{t:'في {{ΔBDC}}: {{40 + 2x + 2x = 180}} ⇒ {{x = 35}}',hl:['aB']}],
+ {P:{A:[60,0],B:[0,150],C:[200,150],D:[116,60]},S:[['A','D',{t:2}],['D','C'],['B','D',{t:2}],['B','C',{t:2}],['A','B']],A:[AN('A','B','D','x°','aA',26),AN('B','D','C','40°','aB',28)]});
+addG(512,'12',G2,'طول NM','{{ΔSRT}} متساوي الأضلاع طول ضلعه 12 سم، و{{MR = SN}} و{{NM ⟂ SR}}. أوجد مع البرهان طول {{NM}}.',
+ [mcq('طول {{NM}} =',['{{4√3}} سم','{{6√3}} سم','8 سم','{{8√3}} سم'],0,{hint:'المثلث {{SNM}} قائم و{{m(∠S) = 60°}}.'})],
+ [{t:'ليكن {{SN = MR = a}} ⇒ {{SM = 12 − a}}',hl:['SN','MR','SM']},{t:'في {{ΔSNM}}: {{m(∠S) = 60°}} ⇒ {{m(∠SNM) = 30°}} ⇒ {{SM = ½ SN}}',hl:['rM','SM','SN']},{t:'{{12 − a = a/2}} ⇒ {{a = 8}}، فـ {{SM = 4}}',hl:['SN']},{t:'{{NM = √(8² − 4²) = √48 = 4√3}} سم',hl:['NM']}],
+ {P:{T:[100,0],S:[0,150],R:[200,150],N:[67,50],M:[67,150]},S:[['S','N',{t:1}],['N','T'],['T','R',{l:'12 سم'}],['S','M'],['M','R',{t:1}],['N','M']],A:[RAi('rM','M','R','N')],F:[['SMN','tSMN']]});
+addG(513,'13',G2,'قياس ∠CAE','{{m(∠B) = 30°}} و{{m(∠DCB) = 20°}} و{{CE = DE}} و{{AE ⟂ CD}}. أوجد مع البرهان {{m(∠CAE)}}.',
+ [num('m(∠CAE) =',40,{unit:'°',hint:'{{AE}} محور تماثل {{CD}}.'})],
+ [{t:'{{AE ⟂ CD}} من منتصفها {{E}} ⇒ {{AE}} محور تماثل {{CD}} ⇒ {{AC = AD}}',hl:['rE','AC','AD']},{t:'{{∠ADC}} خارجة عن {{ΔCDB}}: {{m(∠ADC) = 30° + 20° = 50°}}',hl:['aB','aC']},{t:'{{AC = AD}} ⇒ {{m(∠ACE) = 50°}}',hl:['AC']},{t:'في {{ΔACE}} القائم في {{E}}: {{m(∠CAE) = 90° − 50° = 40°}}',hl:['rE']}],
+ {P:{C:[10,0],A:[-24,150],D:[130,150],B:[230,150],E:[70,75]},S:[['C','E',{t:1}],['E','D',{t:1}],['A','E'],['A','C'],['A','D'],['D','B'],['C','B'],['C','D',{nodraw:1}]],A:[AN('B','D','C','30°','aB',24),AN('C','D','B','20°','aC',24),RAi('rE','E','A','C')]});
+addG(514,'14',G2,'برهان: ABC متساوي الساقين (1)','{{ED ∥ BC}} و{{D , A , C}} على استقامة واحدة و{{m(∠EDA) = 150°}} و{{m(∠BAC) = 75°}}. أثبت أن {{ΔABC}} متساوي الساقين.',
+ [proof([
+  stg('{{ED ∥ BC}} و{{DC}} قاطع ⇒ {{m(∠C) = 180° − 150° = 30°}}','زاويتان داخليتان في جهة واحدة (متكاملتان)',['ED','BC','aD']),
+  stg('{{m(∠B) = 180° − (75° + 30°) = 75°}}','مجموع زوايا المثلث = 180°',['tABC']),
+  stg('{{m(∠B) = m(∠BAC) = 75°}} ⇒ {{CB = CA}}','عكس نظرية المثلث المتساوي الساقين',['CB','CA'])])],[],
+ {P:{E:[0,0],D:[60,0],A:[130,63],C:[220,140],B:[90,140]},S:[['E','D',{arr:1}],['D','A'],['A','C'],['B','C',{arr:1}],['A','B'],['B','A',{nodraw:1}]],A:[AN('D','E','C','150°','aD',24),AN('A','B','C','75°','aA',22)],F:[['ABC','tABC']]});
+addG(515,'15',G2,'برهان: ABC متساوي الساقين (2)','{{DE ∥ AC}} و{{BD = BE = 5}} سم. أثبت أن {{ΔABC}} متساوي الساقين.',
+ [proof([
+  stg('{{BD = BE}} ⇒ {{m(∠BDE) = m(∠BED)}}','نظرية المثلث المتساوي الساقين',['BD','BE']),
+  stg('{{DE ∥ AC}} ⇒ {{m(∠A) = m(∠BDE)}} و{{m(∠C) = m(∠BED)}}','زاويتان متناظرتان',['DE','AC']),
+  stg('{{m(∠A) = m(∠C)}} ⇒ {{BA = BC}}','عكس نظرية المثلث المتساوي الساقين',['tABC'])])],[],
+ {P:{B:[100,0],A:[0,150],C:[200,150],D:[50,75],E:[150,75]},S:[['B','D',{t:1,l:'5 سم'}],['D','A'],['B','E',{t:1,l:'5 سم'}],['E','C'],['D','E',{arr:1}],['A','C',{arr:1}]],F:[['BDE','tBDE'],['ABC','tABC']]});
+addG(516,'16',G2,'برهان: ABC متساوي الساقين (3)','{{D , A , C , E}} على استقامة واحدة و{{m(∠DAB) = m(∠BCE)}}. أثبت أن {{ΔABC}} متساوي الساقين.',
+ [proof([
+  stg('{{m(∠BAC) = 180° − m(∠DAB)}} و{{m(∠BCA) = 180° − m(∠BCE)}}','زاويتان متجاورتان على مستقيم (متكاملتان)',['aA','aC']),
+  stg('{{m(∠DAB) = m(∠BCE)}} ⇒ {{m(∠BAC) = m(∠BCA)}}','الطرح من زاويتين متساويتين',['tABC']),
+  stg('{{m(∠BAC) = m(∠BCA)}} ⇒ {{BA = BC}}','عكس نظرية المثلث المتساوي الساقين',['BA','BC'])])],[],
+ {P:{D:[0,150],A:[60,150],C:[160,150],E:[220,150],B:[110,0]},S:[['D','A'],['A','C'],['C','E'],['A','B'],['B','C']],A:[AN('A','D','B','','aA',20),AN('C','B','E','','aC',20)],F:[['ABC','tABC']]});
+addG(517,'17',G2,'برهان: ABC متساوي الساقين (4)','{{DA = DE}} و{{AE = AB}} و{{m(∠D) = 60°}} و{{m(∠C) = 20°}}. أثبت أن {{ΔABC}} متساوي الساقين.',
+ [proof([
+  stg('{{DA = DE}} و{{m(∠D) = 60°}} ⇒ {{ΔDAE}} متساوي الأضلاع ⇒ {{m(∠DAE) = 60°}} ⇒ {{m(∠EAC) = 120°}}','نظرية المثلث المتساوي الساقين',['DA','DE']),
+  stg('في {{ΔEAC}}: {{m(∠AEC) = 180° − (120° + 20°) = 40°}}','مجموع زوايا المثلث = 180°',['tEAC']),
+  stg('{{AE = AB}} ⇒ {{m(∠ABE) = 40°}} ⇒ {{m(∠ABC) = 140°}}','نظرية المثلث المتساوي الساقين',['AE','AB']),
+  stg('{{m(∠BAC) = 180° − (140° + 20°) = 20° = m(∠C)}} ⇒ {{BA = BC}}','عكس نظرية المثلث المتساوي الساقين',['tABC'])])],[],
+ {P:{D:[0,0],E:[0,100],A:[87,50],B:[151,127],C:[250,144]},S:[['D','E',{t:2}],['D','A',{t:2}],['A','E',{t:1}],['A','B',{t:1}],['E','B'],['B','C'],['A','C']],A:[AN('D','E','A','60°','aD',24),AN('C','A','B','20°','aC',24)],F:[['EAC','tEAC'],['ABC','tABC']]});
+addG(518,'18',G2,'قيمة x والمساحة','في الشكل: {{m(∠B) = 90°}} و{{m(∠C) = 30°}} و{{AC = 16}} سم و{{AB = (5x − 2)}} سم. أوجد قيمة {{x}} ومساحة {{ΔABC}}.',
+ [num('x =',2,{hint:'{{AB}} يقابل 30°.'}),mcq('مساحة المثلث:',['{{32√3}} سم²','{{64√3}} سم²','128 سم²','{{16√3}} سم²'],0,{hint:'{{BC = √(16² − 8²)}}.'})],
+ [{t:'{{AB}} يقابل {{30°}} ⇒ {{AB = ½ AC = 8}} ⇒ {{5x − 2 = 8}} ⇒ {{x = 2}}',hl:['AB','AC']},{t:'{{BC = √(16² − 8²) = √192 = 8√3}} سم',hl:['BC']},{t:'المساحة {{= ½ × 8 × 8√3 = 32√3}} سم²',hl:['tABC']}],
+ {P:{A:[0,0],B:[0,100],C:[190,100]},S:[['A','B',{l:'(5x − 2) سم'}],['B','C'],['A','C',{l:'16 سم'}]],A:[RAi('rB','B','A','C'),AN('C','B','A','30°','aC',24)],F:[['ABC','tABC']]});
+addG(519,'19',G2,'قياس ∠D','في الشكل: {{AE ⟂ BC}} و{{BE = EC}} و{{AB = AD}} و{{m(∠BAE) = 30°}} و{{m(∠EAD) = 50°}}. أوجد {{m(∠D)}}.',
+ [num('m(∠D) =',80,{unit:'°',hint:'أثبت أن {{AB = AC}} أولًا.'})],
+ [{t:'{{AE ⟂ BC}} من منتصفها {{E}} ⇒ {{AE}} محور تماثل {{BC}} ⇒ {{AB = AC}} و{{m(∠EAC) = 30°}}',hl:['rE','AB','AC']},{t:'{{AB = AD}} ⇒ {{AC = AD}}',hl:['AD']},{t:'{{m(∠CAD) = 50° − 30° = 20°}}',hl:['a2']},{t:'{{AC = AD}} ⇒ {{m(∠D) = (180° − 20°) ÷ 2 = 80°}}',hl:['tACD']}],
+ {P:{A:[100,0],B:[13,150],C:[187,150],E:[100,150],D:[233,111]},S:[['A','B',{t:2}],['A','D',{t:2}],['B','E',{t:1}],['E','C',{t:1}],['A','E'],['C','D'],['A','C',{nodraw:1}]],A:[AN('A','B','E','30°','a1',26),AN('A','E','D','50°','a2',40),RAi('rE','E','A','B')],F:[['ACD','tACD']]});
+addG(520,'20',G2,'برهان: BC = DC','{{ABCD}} شكل رباعي فيه {{AB = AD}} و{{m(∠ABC) = m(∠ADC)}}. برهن أن {{BC = DC}}.',
+ [proof([
+  stg('{{AB = AD}} ⇒ {{m(∠ABD) = m(∠ADB)}}','نظرية المثلث المتساوي الساقين',['AB','AD']),
+  stg('{{m(∠ABC) = m(∠ADC)}} ⇒ {{m(∠DBC) = m(∠BDC)}}','الطرح من زاويتين متساويتين',['BD']),
+  stg('{{m(∠DBC) = m(∠BDC)}} ⇒ {{CD = CB}}','عكس نظرية المثلث المتساوي الساقين',['CD','CB'])])],[],
+ {P:{A:[0,75],D:[100,0],B:[100,150],C:[200,75]},S:[['A','D',{t:2}],['A','B',{t:2}],['D','C'],['B','C'],['B','D',{nodraw:1}]],A:[AN('D','A','C','','aD',18),AN('B','A','C','','aB',18)]});
+addG(521,'21',G2,'محيط ABC','{{ΔABC}} متساوي الأضلاع، و{{EC = 4}} سم و{{FD = 2}} سم و{{GB = 6}} سم و{{DE ⟂ BC}} و{{GF ⟂ AC}}. أوجد مع البرهان محيط {{ΔABC}}.',
+ [num('المحيط =',42,{unit:'سم',hint:'استخدم المثلثين 30–60 في {{DEC}} و{{AGF}}.'})],
+ [{t:'في {{ΔDEC}}: {{m(∠C) = 60°}} ⇒ {{m(∠EDC) = 30°}} ⇒ {{DC = 2 EC = 8}} سم',hl:['rE','DC','EC']},{t:'{{FC = FD + DC = 2 + 8 = 10}} سم',hl:['FD','DC']},{t:'ليكن الضلع {{s}}: {{AF = s − 10}} و{{AG = s − 6}}',hl:['AF','AG']},{t:'في {{ΔAGF}}: {{m(∠A) = 60°}} ⇒ {{AG = 2 AF}}: {{s − 6 = 2(s − 10)}} ⇒ {{s = 14}}',hl:['rF']},{t:'المحيط {{= 3 × 14 = 42}} سم',hl:['AB','BC','AC']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],E:[143,150],D:[143,64],F:[129,43],G:[43,86]},S:[['A','G'],['G','B',{l:'6 سم'}],['B','E'],['E','C',{l:'4 سم'}],['C','D'],['D','F',{l:'2 سم'}],['F','A'],['G','F'],['D','E'],['A','B',{nodraw:1}],['B','C',{nodraw:1}],['A','C',{nodraw:1}]],A:[RAi('rF','F','G','D'),RAi('rE','E','D','C')]});
+addG(522,'22',G2,'برهان: AB = AC','{{D ∈ CB→}} و{{m(∠DEB) = 35°}} و{{m(∠A) = 40°}} و{{BE = BD}}. أثبت أن {{AB = AC}}.',
+ [proof([
+  stg('{{BE = BD}} ⇒ {{m(∠BDE) = m(∠BED) = 35°}}','نظرية المثلث المتساوي الساقين',['BE','BD']),
+  stg('{{m(∠ABC) = 35° + 35° = 70°}}','الزاوية الخارجة = مجموع الداخلتين البعيدتين',['AB']),
+  stg('{{m(∠C) = 180° − (40° + 70°) = 70°}}','مجموع زوايا المثلث = 180°',['tABC']),
+  stg('{{m(∠B) = m(∠C)}} ⇒ {{AB = AC}}','عكس نظرية المثلث المتساوي الساقين',['AB','AC'])])],[],
+ {P:{A:[100,0],D:[0,150],B:[70,150],C:[200,150],E:[85,75]},S:[['D','B',{t:1}],['B','C'],['A','E'],['E','B',{t:1}],['A','C'],['D','E']],A:[AN('E','D','B','35°','aE',20),AN('A','B','C','40°','aA',24)],F:[['ABC','tABC']]});
+addG(523,'23',G2,'قياس ∠CAD','{{B ∈ DC}} و{{DB = BA = AC}} و{{m(∠D) = 28°}}. أوجد مع البرهان {{m(∠CAD)}}.',
+ [num('m(∠CAD) =',96,{unit:'°',hint:'ابدأ بالمثلث {{DBA}}.'})],
+ [{t:'{{DB = BA}} ⇒ {{m(∠BAD) = m(∠D) = 28°}}',hl:['DB','BA','aD']},{t:'{{∠ABC}} خارجة عن {{ΔDBA}}: {{m(∠ABC) = 28° + 28° = 56°}}',hl:['AB','BC']},{t:'{{AB = AC}} ⇒ {{m(∠C) = 56°}} ⇒ {{m(∠BAC) = 180° − 112° = 68°}}',hl:['AB','AC']},{t:'{{m(∠CAD) = 28° + 68° = 96°}}',hl:['AD','AC']}],
+ {P:{D:[0,150],B:[110,150],C:[233,150],A:[171,59]},S:[['D','B',{t:1}],['B','C'],['A','B',{t:1}],['A','C',{t:1}],['D','A']],A:[AN('D','B','A','28°','aD',26)]});
+addG(524,'24',G3,'برج الاتصالات','برج اتصالات مثبت بسلكين متساويين في الطول عند {{A , B}} وقاعدته {{D}} على {{AB}}. قياس الزاوية بين السلك الأيسر والبرج {{50°}} و{{BD = 19}} م و{{DA = (2x − 3)}} م. ما قيمة {{x}} و{{y}} التي تجعل البرج عموديًا على الأرض؟',
+ [num('x =',11,{hint:'البرج عمودي ⇒ ينصف القاعدة.'}),num('y =',50,{unit:'°'})],
+ [{t:'السلكان متساويان والبرج عمودي ⇒ البرج ارتفاع من الرأس في المثلث المتساوي الساقين ⇒ {{D}} منتصف {{AB}}',hl:['TB','TA','rD']},{t:'{{2x − 3 = 19}} ⇒ {{2x = 22}} ⇒ {{x = 11}}',hl:['BD','DA']},{t:'الارتفاع ينصف زاوية الرأس ⇒ {{y = 50}}',hl:['a1','a2']}],
+ {P:{T:[150,0],B:[0,150],A:[300,150],D:[150,150]},S:[['T','B',{t:1}],['T','A',{t:1}],['T','D'],['B','D',{l:'19 م'}],['D','A',{l:'(2x − 3) م'}]],A:[AN('T','B','D','50°','a1',30),AN('T','D','A','y°','a2',30),RAi('rD','D','T','A')]});
+addG(525,'25',G3,'أبراج المراقبة','برج مراقبة على شكل مثلث متساوي الساقين. إذا كان أحد أضلاعه يلتقي بالأرض بزاوية قياسها 105° (الزاوية الخارجة عند القاعدة) فما قياس الزاوية عند قمته؟',
+ [num('الزاوية عند القمة =',30,{unit:'°'})],
+ [{t:'زاوية القاعدة {{= 180° − 105° = 75°}} (زاويتان متجاورتان على مستقيم)',hl:['aR']},{t:'المثلث متساوي الساقين ⇒ زاويتا القاعدة متساويتان، فكل منهما 75°',hl:['TL','TR']},{t:'زاوية القمة {{= 180° − 2 × 75° = 30°}}',hl:['aT']}],
+ {P:{T:[100,0],L:[0,150],R:[200,150],G:[270,150]},S:[['T','L',{t:1}],['T','R',{t:1}],['L','R'],['R','G']],A:[AN('R','T','G','105°','aR',26),AN('T','L','R','؟','aT',28)]});
+addG(526,'26',G4,'طول BC','في الشكل: {{m(∠A) = 90°}} و{{AB = 17}} سم و{{CD = 9}} سم و{{m(∠B) = 60°}} و{{m(∠C) = 60°}}. أوجد مع البرهان طول {{BC}}.',
+ [num('BC =',25,{unit:'سم',hint:'مدّ {{BA}} و{{CD}} حتى يتقاطعا في {{E}}.'})],
+ [{t:'نمدّ {{BA}} و{{CD}} فيتقاطعان في {{E}}: {{m(∠B) = m(∠C) = 60°}} ⇒ {{ΔEBC}} متساوي الأضلاع',hl:['AB','CD']},{t:'{{m(∠E) = 60°}} و{{m(∠EAD) = 90°}} ⇒ {{m(∠ADE) = 30°}} ⇒ {{ED = 2 AE}}',hl:['rA']},{t:'ليكن {{AE = a}}: {{EB = 17 + a}} و{{EC = 2a + 9}}، وبما أن {{EB = EC}}: {{a = 8}}',hl:['AB','CD']},{t:'{{BC = EB = 17 + 8 = 25}} سم',hl:['BC']}],
+ {P:{A:[0,150],B:[136,150],C:[36,-23],D:[0,39]},S:[['A','B',{l:'17 سم'}],['B','C'],['C','D',{l:'9 سم'}],['D','A']],A:[RAi('rA','A','B','D'),AN('C','D','B','60°','aC',22),AN('B','A','C','60°','aB',24)]});
+/* ---- كتاب التقييمات: الدرس 3-5 ---- */
+const SH='كتاب التقييمات · الدرس 3-5 · ';
+addH(601,'نشاط 1',SH+'الأداء الصفي','الهرم الأكبر','ارسم مثلثات متساوية الساقين، وارسم منصف القاعدة ووصل الرأس بمنتصف القاعدة. ما الذي تلاحظه على القطعة الواصلة بين الرأس ومنتصف القاعدة؟',
+ [mcq('الملاحظة:',['تعامد القاعدة وتنصف زاوية الرأس','توازي القاعدة','تساوي القاعدة في الطول','لا علاقة لها بالقاعدة'],0,{hint:'قِس الزوايا حول {{D}} وعند {{A}}.'})],
+ [{t:'{{AB = AC}} و{{D}} منتصف {{BC}}',hl:['AB','AC','BD','DC']},{t:'{{AD ⟂ BC}} و{{AD}} ينصف {{∠A}} (المتوسط من الرأس في المتساوي الساقين)',hl:['AD','rD']}],
+ {P:ISO3,S:[['A','B',{t:1}],['A','C',{t:1}],['B','C']],A:[]});
+Object.assign(F[601].P,{D:[100,150]});F[601].S.push(['A','D'],['B','D',{t:2}],['D','C',{t:2}]);F[601].A.push(RAi('rD','D','A','C'));
+addH(602,'نشاط 2',SH+'الأداء الصفي','المثلث 30° و60°','ارسم مثلثات قائمة الزاوية إحدى زواياها 30°، وقِس طول الضلع المقابل لـ 30° وطول الوتر. ما العلاقة بينهما؟',
+ [mcq('العلاقة:',['الضلع المقابل لـ 30° = نصف الوتر','الضلع المقابل لـ 30° = الوتر','الضلع المقابل لـ 30° = ثلث الوتر','لا علاقة'],0,{hint:'جرّب وترًا طوله 10 سم.'})],
+ [{t:'مثلث 30°–60°–90°: الضلع {{BC}} المقابل لـ {{30°}}',hl:['BC','aA']},{t:'{{BC = ½ AC}}',hl:['AC']}],
+ {P:{A:[0,100],B:[156,100],C:[156,10]},S:[['A','B'],['B','C'],['A','C']],A:[RAi('rB','B','A','C'),AN('A','B','C','30°','aA',26)]});
+addH(603,'واجب 1',SH+'الأداء المنزلي','قيمة x و y','في الشكل: {{AB = (3y + 5)}} سم و{{AC = (2y + 9)}} سم و{{m(∠A) = 100°}} و{{m(∠C) = x°}}. أوجد {{x}} و{{y}}.',
+ [num('x =',40,{unit:'°'}),num('y =',4,{hint:'الساقان متساويان.'})],
+ [{t:'{{AB = AC}} ⇒ {{3y + 5 = 2y + 9}} ⇒ {{y = 4}}',hl:['AB','AC']},{t:'{{x = (180° − 100°) ÷ 2 = 40°}}',hl:['aA','aC']}],
+ {P:ISO3,S:[['A','B',{l:'(3y + 5) سم'}],['A','C',{l:'(2y + 9) سم'}],['B','C']],A:[AN('A','B','C','100°','aA',26),AN('C','B','A','x°','aC',22)]});
+addH(604,'واجب 2',SH+'الأداء المنزلي','برهان: ACD متساوي الساقين','{{AB = AC}} و{{m(∠A) = 40°}} و{{m(∠D) = 35°}} و{{B , C , D}} على استقامة واحدة. أثبت أن {{ΔACD}} متساوي الساقين.',
+ [proof([
+  stg('{{AB = AC}} ⇒ {{m(∠ACB) = (180° − 40°) ÷ 2 = 70°}}','نظرية المثلث المتساوي الساقين',['AB','AC']),
+  stg('{{m(∠ACD) = 180° − 70° = 110°}}','زاويتان متجاورتان على مستقيم (متكاملتان)',['AC','CD']),
+  stg('في {{ΔACD}}: {{m(∠CAD) = 180° − (110° + 35°) = 35° = m(∠D)}}','مجموع زوايا المثلث = 180°',['tACD']),
+  stg('{{m(∠CAD) = m(∠D)}} ⇒ {{CA = CD}}','عكس نظرية المثلث المتساوي الساقين',['CA','CD'])])],[],
+ {P:{A:[60,0],B:[0,150],C:[120,150],D:[260,150]},S:[['A','B',{t:1}],['A','C',{t:1}],['B','D'],['A','D']],A:[AN('A','B','C','40°','aA',26),AN('D','C','A','35°','aD',26),AN('C','B','A','','aC',0)],F:[['ACD','tACD']]});
+F[604].A.pop();
+addH(605,'واجب 3',SH+'الأداء المنزلي','قياس ∠EBC','{{ΔABC}} متساوي الأضلاع و{{EB = ED}} و{{m(∠E) = 110°}}. أوجد {{m(∠EBC)}}.',
+ [num('m(∠EBC) =',95,{unit:'°'})],
+ [{t:'{{EB = ED}} و{{m(∠E) = 110°}} ⇒ {{m(∠EBD) = (180° − 110°) ÷ 2 = 35°}}',hl:['EB','ED']},{t:'المثلث {{ABC}} متساوي الأضلاع ⇒ {{m(∠ABC) = 60°}}',hl:['AB','BC']},{t:'{{m(∠EBC) = 35° + 60° = 95°}}',hl:['EB','BC']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],D:[50,75],E:[-30,50]},S:[['A','D'],['D','B'],['B','C'],['A','C'],['E','B',{t:1}],['E','D',{t:1}],['A','B',{nodraw:1}]],A:[AN('E','B','D','110°','aE',22)]});
+addH(606,'واجب 4',SH+'الأداء المنزلي','قياس ∠BAE','{{BC = AE = AC}} و{{DB = DA}} و{{CD ⟂ AB}} و{{m(∠BCD) = 50°}}. أوجد {{m(∠BAE)}}.',
+ [num('m(∠BAE) =',60,{unit:'°'})],
+ [{t:'في {{ΔBDC}} القائم في {{D}}: {{m(∠B) = 90° − 50° = 40°}}',hl:['rD','aC']},{t:'{{CB = CA}} ⇒ {{m(∠CAB) = m(∠B) = 40°}} ⇒ {{m(∠ACB) = 100°}} ⇒ {{m(∠ACE) = 80°}}',hl:['CB','CA']},{t:'{{AC = AE}} ⇒ {{m(∠AEC) = 80°}} ⇒ {{m(∠CAE) = 20°}}',hl:['AC','AE']},{t:'{{m(∠BAE) = 40° + 20° = 60°}}',hl:['AB','AE']}],
+ {P:{B:[0,150],C:[110,150],E:[148,150],A:[129,42],D:[65,96]},S:[['B','C',{t:1}],['C','E'],['A','C',{t:1}],['A','E',{t:1}],['B','D',{t:2}],['D','A',{t:2}],['C','D']],A:[AN('C','B','D','50°','aC',22),RAi('rD','D','C','A')]});
+addH(607,'واجب 5',SH+'الأداء المنزلي','طول BD','{{ΔABC}} متساوي الأضلاع و{{AC = 18}} سم و{{BE = CD}} و{{ED ⟂ BC}}. أوجد مع البرهان طول {{BD}}.',
+ [num('BD =',6,{unit:'سم'})],
+ [{t:'في {{ΔBDE}} القائم في {{D}}: {{m(∠B) = 60°}} ⇒ {{m(∠BED) = 30°}} ⇒ {{BD = ½ BE}}',hl:['rD','BD','BE']},{t:'{{DC = BE = 2 BD}} وبما أن {{BD + DC = 18}}',hl:['DC','BE']},{t:'{{3 BD = 18}} ⇒ {{BD = 6}} سم',hl:['BD']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],E:[67,50],D:[67,150]},S:[['A','E'],['E','B',{t:1}],['B','D'],['D','C',{t:1}],['E','D'],['A','C',{l:'18 سم'}]],A:[RAi('rD','D','E','C')]});
+/* ---- اختبارات أسبوعية (أ) (ب) (جـ): المتساوي الساقين ---- */
+[{g:'أ',x:3,c2:'(2x + 10)',q3:{k:'ang',ans:40},q4:{B:70,D:50,CAD:20,eq:false}},
+ {g:'ب',x:5,c2:'(2x + 6)',q3:{k:'x',ans:10,t:'{{BD = 14}} سم و{{DC = (x + 4)}} سم',lbB:'14 سم',lbC:'(x + 4) سم'},q4:{B:60,D:40,CAD:20,eq:true}},
+ {g:'جـ',x:2,c2:'(2x + 12)',q3:{k:'x',ans:12,t:'{{AD ⟂ BC}} و{{AB = 20}} سم و{{AC = (x + 8)}} سم',lbB:'20 سم',lbC:'(x + 8) سم'},q4:{B:50,D:30,CAD:20,eq:false}}
+].forEach((o,i)=>{
+ const base=608+i*3,SG=SH+'اختبار أسبوعي ('+o.g+')',L=o.g+' · ';
+ addH(base,L+'ثانيًا 2',SG,'قيمة x','{{ΔABC}} قائم في {{B}} و{{m(∠C) = 45°}} و{{AB = 16}} سم و{{BC = '+o.c2+'}} سم. أوجد قيمة {{x}}.',
+  [num('x =',o.x,{hint:'المثلث قائم و45°: {{BC = AB}}.'})],
+  [{t:'{{m(∠C) = 45°}} ⇒ {{m(∠A) = 45°}} ⇒ {{BC = AB = 16}}',hl:['aC','AB','BC']},{t:'{{'+o.c2.replace(/[()]/g,'')+' = 16}} ⇒ {{x = '+o.x+'}}',hl:['BC']}],
+  {P:{A:[0,0],B:[0,100],C:[100,100]},S:[['A','B',{l:'16 سم'}],['B','C',{l:o.c2+' سم'}],['A','C']],A:[RAi('rB','B','A','C'),AN('C','B','A','45°','aC',22)]});
+ if(o.q3.k==='ang') addH(base+1,L+'ثانيًا 3',SG,'قياس ∠CAD','{{AB = AC}} و{{m(∠C) = 50°}} و{{AD}} ينصف {{∠A}}. أوجد مع البرهان {{m(∠CAD)}}.',
+  [num('m(∠CAD) =',40,{unit:'°'})],
+  [{t:'{{AB = AC}} ⇒ {{m(∠B) = m(∠C) = 50°}}',hl:['AB','AC']},{t:'{{m(∠BAC) = 180° − 100° = 80°}}',hl:['aA']},{t:'{{AD}} ينصف {{∠A}} ⇒ {{m(∠CAD) = 40°}}',hl:['AD']}],
+  {P:{A:[100,0],B:[0,150],C:[200,150],D:[100,150]},S:[['A','B',{t:1}],['A','C',{t:1}],['B','C'],['A','D']],A:[AN('C','B','A','50°','aC',24),AN('A','D','C','؟','aA',34)]});
+ else addH(base+1,L+'ثانيًا 3',SG,'قيمة x','{{AB = AC}} و{{AD}} '+(o.g==='ب'?'ينصف {{∠A}}':'ينصف {{∠A}} ويعامد {{BC}}')+'، '+o.q3.t+'. أوجد مع البرهان قيمة {{x}}.',
+  [num('x =',o.q3.ans)],
+  o.g==='ب'?[{t:'{{AB = AC}} و{{AD}} ينصف {{∠A}} ⇒ {{D}} منتصف {{BC}}',hl:['AD']},{t:'{{DC = BD}} ⇒ {{x + 4 = 14}} ⇒ {{x = 10}}',hl:['BD','DC']}]:[{t:'{{AB = AC}} (المثلث متساوي الساقين لأن {{AD}} ينصف {{∠A}} ويعامد {{BC}})',hl:['AB','AC']},{t:'{{x + 8 = 20}} ⇒ {{x = 12}}',hl:['AC']}],
+  {P:{A:[100,0],B:[0,150],C:[200,150],D:[100,150]},S:[['A','B',{l:o.q3.lbB&&(o.g==='جـ'?o.q3.lbB:undefined)}],['A','C',{l:o.g==='جـ'?o.q3.lbC:undefined}],['B','D',{l:o.g==='ب'?o.q3.lbB:undefined}],['D','C',{l:o.g==='ب'?o.q3.lbC:undefined}],['A','D']],A:[AN('A','B','D','','aA',30),AN('A','D','C','','aA2',30),RAi('rD','D','A','C')]});
+ addH(base+2,L+'ثانيًا 4',SG,'برهان',o.q4.eq?'{{m(∠B) = 60°}} و{{m(∠CAD) = 20°}} و{{m(∠D) = 40°}}. أثبت أن {{ΔABC}} متساوي الأضلاع.':'{{m(∠B) = '+o.q4.B+'°}} و{{m(∠D) = '+o.q4.D+'°}} و{{m(∠CAD) = 20°}}. أثبت أن {{ΔABC}} متساوي الساقين.',
+  [proof(o.q4.eq?[
+   stg('{{∠ACB}} خارجة عن {{ΔACD}}: {{m(∠ACB) = 20° + 40° = 60°}}','الزاوية الخارجة = مجموع الداخلتين البعيدتين',['aD']),
+   stg('{{m(∠A) = 180° − (60° + 60°) = 60°}}','مجموع زوايا المثلث = 180°',['tABC']),
+   stg('الزوايا الثلاث متساوية ⇒ {{AB = BC = AC}}','عكس نظرية المثلث المتساوي الساقين',['AB','BC','AC'])]:[
+   stg('{{∠ACB}} خارجة عن {{ΔACD}}: {{m(∠ACB) = 20° + '+o.q4.D+'° = '+(20+o.q4.D)+'°}}','الزاوية الخارجة = مجموع الداخلتين البعيدتين',['aD']),
+   stg('{{m(∠B) = m(∠ACB) = '+o.q4.B+'°}}','معطى',['aB']),
+   stg('{{m(∠B) = m(∠ACB)}} ⇒ {{AB = AC}}','عكس نظرية المثلث المتساوي الساقين',['AB','AC'])])],[],
+  {P:{A:[60,0],B:[0,150],C:[110,150],D:[210,150]},S:[['A','B'],['A','C'],['B','D'],['A','D']],A:[AN('B','D','A',o.q4.B+'°','aB',24),AN('D','C','A',o.q4.D+'°','aD',26),AN('A','C','D','20°','aA',24)],F:[['ABC','tABC'],['ACD','tACD']]});
+});
+
+F[522].S.push(['A','B',{nodraw:1}]);F[604].S.push(['C','D',{nodraw:1}]);F[606].S.push(['A','B',{nodraw:1}]);F[613].S.push(['B','C',{nodraw:1}]);
+
+
+/* ===== الدرس 3-6: الزوايا الداخلة والخارجة للمضلعات ===== */
+const rp=(n,R,cx,cy,rot)=>Array.from({length:n},(_,i)=>{const a=((rot===undefined?90:rot)-360*i/n)*Math.PI/180;return [Math.round((cx+R*Math.cos(a))*10)/10,Math.round((cy-R*Math.sin(a))*10)/10]});
+const PF=(pts,ints,exts,diag)=>{const n=pts.length,P={},S=[],A=[];
+ pts.forEach((p,i)=>{P['v'+i]=p});
+ for(let i=0;i<n;i++)S.push(['v'+i,'v'+((i+1)%n)]);
+ (ints||[]).forEach((l,i)=>{if(l!=null)A.push({v:'v'+i,a:'v'+((i+n-1)%n),b:'v'+((i+1)%n),l:String(l),id:'i'+i,r:24})});
+ (exts||[]).forEach((l,i)=>{if(l!=null){const pp=pts[(i+n-1)%n],q=pts[i];P['e'+i]=[Math.round((q[0]+(q[0]-pp[0])*0.4)*10)/10,Math.round((q[1]+(q[1]-pp[1])*0.4)*10)/10];S.push(['v'+i,'e'+i,{arr:1}]);A.push({v:'v'+i,a:'e'+i,b:'v'+((i+1)%n),l:String(l),id:'x'+i,r:20})}});
+ (diag||[]).forEach(d=>S.push(['v'+d[0],'v'+d[1],{axis:1}]));
+ return {P,S,A,nolabels:1}};
+const H6=rp(6,75,110,85),H7=rp(7,75,110,85),H5=rp(5,75,110,85);
+const K1='الدرس 3-6 · أولًا · قياس المفاهيم',K2='الدرس 3-6 · ثانيًا · تطبيق المفاهيم',K3='الدرس 3-6 · ثالثًا · التحليل وتكامل المواد',K4='الدرس 3-6 · تفكير إبداعي';
+const addK=(n,dn,sec,title,prompt,parts,sol,fg,note)=>{add(n,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.dn=dn;q.les=6;q.bk=true;F[n]=fg};
+const addJ=(n,lab,sec,title,prompt,parts,sol,fg,note)=>{addL(n,lab,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.les=6;F[n]=fg};
+const O4=a=>a.map(v=>v);
+/* ---- كتاب المدرسة: تقييم الدرس 3-6 ---- */
+addK(701,'1',K1,'مجموع زوايا السداسي','ما مجموع قياسات الزوايا الداخلة للشكل السداسي المحدب؟',
+ [mq('اختر الإجابة الصحيحة:',['900°','720°','540°','360°'],1,'{{(n − 2) × 180°}} حيث {{n = 6}}.')],
+ [{t:'{{n = 6}} ⇒ {{(6 − 2) × 180° = 4 × 180° = 720°}}',hl:[]}],PF(H6));
+addK(702,'2',K1,'a + b + c + d','في الشكل رباعي وزواياه الخارجة {{a , b , c , d}}. ما قيمة {{a + b + c + d}}؟',
+ [mq('اختر الإجابة الصحيحة:',['180','360','540','720'],1,'مجموع الزوايا الخارجة لأي مضلع محدب.')],
+ [{t:'مجموع قياسات الزوايا الخارجة لأي مضلع محدب {{= 360°}}',hl:[]}],PF(rp(4,70,110,85,45),null,['a°','b°','c°','d°']));
+addK(703,'3',K1,'قيمة x','في الشكل مضلع سداسي زواياه الخارجة {{62° , 56° , 54° , 58° , 62° , x°}}. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['58','62','68','72'],2,'مجموع الزوايا الخارجة {{= 360°}}.')],
+ [{t:'{{62 + 56 + 54 + 58 + 62 + x = 360}}',hl:[]},{t:'{{292 + x = 360}} ⇒ {{x = 68}}',hl:[]}],PF(H6,null,['62°','56°','54°','58°','62°','x°']));
+addK(704,'4',K1,'الزاوية الداخلة (18 ضلعًا)','ما قياس الزاوية الداخلة لمضلع منتظم ذي 18 ضلعًا؟',
+ [mq('اختر الإجابة الصحيحة:',['135°','144°','150°','160°'],3,'{{(n − 2) × 180° ÷ n}}.')],
+ [{t:'{{(18 − 2) × 180° ÷ 18 = 16 × 10° = 160°}}',hl:[]}],PF(rp(18,75,110,85)));
+addK(705,'5',K1,'عدد الأضلاع','ما عدد أضلاع المضلع المحدب الذي مجموع قياسات زواياه الداخلة 2340°؟',
+ [mq('اختر الإجابة الصحيحة:',['12','13','14','15'],3,'{{(n − 2) × 180° = 2340°}}.')],
+ [{t:'{{(n − 2) × 180 = 2340}} ⇒ {{n − 2 = 13}}',hl:[]},{t:'{{n = 15}}',hl:[]}],PF(H7));
+addK(706,'6',K1,'عدد الأضلاع (منتظم)','ما عدد أضلاع المضلع المنتظم الذي قياس إحدى زواياه الداخلة 144°؟',
+ [mq('اختر الإجابة الصحيحة:',['10','11','12','14'],0,'الخارجة {{= 180° − 144°}}.')],
+ [{t:'الزاوية الخارجة {{= 180° − 144° = 36°}}',hl:[]},{t:'{{n = 360° ÷ 36° = 10}}',hl:[]}],PF(rp(10,75,110,85)));
+addK(707,'7',K1,'عدد الأضلاع (خارجة)','ما عدد أضلاع المضلع المنتظم الذي قياس إحدى زواياه الخارجة 20°؟',
+ [mq('اختر الإجابة الصحيحة:',['12','14','16','18'],3,'{{n = 360° ÷ الخارجة}}.')],
+ [{t:'{{n = 360° ÷ 20° = 18}}',hl:[]}],PF(rp(18,75,110,85)));
+addK(708,'8',K1,'عدد أقطار السباعي','ما عدد أقطار المضلع السباعي المحدب؟',
+ [mq('اختر الإجابة الصحيحة:',['7','11','13','14'],3,'{{n(n − 3) ÷ 2}}.')],
+ [{t:'{{7 × (7 − 3) ÷ 2 = 7 × 4 ÷ 2 = 14}} قطرًا',hl:[]}],PF(H7,null,null,[[0,2],[0,3],[0,4],[0,5],[1,3],[1,4],[1,5],[1,6],[2,4],[2,5],[2,6],[3,5],[3,6],[4,6]]));
+addK(709,'9',K1,'اكتشف الخطأ','حلّت أمل: مجموع الداخلة {{(5 − 2) × 180° = 540°}} ثم الخارجة {{540° ÷ 5 = 108°}}. وحلّ سمر: يوجد 10 زوايا خارجة {{360° ÷ 10 = 36°}}. أيهما حلّ صحيحًا لإيجاد الزاوية الخارجة لخماسي منتظم؟',
+ [mcq('الحل الصحيح:',['أمل','سمر','كلتاهما','لا أحد منهما'],3,{hint:'الزاوية الخارجة عند كل رأس واحدة فقط، ومجموعها 360°.'})],
+ [{t:'أمل حسبت قياس الزاوية الداخلة {{= 108°}} وليس الخارجة',hl:[]},{t:'سمر عدّت زاويتين خارجتين عند كل رأس، والمطلوب زاوية واحدة عند كل رأس: {{360° ÷ 5 = 72°}}',hl:[]},{t:'الصحيح: الخارجة {{= 360° ÷ 5 = 72°}} (أو {{180° − 108°}})، فلا أحد منهما صحيح',hl:[]}],PF(H5,null,['E°','E°','E°','E°','E°']),'قراءتنا للحلّين: كلاهما لا يصل إلى 72°.');
+addK(710,'10',K2,'قيمة x (1)','في الشكل مضلع سباعي، ثلاث من زواياه الداخلة {{100° , 130° , 110°}} وأربع زوايا قياس كل منها {{x°}}. أوجد قيمة {{x}}.',
+ [num('x =',140,{unit:'°',hint:'مجموع زوايا السباعي {{900°}}.'})],
+ [{t:'مجموع الداخلة {{= (7 − 2) × 180° = 900°}}',hl:[]},{t:'{{100 + 130 + 110 + 4x = 900}} ⇒ {{4x = 560}}',hl:[]},{t:'{{x = 140}}',hl:[]}],PF(H7,['100°','130°','110°','x°','x°','x°','x°']));
+(()=>{const sd=80,Rh=80,ah=69.3,Rp=68.05,ap=55.05,ch=[100+ah,80],cp=[100-ap,80];
+ const hv=[150,210,270,330,30,90].map(t=>[Math.round((ch[0]+Rh*Math.cos(t*Math.PI/180))*10)/10,Math.round((ch[1]-Rh*Math.sin(t*Math.PI/180))*10)/10]);
+ const pv=[324,36,108,180,252].map(t=>[Math.round((cp[0]+Rp*Math.cos(t*Math.PI/180))*10)/10,Math.round((cp[1]-Rp*Math.sin(t*Math.PI/180))*10)/10]);
+ addK(711,'11',K2,'قيمة x (2)','مضلعان منتظمان: خماسي ومسدس يشتركان في ضلع، وبينهما عند الرأس السفلي الزاوية {{x°}} كما بالشكل. أوجد قيمة {{x}}.',
+  [num('x =',132,{unit:'°',hint:'الزوايا حول نقطة {{= 360°}}.'})],
+  [{t:'زاوية الخماسي المنتظم {{= (5 − 2) × 180° ÷ 5 = 108°}}',hl:[]},{t:'زاوية المسدس المنتظم {{= (6 − 2) × 180° ÷ 6 = 120°}}',hl:[]},{t:'الزوايا حول النقطة {{= 360°}}: {{x = 360° − (108° + 120°) = 132°}}',hl:[]}],
+  {P:{T:[100,40],B:[100,120],h1:hv[2],h2:hv[3],h3:hv[4],h4:hv[5],p1:pv[2],p2:pv[3],p3:pv[4]},nolabels:1,
+   S:[['T','B'],['B','h1'],['h1','h2'],['h2','h3'],['h3','h4'],['h4','T'],['B','p3'],['p3','p2'],['p2','p1'],['p1','T']],A:[{v:'B',a:'p3',b:'h1',l:'x°',id:'ax',r:26}]});
+})();
+addK(712,'12',K2,'قيمة x (3)','في الشكل خماسي {{ABCDE}}: {{m(∠A) = 80°}} و{{m(∠D) = 130°}} و{{m(∠C) = 170°}} والزاوية الخارجة عند {{E}} قياسها {{70°}} والخارجة عند {{B}} قياسها {{x°}}. أوجد {{x}}.',
+ [num('x =',130,{unit:'°',hint:'أوجد الزوايا الخارجة عند {{A , C , D}}.'})],
+ [{t:'الخارجة عند {{A}} {{= 100°}} وعند {{C}} {{= 10°}} وعند {{D}} {{= 50°}}',hl:[]},{t:'مجموع الخارجة {{= 360°}}: {{100 + 10 + 50 + 70 + x = 360}}',hl:[]},{t:'{{x = 130}}',hl:[]}],
+ {P:{A:[120,0],B:[240,120],C:[170,140],D:[90,140],E:[30,50],eE:[6,14],eB:[268,112]},nolabels:1,S:[['A','B'],['B','C'],['C','D'],['D','E'],['E','A'],['E','eE',{arr:1}],['B','eB',{arr:1}]],A:[{v:'A',a:'E',b:'B',l:'80°',id:'aA',r:22},{v:'D',a:'C',b:'E',l:'130°',id:'aD',r:22},{v:'C',a:'B',b:'D',l:'170°',id:'aC',r:22},{v:'E',a:'eE',b:'A',l:'70°',id:'aE',r:20},{v:'B',a:'eB',b:'A',l:'x°',id:'aB',r:22}]});
+(()=>{const f=PF(H6,['100°','130°',null,'110°',null,'120°']);f.P.Q=[110,70];f.S.push(['v2','Q'],['v4','Q']);
+ f.A.push({v:'v2',a:'v1',b:'Q',l:'',id:'bC1',r:16},{v:'v2',a:'Q',b:'v3',l:'',id:'bC2',r:16},{v:'v4',a:'v3',b:'Q',l:'',id:'bE1',r:16},{v:'v4',a:'Q',b:'v5',l:'',id:'bE2',r:16},{v:'Q',a:'v2',b:'v4',l:'x°',id:'aQ',r:20});
+ addK(713,'13',K2,'قيمة x (4)','{{ABCDEF}} مسدس فيه {{m(∠A) = 100°}} و{{m(∠B) = 130°}} و{{m(∠D) = 110°}} و{{m(∠F) = 120°}}، والمستقيمان {{CQ}} و{{EQ}} ينصفان {{∠C}} و{{∠E}}. أوجد قيمة {{x}} (الزاوية {{CQE}}).',
+  [num('x =',50,{unit:'°',hint:'مجموع زوايا المسدس {{720°}}.'})],
+  [{t:'مجموع الداخلة {{= 720°}}: {{m(∠C) + m(∠E) = 720° − (100° + 130° + 110° + 120°) = 260°}}',hl:[]},{t:'المنصفان: {{½ m(∠C) + ½ m(∠E) = 130°}}',hl:[]},{t:'في {{ΔCQE}}: {{x = 180° − 130° = 50°}}',hl:[]}],f,'قرأنا الشكل: Q نقطة تلاقي منصفي الزاويتين C وE.')})();
+addK(714,'14',K2,'قيمة x (5)','في الشكل خماسي زواياه الخارجة {{5a , 3a , 2a , 3a , 5a}}، والزاوية الداخلة عند {{C}} هي {{x°}}. أوجد قيمة {{x}}.',
+ [num('x =',140,{unit:'°',hint:'أوجد {{a}} من مجموع الخارجة.'})],
+ [{t:'مجموع الخارجة {{= 360°}}: {{5a + 3a + 2a + 3a + 5a = 18a = 360}} ⇒ {{a = 20}}',hl:[]},{t:'الخارجة عند {{C}} {{= 2a = 40°}}',hl:[]},{t:'{{x = 180° − 40° = 140°}}',hl:[]}],PF(H5,[null,null,'x°',null,null],['(5a)°','(3a)°','(2a)°','(3a)°','(5a)°']),'قرأنا الشكل: الزوايا الخارجة 5a و3a و2a و3a و5a والداخلة x عند C.');
+addK(715,'15',K2,'قيمة x (6)','في الشكل خماسي زواياه الخارجة {{84° , (x + 19)° , 79° , (2x)° , 55°}}. أوجد قيمة {{x}}.',
+ [num('x =',41,{hint:'مجموع الزوايا الخارجة {{360°}}.'})],
+ [{t:'{{84 + (x + 19) + 79 + 2x + 55 = 360}}',hl:[]},{t:'{{3x + 237 = 360}} ⇒ {{3x = 123}}',hl:[]},{t:'{{x = 41}}',hl:[]}],PF(H5,null,['84°','(x+19)°','79°','(2x)°','55°']));
+addK(716,'16',K2,'عدد الأضلاع والأقطار','أوجد كلًّا مما يأتي: (1) مضلع محدب مجموع زواياه الداخلة 2700° (عدد أضلاعه وأقطاره). (2) عدد أضلاع المضلع الذي له 9 أقطار. (3) مضلع منتظم زاويته الداخلة 156° (عدد أضلاعه وأقطاره).',
+ [num('(1) عدد الأضلاع =',17),num('(1) عدد الأقطار =',119),num('(2) عدد الأضلاع =',6),num('(3) عدد الأضلاع =',15),num('(3) عدد الأقطار =',90)],
+ [{t:'(1): {{(n − 2) × 180 = 2700}} ⇒ {{n = 17}}، والأقطار {{17 × 14 ÷ 2 = 119}}',hl:[]},{t:'(2): {{n(n − 3) ÷ 2 = 9}} ⇒ {{n² − 3n − 18 = 0}} ⇒ {{(n − 6)(n + 3) = 0}} ⇒ {{n = 6}}',hl:[]},{t:'(3): الخارجة {{= 180° − 156° = 24°}} ⇒ {{n = 360 ÷ 24 = 15}}، والأقطار {{15 × 12 ÷ 2 = 90}}',hl:[]}],PF(rp(15,75,110,85)));
+addK(717,'17',K2,'a + b + c','في الشكل خماسي: {{a , b , c}} زوايا خارجة عند {{A , C , E}}، و{{x , y}} داخلتان عند {{B , D}}، و{{x + y = 230}}. أوجد بالبرهان قيمة {{a + b + c}}.',
+ [num('a + b + c =',230,{unit:'°',hint:'مجموع الخارجة {{= 360°}} والداخلة عند {{B , D}} متممتان لخارجتيهما.'})],
+ [{t:'الخارجة عند {{B}} {{= 180 − x}} وعند {{D}} {{= 180 − y}}',hl:[]},{t:'مجموع الخارجة {{= 360}}: {{a + b + c + (180 − x) + (180 − y) = 360}}',hl:[]},{t:'{{a + b + c = x + y = 230}}',hl:[]}],PF(H5,[null,'x°',null,'y°',null],['a°',null,'b°',null,'c°']));
+addK(718,'18',K3,'عملات مصرية قديمة','أوجد قياس الزاوية الداخلة لكل من العملتين المنتظمتين: عملة على شكل مثمن، وعملة على شكل مضلع ذي 12 ضلعًا.',
+ [num('المثمن =',135,{unit:'°'}),num('الاثنا عشر ضلعًا =',150,{unit:'°'})],
+ [{t:'المثمن: {{(8 − 2) × 180° ÷ 8 = 135°}}',hl:[]},{t:'المضلع ذو 12 ضلعًا: {{(12 − 2) × 180° ÷ 12 = 150°}}',hl:[]}],PF(rp(8,75,110,85,67.5)),'قرأنا الصورة: عملة المثمن وعملة 12 ضلعًا.');
+addK(719,'19',K4,'عدد أضلاع المضلع','إذا زاد عدد أضلاع مضلع منتظم ضلعين آخرين فإن قياس الزاوية الخارجة يقل بمقدار 9°. كم عدد أضلاع المضلع؟',
+ [num('n =',8,{hint:'{{360/n − 360/(n + 2) = 9}}.'})],
+ [{t:'الخارجة قبل الزيادة {{360/n}} وبعدها {{360/(n + 2)}}، والفرق 9: {{360/n − 360/(n + 2) = 9}}',hl:[]},{t:'{{720 = 9n(n + 2)}} ⇒ {{n² + 2n − 80 = 0}}',hl:[]},{t:'{{(n − 8)(n + 10) = 0}} ⇒ {{n = 8}}',hl:[]}],PF(rp(8,75,110,85)));
+/* ---- كتاب التقييمات: الدرس 3-6 ---- */
+const SJ='كتاب التقييمات · الدرس 3-6 · ';
+addJ(801,'نشاط 1',SJ+'الأداء الصفي','سجاد هندسي','ارسم مضلعات مختلفة واحسب مجموع قياسات زواياها الخارجة (زاوية عند كل رأس). ماذا تلاحظ؟',
+ [mcq('الملاحظة:',['المجموع 360° لكل مضلع','المجموع يزيد بزيادة عدد الأضلاع','المجموع 180° دائمًا','المجموع يساوي مجموع الداخلة'],0,{hint:'جرّب مثلثًا ثم رباعيًا ثم خماسيًا.'})],
+ [{t:'في كل مضلع محدب: مجموع الزوايا الخارجة {{= 360°}} مهما كان {{n}}',hl:[]}],PF(H5,null,['a°','b°','c°','d°','e°']));
+addJ(802,'نشاط 2',SJ+'الأداء الصفي','عملات مصرية قديمة','احسب عدد أقطار المضلع المثمن المرسوم على العملة.',
+ [num('عدد الأقطار =',20,{hint:'{{n(n − 3) ÷ 2}}.'})],
+ [{t:'{{n = 8}} ⇒ {{8 × (8 − 3) ÷ 2 = 8 × 5 ÷ 2}}',hl:[]},{t:'عدد الأقطار {{= 20}}',hl:[]}],PF(rp(8,75,110,85,67.5)));
+addJ(803,'واجب 1',SJ+'الأداء المنزلي','عدد الأضلاع','أوجد عدد أضلاع المضلع المحدب الذي مجموع قياسات زواياه الداخلة 540°.',
+ [num('n =',5)],
+ [{t:'{{(n − 2) × 180 = 540}} ⇒ {{n − 2 = 3}}',hl:[]},{t:'{{n = 5}}',hl:[]}],PF(H5));
+addJ(804,'واجب 2',SJ+'الأداء المنزلي','قيمة X','في الشكل: أوجد قيمة {{X}}.',
+ [num('X =',110,{unit:'°',hint:'المضلع سداسي.'})],
+ [{t:'المضلع سداسي ⇒ مجموع الداخلة {{= 720°}}',hl:[]},{t:'{{120 + 130 + 135 + 100 + 125 + X = 720}} ⇒ {{610 + X = 720}} ⇒ {{X = 110}}',hl:[]}],PF(H6,['120°','130°','135°','100°','125°','X°']));
+addJ(805,'واجب 3',SJ+'الأداء المنزلي','قياس ∠BCD','في الشكل المضلع {{ABCDEF}} وزواياه الخارجة {{9x , 5x , 4x , 9x , 6x , 3x}}. أوجد {{m(∠BCD)}}.',
+ [num('m(∠BCD) =',140,{unit:'°'})],
+ [{t:'مجموع الخارجة {{= 360°}}: {{9x + 5x + 4x + 9x + 6x + 3x = 36x = 360}} ⇒ {{x = 10}}',hl:[]},{t:'الخارجة عند {{C}} {{= 4x = 40°}}',hl:[]},{t:'{{m(∠BCD) = 180° − 40° = 140°}}',hl:[]}],PF(H6,null,['(9x)°','(5x)°','(4x)°','(9x)°','(6x)°','(3x)°']));
+addJ(806,'واجب 4',SJ+'الأداء المنزلي','عدد الأضلاع (منتظم)','أوجد عدد أضلاع المضلع المنتظم الذي قياس زاويته الداخلة 144°.',
+ [num('n =',10)],
+ [{t:'الخارجة {{= 180° − 144° = 36°}}',hl:[]},{t:'{{n = 360° ÷ 36° = 10}}',hl:[]}],PF(rp(10,75,110,85)));
+addJ(807,'واجب 5',SJ+'الأداء المنزلي','عدد أضلاع مضلع له 20 قطرًا','أوجد عدد أضلاع المضلع المحدب الذي له 20 قطرًا.',
+ [num('n =',8)],
+ [{t:'{{n(n − 3) ÷ 2 = 20}} ⇒ {{n² − 3n − 40 = 0}}',hl:[]},{t:'{{(n − 8)(n + 5) = 0}} ⇒ {{n = 8}}',hl:[]}],PF(rp(8,75,110,85)));
+/* اختبارات أسبوعية: الجزء الخاص بالمضلعات */
+const SK=SJ+'اختبار أسبوعي ';
+addJ(808,'أ · أولًا',SK+'(أ)','مجموع زوايا السباعي','ما مجموع قياسات الزوايا الداخلة لمضلع سباعي محدب؟',
+ [mq('اختر الإجابة الصحيحة:',['900°','720°','540°','360°'],0,'{{(n − 2) × 180°}}.')],
+ [{t:'{{(7 − 2) × 180° = 5 × 180° = 900°}}',hl:[]}],PF(H7));
+(()=>{const hv=[150,210,270,330,30,90].map(t=>[Math.round((169.3+80*Math.cos(t*Math.PI/180))*10)/10,Math.round((80-80*Math.sin(t*Math.PI/180))*10)/10]);
+ const R8=104.5,a8=96.6,c8=[100-a8,80];const ov=[-22.5,22.5,67.5,112.5,157.5,202.5,247.5,292.5].map(t=>[Math.round((c8[0]+R8*Math.cos(t*Math.PI/180))*10)/10,Math.round((c8[1]-R8*Math.sin(t*Math.PI/180))*10)/10]);
+ addJ(809,'أ · ثانيًا 5',SK+'(أ)','قيمة x (مثمن ومسدس)','مثمن منتظم ومسدس منتظم يشتركان في ضلع، والزاوية بينهما عند الرأس السفلي {{2x°}}. أوجد بالبرهان قيمة {{x}}.',
+  [num('x =',52.5,{hint:'زاوية المثمن 135° وزاوية المسدس 120°.'})],
+  [{t:'زاوية المثمن المنتظم {{= (8 − 2) × 180° ÷ 8 = 135°}}',hl:[]},{t:'زاوية المسدس المنتظم {{= (6 − 2) × 180° ÷ 6 = 120°}}',hl:[]},{t:'الزوايا حول النقطة {{= 360°}}: {{2x = 360° − (135° + 120°) = 105°}}',hl:[]},{t:'{{x = 52.5°}}',hl:[]}],
+  {P:{T:[100,40],B:[100,120],h1:hv[2],h2:hv[3],h3:hv[4],h4:hv[5],o1:ov[0],o2:ov[7],o3:ov[6],o4:ov[5],o5:ov[4],o6:ov[3],o7:ov[2]},nolabels:1,
+   S:[['T','B'],['B','h1'],['h1','h2'],['h2','h3'],['h3','h4'],['h4','T'],['B','o3'],['o3','o4'],['o4','o5'],['o5','o6'],['o6','o7'],['o7','T']],A:[{v:'B',a:'o3',b:'h1',l:'2x°',id:'ax',r:26}]},
+  'قرأنا الشكل: مثمن (يسار) ومسدس (يمين).');})();
+addJ(810,'ب · أولًا',SK+'(ب)','مجموع زوايا السداسي','ما مجموع قياسات الزوايا الداخلة لمضلع سداسي محدب؟',
+ [mq('اختر الإجابة الصحيحة:',['900°','720°','540°','360°'],1,'{{(n − 2) × 180°}}.')],
+ [{t:'{{(6 − 2) × 180° = 720°}}',hl:[]}],PF(H6));
+addJ(811,'ب · ثانيًا 5',SK+'(ب)','قيمة X (خماسي)','في الشكل خماسي: زواياه الداخلة {{110° , 110° , 100°}} والخارجة عند الرأس الأيسر {{80°}} وعند الرأس السفلي الأيسر {{X°}}. أوجد بالبرهان قيمة {{X}}.',
+ [num('X =',60,{unit:'°',hint:'الخارجة عند الرأسين الآخرين {{70° , 70° , 80°}}.'})],
+ [{t:'الخارجة عند الزوايا {{110° , 110° , 100°}}: {{70° , 70° , 80°}}',hl:[]},{t:'مجموع الخارجة {{= 360°}}: {{80 + 70 + 70 + 80 + X = 360}}',hl:[]},{t:'{{300 + X = 360}} ⇒ {{X = 60}}',hl:[]}],PF(H5,[null,'110°','110°','100°',null],['80°',null,null,null,'X°']),'قرأنا الشكل: 80° خارجة عند الرأس الأيسر العلوي، وX خارجة عند الرأس الأيسر السفلي.');
+addJ(812,'جـ · أولًا',SK+'(جـ)','مجموع زوايا الخماسي','ما مجموع قياسات الزوايا الداخلة لمضلع خماسي محدب؟',
+ [mq('اختر الإجابة الصحيحة:',['900°','720°','540°','360°'],2,'{{(n − 2) × 180°}}.')],
+ [{t:'{{(5 − 2) × 180° = 540°}}',hl:[]}],PF(H5));
+addJ(813,'جـ · ثانيًا 4',SK+'(جـ)','قيمة x (مسدس)','في الشكل مسدس زواياه الداخلة {{125° , 130° , (5x)° , 135° , 110° , (6x)°}}. أوجد بالبرهان قيمة {{x}}.',
+ [num('x =',20)],
+ [{t:'مجموع الداخلة للمسدس {{= 720°}}',hl:[]},{t:'{{125 + 130 + 5x + 135 + 110 + 6x = 720}} ⇒ {{500 + 11x = 720}}',hl:[]},{t:'{{11x = 220}} ⇒ {{x = 20}}',hl:[]}],PF(H6,['125°','130°','(5x)°','135°','110°','(6x)°']));
+
 Q.forEach(q=>{if(!q.les)q.les=1});
 
 /* ---------- state ---------- */
@@ -1611,16 +2365,16 @@ function renderCard(n){const q=Q.find(x=>x.n===n);const el=document.getElementBy
 function renderAll(){$list.innerHTML=Q.map(q=>'<section class="card" id="q'+q.n+'" aria-label="التمرين '+q.n+'"></section>').join('');Q.forEach(q=>renderCard(q.n));updateProg()}
 function updateProg(){document.getElementById('pc').textContent=solved.size;document.getElementById('pt').textContent=Q.length;document.getElementById('pf').style.width=(solved.size/Q.length*100)+'%';pcards()}
 
-const FILT=[['all','الكل'],['l1','الدرس 3-1'],['l2','الدرس 3-2'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
+const FILT=[['all','الكل'],['l1','الدرس 3-1'],['l2','الدرس 3-2'],['l3','الدرس 3-3'],['l4','الدرس 3-4'],['l5','الدرس 3-5'],['l6','الدرس 3-6'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
 function pills(){document.getElementById('pills').innerHTML=FILT.map(([k,l])=>'<button class="pill" data-f="'+k+'" aria-pressed="'+(filter===k)+'">'+l+'</button>').join('');pcards()}
 function pcards(){const el=document.getElementById('pcards');if(!el)return;
-  const G=[['all','كل التمارين'],['l1','الدرس 3-1 · التطابق'],['l2','الدرس 3-2 · فيثاغورس'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
-  const m=(f,q)=>f==='all'?true:f==='l1'?q.les===1:f==='l2'?q.les===2:f==='book'?q.n<100:f==='assess'?q.n>=100:!solved.has(q.n);
+  const G=[['all','كل التمارين'],['l1','الدرس 3-1 · التطابق'],['l2','الدرس 3-2 · فيثاغورس'],['l3','الدرس 3-3 · تطبيقات التوازي'],['l4','الدرس 3-4 · متوسطات المثلث'],['l5','الدرس 3-5 · المثلث المتساوي الساقين'],['l6','الدرس 3-6 · زوايا المضلعات'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
+  const m=(f,q)=>f==='all'?true:f==='l1'?q.les===1:f==='l2'?q.les===2:f==='l3'?q.les===3:f==='l4'?q.les===4:f==='l5'?q.les===5:f==='l6'?q.les===6:f==='book'?(q.bk||q.n<100):f==='assess'?!(q.bk||q.n<100):!solved.has(q.n);
   el.innerHTML=G.map(([f,t])=>{const a=Q.filter(q=>m(f,q)),s=a.filter(q=>solved.has(q.n)).length;
    const sub=f==='todo'?a.length+' متبقٍ':a.length+' تمرين · '+s+' محلول';
    return '<button type="button" class="pcard" data-f="'+f+'" aria-pressed="'+(filter===f)+'"><b>'+t+'</b><small>'+sub+'</small>'+(f==='todo'?'':'<span class="pbar"><i style="width:'+(a.length?s/a.length*100:0)+'%"></i></span>')+'</button>'}).join('')}
 function applyFilter(){Q.forEach(q=>{const el=document.getElementById('q'+q.n);let show=true;
-  if(filter==='l1')show=q.les===1;else if(filter==='l2')show=q.les===2;else if(filter==='book')show=q.n<100;else if(filter==='assess')show=q.n>=100;else if(filter==='todo')show=!solved.has(q.n);
+  if(filter==='l1')show=q.les===1;else if(filter==='l2')show=q.les===2;else if(filter==='l3')show=q.les===3;else if(filter==='l4')show=q.les===4;else if(filter==='l5')show=q.les===5;else if(filter==='l6')show=q.les===6;else if(filter==='book')show=(q.bk||q.n<100);else if(filter==='assess')show=!(q.bk||q.n<100);else if(filter==='todo')show=!solved.has(q.n);
   el.hidden=!show})}
 
 function finish(q){const st=S[q.n];if(st.parts.every(p=>p.done)){if(!st.revealed){solved.add(q.n);save()}st.hl=[];updateProg()}}
@@ -1651,19 +2405,19 @@ pills();renderAll();
 /* ---------- panes ---------- */
 (function(){
   const panes=['home','lessons','practice','calc'];
-  const known=['home','lessons','practice','assess','calc','l1','l2','l3','l4'];
-  const LES=['l1','l2','l3','l4'],LT={l1:'حالات التوازي',l2:'زوايا المثلث',l3:'التطابق',l4:'فيثاغورس'};
+  const known=['home','lessons','practice','assess','calc','l1','l2','l3','l4','l5','l6','l7','l8'];
+  const LES=['l1','l2','l3','l4','l5','l6','l7','l8'],LT={l1:'حالات التوازي',l2:'زوايا المثلث',l3:'التطابق',l4:'فيثاغورس',l5:'تطبيقات التوازي',l6:'متوسطات المثلث',l7:'المثلث المتساوي الساقين',l8:'زوايا المضلعات'};
   let cur='l1';
   /* تقسيم الشرح إلى دروس منفصلة */
   (function(){
     const main=document.querySelector('#lessons main');if(!main)return;
     const kids=Array.from(main.children).filter(x=>x.id!=='lcards');let g=null;const out=[];
-    kids.forEach(k=>{if(k.tagName==='HEADER'&&/^l[2-4]$/.test(k.id)||!g){g=document.createElement('div');g.className='lesson';g.dataset.l=k.id&&/^l[2-4]$/.test(k.id)?k.id:'l1';out.push(g)}g.appendChild(k)});
+    kids.forEach(k=>{if(k.tagName==='HEADER'&&/^l[2-8]$/.test(k.id)||!g){g=document.createElement('div');g.className='lesson';g.dataset.l=k.id&&/^l[2-8]$/.test(k.id)?k.id:'l1';out.push(g)}g.appendChild(k)});
     out.forEach((d,i)=>{
       const id=d.dataset.l,pi=LES.indexOf(id),pr=LES[pi-1],nx=LES[pi+1];
       d.insertAdjacentHTML('beforeend','<div class="lnav">'+
         (pr?'<button type="button" class="lb" data-lesson="'+pr+'">→ '+LT[pr]+'</button>':'<span></span>')+
-        (id==='l3'?'<button type="button" class="lb pri" data-prac="l1">تمارين هذا الدرس</button>':id==='l4'?'<button type="button" class="lb pri" data-prac="l2">تمارين هذا الدرس</button>':'')+
+        (id==='l3'?'<button type="button" class="lb pri" data-prac="l1">تمارين هذا الدرس</button>':id==='l4'?'<button type="button" class="lb pri" data-prac="l2">تمارين هذا الدرس</button>':id==='l5'?'<button type="button" class="lb pri" data-prac="l3">تمارين هذا الدرس</button>':id==='l6'?'<button type="button" class="lb pri" data-prac="l4">تمارين هذا الدرس</button>':id==='l7'?'<button type="button" class="lb pri" data-prac="l5">تمارين هذا الدرس</button>':id==='l8'?'<button type="button" class="lb pri" data-prac="l6">تمارين هذا الدرس</button>':'')+
         (nx?'<button type="button" class="lb" data-lesson="'+nx+'">'+LT[nx]+' ←</button>':'<span></span>')+'</div>');
       main.appendChild(d);
     });
@@ -1919,6 +2673,186 @@ function closeF(){pn.hidden=true;hd.hidden=false;hd.setAttribute("aria-expanded"
 hd.addEventListener("click",openF);
 document.getElementById("fclose").addEventListener("click",closeF);
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!pn.hidden)closeF()});
+})();
+</script>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",ST="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round";
+function mk(svg){return function(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e}}
+var r1=function(x){return Math.round(x*10)/10};
+/* ---- القاطعان والمستقيمات المتوازية ---- */
+var sv=document.getElementById("tpF");if(!sv)return;var el=mk(sv);
+var tk=document.getElementById("tk"),ta=document.getElementById("ta"),tb=document.getElementById("tb2");
+function drawA(){
+ var k=+tk.value,al=+ta.value*Math.PI/180,be=+tb.value*Math.PI/180,g=44;
+ document.getElementById("tkv").textContent=k;document.getElementById("tav").textContent=ta.value+"°";document.getElementById("tb2v").textContent=tb.value+"°";
+ sv.innerHTML="";
+ var d=[Math.cos(al),-Math.sin(al)],e=[Math.sin(be),Math.cos(be)];
+ var A=[],y0=30;for(var i=0;i<k;i++)A.push([130,y0+i*g]);
+ var Q0=[130+280*d[0],y0-280*d[1]*-1*-1]; Q0=[130+280*d[0],y0+280*d[1]];
+ var cols=["#0a8f8f","#d62839","#d98e00","#6c5ce7","#0a8f8f"];
+ // خطوط متوازية
+ A.forEach(function(a){el("line",{x1:a[0]-90*d[0],y1:a[1]-90*d[1],x2:a[0]+430*d[0],y2:a[1]+430*d[1],stroke:"currentColor","stroke-width":2.5})});
+ // القاطع الأول
+ el("line",{x1:A[0][0],y1:A[0][1]-25,x2:A[k-1][0],y2:A[k-1][1]+25,stroke:"currentColor","stroke-width":2.5,"stroke-dasharray":"7 4"});
+ // تقاطع القاطع الثاني
+ var P=A.map(function(a){var det=-d[0]*e[1]+e[0]*d[1],dx=Q0[0]-a[0],dy=Q0[1]-a[1],t=(-dx*e[1]+e[0]*dy)/det;return [a[0]+t*d[0],a[1]+t*d[1]]});
+ el("line",{x1:P[0][0]-e[0]*30,y1:P[0][1]-e[1]*30,x2:P[k-1][0]+e[0]*30,y2:P[k-1][1]+e[1]*30,stroke:"currentColor","stroke-width":2.5,"stroke-dasharray":"7 4"});
+ var L=[];
+ for(var i=0;i<k;i++){el("circle",{cx:A[i][0],cy:A[i][1],r:4.5,fill:"#0a8f8f"});el("circle",{cx:P[i][0],cy:P[i][1],r:4.5,fill:"#d62839"})}
+ for(var i=0;i<k-1;i++){
+  var m1=[(A[i][0]+A[i+1][0])/2,(A[i][1]+A[i+1][1])/2],m2=[(P[i][0]+P[i+1][0])/2,(P[i][1]+P[i+1][1])/2];
+  var l1=Math.hypot(A[i+1][0]-A[i][0],A[i+1][1]-A[i][1])/10,l2=Math.hypot(P[i+1][0]-P[i][0],P[i+1][1]-P[i][1])/10;L.push(l2);
+  el("line",{x1:m1[0]-7,y1:m1[1],x2:m1[0]+7,y2:m1[1],stroke:"#0a8f8f","stroke-width":3});
+  el("text",{x:m2[0]+22,y:m2[1]+5,"text-anchor":"middle","font-size":14,"font-weight":800,fill:"#d62839",style:ST},r1(l2)+" سم");
+ }
+ var l1=g/10;
+ document.getElementById("tpr").innerHTML="كل جزء على القاطع الأول <span class='m'>"+r1(l1)+" cm</span> (متساوية)<br><span class='ok'>أجزاء القاطع الثاني: <span class='m'>"+L.map(r1).join(" ، ")+"</span> سم، وهي متساوية دائمًا (نظرية 3-1).</span>";
+}
+tk.oninput=ta.oninput=tb.oninput=drawA;drawA();
+/* ---- القطعة المتوسطة ---- */
+var s2=document.getElementById("msF"),el2=mk(s2),mb=document.getElementById("mb"),mx=document.getElementById("mx"),mall=document.getElementById("mall"),all=false;
+function drawB(){
+ var bc=+mb.value,ax=+mx.value;document.getElementById("mbv").textContent=bc;document.getElementById("mxv").textContent=ax;
+ s2.innerHTML="";
+ var u=Math.min(26,500/(bc+Math.abs(ax)+2)),h=8;
+ var Bp=[(600-bc*u)/2,270],Cp=[Bp[0]+bc*u,270],Ap=[Bp[0]+(bc/2+ax)*u,270-h*u*0.9];
+ var D=[(Ap[0]+Bp[0])/2,(Ap[1]+Bp[1])/2],E=[(Ap[0]+Cp[0])/2,(Ap[1]+Cp[1])/2],F=[(Bp[0]+Cp[0])/2,270];
+ el2("polygon",{points:[Ap,Bp,Cp].join(" "),fill:"#0a8f8f","fill-opacity":.1,stroke:"currentColor","stroke-width":3});
+ if(all)el2("polygon",{points:[D,E,F].join(" "),fill:"#d98e00","fill-opacity":.3,stroke:"#d98e00","stroke-width":3});
+ else el2("line",{x1:D[0],y1:D[1],x2:E[0],y2:E[1],stroke:"#d98e00","stroke-width":4});
+ [[D,"#d98e00"],[E,"#d98e00"]].concat(all?[[F,"#d98e00"]]:[]).forEach(function(z){el2("circle",{cx:z[0][0],cy:z[0][1],r:5,fill:z[1]})});
+ [[Ap,"A",-6,-12],[Bp,"B",-20,16],[Cp,"C",8,16],[D,"D",-18,-6],[E,"E",8,-6]].concat(all?[[F,"F",-4,22]]:[]).forEach(function(z){el2("text",{x:z[0][0]+z[2],y:z[0][1]+z[3],"font-size":17,"font-weight":700,fill:"currentColor",style:ST},z[1])});
+ var ab=Math.hypot(bc/2+ax,h*0.9)*1,ac=Math.hypot(bc/2-ax,h*0.9)*1;ab=r1(ab);ac=r1(ac);
+ var rd="<span class='m'>BC = "+bc+" ، DE = ½ BC = "+r1(bc/2)+"</span> وهي توازي <span class='m'>BC</span>";
+ if(all){var p=ab+ac+bc,q=p/2;rd+="<br>أضلاع المثلث: <span class='m'>"+ab+" ، "+ac+" ، "+bc+"</span> ⇒ المحيط <span class='m'>"+r1(p)+"</span><br><span class='ok'>محيط <span class='m'>DEF</span> = <span class='m'>"+r1(q)+"</span> = نصف المحيط</span>"}
+ document.getElementById("msr").innerHTML=rd;
+}
+mb.oninput=mx.oninput=drawB;
+mall.onclick=function(){all=!all;mall.setAttribute("aria-pressed",all);drawB()};
+drawB();
+})();
+</script>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",ST="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round";
+function mk(svg){return function(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e}}
+var r1=function(x){return Math.round(x*10)/10};
+var sv=document.getElementById("mdF");if(!sv)return;var el=mk(sv);
+var gb=document.getElementById("dgb"),gx=document.getElementById("dgx"),gh=document.getElementById("dgh");
+function drawA(){
+ var bc=+gb.value,ax=+gx.value,h=+gh.value;
+ document.getElementById("dgbv").textContent=bc;document.getElementById("dgxv").textContent=ax;document.getElementById("dghv").textContent=h;
+ sv.innerHTML="";
+ var u=Math.min(24,520/(bc+Math.abs(ax)+2),240/(h+1)),B=[(600-bc*u)/2,270],C=[B[0]+bc*u,270],A=[B[0]+(bc/2+ax)*u,270-h*u];
+ var D=[(B[0]+C[0])/2,270],E=[(A[0]+C[0])/2,(A[1]+270)/2],F=[(A[0]+B[0])/2,(A[1]+270)/2],G=[(A[0]+B[0]+C[0])/3,(A[1]+540)/3];
+ el("polygon",{points:[A,B,C].join(" "),fill:"#0a8f8f","fill-opacity":.08,stroke:"currentColor","stroke-width":3});
+ [[A,D,"#d62839"],[B,E,"#0a8f8f"],[C,F,"#d98e00"]].forEach(function(m){el("line",{x1:m[0][0],y1:m[0][1],x2:m[1][0],y2:m[1][1],stroke:m[2],"stroke-width":3.5})});
+ el("circle",{cx:G[0],cy:G[1],r:6,fill:"currentColor"});
+ [[A,"A",-6,-12],[B,"B",-20,16],[C,"C",8,16],[D,"D",-4,22],[E,"E",10,-4],[F,"F",-20,-4],[G,"G",8,-8]].forEach(function(z){el("text",{x:z[0][0]+z[2],y:z[0][1]+z[3],"font-size":17,"font-weight":700,fill:"currentColor",style:ST},z[1])});
+ function L(p,q){return Math.hypot(p[0]-q[0],p[1]-q[1])/u}
+ var rows=[["AG",L(A,G),"GD",L(G,D)],["BG",L(B,G),"GE",L(G,E)],["CG",L(C,G),"GF",L(G,F)]];
+ var t=rows.map(function(r){return "<span class='m'>"+r[0]+" = "+r1(r[1])+" ، "+r[2]+" = "+r1(r[3])+" ⇒ "+r[0]+" ÷ "+r[2]+" = "+r1(r[1]/r[3])+"</span>"}).join("<br>");
+ document.getElementById("dgr").innerHTML=t+"<br><span class='ok'>النسبة 2 : 1 على المتوسطات الثلاثة دائمًا (نظرية 4-2).</span>";
+}
+gb.oninput=gx.oninput=gh.oninput=drawA;drawA();
+/* ---- عكس نظرية المتوسط ---- */
+var s2=document.getElementById("rtF"),el2=mk(s2),rk=document.getElementById("rk"),rt=document.getElementById("rt");
+function drawB(){
+ var k=+rk.value/100,th=+rt.value*Math.PI/180;
+ document.getElementById("rkv").textContent=r1(k)+" R";document.getElementById("rtv").textContent=rt.value+"°";
+ s2.innerHTML="";
+ var R=110,D=[300,200],B=[D[0]-R,200],C=[D[0]+R,200],A=[D[0]+k*R*Math.cos(th),D[1]-k*R*Math.sin(th)];
+ el2("path",{d:"M"+B[0]+","+B[1]+" A"+R+","+R+" 0 0 1 "+C[0]+","+C[1],fill:"none",stroke:"#7a8aa3","stroke-width":1.5,"stroke-dasharray":"5 4"});
+ el2("polygon",{points:[A,B,C].join(" "),fill:"#0a8f8f","fill-opacity":.1,stroke:"currentColor","stroke-width":3});
+ el2("line",{x1:A[0],y1:A[1],x2:D[0],y2:D[1],stroke:"#d62839","stroke-width":3.5});
+ [[A,"A",-6,-12],[B,"B",-20,18],[C,"C",8,18],[D,"D",-4,24]].forEach(function(z){el2("text",{x:z[0][0]+z[2],y:z[0][1]+z[3],"font-size":17,"font-weight":700,fill:"currentColor",style:ST},z[1])});
+ var ab=Math.hypot(A[0]-B[0],A[1]-B[1]),ac=Math.hypot(A[0]-C[0],A[1]-C[1]),bc=2*R;
+ var ang=Math.acos((ab*ab+ac*ac-bc*bc)/(2*ab*ac))*180/Math.PI,ad=k*R,col=Math.abs(ang-90)<0.6?"#0a8f8f":ang<90?"#d98e00":"#d62839";
+ el2("text",{x:A[0],y:A[1]+(A[1]>D[1]-40?22:32),"text-anchor":"middle","font-size":15,"font-weight":800,fill:col,style:ST},r1(ang)+"°");
+ var kind=Math.abs(ang-90)<0.6?"قائمة":ang<90?"حادة":"منفرجة",rel=Math.abs(ad-R)<0.7?"AD = ½ BC":ad>R?"AD > ½ BC":"AD < ½ BC";
+ document.getElementById("rtr").innerHTML="<span class='m'>AD = "+r1(ad/R*5)+" ، ½ BC = 5 ⇒ "+rel+"</span><br>الزاوية <span class='m'>A = "+r1(ang)+"°</span> <b style='color:"+col+"'>("+kind+")</b>"+(Math.abs(ad-R)<0.7&&Math.abs(ang-90)<0.6?"<br><span class='ok'>المتوسط = نصف الضلع المقابل ⇒ الزاوية قائمة (عكس نظرية 4-3).</span>":"");
+}
+rk.oninput=rt.oninput=drawB;drawB();
+})();
+</script>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",ST="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round";
+function mk(svg){return function(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e}}
+var r1=function(x){return Math.round(x*10)/10},rad=function(a){return a*Math.PI/180};
+var sv=document.getElementById("isF");if(!sv)return;var el=mk(sv);
+var ia=document.getElementById("ia"),il=document.getElementById("il");
+function arc(e,v,p,q,r,col,txt){var a1=Math.atan2(p[1]-v[1],p[0]-v[0]),a2=Math.atan2(q[1]-v[1],q[0]-v[0]),d=(a2-a1+3*Math.PI)%(2*Math.PI)-Math.PI,sw=d>0?1:0;
+ e("path",{d:"M"+(v[0]+r*Math.cos(a1))+","+(v[1]+r*Math.sin(a1))+" A"+r+","+r+" 0 0 "+sw+" "+(v[0]+r*Math.cos(a2))+","+(v[1]+r*Math.sin(a2)),fill:"none",stroke:col,"stroke-width":2.5});
+ var m=a1+d/2;e("text",{x:v[0]+(r+22)*Math.cos(m),y:v[1]+(r+22)*Math.sin(m)+5,"text-anchor":"middle","font-size":15,"font-weight":800,fill:col,style:ST},txt)}
+function drawA(){
+ var ap=+ia.value,L=+il.value;document.getElementById("iav").textContent=ap+"°";document.getElementById("ilv").textContent=L;
+ sv.innerHTML="";
+ var half=rad(ap/2),w=L*Math.sin(half),h=L*Math.cos(half),u=Math.min(250/h,520/(2*w+0.01),30);
+ var A=[300,270-h*u],B=[300-w*u,270],C=[300+w*u,270],D=[300,270];
+ el("polygon",{points:[A,B,C].join(" "),fill:"#0a8f8f","fill-opacity":.1,stroke:"currentColor","stroke-width":3});
+ el("line",{x1:A[0],y1:A[1],x2:D[0],y2:D[1],stroke:"#d98e00","stroke-width":3,"stroke-dasharray":"7 5"});
+ var rr=Math.min(14,u*1.2);el("path",{d:"M"+(D[0]-rr)+","+D[1]+" l0,"+(-rr)+" l"+rr+",0",fill:"none",stroke:"currentColor","stroke-width":2});
+ var ba=(180-ap)/2;
+ arc(el,A,B,C,Math.min(34,h*u/3),"#d62839",ap+"°");arc(el,B,C,A,30,"#0a8f8f",r1(ba)+"°");arc(el,C,A,B,30,"#0a8f8f",r1(ba)+"°");
+ [[A,"A",-6,-12],[B,"B",-20,18],[C,"C",8,18],[D,"D",-4,22]].forEach(function(z){el("text",{x:z[0][0]+z[2],y:z[0][1]+z[3],"font-size":17,"font-weight":700,fill:"currentColor",style:ST},z[1])});
+ document.getElementById("ir").innerHTML="<span class='m'>AB = AC = "+L+"</span> ⇒ زاويتا القاعدة متساويتان: <span class='m'>∠B = ∠C = (180° − "+ap+"°) ÷ 2 = "+r1(ba)+"°</span><br>طول القاعدة <span class='m'>BC = "+r1(2*w)+"</span> والارتفاع <span class='m'>AD</span> ينصفها: <span class='m'>BD = DC = "+r1(w)+"</span>"+(Math.abs(ap-60)<0.5?"<br><span class='ok'>زاوية الرأس 60° ⇒ المثلث متساوي الأضلاع.</span>":"");
+}
+ia.oninput=il.oninput=drawA;drawA();
+/* ---- المثلث 30-60-90 ---- */
+var s2=document.getElementById("trF"),el2=mk(s2),tc=document.getElementById("tq");
+function drawB(){
+ var c=+tc.value;document.getElementById("tqv").textContent=c;s2.innerHTML="";
+ var u=Math.min(240/(c*Math.sqrt(3)/2),230/(c/2*1.01)*0.0+ (480/c)/2,26),
+  A=[110,270],B=[110+c*Math.sqrt(3)/2*u,270],C=[B[0],270-c/2*u];
+ // المثلث المتساوي الأضلاع (نصفه المثلث)
+ var C2=[B[0],270+c/2*u];
+ el2("polygon",{points:[A,B,C].join(" "),fill:"#0a8f8f","fill-opacity":.18,stroke:"currentColor","stroke-width":3});
+ el2("polygon",{points:[A,B,C2].join(" "),fill:"none",stroke:"#7a8aa3","stroke-width":2,"stroke-dasharray":"6 5"});
+ var rr=12;el2("path",{d:"M"+(B[0]-rr)+","+B[1]+" l0,"+(-rr)+" l"+rr+",0",fill:"none",stroke:"currentColor","stroke-width":2});
+ arc(el2,A,B,C,38,"#d62839","30°");arc(el2,C,A,B,26,"#0a8f8f","60°");
+ [[A,"A",-18,16],[B,"B",10,16],[C,"C",10,-6]].forEach(function(z){el2("text",{x:z[0][0]+z[2],y:z[0][1]+z[3],"font-size":17,"font-weight":700,fill:"currentColor",style:ST},z[1])});
+ document.getElementById("trr").innerHTML="الوتر <span class='m'>AC = "+c+"</span> ⇒ الضلع المقابل لـ 30°: <span class='m'>BC = ½ AC = "+r1(c/2)+"</span><br>الضلع المقابل لـ 60°: <span class='m'>AB = (√3/2) AC ≈ "+r1(c*Math.sqrt(3)/2)+"</span><br>المثلثان <span class='m'>ABC</span> و<span class='m'>ABC'</span> يكوّنان معًا مثلثًا متساوي الأضلاع طول ضلعه <span class='m'>"+c+"</span>.";
+}
+tc.oninput=drawB;drawB();
+})();
+</script>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",ST="direction:ltr;unicode-bidi:isolate;paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round";
+var sv=document.getElementById("pgF");if(!sv)return;
+function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;sv.appendChild(e);return e}
+var pn=document.getElementById("pn"),mode="tri",r1=function(x){return Math.round(x*10)/10};
+var COL=["#0a8f8f","#d62839","#d98e00","#6c5ce7","#0a8f8f","#d62839","#d98e00","#6c5ce7","#0a8f8f","#d62839"];
+function draw(){
+ var n=+pn.value;document.getElementById("pnv").textContent=n;sv.innerHTML="";
+ var R=122,cx=300,cy=165,P=[];for(var i=0;i<n;i++){var a=(90-360*i/n)*Math.PI/180;P.push([cx+R*Math.cos(a),cy-R*Math.sin(a)])}
+ var rd=document.getElementById("pgr"),inn=(n-2)*180/n,ext=360/n;
+ if(mode==="tri"){
+  for(var k=1;k<n-1;k++)el("polygon",{points:[P[0],P[k],P[k+1]].join(" "),fill:COL[k-1],"fill-opacity":.25,stroke:COL[k-1],"stroke-width":2});
+  el("polygon",{points:P.join(" "),fill:"none",stroke:"currentColor","stroke-width":3});
+  for(var i=0;i<n;i++)el("circle",{cx:P[i][0],cy:P[i][1],r:4,fill:"currentColor"});
+  rd.innerHTML="عدد المثلثات <span class='m'>n − 2 = "+(n-2)+"</span> ⇒ مجموع الزوايا الداخلة <span class='m'>"+(n-2)+" × 180° = "+((n-2)*180)+"°</span><br>كل زاوية في المنتظم <span class='m'>"+r1(inn)+"°</span> ، وعدد الأقطار <span class='m'>"+n+"(" + n + " − 3) ÷ 2 = "+(n*(n-3)/2)+"</span>";
+ }else{
+  el("polygon",{points:P.join(" "),fill:"#0a8f8f","fill-opacity":.08,stroke:"currentColor","stroke-width":3});
+  for(var i=0;i<n;i++){
+   var q=P[i],p=P[(i+n-1)%n],nx=P[(i+1)%n],dx=q[0]-p[0],dy=q[1]-p[1],L=Math.hypot(dx,dy),e=[q[0]+dx/L*42,q[1]+dy/L*42];
+   el("line",{x1:q[0],y1:q[1],x2:e[0],y2:e[1],stroke:"#7a8aa3","stroke-width":2,"stroke-dasharray":"5 4"});
+   var a1=Math.atan2(e[1]-q[1],e[0]-q[0]),a2=Math.atan2(nx[1]-q[1],nx[0]-q[0]),d=(a2-a1+3*Math.PI)%(2*Math.PI)-Math.PI,r=Math.min(30,L*0.45);
+   el("path",{d:"M"+q[0]+","+q[1]+" L"+(q[0]+r*Math.cos(a1))+","+(q[1]+r*Math.sin(a1))+" A"+r+","+r+" 0 0 "+(d>0?1:0)+" "+(q[0]+r*Math.cos(a2))+","+(q[1]+r*Math.sin(a2))+" Z",fill:COL[i%10],"fill-opacity":.45,stroke:COL[i%10],"stroke-width":1.5});
+  }
+  el("text",{x:cx,y:cy+6,"text-anchor":"middle","font-size":18,"font-weight":800,fill:"currentColor",style:ST},"كل خارجة "+r1(ext)+"°");
+  rd.innerHTML="عدد الزوايا الخارجة <span class='m'>"+n+"</span> ، كل منها <span class='m'>360° ÷ "+n+" = "+r1(ext)+"°</span><br>المجموع <span class='m'>"+n+" × "+r1(ext)+"° = 360°</span> دائمًا. والداخلة <span class='m'>180° − "+r1(ext)+"° = "+r1(inn)+"°</span>";
+ }
+}
+pn.oninput=draw;
+document.querySelectorAll("#pgm button").forEach(function(b){b.onclick=function(){mode=b.dataset.m;document.querySelectorAll("#pgm button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});draw()}});
+draw();
 })();
 </script>
 </body>
