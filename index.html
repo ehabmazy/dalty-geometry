@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>الهندسة</title>
+<title>الهندسة · الصف الثاني الإعدادي</title>
+<meta name="theme-color" content="#1e3a8a">
+<meta name="application-name" content="الهندسة">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="الهندسة">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
 <style>
@@ -315,22 +324,146 @@ body.is-calc #fhandle{display:none}
 #practice .pbar i{display:block;height:100%;background:var(--ok)}
 #list{scroll-margin-top:130px}
 </style>
+
+<style id="v2">
+:root{--appbar:58px;--dockh:78px;--r:18px;--sh:0 8px 24px rgba(21,35,59,.10);--brand:#2563eb;--brand2:#7c3aed}
+:root[data-theme="dark"]{--sh:0 8px 24px rgba(0,0,0,.38)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sh:0 8px 24px rgba(0,0,0,.38)}}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
+body{padding-bottom:calc(var(--dockh) + 44px + env(safe-area-inset-bottom,0px));-webkit-tap-highlight-color:transparent}
+a,button,summary,label{touch-action:manipulation}
+header.top{display:none!important}
+/* ---- شريط التطبيق ---- */
+.appbar{position:sticky;top:0;z-index:30;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-top:env(safe-area-inset-top,0px);background:rgba(243,246,250,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+:root[data-theme="dark"] .appbar{background:rgba(15,23,38,.88)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .appbar{background:rgba(15,23,38,.88)}}
+.ab-in{max-width:1040px;margin-inline:auto;height:var(--appbar);display:flex;align-items:center;justify-content:space-between;gap:10px;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font:inherit;color:var(--ink);cursor:pointer;text-align:start}
+.brand b{display:block;font:800 18px/1.15 var(--display)}.brand small{display:block;color:var(--muted);font-size:12px}
+.ab-act{display:flex;gap:8px;align-items:center}
+.ib{min-height:42px;min-width:42px;padding:0 12px;border-radius:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:700 14px var(--body);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ib.inst{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0}
+.ib[hidden]{display:none}
+@media (max-width:520px){.brand small{display:none}.ib.inst{padding:0 10px;font-size:13px}}
+/* ---- شريط التنقل السفلي ---- */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:60;width:min(560px,calc(100vw - 20px));display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px;border-radius:26px;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 34px rgba(15,30,60,.28)}
+:root[data-theme="dark"] .dock{background:rgba(23,34,58,.94)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dock{background:rgba(23,34,58,.94)}}
+.dock button{font:700 12px var(--body);color:var(--muted);background:none;border:0;border-radius:20px;min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer}
+.dock button svg{width:26px;height:26px}
+.dock button[aria-pressed="true"]{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px rgba(37,99,235,.38)}
+.dock button:focus-visible,.fab:focus-visible,.rc:focus-visible,.ib:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+#fhandle,#fcalc{bottom:auto}
+#fhandle{top:42%}
+.fab{position:fixed;inset-inline-start:14px;bottom:calc(var(--dockh) + 28px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;gap:6px;min-height:50px;padding:0 20px;border-radius:999px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;font:800 15px var(--body);text-decoration:none;box-shadow:0 10px 26px rgba(239,68,68,.45)}
+.fab[hidden]{display:none}
+/* ---- التمارين ---- */
+.bar{top:calc(var(--appbar) + env(safe-area-inset-top,0px));z-index:25;padding-block:8px;box-shadow:0 8px 14px -12px rgba(0,0,0,.45)}
+.bar .tools{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;max-width:1040px;margin-inline:auto}
+.bar .pills{display:flex;gap:6px;flex-wrap:wrap}
+.bar .pill{min-height:40px;padding:6px 14px;border-radius:999px;font-weight:700}
+.search{flex:1;min-width:150px;max-width:280px}
+.search input{width:100%;height:40px;border-radius:12px;border:1px solid var(--line);padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.bar .prog{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-inline-start:auto}
+.prog-track{width:90px;height:8px;border-radius:99px;background:var(--line);overflow:hidden}.prog-fill{height:100%;width:0;background:var(--ok);transition:width .4s}
+.railwrap{display:flex;align-items:center;gap:8px;margin-top:6px;max-width:1040px;margin-inline:auto}
+.rlabel{font-size:12px;font-weight:800;color:var(--muted);white-space:nowrap}
+.rail{display:flex;gap:7px;overflow-x:auto;padding:5px 2px 7px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;flex:1;min-width:0}
+.rc{flex:none;min-width:46px;height:46px;padding:0 11px;border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--paper);color:var(--ink);font:800 15px var(--display);cursor:pointer;white-space:nowrap}
+.rc.bk{border-bottom-color:var(--accent)}.rc.as{border-bottom-color:var(--hl)}
+.rc.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.rc.cur{background:var(--accent);border-color:var(--accent);color:#fff}
+.rc.done.cur{background:var(--ok);border-color:var(--ok)}
+.rempty{color:var(--muted);font-size:14px;padding:10px 4px}
+#practice .pcards{display:flex!important;gap:10px;overflow-x:auto;padding:6px 2px 12px;margin:10px 0 6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+#practice .pcard{flex:none;width:176px;scroll-snap-align:start;text-align:start;border-radius:16px;border:1px solid var(--line);border-top:6px solid var(--c);background:var(--paper);color:var(--ink);box-shadow:var(--sh);padding:10px 12px 12px;min-height:92px;font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+#practice .pcard b{font:800 15px/1.35 var(--display)}#practice .pcard small{color:var(--muted);font-size:12.5px}
+#practice .pcard[aria-pressed="true"]{background:var(--accent-soft);outline:3px solid var(--c);outline-offset:-1px}
+#practice .pbar{display:block;height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:auto}#practice .pbar i{display:block;height:100%;background:var(--c)}
+@media (min-width:900px){#practice .pcards{flex-wrap:wrap;overflow:visible}}
+#list{scroll-margin-top:calc(var(--appbar) + 150px)}
+#practice .card{border-radius:var(--r);box-shadow:var(--sh);scroll-margin-top:calc(var(--appbar) + 150px)}
+#practice .chead{min-height:62px;padding-block:12px}
+#practice .cnav{display:flex;justify-content:space-between;gap:10px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+#practice .cnav .btn{min-height:46px;padding-inline:18px;font-weight:700}
+#practice .figcol{top:calc(var(--appbar) + 170px + env(safe-area-inset-top,0px))}
+@media (max-width:760px){#practice .figcol{position:static}}
+/* ---- الدروس ---- */
+#lessons .lcards{display:flex!important;overflow-x:auto;gap:10px;position:sticky;top:calc(var(--appbar) + env(safe-area-inset-top,0px));z-index:20;background:var(--paper);padding:10px 4px;margin:0 0 6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;border-bottom:2px solid var(--ink)}
+#lessons .lcard{flex:none;min-width:150px;scroll-snap-align:start;min-height:64px}
+#lessons h2{scroll-margin-top:calc(var(--appbar) + 90px)}
+.toc{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:6px 16px;margin:14px 0}
+.toc summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+.toc ol{margin:4px 0 10px;padding-inline-start:22px}.toc li{margin:4px 0}.toc a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:2px solid var(--teal)}
+#lessons .lnav .lb{min-height:46px}
+/* ---- الرئيسية ---- */
+#home .hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 55%,#7c3aed 100%);color:#fff;border:0;border-radius:26px;box-shadow:0 16px 38px rgba(37,99,235,.34);position:relative;overflow:hidden;margin-top:14px}
+#home .hero::after{content:"";position:absolute;inset-inline-end:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+#home .hero .kick{color:#bfdbfe}#home .hero h1 span{border-bottom-color:#fbbf24}#home .hero .lead{color:#e0e7ff}
+#home .hero svg{color:#fff}
+#home .hero a.btn{min-height:48px;display:inline-flex;align-items:center;border:2px solid rgba(255,255,255,.7);background:rgba(255,255,255,.12);color:#fff;box-shadow:none;font-size:15px}
+#home .hero a.btn.main{background:#fff;color:#1e3a8a;border-color:#fff}
+#home .stat{border-radius:18px;border:1px solid var(--line);box-shadow:var(--sh);background:var(--card)}
+#home .stat .tr{height:12px}
+#home .stat a.btn{min-height:44px;display:inline-flex;align-items:center;border-radius:14px;box-shadow:none}
+#home h2{margin:30px 0 12px}
+#home .lc{border:1px solid var(--line);border-top:7px solid var(--c);border-inline-start:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);padding:16px 16px 14px;gap:8px}
+#home .lc .no{font-size:13px}
+#home .lc b{font-size:20px}
+#home .lc .ico{font-size:28px;line-height:1}
+#home .lc .act{gap:10px;margin-top:8px}
+#home .lc .act a{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:0 18px;border:2px solid var(--c);border-radius:14px;color:var(--c);background:transparent;font-weight:800;flex:1}
+#home .lc .act a.main{background:var(--c);color:#fff}
+#home .lc .act a:active{transform:scale(.97)}
+/* ---- ورقة التثبيت ---- */
+.sheet{position:fixed;inset:0;z-index:90;background:rgba(10,20,40,.55);display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none}
+.sheet-in{position:relative;width:min(560px,100%);max-height:86vh;overflow:auto;background:var(--paper);color:var(--ink);border-radius:24px 24px 0 0;padding:22px 20px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 -14px 40px rgba(0,0,0,.35)}
+.sheet-in h3{margin:0 0 10px;font:800 20px var(--display)}
+.sheet-in .x{position:absolute;inset-inline-end:12px;top:10px;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:24px;cursor:pointer}
+.sheet-in ol{padding-inline-start:22px;line-height:2}.sheet-in .note{background:var(--hl-soft);border-radius:12px;padding:10px 14px;font-size:14px;margin:10px 0}
+.sheet-in .go{display:flex;width:100%;justify-content:center;align-items:center;min-height:52px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font:800 16px var(--body);cursor:pointer;margin:8px 0}
+@media (min-width:900px){.sheet{align-items:center}.sheet-in{border-radius:24px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* ===== إصلاح: الأزرار الثابتة تحجب الشاشة (الجوال / الشاشات القصيرة) ===== */
+@media (max-width:900px),(max-height:700px){
+  html{scroll-padding-top:12px}
+  .appbar,.bar,#lessons .lcards{position:static!important;box-shadow:none}
+  .appbar{backdrop-filter:none;-webkit-backdrop-filter:none}
+  #list,#practice .card,#lessons h2{scroll-margin-top:12px}
+  #practice .figcol{position:static!important}
+  #lessons .lcards{margin-top:8px}
+  .dock{transition:transform .25s ease,opacity .25s ease}
+  .fab{transition:transform .25s ease,opacity .25s ease}
+  body.ui-hide .dock{transform:translate(-50%,160%);opacity:0;pointer-events:none}
+  body.ui-hide .fab{transform:translateY(200%);opacity:0;pointer-events:none}
+  body{padding-bottom:calc(var(--dockh) + 24px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:900px) and (max-height:520px),(max-height:480px){
+  .dock button{min-height:44px}.dock button span{display:none}
+}
+</style>
 </head>
 <body>
 
 
 <div class="wrap">
-<header class="top">
-  <div class="kicker">الرياضيات · الصف الثاني الإعدادي · الوحدة 3 · الهندسة (الدروس 3-1 إلى 3-6 + مراجعة)</div>
-  <h1>الهندسة</h1>
-  <p class="lead">شرح تفاعلي لدرسين مراجعة من العام الماضي (حالات التوازي وزوايا المثلث)، ثم دروس التطابق ونظرية فيثاغورس وتطبيقات التوازي ومتوسطات المثلث والمثلث المتساوي الساقين وزوايا المضلعات، ثم حلول تمارين الدروس 3-1 إلى 3-6 من كتاب المدرسة (ص 67 – 69 و75 – 77 و81 – 82 و87 – 88 و94 – 96 و101 – 102) وكتاب التقييمات (ص 25 – 49) خطوة بخطوة.</p>
-</header>
-<div class="bar">
-  <div class="bar-in"><div class="pills" id="panes" role="group" aria-label="أقسام الصفحة"><button class="pill" data-pane="home" aria-pressed="true">الرئيسية</button><button class="pill" data-pane="lessons" aria-pressed="false">شرح الدروس</button><button class="pill" data-pane="practice" aria-pressed="false">التمارين والتقييمات</button><button class="pill" data-pane="calc" aria-pressed="false">الآلة الحاسبة</button></div></div>
-  <div class="bar-in" id="practiceBar" hidden>
-    <div class="pills" id="pills" role="group" aria-label="تصفية التمارين"></div>
-    <div class="prog"><span>تمارين محلولة <b id="pc">0</b> / <span id="pt">0</span></span><div class="prog-track"><div class="prog-fill" id="pf"></div></div></div>
+<header class="top" hidden></header>
+<div class="appbar" role="banner"><div class="ab-in">
+  <button type="button" class="brand" data-pane="home" aria-label="الصفحة الرئيسية">
+    <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs><rect width="40" height="40" rx="10" fill="url(#lg)"/><polygon points="9,29 9,11 28,29" fill="#fff" fill-opacity=".92"/><path d="M9,23 h6 v6" fill="none" stroke="#1e3a8a" stroke-width="2"/><rect x="21" y="10" width="10" height="10" fill="#fbbf24" fill-opacity=".9"/></svg>
+    <span><b>الهندسة</b><small>الصف الثاني الإعدادي · الوحدة 3</small></span>
+  </button>
+  <div class="ab-act"><button type="button" class="ib" id="btnTheme" aria-label="تبديل الوضع الليلي">🌓</button><button type="button" class="ib inst" id="btnInstall">⬇ تثبيت التطبيق</button></div>
+</div></div>
+<div class="bar" id="practiceBar" hidden>
+  <div class="bar-in tools">
+    <div class="pills" id="pills" role="group" aria-label="مصدر التمارين"></div>
+    <label class="search"><input id="qsearch" type="search" placeholder="ابحث برقم أو عنوان التمرين" aria-label="بحث في التمارين" autocomplete="off"></label>
+    <div class="prog"><span>محلول <b id="pc">0</b> / <span id="pt">0</span></span><div class="prog-track"><div class="prog-fill" id="pf"></div></div></div>
   </div>
+  <div class="railwrap"><span class="rlabel">اضغط رقم التمرين:</span><div class="rail" id="rail" role="group" aria-label="التنقل بين التمارين"></div></div>
 </div>
 <section id="home" class="pane">
 <div class="hero">
@@ -338,7 +471,7 @@ body.is-calc #fhandle{display:none}
 <div class="kick">الرياضيات · الصف الثاني الإعدادي · الوحدة 3</div>
 <h1><span>الهندسة</span></h1>
 <p class="lead">شرح تفاعلي للدروس مع رسوم تتحرك بيدك، ثم حلول تمارين كتاب المدرسة وكتاب التقييمات خطوة بخطوة، وآلة حاسبة للمربع والجذر.</p>
-<div class="cta"><a class="btn main" href="#l1">ابدأ من الدرس الأول</a><a class="btn" href="#practice">التمارين والتقييمات</a></div>
+<div class="cta"><a class="btn main" id="contBtn" href="#l3">ابدأ من الدرس 3-1</a><a class="btn" href="#lessons">📖 شرح الدروس</a><a class="btn" href="#practice">✍️ التمارين</a></div>
 </div>
 <svg viewBox="0 0 240 200" role="img" aria-label="مثلث قائم الزاوية والمربعات على أضلاعه">
 <polygon points="70,110 130,110 70,70" fill="#d62839" fill-opacity=".25" stroke="currentColor" stroke-width="3"/>
@@ -349,18 +482,22 @@ body.is-calc #fhandle{display:none}
 </svg>
 </div>
 <div class="stat"><span>تمارين محلولة <b id="hpc">0</b> / <b id="hpt">0</b></span><div class="tr"><i id="hpf"></i></div><a class="btn" href="#practice">تابع التمارين</a></div>
-<h2>الدروس</h2>
+<h2>📚 دروس الوحدة الثالثة</h2>
 <div class="grid">
-<div class="lc" style="--c:var(--red)"><span class="no">مراجعة · 1</span><b>حالات التوازي</b><p>الزوايا المتناظرة والمتبادلة والمتكاملة، ومتى يكون المستقيمان متوازيين.</p><div class="act"><a class="main" href="#l1">اشرح لي</a></div></div>
-<div class="lc" style="--c:var(--teal)"><span class="no">مراجعة · 2</span><b>زوايا المثلث</b><p>مجموع زوايا المثلث والزاوية الخارجية وخصائصها مع رسم تفاعلي.</p><div class="act"><a class="main" href="#l2">اشرح لي</a></div></div>
 <div class="lc" style="--c:var(--amber)"><span class="no">الدرس 3-1</span><b>التطابق</b><p>حالات تطابق المثلثين SSS وSAS وASA وAAS وRHS، ولماذا لا تكفي AAA.</p><div class="act"><a class="main" href="#l3">اشرح لي</a><a href="#practice" data-prac="l1">تمارينه</a></div></div>
 <div class="lc" style="--c:#1857c8"><span class="no">الدرس 3-2</span><b>نظرية فيثاغورس</b><p>النظرية وعكسها، وتصنيف المثلث بأضلاعه، وثلاثيات فيثاغورس.</p><div class="act"><a class="main" href="#l4">اشرح لي</a><a href="#practice" data-prac="l2">تمارينه</a></div></div>
 <div class="lc" style="--c:#7b3fe4"><span class="no">الدرس 3-3</span><b>تطبيقات التوازي</b><p>القطعة المتوسطة في المثلث، وتساوي الأجزاء بين المستقيمات المتوازية.</p><div class="act"><a class="main" href="#l5">اشرح لي</a><a href="#practice" data-prac="l3">تمارينه</a></div></div>
 <div class="lc" style="--c:#c2410c"><span class="no">الدرس 3-4</span><b>متوسطات المثلث</b><p>نقطة تقاطع المتوسطات، ونسبة 2 : 1، ومتوسط المثلث القائم.</p><div class="act"><a class="main" href="#l6">اشرح لي</a><a href="#practice" data-prac="l4">تمارينه</a></div></div>
 <div class="lc" style="--c:#0f766e"><span class="no">الدرس 3-5</span><b>المثلث المتساوي الساقين</b><p>زاويتا القاعدة، والمثلث المتساوي الأضلاع، ومحور التماثل، والمثلث 30-60.</p><div class="act"><a class="main" href="#l7">اشرح لي</a><a href="#practice" data-prac="l5">تمارينه</a></div></div>
 <div class="lc" style="--c:#9d174d"><span class="no">الدرس 3-6</span><b>زوايا المضلعات</b><p>مجموع الزوايا الداخلة والخارجة، والمضلع المنتظم، وعدد الأقطار.</p><div class="act"><a class="main" href="#l8">اشرح لي</a><a href="#practice" data-prac="l6">تمارينه</a></div></div>
+<div class="lc" style="--c:#475569"><span class="no">تقييم الوحدة 3</span><b>تقييم الوحدة الثالثة</b><p>12 سؤالًا شاملًا لدروس الوحدة من كتاب المدرسة، بحلول خطوة بخطوة.</p><div class="act"><a class="main" href="#practice" data-prac="l7">ابدأ التقييم</a></div></div>
 </div>
-<h2>أدوات</h2>
+<h2>🔁 مراجعة من العام الماضي</h2>
+<div class="grid">
+<div class="lc" style="--c:var(--red)"><span class="no">مراجعة · 1</span><b>حالات التوازي</b><p>الزوايا المتناظرة والمتبادلة والمتكاملة، ومتى يكون المستقيمان متوازيين.</p><div class="act"><a class="main" href="#l1">اشرح لي</a></div></div>
+<div class="lc" style="--c:var(--teal)"><span class="no">مراجعة · 2</span><b>زوايا المثلث</b><p>مجموع زوايا المثلث والزاوية الخارجية وخصائصها مع رسم تفاعلي.</p><div class="act"><a class="main" href="#l2">اشرح لي</a></div></div>
+</div>
+<h2>🧮 أدوات</h2>
 <div class="grid">
 <div class="lc" style="--c:var(--red)"><span class="no">تدريب</span><b>التمارين والتقييمات</b><p>حلول مفصلة من كتاب المدرسة وكتاب التقييمات، مع تصفية حسب الدرس.</p><div class="act"><a class="main" href="#practice">افتح التمارين</a></div></div>
 <div class="lc" style="--c:var(--teal)"><span class="no">أداة</span><b>الآلة الحاسبة</b><p>الجمع والطرح والمربع والجذر التربيعي مع خطوات الحل.</p><div class="act"><a class="main" href="#calc">افتح الآلة</a></div></div>
@@ -834,6 +971,18 @@ body.is-calc #fhandle{display:none}
 </div>
 </div>
 
+
+<nav class="dock" id="panes" role="navigation" aria-label="أقسام التطبيق">
+  <button type="button" data-pane="home" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>الرئيسية</span></button>
+  <button type="button" data-pane="lessons" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 7h6M9 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><span>شرح الدروس</span></button>
+  <button type="button" data-pane="practice" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8.5 9l1.8 1.8L14 7.5M8.5 15.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><span>التمارين</span></button>
+  <button type="button" data-pane="calc" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 7h7M9 11.5h.01M12 11.5h.01M15 11.5h.01M9 15h.01M12 15h.01M15 15h.01" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>الحاسبة</span></button>
+</nav>
+<a class="fab" id="lfab" href="#practice" hidden>تمارين هذا الدرس ←</a>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sheet-in">
+  <button type="button" class="x" id="shX" aria-label="إغلاق">×</button>
+  <h3 id="shT">تثبيت التطبيق على الهاتف</h3><div id="shBody"></div>
+</div></div>
 <script>
 (function(){
 
@@ -2275,6 +2424,64 @@ addJ(813,'جـ · ثانيًا 4',SK+'(جـ)','قيمة x (مسدس)','في ال
  [num('x =',20)],
  [{t:'مجموع الداخلة للمسدس {{= 720°}}',hl:[]},{t:'{{125 + 130 + 5x + 135 + 110 + 6x = 720}} ⇒ {{500 + 11x = 720}}',hl:[]},{t:'{{11x = 220}} ⇒ {{x = 20}}',hl:[]}],PF(H6,['125°','130°','(5x)°','135°','110°','(6x)°']));
 
+
+/* ===== تقييم الوحدة الثالثة ===== */
+const PP6=['معطى','ضلع مشترك','SAS','SSS','ASA','من التطابق ينتج أن','نظرية المثلث المتساوي الساقين','مجموع زوايا المثلث = 180°'];
+const stu=(s,r,hl,c)=>Object.assign(st(s,r,hl,c),{pool:PP6});
+const UA='تقييم الوحدة الثالثة · اختر الإجابة الصحيحة',UB='تقييم الوحدة الثالثة · أكمل',UC='تقييم الوحدة الثالثة · أجب عن الأسئلة الآتية';
+const addU=(n,dn,sec,title,prompt,parts,sol,fg,note)=>{add(n,sec,title,prompt,parts,sol,note);const q=Q[Q.length-1];q.dn=dn;q.les=7;q.bk=true;F[n]=fg};
+addU(901,'1',UA,'قيمة n','في الشكل: {{D}} منتصف {{AB}} و{{E}} منتصف {{CB}} و{{AC = 8}} سم و{{DE = 2n}} سم. ما قيمة {{n}}؟',
+ [mq('اختر الإجابة الصحيحة:',['2','4','6','8'],0,'{{DE}} قطعة متوسطة.')],
+ [{t:'{{D , E}} منتصفا {{AB , CB}} ⇒ {{DE}} قطعة متوسطة توازي {{AC}}',hl:['DE']},{t:'{{DE = ½ AC = 4}} ⇒ {{2n = 4}} ⇒ {{n = 2}}',hl:['AC']}],
+ {P:{C:[100,0],A:[0,150],B:[200,150],D:[100,150],E:[150,75]},S:[['C','A',{l:'8 سم'}],['A','D',{t:1}],['D','B',{t:1}],['C','E',{t:2}],['E','B',{t:2}],['D','E',{l:'(2n) سم'}]]});
+addU(902,'2',UA,'قيمة x','في الشكل مضلع زواياه الخارجة {{45° , 40° , x° , 77° , (2x)°}}. ما قيمة {{x}}؟',
+ [mq('اختر الإجابة الصحيحة:',['77','45','55','66'],3,'مجموع الزوايا الخارجة {{360°}}.')],
+ [{t:'{{45 + 40 + x + 77 + 2x = 360}}',hl:[]},{t:'{{3x + 162 = 360}} ⇒ {{3x = 198}} ⇒ {{x = 66}}',hl:[]}],PF(H5,null,['45°','40°','x°','77°','(2x)°']));
+addU(903,'3',UA,'طول MT','{{Q , N}} منتصفا {{SR , TR}} و{{TR = 12}} سم و{{ST = 9}} سم و{{m(∠STR) = 90°}}. ما طول {{MT}}؟',
+ [mq('اختر الإجابة الصحيحة:',['2.5 سم','5 سم','7.5 سم','15 سم'],1,'{{M}} نقطة تلاقي المتوسطين {{SN}} و{{TQ}}.')],
+ [{t:'{{SR = √(9² + 12²) = 15}} سم',hl:['ST','TR','SR']},{t:'{{TQ}} متوسط من رأس القائمة {{T}} ⇒ {{TQ = ½ SR = 7.5}} سم',hl:['TQ','rT']},{t:'{{M}} نقطة تلاقي المتوسطات ⇒ {{MT = ⅔ TQ = 5}} سم',hl:['MT']}],
+ {P:{S:[0,0],T:[0,120],R:[160,120],Q:[80,60],N:[80,120],M:[53,80]},S:[['S','T',{l:'9 سم'}],['T','R',{l:'12 سم'}],['S','Q',{t:1}],['Q','R',{t:1}],['T','N',{t:2}],['N','R',{t:2}],['S','N'],['T','M',{nodraw:1}],['T','Q'],['S','R',{nodraw:1}]],A:[RAi('rT','T','S','R')]});
+addU(904,'4',UA,'طول DE','في الشكل: {{m(∠B) = 90°}} و{{m(∠A) = 30°}} و{{BC = 5}} سم و{{AD = 8}} سم و{{CD = 6}} سم و{{E}} منتصف {{AC}}. ما طول {{DE}}؟',
+ [mq('اختر الإجابة الصحيحة:',['6 سم','8 سم','10 سم','5 سم'],3,'أوجد {{AC}} أولًا.')],
+ [{t:'المثلث {{ABC}} (30°–60°–90°): {{AC = 2 BC = 10}} سم',hl:['rB','BC','AC']},{t:'{{AD² + CD² = 64 + 36 = 100 = AC²}} ⇒ {{m(∠D) = 90°}}',hl:['AD','CD']},{t:'{{DE}} متوسط من رأس القائمة {{D}}: {{DE = ½ AC = 5}} سم',hl:['DE']}],
+ {P:{A:[0,150],B:[147,150],C:[147,65],D:[53,25],E:[73,107]},S:[['A','B'],['B','C',{l:'5 سم'}],['C','D',{l:'6 سم'}],['D','A',{l:'8 سم'}],['A','E',{t:1}],['E','C',{t:1}],['D','E']],A:[RAi('rB','B','A','C'),AN('A','B','C','30°','aA',26)]});
+addU(905,'5',UB,'عدد الأضلاع','عدد أضلاع المضلع المحدب الذي له 20 قطرًا هو ......',
+ [num('عدد الأضلاع =',8,{hint:'{{n(n − 3) ÷ 2 = 20}}.'})],
+ [{t:'{{n(n − 3) = 40}} ⇒ {{n² − 3n − 40 = 0}}',hl:[]},{t:'{{(n − 8)(n + 5) = 0}} ⇒ {{n = 8}}',hl:[]}],PF(rp(8,75,110,85)));
+addU(906,'6',UB,'نوع المثلث','نوع المثلث الذي أطوال أضلاعه 6 سم و7 سم و8 سم بالنسبة لزواياه هو ......',
+ [mcq('النوع:',OPT3,0,{hint:'قارن {{8²}} بـ {{6² + 7²}}.'})],
+ [{t:'أكبر ضلع 8: {{8² = 64}}',hl:[]},{t:'{{6² + 7² = 36 + 49 = 85 > 64}} ⇒ حاد الزوايا',hl:[]}],GEN);
+addU(907,'7',UB,'قيمة x (دوران)','المضلع {{AEHF}} صورة المضلع {{ABCD}} بدوران ما، و{{AB ∥ DC}} و{{AD ⟂ AB}} و{{m(∠B) = 45°}}. قيمة {{x = m(∠H)}} هي ......',
+ [num('x =',135,{unit:'°',hint:'الدوران يحفظ قياسات الزوايا؛ {{H}} صورة {{C}}.'})],
+ [{t:'{{AD ⟂ AB}} و{{DC ∥ AB}} ⇒ {{m(∠D) = 90°}}',hl:['rA']},{t:'في الشكل {{ABCD}}: {{m(∠C) = 360° − (90° + 90° + 45°) = 135°}}',hl:['aB']},{t:'{{AEHF}} صورة {{ABCD}} بدوران ⇒ {{m(∠H) = m(∠C) = 135°}}',hl:['aH']}],
+ {P:{F:[0,100],A:[60,100],B:[160,100],C:[120,40],D:[60,40],E:[60,0],H:[0,50]},S:[['F','A'],['A','B',{arr:1}],['B','C'],['C','D',{arr:1}],['D','A'],['A','E',{nodraw:1}],['D','E'],['E','H'],['H','F']],A:[RAi('rA','A','D','B'),AN('B','A','C','45°','aB',22),AN('H','F','E','x°','aH',18)]});
+addU(908,'8',UB,'قياس ∠AME','{{ΔABC}} متساوي الأضلاع و{{ΔDEF}} متساوي الساقين فيه {{FD = FE}} و{{m(∠F) = 50°}}. فإن {{m(∠AME)}} = ......',
+ [num('m(∠AME) =',55,{unit:'°',hint:'أوجد {{m(∠FED)}} ثم المثلث {{AME}}.'})],
+ [{t:'{{FD = FE}} ⇒ {{m(∠FED) = (180° − 50°) ÷ 2 = 65°}}',hl:['FD','FE']},{t:'{{m(∠MAE) = m(∠BAC) = 60°}} (متساوي الأضلاع)',hl:['AB']},{t:'في {{ΔAME}}: {{m(∠AME) = 180° − (60° + 65°) = 55°}}',hl:['AM','ME']}],
+ {P:{D:[0,150],A:[70,150],E:[110,150],C:[260,150],B:[165,-15],F:[55,10],M:[94,109]},S:[['D','A'],['A','E'],['E','C'],['F','D',{t:1}],['F','E',{t:1}],['A','M'],['M','B'],['B','C'],['A','B',{nodraw:1}],['A','M',{nodraw:1}],['M','E',{nodraw:1}]],A:[AN('F','D','E','50°','aF',22)]});
+addU(909,'9',UC,'قياس ∠FAG','{{ABCDG}} خماسي منتظم و{{GDEF}} معين. أوجد قياس {{∠FAG}}.',
+ [num('m(∠FAG) =',18,{unit:'°',hint:'أوجد {{m(∠AGF)}} ثم استخدم المثلث {{AGF}}.'})],
+ [{t:'زاوية الخماسي المنتظم {{= 108°}}، فـ {{m(∠CDG) = 108°}} و{{C , D , E}} على استقامة ⇒ {{m(∠GDE) = 72°}}',hl:[]},{t:'في المعين {{m(∠DGF) = 180° − 72° = 108°}}',hl:[]},{t:'حول {{G}}: {{m(∠AGF) = 360° − (108° + 108°) = 144°}}',hl:[]},{t:'{{GA = GD = GF}} (أضلاع الخماسي والمعين) ⇒ {{ΔAGF}} متساوي الساقين ⇒ {{m(∠FAG) = (180° − 144°) ÷ 2 = 18°}}',hl:[]}],
+ {P:{A:[100,10],B:[14,72],C:[47,173],D:[153,173],G:[186,72],E:[259,173],F:[292,72]},S:[['A','B'],['B','C'],['C','D'],['D','G'],['G','A'],['G','F'],['F','E'],['E','D'],['A','F']],A:[]});
+addU(910,'10',UC,'طول FC','{{ΔABC}} متساوي الأضلاع، {{DF ⟂ AC}} و{{ED ⟂ BC}} و{{AF = 5}} سم و{{BE = 6}} سم. أوجد مع البرهان طول {{FC}}.',
+ [num('FC =',2,{unit:'سم',hint:'استخدم المثلثين 30–60 في {{EBD}} و{{DFC}}.'})],
+ [{t:'في {{ΔEBD}} القائم في {{D}}: {{m(∠B) = 60°}} ⇒ {{m(∠BED) = 30°}} ⇒ {{BD = ½ BE = 3}} سم',hl:['rD','BD','BE']},{t:'ليكن الضلع {{s}}: {{DC = s − 3}} و{{FC = s − 5}}',hl:['DC','FC']},{t:'في {{ΔDFC}}: {{m(∠C) = 60°}} ⇒ {{m(∠FDC) = 30°}} ⇒ {{FC = ½ DC}}',hl:['rF']},{t:'{{s − 5 = ½ (s − 3)}} ⇒ {{s = 7}}، فـ {{FC = 7 − 5 = 2}} سم',hl:['FC']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],D:[86,150],E:[86,21],F:[171,107]},S:[['A','E'],['E','B',{l:'6 سم'}],['B','D'],['D','C'],['C','F'],['F','A',{l:'5 سم'}],['E','D'],['D','F'],['B','C',{nodraw:1}],['A','C',{nodraw:1}]],A:[RAi('rD','D','E','C'),RAi('rF','F','D','A')]});
+addU(911,'11',UC,'تطابق وإيجاد x','{{BC = BE}} و{{BD}} ينصف {{∠ABC}}. (1) أثبت أن {{ΔBCD ≅ ΔBED}}. (2) أوجد قيمة {{x}} علمًا أن {{m(∠A) = 36°}} و{{m(∠BED) = 84°}}.',
+ [proof([
+  stu('{{BC = BE}}','معطى',['BC','BE']),
+  stu('{{m(∠CBD) = m(∠EBD)}} ({{BD}} ينصف {{∠ABC}})','معطى',['a1','a2']),
+  stu('{{BD}} ضلع مشترك في المثلثين {{BCD , BED}}','ضلع مشترك',['BD']),
+  stu('{{ΔBCD ≅ ΔBED}}','SAS',['tBCD','tBED'])]),
+  num('x =',66,{unit:'°',hint:'من التطابق {{m(∠C) = m(∠BED) = 84°}}.'})],
+ [{t:'من التطابق {{m(∠C) = m(∠BED) = 84°}}',hl:['tBCD']},{t:'{{m(∠ABC) = 180° − (36° + 84°) = 60°}} ⇒ {{m(∠CBD) = 30°}}',hl:['a1','a2']},{t:'في {{ΔBCD}}: {{x = 180° − (84° + 30°) = 66°}}',hl:['aD']}],
+ {P:{A:[127,-70],B:[0,150],C:[150,150],E:[75,20],D:[141,68]},S:[['B','E',{t:2}],['E','A'],['A','D'],['D','C'],['C','B',{t:2}],['B','D'],['E','D']],A:[AN('A','B','C','36°','aA',24),AN('E','B','D','84°','aE',22),AN('D','B','C','x°','aD',22),AN('B','E','D','','a1',24),AN('B','D','C','','a2',34)],F:[['BCD','tBCD'],['BED','tBED']]});
+addU(912,'12',UC,'قيمة x','{{BD = CD}} و{{AD ⟂ BC}} و{{m(∠EBD) = 48°}} و{{AE = BE}}. أوجد مع البرهان قيمة {{x}}.',
+ [num('x =',21,{unit:'°',hint:'{{AD}} محور تماثل {{BC}}.'})],
+ [{t:'{{AD ⟂ BC}} من منتصفها {{D}} ⇒ {{AB = AC}} و{{AD}} ينصف {{∠BAC}}: {{m(∠BAD) = m(∠CAD) = x}}',hl:['rD','AD']},{t:'{{AE = BE}} ⇒ {{m(∠ABE) = m(∠BAE) = x}}',hl:['AE','BE']},{t:'{{m(∠ABD) = x + 48°}}، وفي {{ΔABD}} القائم في {{D}}: {{x + (x + 48°) = 90°}}',hl:['aB']},{t:'{{2x = 42°}} ⇒ {{x = 21°}}',hl:['aA']}],
+ {P:{A:[100,0],B:[0,150],C:[200,150],D:[100,150],E:[100,75]},S:[['A','E',{t:2}],['E','D'],['B','E',{t:2}],['B','D',{t:1}],['D','C',{t:1}],['A','B'],['A','C']],A:[RAi('rD','D','A','C'),AN('B','D','E','48°','aB',28),AN('A','D','C','x°','aA',30)]});
+
+F[904].S.push(['A','C',{nodraw:1}]);F[912].S.push(['A','D',{nodraw:1}]);
 Q.forEach(q=>{if(!q.les)q.les=1});
 
 /* ---------- state ---------- */
@@ -2288,7 +2495,7 @@ function mkOpts(correct,pool,seed){const w=[];let k=seed;while(w.length<3){const
   const pos=seed%4;const o=w.slice();o.splice(pos,0,correct);return{o,ans:pos}}
 
 Q.forEach(q=>{
-  S[q.n]={open:q.n===1,hl:[],sol:0,revealed:false,parts:q.parts.map(p=>{
+  S[q.n]={open:false,hl:[],sol:0,revealed:false,parts:q.parts.map(p=>{
     if(p.k==='proof'){p.steps.forEach((s,i)=>{const pool=s.c?Object.values(CASES):(s.pool||POOL);const correct=s.c?CASES[s.r]:s.r;const r=mkOpts(correct,pool,i*2+q.n);s.opts=r.o;s.ans=r.ans});}
     return{done:false,bad:{},tries:0,sel:null,val:'',msg:'',i:0}})};
   if(solved.has(q.n)){S[q.n].parts.forEach((p,i)=>{p.done=true;const d=q.parts[i];if(d.k==='proof')p.i=d.steps.length;if(d.k==='mcq')p.sel=d.ans;if(d.k==='num')p.val=String(d.ans)});S[q.n].open=false}
@@ -2355,6 +2562,7 @@ function cardHTML(q){
     h+='</div>';
   }
   if(!allDone)h+='<div class="row" style="margin-top:12px"><button class="btn ghost sm" data-a="reveal" data-n="'+q.n+'">اعرض الإجابة كاملة</button></div>';
+  h+='<div class="cnav"><button type="button" class="btn ghost sm" data-a="nav" data-d="-1" data-n="'+q.n+'">→ التمرين السابق</button><button type="button" class="btn sm" data-a="nav" data-d="1" data-n="'+q.n+'">التمرين التالي ←</button></div>';
   h+='</div><div class="figcol"><div class="figbox">'+fig(F[q.n],hlFor(q))+'</div></div></div>';
   return h;
 }
@@ -2362,28 +2570,40 @@ function hlFor(q){return S[q.n].hl}
 
 function renderCard(n){const q=Q.find(x=>x.n===n);const el=document.getElementById('q'+n);
   el.className='card'+(S[n].parts.every(p=>p.done)?' done':'');el.innerHTML=cardHTML(q);applyFilter()}
-function renderAll(){$list.innerHTML=Q.map(q=>'<section class="card" id="q'+q.n+'" aria-label="التمرين '+q.n+'"></section>').join('');Q.forEach(q=>renderCard(q.n));updateProg()}
-function updateProg(){document.getElementById('pc').textContent=solved.size;document.getElementById('pt').textContent=Q.length;document.getElementById('pf').style.width=(solved.size/Q.length*100)+'%';pcards()}
+function renderAll(){$list.innerHTML=Q.map(q=>'<section class="card" id="q'+q.n+'" aria-label="التمرين '+q.n+'"></section>').join('');_b=true;Q.forEach(q=>renderCard(q.n));_b=false;applyFilter();updateProg()}
+function updateProg(){document.getElementById('pc').textContent=solved.size;document.getElementById('pt').textContent=Q.length;document.getElementById('pf').style.width=(solved.size/Q.length*100)+'%';pcards();rail()}
 
-const FILT=[['all','الكل'],['l1','الدرس 3-1'],['l2','الدرس 3-2'],['l3','الدرس 3-3'],['l4','الدرس 3-4'],['l5','الدرس 3-5'],['l6','الدرس 3-6'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
-function pills(){document.getElementById('pills').innerHTML=FILT.map(([k,l])=>'<button class="pill" data-f="'+k+'" aria-pressed="'+(filter===k)+'">'+l+'</button>').join('');pcards()}
+let src='all',todoOnly=false,qtext='',_b=false;
+const LESCOL={l1:'#d98e00',l2:'#1857c8',l3:'#7b3fe4',l4:'#c2410c',l5:'#0f766e',l6:'#9d174d',l7:'#475569'};
+const LESNAME=[['all','كل التمارين'],['l1','3-1 · التطابق'],['l2','3-2 · فيثاغورس'],['l3','3-3 · تطبيقات التوازي'],['l4','3-4 · متوسطات المثلث'],['l5','3-5 · المثلث المتساوي الساقين'],['l6','3-6 · زوايا المضلعات'],['l7','تقييم الوحدة 3']];
+const isBook=q=>!!(q.bk||q.n<100);
+const matchLes=(f,q)=>f==='all'||q.les===+f.slice(1);
+const nrm=t=>String(t||'').replace(/[{}]/g,'').replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).toLowerCase();
+const vis=q=>matchLes(filter,q)&&(src==='all'||(src==='book'?isBook(q):!isBook(q)))&&(!todoOnly||!solved.has(q.n))&&(!qtext||nrm((q.title||'')+' '+(q.dn||'')+' '+(q.lab||'')+' '+q.n+' '+(q.prompt||'')).includes(nrm(qtext)));
+const visList=()=>Q.filter(vis);
+function saveUI(){try{localStorage.setItem('geo-ui',JSON.stringify({f:filter,s:src}))}catch(e){}}
+function remember(n){try{localStorage.setItem('geo-last',JSON.stringify({n:n,f:filter}))}catch(e){}}
+function pills(){const el=document.getElementById('pills');if(el)el.innerHTML=[['all','كل المصادر'],['book','كتاب المدرسة'],['assess','كتاب التقييمات']].map(([k,l])=>'<button type="button" class="pill" data-src="'+k+'" aria-pressed="'+(src===k)+'">'+l+'</button>').join('')+'<button type="button" class="pill todo" data-todo="1" aria-pressed="'+todoOnly+'">لم تُحل بعد</button>';pcards()}
 function pcards(){const el=document.getElementById('pcards');if(!el)return;
-  const G=[['all','كل التمارين'],['l1','الدرس 3-1 · التطابق'],['l2','الدرس 3-2 · فيثاغورس'],['l3','الدرس 3-3 · تطبيقات التوازي'],['l4','الدرس 3-4 · متوسطات المثلث'],['l5','الدرس 3-5 · المثلث المتساوي الساقين'],['l6','الدرس 3-6 · زوايا المضلعات'],['book','كتاب المدرسة'],['assess','كتاب التقييمات'],['todo','لم تُحل بعد']];
-  const m=(f,q)=>f==='all'?true:f==='l1'?q.les===1:f==='l2'?q.les===2:f==='l3'?q.les===3:f==='l4'?q.les===4:f==='l5'?q.les===5:f==='l6'?q.les===6:f==='book'?(q.bk||q.n<100):f==='assess'?!(q.bk||q.n<100):!solved.has(q.n);
-  el.innerHTML=G.map(([f,t])=>{const a=Q.filter(q=>m(f,q)),s=a.filter(q=>solved.has(q.n)).length;
-   const sub=f==='todo'?a.length+' متبقٍ':a.length+' تمرين · '+s+' محلول';
-   return '<button type="button" class="pcard" data-f="'+f+'" aria-pressed="'+(filter===f)+'"><b>'+t+'</b><small>'+sub+'</small>'+(f==='todo'?'':'<span class="pbar"><i style="width:'+(a.length?s/a.length*100:0)+'%"></i></span>')+'</button>'}).join('')}
-function applyFilter(){Q.forEach(q=>{const el=document.getElementById('q'+q.n);let show=true;
-  if(filter==='l1')show=q.les===1;else if(filter==='l2')show=q.les===2;else if(filter==='l3')show=q.les===3;else if(filter==='l4')show=q.les===4;else if(filter==='l5')show=q.les===5;else if(filter==='l6')show=q.les===6;else if(filter==='book')show=(q.bk||q.n<100);else if(filter==='assess')show=!(q.bk||q.n<100);else if(filter==='todo')show=!solved.has(q.n);
-  el.hidden=!show})}
-
+ el.innerHTML=LESNAME.map(([f,t])=>{const a=Q.filter(q=>matchLes(f,q)),sv=a.filter(q=>solved.has(q.n)).length,c=LESCOL[f]||'#1857c8';
+  return '<button type="button" class="pcard" data-f="'+f+'" style="--c:'+c+'" aria-pressed="'+(filter===f)+'"><b>'+t+'</b><small>'+a.length+' تمرين · '+sv+' محلول</small><span class="pbar"><i style="width:'+(a.length?sv/a.length*100:0)+'%"></i></span></button>'}).join('')}
+function rail(){const el=document.getElementById('rail');if(!el)return;const L=visList();
+ el.innerHTML=L.length?L.map(q=>'<button type="button" class="rc'+(solved.has(q.n)?' done':'')+(S[q.n].open?' cur':'')+(isBook(q)?' bk':' as')+'" data-rail="'+q.n+'" aria-label="التمرين '+(q.dn||q.lab||q.n)+'">'+(q.dn||q.lab||q.n)+'</button>').join(''):'<span class="rempty">لا توجد تمارين بهذا الاختيار — غيّر المصدر أو ألغِ «لم تُحل بعد».</span>';
+ const c=el.querySelector('.cur');if(c){try{el.scrollTo({left:Math.max(0,c.offsetLeft-el.clientWidth/2+c.offsetWidth/2),behavior:'smooth'})}catch(e){}}}
+function applyFilter(){Q.forEach(q=>{const el=document.getElementById('q'+q.n);if(el)el.hidden=!vis(q)});if(!_b)rail()}
+function openCard(n,scroll){Q.forEach(q=>{if(q.n!==n&&S[q.n].open){S[q.n].open=false;renderCard(q.n)}});S[n].open=true;renderCard(n);remember(n);if(scroll){const el=document.getElementById('q'+n);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),40)}}
+window.geoSetFilter=function(f){filter=f;pills();applyFilter();saveUI();const L=visList(),first=L.find(q=>!solved.has(q.n))||L[0];if(first)openCard(first.n,false)};
 function finish(q){const st=S[q.n];if(st.parts.every(p=>p.done)){if(!st.revealed){solved.add(q.n);save()}st.hl=[];updateProg()}}
 const norm=s=>String(s).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,]/g,'.').replace(/\s/g,'');
 
 document.addEventListener('click',e=>{
-  const f=e.target.closest('[data-f]');if(f){filter=f.dataset.f;pills();applyFilter();return}
+  const sr=e.target.closest('[data-src]');if(sr){src=sr.dataset.src;pills();applyFilter();saveUI();return}
+  const td=e.target.closest('[data-todo]');if(td){todoOnly=!todoOnly;pills();applyFilter();return}
+  const rc=e.target.closest('[data-rail]');if(rc){openCard(+rc.dataset.rail,true);return}
+  const f=e.target.closest('[data-f]');if(f){window.geoSetFilter(f.dataset.f);return}
   const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
-  if(a==='toggle'){const n=+b.dataset.n;S[n].open=!S[n].open;renderCard(n);return}
+  if(a==='toggle'){const n=+b.dataset.n;if(S[n].open){S[n].open=false;renderCard(n)}else openCard(n,false);return}
+  if(a==='nav'){const n=+b.dataset.n,d=+b.dataset.d,L=visList(),i=L.findIndex(x=>x.n===n),t=L[i+d];if(t)openCard(t.n,true);return}
   if(a==='solnext'){const n=+b.dataset.n,q=Q.find(x=>x.n===n),st=S[n];st.sol=Math.min(q.sol.length,st.sol+1);st.hl=q.sol[st.sol-1].hl||[];renderCard(n);return}
   if(a==='reveal'){const n=+b.dataset.n,q=Q.find(x=>x.n===n),st=S[n];st.revealed=true;
     st.parts.forEach((p,i)=>{p.done=true;const d=q.parts[i];if(d.k==='proof')p.i=d.steps.length;if(d.k==='mcq')p.sel=d.ans;if(d.k==='num')p.val=String(d.ans)});
@@ -2426,6 +2646,7 @@ pills();renderAll();
     cur=id;
     document.querySelectorAll('#lessons .lesson').forEach(d=>{d.hidden=d.dataset.l!==id});
     document.querySelectorAll('#lcards [data-lesson]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.lesson===id)));
+    try{window.__lessonShown&&window.__lessonShown(id)}catch(e){}
   }
   function show(p){
     panes.forEach(x=>{document.getElementById(x).hidden=x!==p});
@@ -2433,9 +2654,11 @@ pills();renderAll();
     document.body.classList.toggle('is-home',p==='home');document.body.classList.toggle('is-calc',p==='calc');
     if(p==='home'){const c=document.getElementById('pc'),t=document.getElementById('pt');if(c&&t){const a=+c.textContent||0,b=+t.textContent||0;document.getElementById('hpc').textContent=a;document.getElementById('hpt').textContent=b;document.getElementById('hpf').style.width=(b?a/b*100:0)+'%'}}
     document.querySelectorAll('[data-pane]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pane===p)));
+    try{window.__paneShown&&window.__paneShown(p)}catch(e){}
   }
   function route(h){
     if(typeof h!=='string')h=location.hash.slice(1);
+    try{window.__onRoute&&window.__onRoute(h)}catch(e){}
     if(h==='practice'||h==='assess'){show('practice');window.scrollTo(0,0)}
     else if(h==='calc'){show('calc');window.scrollTo(0,0)}
     else if(h===''||h==='home'){show('home');window.scrollTo(0,0)}
@@ -2450,7 +2673,7 @@ pills();renderAll();
   }
   function goPrac(a){
     navigate('practice');
-    const b=document.querySelector('#pills [data-f="'+a.dataset.prac+'"]');if(b)b.click();
+    const b=document.querySelector('#pcards [data-f="'+a.dataset.prac+'"]');if(b)b.click();
   }
   document.addEventListener('click',e=>{
     const el=e.target.closest&&e.target.closest('[data-prac],[data-lesson],[data-pane],[data-go],a[href^="#"]');if(!el)return;
@@ -2853,6 +3076,93 @@ function draw(){
 pn.oninput=draw;
 document.querySelectorAll("#pgm button").forEach(function(b){b.onclick=function(){mode=b.dataset.m;document.querySelectorAll("#pgm button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});draw()}});
 draw();
+})();
+</script>
+
+<script>
+/* ===== واجهة التطبيق: السمة، التثبيت، التنقل ===== */
+(function(){
+ const $=id=>document.getElementById(id),root=document.documentElement;
+ /* السمة (فاتح/داكن) */
+ const meta=document.querySelector('meta[name="theme-color"]');
+ function applyTheme(t,save){root.setAttribute('data-theme',t);if(meta)meta.content=t==='dark'?'#0f1726':'#1e3a8a';if(save){try{localStorage.setItem('geo-theme',t)}catch(e){}}}
+ try{const th=localStorage.getItem('geo-theme');if(th)applyTheme(th,false)}catch(e){}
+ $('btnTheme').addEventListener('click',()=>{const c=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');applyTheme(c==='dark'?'light':'dark',true)});
+ /* أيقونات بطاقات الدروس في الرئيسية */
+ const ICO={l1:'⫽',l2:'🔺',l3:'🧩',l4:'📏',l5:'🪜',l6:'🎯',l7:'⚖️',l8:'⬡',calc:'🧮',practice:'✍️'};
+ document.querySelectorAll('#home .lc').forEach(c=>{const a=c.querySelector('.act a.main');let k=((a&&a.getAttribute('href'))||'').slice(1);if(/تقييم الوحدة/.test(c.textContent)&&c.querySelector('[data-prac="l7"]'))k='🏆';
+  const t=ICO[k]||(k==='🏆'?'🏆':'📘');c.insertAdjacentHTML('afterbegin','<span class="ico" aria-hidden="true">'+t+'</span>')});
+ /* حالة التمارين: استرجاع + بحث */
+ try{const u=JSON.parse(localStorage.getItem('geo-ui')||'null');filter=(u&&u.f)||'l1';src=(u&&u.s)||'all'}catch(e){filter='l1'}
+ pills();applyFilter();
+ const qs=$('qsearch');if(qs)qs.addEventListener('input',()=>{qtext=qs.value.trim();applyFilter()});
+ /* الدروس: فهرس الأقسام + زر التمارين العائم */
+ const PRAC={l3:'l1',l4:'l2',l5:'l3',l6:'l4',l7:'l5',l8:'l6'};
+ const LT={l1:'حالات التوازي',l2:'زوايا المثلث',l3:'التطابق',l4:'فيثاغورس',l5:'تطبيقات التوازي',l6:'متوسطات المثلث',l7:'المثلث المتساوي الساقين',l8:'زوايا المضلعات'};
+ let curLesson='l1',curPane='home';
+ function buildToc(id){const d=document.querySelector('#lessons .lesson[data-l="'+id+'"]');if(!d||d.querySelector('.toc'))return;
+  const hs=[].slice.call(d.querySelectorAll('h2'));if(hs.length<2)return;
+  hs.forEach((h,i)=>{if(!h.id)h.id='sec_'+id+'_'+i});
+  const t=document.createElement('details');t.className='toc';
+  t.innerHTML='<summary>📑 محتويات الدرس · '+hs.length+' أقسام (اضغط للتنقل)</summary><ol>'+hs.map(h=>'<li><a href="#'+h.id+'">'+h.textContent+'</a></li>').join('')+'</ol>';
+  t.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;e.preventDefault();const h=document.getElementById(a.getAttribute('href').slice(1));if(h){t.open=false;h.scrollIntoView({behavior:'smooth',block:'start'})}});
+  const hd=d.querySelector('header');d.insertBefore(t,hd?hd.nextSibling:d.firstChild)}
+ function fab(){const f=$('lfab'),pr=PRAC[curLesson];if(curPane==='lessons'&&pr){f.setAttribute('data-prac',pr);f.hidden=false}else{f.removeAttribute('data-prac');f.hidden=true}}
+ window.__lessonShown=function(id){curLesson=id;buildToc(id);fab();try{localStorage.setItem('geo-route',JSON.stringify({l:id}))}catch(e){};const b=document.querySelector('#lcards [data-lesson="'+id+'"]');if(b&&b.scrollIntoView){try{b.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}}};
+ window.__onRoute=function(h){};
+ function updateCont(){const b=$('contBtn');if(!b)return;let last=null,rt=null;try{last=JSON.parse(localStorage.getItem('geo-last')||'null');rt=JSON.parse(localStorage.getItem('geo-route')||'null')}catch(e){}
+  b.removeAttribute('data-cont');
+  if(rt&&rt.p==='practice'&&last){const q=Q.find(x=>x.n===last.n);if(q){b.textContent='▶ تابع التمرين '+(q.dn||q.lab||q.n);b.setAttribute('href','#practice');b.dataset.cont='ex';return}}
+  if(rt&&rt.l&&LT[rt.l]){b.textContent='▶ تابع: '+LT[rt.l];b.setAttribute('href','#'+rt.l);return}
+  b.textContent='▶ ابدأ من الدرس 3-1';b.setAttribute('href','#l3')}
+ window.__paneShown=function(p){curPane=p;fab();
+  if(p==='home')updateCont();
+  if(p==='practice'){try{localStorage.setItem('geo-route',JSON.stringify({p:'practice'}))}catch(e){}
+   if(!document.querySelector('#list .chead[aria-expanded="true"]')){const L=visList(),f=L.find(q=>!solved.has(q.n))||L[0];if(f)openCard(f.n,false)}}};
+ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#contBtn');if(b&&b.dataset.cont==='ex'){let last=null;try{last=JSON.parse(localStorage.getItem('geo-last')||'null')}catch(x){}
+  if(last)setTimeout(()=>{filter=last.f||'all';pills();applyFilter();openCard(last.n,true)},80)}});
+ /* التثبيت على الهاتف */
+ let deferred=null;
+ const standalone=()=>(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+ const bi=$('btnInstall');
+ function refreshInst(){bi.hidden=standalone()}
+ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;refreshInst()});
+ window.addEventListener('appinstalled',()=>{deferred=null;bi.hidden=true;closeSheet()});
+ const ua=navigator.userAgent||'',isIOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),isAnd=/Android/.test(ua);
+ const secure=/^https?:$/.test(location.protocol);
+ function openSheet(){let h='';
+  if(deferred)h+='<button type="button" class="go" id="goInst">⬇ تثبيت التطبيق الآن</button>';
+  if(!secure)h+='<div class="note">⚠️ أنت تفتح الملف من الجهاز مباشرة، والتثبيت كتطبيق يحتاج أن يكون مجلد التطبيق على رابط آمن (https). ارفع المجلد كاملًا على استضافة مجانية (راجع ملف «اقرأني» المرفق) ثم افتح الرابط من الهاتف وكرّر هذه الخطوات.</div>';
+  if(isIOS)h+='<p><b>على الآيفون / الآيباد (متصفح Safari):</b></p><ol><li>افتح رابط التطبيق في <b>Safari</b>.</li><li>اضغط زر المشاركة <b>⬆️</b> (مربع وسهم) أسفل الشاشة.</li><li>اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>اضغط <b>«إضافة»</b>، فتظهر أيقونة «الهندسة» بين تطبيقاتك.</li></ol>';
+  else if(isAnd)h+='<p><b>على أندرويد (متصفح Chrome):</b></p><ol><li>افتح رابط التطبيق في <b>Chrome</b>.</li><li>اضغط القائمة <b>⋮</b> أعلى الشاشة.</li><li>اختر <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li><li>اضغط <b>«تثبيت»</b>.</li></ol>';
+  else h+='<p><b>على الحاسوب (Chrome أو Edge):</b> اضغط أيقونة التثبيت ⊕ في شريط العنوان، أو القائمة ⋮ ← «تثبيت الهندسة».</p><p><b>على الهاتف:</b> افتح الرابط في Chrome (أندرويد) أو Safari (آيفون) ثم اختر «إضافة إلى الشاشة الرئيسية».</p>';
+  h+='<div class="note">✅ بعد التثبيت يعمل التطبيق بدون إنترنت، ويحفظ تقدمك في التمارين على جهازك.</div>';
+  $('shBody').innerHTML=h;$('sheet').hidden=false;const g=$('goInst');if(g)g.addEventListener('click',()=>{deferred.prompt();deferred.userChoice.then(()=>{deferred=null;closeSheet()})})}
+ function closeSheet(){$('sheet').hidden=true}
+ bi.addEventListener('click',openSheet);$('shX').addEventListener('click',closeSheet);
+ $('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))closeSheet()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+ refreshInst();
+ if('serviceWorker' in navigator&&secure)window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})});
+ /* الحالة الأولية */
+ const first=document.querySelector('.pane:not([hidden])');curPane=first?first.id:'home';
+ window.__paneShown(curPane);
+})();
+</script>
+
+<script>
+/* إخفاء شريط التنقل السفلي وزر "تمارين هذا الدرس" أثناء النزول، وإظهارهما عند الصعود */
+(function(){
+  var last=window.pageYOffset||0,ticking=false,mq=window.matchMedia('(max-width:900px),(max-height:700px)');
+  function upd(){
+    var y=window.pageYOffset||0,b=document.body;
+    if(!mq.matches||y<80||(window.innerHeight+y)>=document.documentElement.scrollHeight-40){b.classList.remove('ui-hide')}
+    else if(y>last+6){b.classList.add('ui-hide')}
+    else if(y<last-6){b.classList.remove('ui-hide')}
+    last=y;ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+  document.addEventListener('focusin',function(e){if(e.target.closest&&e.target.closest('.dock'))document.body.classList.remove('ui-hide')});
 })();
 </script>
 </body>
