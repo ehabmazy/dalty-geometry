@@ -1,6 +1,6 @@
 /* Service Worker — الهندسة · الصف الثاني الإعدادي
    غيّر رقم VERSION عند كل تحديث للموقع ليصل التحديث للطلاب. */
-const VERSION = 'v1';
+const VERSION = 'v4';
 const CACHE = 'geo-' + VERSION;
 const SHELL = [
   './',

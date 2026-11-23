@@ -225,7 +225,7 @@ html{scroll-behavior:smooth}
 @media (max-width:760px){#calc .cgrid{grid-template-columns:minmax(0,1fr)}}
 #calc .disp,#fcalc .disp{width:100%;font:800 30px/1.4 var(--math);direction:ltr;text-align:left;padding:8px 14px;border:2px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink)}
 #calc .disp:focus-visible,#calc button:focus-visible,#fcalc .disp:focus-visible,#fcalc button:focus-visible,#fhandle:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-#calc .keys,#fcalc .keys{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0;direction:ltr}
+#calc .keys,#fcalc .keys{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:12px 0;direction:ltr}
 #calc .keys button,#fcalc .keys button{font:700 22px/1 var(--math);min-height:52px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
 #calc .keys button:active,#fcalc .keys button:active{transform:translate(2px,2px);box-shadow:none}
 #calc .keys .op,#fcalc .keys .op{color:#fff;border-color:var(--ink)}
@@ -233,7 +233,7 @@ html{scroll-behavior:smooth}
 #calc .keys .rt,#fcalc .keys .rt{background:var(--teal)}
 #calc .keys .fn,#fcalc .keys .fn{background:var(--paper)}
 #calc .keys .ar,#fcalc .keys .ar{background:var(--ink);color:var(--paper)}
-#calc .keys .eq,#fcalc .keys .eq{background:var(--amber);color:#1d3557;grid-row:span 2;min-height:auto}
+#calc .keys .eq,#fcalc .keys .eq{background:var(--amber);color:#1d3557;grid-row:span 2;grid-column:span 2;min-height:auto}
 #calc .read{font-weight:600;font-size:18px;min-height:7em}
 #calc .read .big{font-size:26px;font-weight:800;display:block;margin-bottom:4px}
 #calc .ok{color:var(--teal)}
@@ -346,7 +346,7 @@ header.top{display:none!important}
 .ib[hidden]{display:none}
 @media (max-width:520px){.brand small{display:none}.ib.inst{padding:0 10px;font-size:13px}}
 /* ---- شريط التنقل السفلي ---- */
-.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:60;width:min(560px,calc(100vw - 20px));display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px;border-radius:26px;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 34px rgba(15,30,60,.28)}
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:60;width:min(560px,calc(100vw - 20px));display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:6px;border-radius:26px;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 34px rgba(15,30,60,.28)}
 :root[data-theme="dark"] .dock{background:rgba(23,34,58,.94)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dock{background:rgba(23,34,58,.94)}}
 .dock button{font:700 12px var(--body);color:var(--muted);background:none;border:0;border-radius:20px;min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer}
@@ -426,6 +426,9 @@ header.top{display:none!important}
 @media (min-width:900px){.sheet{align-items:center}.sheet-in{border-radius:24px}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
+/* ===== إصلاح: الآلة الحاسبة العائمة كانت تظهر خارج الشاشة ===== */
+#fcalc{top:auto!important;bottom:calc(var(--dockh) + 16px + env(safe-area-inset-bottom,0px))!important;max-height:calc(100dvh - var(--dockh) - 32px - env(safe-area-inset-bottom,0px));overflow-y:auto;z-index:70}
+@media (max-height:520px){#fcalc{bottom:8px!important;max-height:calc(100dvh - 16px)}}
 /* ===== إصلاح: الأزرار الثابتة تحجب الشاشة (الجوال / الشاشات القصيرة) ===== */
 @media (max-width:900px),(max-height:700px){
   html{scroll-padding-top:12px}
@@ -930,17 +933,17 @@ header.top{display:none!important}
 <section id="calc" class="pane" hidden>
 <main>
 <header>
-<small>أداة مساعدة · الجمع والطرح والمربع والجذر التربيعي</small>
+<small>أداة مساعدة · الجمع والطرح والضرب والقسمة والمربع والجذر التربيعي</small>
 <h1><span>الآلة الحاسبة</span></h1>
-<p>اكتب عددًا (صحيحًا أو عشريًا)، أو عملية <b>جمع أو طرح</b> مثل <span class="m">12 + 7</span> ثم اضغط <b>=</b>. ويمكنك الضغط على <b>x²</b> لحساب المربع أو <b>√</b> لحساب الجذر التربيعي (وإن كانت العملية مكتوبة تُحسب أولًا). تعرض الآلة خطوات الحل وتتحقق إن كان العدد <b>مربعًا كاملًا</b> وتبسّط الجذر عند الإمكان.</p>
+<p>اكتب عددًا (صحيحًا أو عشريًا)، أو عملية <b>جمع أو طرح أو ضرب أو قسمة</b> مثل <span class="m">12 × 7</span> ثم اضغط <b>=</b>. ويمكنك الضغط على <b>x²</b> لحساب المربع أو <b>√</b> لحساب الجذر التربيعي (وإن كانت العملية مكتوبة تُحسب أولًا). تعرض الآلة خطوات الحل وتتحقق إن كان العدد <b>مربعًا كاملًا</b> وتبسّط الجذر عند الإمكان.</p>
 </header>
 <div class="cgrid">
 <div class="box">
 <label for="cn" style="font-weight:700">العدد:</label>
 <input id="cn" class="disp" type="text" inputmode="none" autocomplete="off" placeholder="0" aria-describedby="cout">
 <div class="keys" id="ckeys" role="group" aria-label="لوحة الأرقام">
-<button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" class="fn" data-k="bs" aria-label="مسح رقم">⌫</button><button type="button" class="op ar" data-k="+" aria-label="جمع">+</button>
-<button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" class="fn" data-k="c" aria-label="مسح الكل">C</button><button type="button" class="op ar" data-k="-" aria-label="طرح">−</button>
+<button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" class="fn" data-k="bs" aria-label="مسح رقم">⌫</button><button type="button" class="op ar" data-k="+" aria-label="جمع">+</button><button type="button" class="op ar" data-k="*" aria-label="ضرب">×</button>
+<button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" class="fn" data-k="c" aria-label="مسح الكل">C</button><button type="button" class="op ar" data-k="-" aria-label="طرح">−</button><button type="button" class="op ar" data-k="/" aria-label="قسمة">÷</button>
 <button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button><button type="button" class="op sq" data-k="sq" aria-label="المربع">x²</button><button type="button" class="op eq" data-k="eq" aria-label="يساوي">=</button>
 <button type="button" data-k="0">0</button><button type="button" data-k=".">.</button><button type="button" class="fn" data-k="neg" aria-label="تغيير الإشارة">±</button><button type="button" class="op rt" data-k="rt" aria-label="الجذر التربيعي">√</button>
 </div>
@@ -964,8 +967,8 @@ header.top{display:none!important}
 <div class="top"><div class="fout" id="fcout" aria-live="polite"></div><button type="button" id="fclose" aria-label="إغلاق">×</button></div>
 <input id="fcn" class="disp" type="text" inputmode="none" autocomplete="off" placeholder="0" aria-label="العدد" aria-describedby="fcout">
 <div class="keys" id="fkeys" role="group" aria-label="لوحة الأرقام">
-<button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" class="fn" data-k="bs" aria-label="مسح رقم">⌫</button><button type="button" class="op ar" data-k="+" aria-label="جمع">+</button>
-<button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" class="fn" data-k="c" aria-label="مسح الكل">C</button><button type="button" class="op ar" data-k="-" aria-label="طرح">−</button>
+<button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" class="fn" data-k="bs" aria-label="مسح رقم">⌫</button><button type="button" class="op ar" data-k="+" aria-label="جمع">+</button><button type="button" class="op ar" data-k="*" aria-label="ضرب">×</button>
+<button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" class="fn" data-k="c" aria-label="مسح الكل">C</button><button type="button" class="op ar" data-k="-" aria-label="طرح">−</button><button type="button" class="op ar" data-k="/" aria-label="قسمة">÷</button>
 <button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button><button type="button" class="op sq" data-k="sq" aria-label="المربع">x²</button><button type="button" class="op eq" data-k="eq" aria-label="يساوي">=</button>
 <button type="button" data-k="0">0</button><button type="button" data-k=".">.</button><button type="button" class="fn" data-k="neg" aria-label="تغيير الإشارة">±</button><button type="button" class="op rt" data-k="rt" aria-label="الجذر التربيعي">√</button>
 </div>
@@ -976,8 +979,7 @@ header.top{display:none!important}
   <button type="button" data-pane="home" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>الرئيسية</span></button>
   <button type="button" data-pane="lessons" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 7h6M9 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><span>شرح الدروس</span></button>
   <button type="button" data-pane="practice" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8.5 9l1.8 1.8L14 7.5M8.5 15.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><span>التمارين</span></button>
-  <button type="button" data-pane="calc" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 7h7M9 11.5h.01M12 11.5h.01M15 11.5h.01M9 15h.01M12 15h.01M15 15h.01" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>الحاسبة</span></button>
-</nav>
+  </nav>
 <a class="fab" id="lfab" href="#practice" hidden>تمارين هذا الدرس ←</a>
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sheet-in">
   <button type="button" class="x" id="shX" aria-label="إغلاق">×</button>
@@ -2751,10 +2753,10 @@ function calcInit(P){
 var inp=document.getElementById(P.inp);if(!inp)return;var compact=!!P.compact;
 var out=document.getElementById(P.out),fig=P.fig?document.getElementById(P.fig):{hidden:false,innerHTML:"",appendChild:function(){}},histEl=P.hist?document.getElementById(P.hist):{innerHTML:""},H=[];
 var NS="http://www.w3.org/2000/svg";
-var EXP=/^(-?(?:\d+\.?\d*|\.\d+))([+\-])(-?(?:\d+\.?\d*|\.\d+))$/,fresh=false;
-function lastOp(v){for(var i=v.length-1;i>0;i--){var c=v.charAt(i);if((c==="+"||c==="-")&&/[\d.]/.test(v.charAt(i-1)))return i}return -1}
+var EXP=/^(-?(?:\d+\.?\d*|\.\d+))([+\-*\/])(-?(?:\d+\.?\d*|\.\d+))$/,fresh=false;
+function lastOp(v){for(var i=v.length-1;i>0;i--){var c=v.charAt(i);if((c==="+"||c==="-"||c==="*"||c==="/")&&/[\d.]/.test(v.charAt(i-1)))return i}return -1}
 function m(t){return "<span class='m'>"+t+"</span>"}
-function norm(s){return s.replace(/[\u0660-\u0669]/g,function(d){return d.charCodeAt(0)-1632}).replace(/[\u066B\u066C,\u060C]/g,".").replace(/[\u2212\u2013]/g,"-").replace(/\s/g,"")}
+function norm(s){return s.replace(/[\u0660-\u0669]/g,function(d){return d.charCodeAt(0)-1632}).replace(/[\u066B\u066C,\u060C]/g,".").replace(/[\u2212\u2013]/g,"-").replace(/[\u00d7\u2715\u2716\u066dxX]/g,"*").replace(/[\u00f7\u2215]/g,"/").replace(/\s/g,"")}
 function parse(str){
  var s=norm(str===undefined?inp.value:str);
  if(!/^-?(\d+\.?\d*|\.\d+)$/.test(s))return null;
@@ -2790,30 +2792,47 @@ function draw(sideLbl,areaLbl,g,col){
  e("text",{x:x0+S/2,y:y0+S+30,"text-anchor":"middle","font-size":17,"font-weight":700,fill:"currentColor",style:st},sideLbl);
  e("text",{x:x0+S+22,y:y0+S/2+5,"text-anchor":"middle","font-size":17,"font-weight":700,fill:"currentColor",style:st},sideLbl);
 }
+var lastErr="";
+function errMsg(){return lastErr==="zero"?"لا يمكن القسمة على صفر.":"الحد الأقصى 12 رقمًا لكل عدد."}
+function pw(n){return BigInt("1"+"0".repeat(n))}
 function compute(x){
+ lastErr="len";
  var a=parse(x[1]),b=parse(x[3]);if(!a||!b||a.len>12||b.len>12)return null;
- var D=Math.max(a.fp.length,b.fp.length);
- function big(p){var v=BigInt(p.ip+p.fp+"0".repeat(D-p.fp.length));return p.neg?-v:v}
- var X=big(a),Y=big(b),r=x[2]==="+"?X+Y:X-Y,neg=r<BigInt(0);if(neg)r=-r;
- var s=scaled(r.toString(),D);
- return {a:a,b:b,op:x[2],res:(neg&&s!=="0"?"-":"")+s};
+ var op=x[2],da=a.fp.length,db=b.fp.length,Z=BigInt(0),res,approx=false,r,neg,s;
+ function raw(p){var v=BigInt(p.ip+p.fp);return p.neg?-v:v}
+ var A=raw(a),B=raw(b);
+ if(op==="+"||op==="-"){
+  var D=Math.max(da,db),X=A*pw(D-da),Y=B*pw(D-db);
+  r=op==="+"?X+Y:X-Y;neg=r<Z;if(neg)r=-r;s=scaled(r.toString(),D);
+ }else if(op==="*"){
+  r=A*B;neg=r<Z;if(neg)r=-r;s=scaled(r.toString(),da+db);
+ }else{
+  if(B===Z){lastErr="zero";return null}
+  neg=(A<Z)!==(B<Z);
+  var N=(A<Z?-A:A)*pw(db),Dn=(B<Z?-B:B)*pw(da),P=6,num=N*pw(P);
+  approx=(num%Dn)!==Z;
+  r=(num*BigInt(2)+Dn)/(Dn*BigInt(2));s=scaled(r.toString(),P);
+ }
+ res=(neg&&s!=="0"?"-":"")+s;
+ return {a:a,b:b,op:op,res:res,approx:approx};
 }
 function sh(p){return p.neg?"(−"+shown(p)+")":shown(p)}
-function eqText(r){return sh(r.a)+" "+(r.op==="+"?"+":"−")+" "+sh(r.b)+" = "+r.res.replace("-","−")}
+function eqText(r){var sy={"+":"+","-":"\u2212","*":"\u00d7","/":"\u00f7"};return sh(r.a)+" "+sy[r.op]+" "+sh(r.b)+(r.approx?" \u2248 ":" = ")+r.res.replace("-","\u2212")}
 function doEq(){
  var x=EXP.exec(norm(inp.value));
- if(!x){if(compact)return;fig.hidden=true;out.innerHTML=parse()?"اكتب عملية جمع أو طرح مثل "+m("12 + 7")+" ثم اضغط =.":"<span class='no'>اكتب عملية جمع أو طرح مثل 12+7.</span>";return}
- var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>الحد الأقصى 12 رقمًا لكل عدد.</span>";return}
+ if(!x){if(compact)return;fig.hidden=true;out.innerHTML=parse()?"اكتب عملية جمع أو طرح أو ضرب أو قسمة مثل "+m("12 × 7")+" ثم اضغط =.":"<span class='no'>اكتب عملية مثل 12+7 أو 12*7.</span>";return}
+ var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>"+errMsg()+"</span>";return}
  var t=eqText(r);
  out.innerHTML="<span class='big m'>"+t+"</span>"+
-  (r.res.charAt(0)==="-"?"<span class='st'>الناتج سالب لأن العدد المطروح أكبر من المطروح منه.</span>":"");
+  (r.res.charAt(0)==="-"?"<span class='st'>"+(r.op==="-"?"الناتج سالب لأن العدد المطروح أكبر من المطروح منه.":r.op==="+"?"الناتج سالب لأن العدد السالب أكبر في القيمة المطلقة.":"الناتج سالب لأن إشارتي العددين مختلفتان.")+"</span>":"")+
+  (r.approx?"<span class='st'>القسمة غير منتهية، والناتج مقرَّب لـ 6 منازل عشرية.</span>":"");
  fig.hidden=true;inp.value=r.res;fresh=true;push(t);
 }
 function push(t){H.unshift(t);if(H.length>6)H.pop();histEl.innerHTML=H.map(function(x){return "<li>"+x+"</li>"}).join("")}
 function bad(){fig.hidden=true;out.innerHTML="<span class='no'>اكتب عددًا صحيحًا أو عشريًا فقط (مثل 12 أو 2.25).</span>";return null}
 function getP(){
  var x=EXP.exec(norm(inp.value));
- if(x){var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>الحد الأقصى 12 رقمًا لكل عدد.</span>";return null}push(eqText(r));inp.value=r.res}
+ if(x){var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>"+errMsg()+"</span>";return null}push(eqText(r));inp.value=r.res}
  var p=parse();if(!p)return bad();if(p.len>12){fig.hidden=true;out.innerHTML="<span class='no'>الحد الأقصى 12 رقمًا.</span>";return null}return p}
 
 function doSquare(){
@@ -2866,19 +2885,19 @@ function key(k){
  if(k==="c"){inp.value="";out.innerHTML=compact?"":"اكتب عددًا أو عملية، ثم اختر "+m("=")+" أو "+m("x²")+" أو "+m("√")+".";fig.hidden=true;return}
  if(k==="bs"){inp.value=v.slice(0,-1);return}
  if(k==="neg"){var i=lastOp(v),o=v.slice(i+1);o=o.charAt(0)==="-"?o.slice(1):"-"+o;inp.value=v.slice(0,i+1)+o;return}
- if(k==="+"||k==="-"){
+ if(k==="+"||k==="-"||k==="*"||k==="/"){
   var x=EXP.exec(v);
-  if(x){var r=compute(x);if(!r)return bad();push(eqText(r));v=r.res}
+  if(x){var r=compute(x);if(!r){fig.hidden=true;out.innerHTML="<span class='no'>"+errMsg()+"</span>";return}push(eqText(r));v=r.res}
   if(v===""){inp.value=k==="-"?"-":"";return}
   if(v==="-")return;
   if(/[\d.]$/.test(v)){inp.value=v+k;return}
-  if(/[\d.][+\-]$/.test(v)){inp.value=v.slice(0,-1)+k}
+  if(/[\d.][+\-*\/]$/.test(v)){inp.value=v.slice(0,-1)+k}
   return;
  }
  if(k==="."){var j=lastOp(v),q=v.slice(j+1);if(q.indexOf(".")>=0)return;inp.value=v+((q===""||q==="-")?"0.":".");return}
  inp.value=v+k;
 }
-document.getElementById(P.keys).addEventListener("click",function(e){var b=e.target.closest("[data-k]");if(b)key(b.dataset.k)});
+document.getElementById(P.keys).addEventListener("click",function(e){var b=e.target.closest("[data-k]");if(b){key(b.dataset.k);var dv=inp.value.replace(/\*/g,"\u00d7").replace(/\//g,"\u00f7");if(dv!==inp.value)inp.value=dv}});
 inp.addEventListener("input",function(){fresh=false});
 inp.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();EXP.test(norm(inp.value))?doEq():doSquare()}});
 if(P.chips){var ch=document.getElementById(P.chips),s="";
